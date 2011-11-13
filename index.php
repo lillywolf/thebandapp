@@ -47,7 +47,7 @@
 	/**
 	 * @return the home URL for this site
 	 */
-	public function getHome () {
+	function getHome () {
 	  return ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?: "http") . "://" . $_SERVER['HTTP_HOST'] . "/";
 	}
 
