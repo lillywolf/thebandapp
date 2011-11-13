@@ -27,8 +27,8 @@
 	}
 	else {
 		$params = array(
-		  scope => 'email, publish_stream, manage_pages',
-		  redirect_uri => 'apps.facebook.com/' . $appCanvas
+		  scope => 'email,publish_stream,manage_pages',
+		  // redirect_uri => 'apps.facebook.com/' . $appCanvas
 		);
 		$loginUrl = $facebook->getLoginUrl($params);
       	echo("<script> top.location.href='" . $loginUrl . "'</script>");		
