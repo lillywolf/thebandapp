@@ -56,7 +56,7 @@ class FBUtils {
   * Get signed request
   */
   public static function signedRequest() {
-	require_once("php-sdk/src/facebook.php");
+	require_once("/php-sdk/src/facebook.php");
 
     $app_id = AppInfo::appID();
     $app_secret = AppInfo::appSecret();
