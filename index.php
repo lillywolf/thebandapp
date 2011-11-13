@@ -20,6 +20,6 @@
 
 	print_r($user_id);
 	$signed_request = $facebook->getSignedRequest();
-	print_r($signed_request);
+	print_r($signed_request['page']);
 
 ?>
