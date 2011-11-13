@@ -37,7 +37,7 @@
 	}
 
 	$signed_request = $facebook->getSignedRequest();
-	if ($signed_request['page']['liked'] {
+	if ($signed_request['page']['liked']) {
 		// Show downloads and other content for users who liked the page
 	}
 	else {
