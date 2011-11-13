@@ -31,6 +31,7 @@
 		  redirect_uri => 'apps.facebook.com/' . $appCanvas
 		);
 		$loginUrl = $facebook->getLoginUrl($params);
+      	echo("<script> top.location.href='" . $loginUrl . "'</script>");		
 			
 		// Use this for non-facebook canvas page (i.e. Facebook Connect)		
 		// header('Location:' . $facebook->getLoginURL());
