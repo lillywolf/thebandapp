@@ -8,8 +8,8 @@
 
 require_once('AppInfo.php');
 require_once('utils.php');
-require_once("php-sdk/src/facebook.php");
-require_once("php-sdk/src/base_facebook.php");
+require_once('facebook.php');
+require_once('base_facebook.php');
 
 class FBUtils {
 

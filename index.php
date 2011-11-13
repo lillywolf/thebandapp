@@ -33,6 +33,10 @@ require_once('utils.php');
 
 // Log the user in, and get their access token
 $token = FBUtils::login(AppInfo::getHome());
+
+// Get signed request
+$fb_request = FBUtils::signedRequest();
+
 if ($token) {
 
   // Fetch the viewer's basic information, using the token just provided
@@ -41,9 +45,6 @@ if ($token) {
 
   // Fetch the viewer's accounts, using the token just provided
   $accounts = FBUtils::fetchFromFBGraph("me/accounts?access_token=$token");
-
-  // Get signed request
-  $fb_request = FBUtils::signedRequest();
 
   // Fetch the basic info of the app that they are using
   $app_id = AppInfo::appID();
@@ -139,7 +140,6 @@ if ($token) {
   <body>
 	<div class="test">
 		<?php
-			print_r($fb_request);
 		?>
 	</div>
     <div class="list">
