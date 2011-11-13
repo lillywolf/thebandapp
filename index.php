@@ -134,6 +134,19 @@ if ($token) {
     <![endif]-->
   </head>
   <body>
-
+      <div class="list">
+        <h3>Accounts</h3>
+        <ul class="friends">
+          <?php
+            foreach ($accounts as $account) {
+              // Extract the pieces of info we need from the requests above
+              echo('
+                <li>
+                  account: ' . print_r($account) . '
+                </li>');
+            }
+          ?>
+        </ul>
+      </div>	
   </body>
 </html>
