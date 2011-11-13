@@ -19,7 +19,7 @@ if($user_id)
 }
 else
 {
-header('Location:'.$facebook->getLoginURL();
+header('Location:'.$facebook->getLoginURL());
 }
 
 print_r($user_id);
