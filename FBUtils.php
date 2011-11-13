@@ -58,8 +58,8 @@ class FBUtils {
   public static function signedRequest() {
 	require_once("php-sdk/src/facebook.php");
 
-    $app_id = AppInfo::appID();
-    $app_secret = AppInfo::appSecret();
+    $app_id = '107796503671';
+    $app_secret = '10cc0163136a373aa6192f6ceafda96e';
 	$config = array();
 	$config['appId'] = $app_id;
 	$config['secret'] = $app_secret;
