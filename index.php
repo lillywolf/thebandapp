@@ -27,11 +27,11 @@
 	}
 	else {
 		$params = array(
-		  scope => 'email,publish_stream,manage_pages',
+		  scope => 'email,publish_stream,manage_pages'
 		  // redirect_uri => 'apps.facebook.com/' . $appCanvas
 		);
-		$loginUrl = $facebook->getLoginUrl($params);
-      	echo("<script> top.location.href='" . $loginUrl . "'</script>");		
+		// $loginUrl = $facebook->getLoginUrl($params);
+		header('Location:' . $facebook->getLoginUrl($params));
 			
 		// Use this for non-facebook canvas page (i.e. Facebook Connect)		
 		// header('Location:' . $facebook->getLoginURL());
