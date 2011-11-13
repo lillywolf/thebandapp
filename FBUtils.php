@@ -66,10 +66,14 @@ class FBUtils {
 	$config['appId'] = $app_id;
 	$config['secret'] = $app_secret;
 
-	$facebook = new Facebook($config);	
-	$uid = $facebook->getUser();
-	print_r($uid, true);
-	return $uid;	
+	$facebook = new Facebook(array(
+	  'appId'  => '107796503671',
+	  'secret' => '10cc0163136a373aa6192f6ceafda96e',
+	));
+
+	// Get User ID
+	$user = $facebook->getUser();
+	print_r($user);
   }
 
   /**
