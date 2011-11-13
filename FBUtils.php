@@ -64,7 +64,10 @@ class FBUtils {
 	$config[‘fileUpload’] = false; // optional
 
 	$facebook = new Facebook($config);	
+	print_r("requesting signed request");
+	print_r("fb: " . $facebook);
 	$request = $facebook->getSignedRequest();
+	print_r("req: " . $request);
 	return $request;	
   }
 
