@@ -4,7 +4,7 @@
 
 	$appId = '107796503671';
 	$appSecret = '10cc0163136a373aa6192f6ceafda96e';
-	$appCanvas = 'thebandapp';
+	$appUrl = 'http://apps.facebook.com/thebandapp';
 	
 	$config = array();
 	$config[‘appId’] = $appId;
@@ -26,12 +26,11 @@
 		}	
 	}
 	else {
-		$params = array(
-		  scope => 'email,publish_stream,manage_pages'
-		  // redirect_uri => 'apps.facebook.com/' . $appCanvas
-		);
-		// $loginUrl = $facebook->getLoginUrl($params);
-      	echo("<script> top.location.href='" . $facebook->getLoginUrl($params) . "'</script>");		
+		$state = md5(uniqid(rand(), TRUE));
+		$scope = 'email,publish_stream,manage_pages';
+		$authorize_url = "https://www.facebook.com/dialog/oauth?client_id=$appId" .
+      	"&redirect_uri=$appUrl&state=" . $state . "&scope=$scope";		
+      	echo("<script> top.location.href='" . $authorize_url . "'</script>");
 			
 		// Use this for non-facebook canvas page (i.e. Facebook Connect)		
 		// header('Location:' . $facebook->getLoginURL());
