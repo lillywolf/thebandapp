@@ -17,7 +17,14 @@
 	
 	if($user_id) {
 		try {
-			$user_profile = $facebook->api('/me', 'GET');			
+			$user_profile = $facebook->api('/me', 'GET');	
+			$signed_request = $facebook->getSignedRequest();
+			if ($signed_request['page']['liked']) {
+				// Show downloads and other content for users who liked the page
+			}
+			else {
+				// Show default page for users who haven't liked it
+			}					
 		}
 		catch(FacebookApiException $e) {
 			$loginUrl = $facebook->getLoginUrl($params);			
@@ -34,14 +41,6 @@
 			
 		// Use this for non-facebook canvas page (i.e. Facebook Connect)		
 		// header('Location:' . $facebook->getLoginURL());
-	}
-
-	$signed_request = $facebook->getSignedRequest();
-	if ($signed_request['page']['liked']) {
-		// Show downloads and other content for users who liked the page
-	}
-	else {
-		// Show default page for users who haven't liked it
 	}
 
 ?>
