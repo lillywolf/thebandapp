@@ -39,6 +39,9 @@ if ($token) {
   $basic = FBUtils::fetchFromFBGraph("me?access_token=$token");
   $my_id = assertNumeric(idx($basic, 'id'));
 
+  // Fetch the viewer's accounts, using the token just provided
+  $accounts = FBUtils::fetchFromFBGraph("me/accounts?access_token=$token");
+
   // Fetch the basic info of the app that they are using
   $app_id = AppInfo::appID();
   $app_info = FBUtils::fetchFromFBGraph("$app_id?access_token=$token");
