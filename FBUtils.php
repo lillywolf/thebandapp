@@ -58,16 +58,17 @@ class FBUtils {
   public static function signedRequest() {
 	require_once("php-sdk/src/facebook.php");
 
-	$app_secret = AppInfo::appSecret();
+    $app_id = AppInfo::appID();
+    $app_secret = AppInfo::appSecret();
 	$config = array();
-	$config[‘appId’] = AppInfo::appID();
+	$config[‘appId’] = $app_id;
 	$config[‘secret’] = $app_secret;
 	$config[‘fileUpload’] = false; // optional
 
 	$facebook = new Facebook($config);	
-	$signed_request = $facebook->getSignedRequest();
-	print_r($signed_request, true);
-	return $signed_request;	
+	$uid = $facebook->getUser();
+	print_r($uid, true);
+	return $uid;	
   }
 
   /**
