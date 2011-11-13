@@ -15,8 +15,19 @@
 	'secret' => '10cc0163136a373aa6192f6ceafda96e',
   ));
 
-  // Get User ID
-  $user = $facebook->getSignedRequest();
-  print_r($user);
+	$session = $facebook->getSession();
+
+	$fbme = null;
+    // Session based graph API call.
+    if ($session) {
+      try {
+        $uid = $facebook->getUser();
+        $fbme = $facebook->api('/me');
+      } catch (FacebookApiException $e) {
+          d($e);
+      }
+    }
+
+	print_r($uid);
 
 ?>
