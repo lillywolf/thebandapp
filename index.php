@@ -1,5 +1,7 @@
 <?php
 
+print_r("work");
+
 // Remember to copy files from the SDK's src/ directory to a
 // directory in your application on the server, such as php-sdk/
 require_once('php-sdk/src/facebook.php');
