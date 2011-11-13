@@ -1,6 +1,13 @@
 <?php
 
-  require 'php-sdk/src/facebook.php';
+try{
+    include_once "php-sdk/src/facebook.php";
+}
+catch(Exception $o){
+    echo '<pre>';
+    print_r($o);
+    echo '</pre>';
+}
 
   $app_id = '107796503671';
   $app_secret = '10cc0163136a373aa6192f6ceafda96e';
