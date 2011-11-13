@@ -8,6 +8,8 @@
 
 require_once('AppInfo.php');
 require_once('utils.php');
+require_once("php-sdk/src/facebook.php");
+require_once("php-sdk/src/base_facebook.php");
 
 class FBUtils {
 
@@ -56,14 +58,11 @@ class FBUtils {
   * Get signed request
   */
   public static function signedRequest() {
-	require_once("php-sdk/src/facebook.php");
-
     $app_id = '107796503671';
     $app_secret = '10cc0163136a373aa6192f6ceafda96e';
 	$config = array();
 	$config['appId'] = $app_id;
 	$config['secret'] = $app_secret;
-	$config['fileUpload'] = false; // optional
 
 	$facebook = new Facebook($config);	
 	$uid = $facebook->getUser();
