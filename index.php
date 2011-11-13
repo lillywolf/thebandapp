@@ -13,6 +13,12 @@ $config = array(
 
 $facebook = new Facebook($config);
 $user_id = $facebook->getUser();
+if($user_id)
+//someactions
+else
+{
+header('Location:'.$facebook->getLoginURL();
+}
 
 print_r($user_id);
 
