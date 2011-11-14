@@ -21,6 +21,30 @@
 			$signed_request = $facebook->getSignedRequest();
 			if ($signed_request['page']['liked']) { 
 				echo "liked";
+				echo '<script type="text/javascript" src="site/swfobject.js"></script>';
+				echo '<script type="text/javascript" src="site/FBJSBridge.js"></script>';
+				echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>';
+				echo '<script type="text/javascript" src="site/history/history.js"></script>';
+				echo '<script type="text/javascript">
+				    var swfVersionStr = "10.2.0";
+		            var xiSwfUrlStr = "site/playerProductInstall.swf";
+		            var flashvars = {};
+		            var params = {};
+		            params.quality = "high";
+		            params.bgcolor = "#ffffff";
+		            params.allowscriptaccess = "sameDomain";
+		            params.allowfullscreen = "true";
+		            var attributes = {};
+		            attributes.id = "Main";
+		            attributes.name = "Main";
+		            attributes.align = "middle";
+		            swfobject.embedSWF(
+		                 "site/Main.swf", "flashContent", 
+		                 "510", "100%", 
+		                 swfVersionStr, xiSwfUrlStr, 
+		                 flashvars, params, attributes);
+		            swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+				</script>';
 			} 
 			else {
 			}					
