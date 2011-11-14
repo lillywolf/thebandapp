@@ -61,7 +61,7 @@
 					params.allowfullscreen = "true";
 					var flashvars = {};
 					flashvars.downloads_enabled = "false";
-					flashvars.liked = "false"
+					flashvars.liked = "false";
 					swfobject.embedSWF("site/Main.swf", "flashContent", "510", "100%", "10.0", null, flashvars, params, {name:"flashContent"});				
 				</script>				
 				
