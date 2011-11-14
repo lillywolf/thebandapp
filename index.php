@@ -25,11 +25,7 @@
 				echo '<script type="text/javascript" src="site/FBJSBridge.js"></script>';
 				echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>';
 				echo '<script type="text/javascript" src="site/history/history.js"></script>';
-				echo '<script type="text/javascript">
-		            swfobject.embedSWF(
-		                 "site/Main.swf", "flashContent", 
-		                 "510", "100%");
-				</script>';
+				echo '<script type="text/javascript">swfobject.embedSWF("site/Main.swf", "flashContent", "510", "100%");</script>';
 			} 
 			else {
 			}					
