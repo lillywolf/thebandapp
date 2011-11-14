@@ -6,6 +6,11 @@
 	<script type="text/javascript" src="site/history/history.js"></script>
 </head>	
 <body>
+	
+	<div id="page_heading_div" class="hidden">
+	</div>
+    <div id="fb-root"></div>	
+	
 <?php
 
 	require_once('php-sdk/src/facebook.php');
@@ -31,34 +36,14 @@
 				echo "liked";
 				?>
 				
-		        <noscript>
-		            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%" id="Main">
-		                <param name="movie" value="site/Main.swf" />
-		                <param name="quality" value="high" />
-		                <param name="bgcolor" value="#ffffff" />
-		                <param name="allowScriptAccess" value="sameDomain" />
-		                <param name="allowFullScreen" value="true" />
-		                <!--[if !IE]>-->
-		                <object type="application/x-shockwave-flash" data="site/Main.swf" width="100%" height="100%">
-		                    <param name="quality" value="high" />
-		                    <param name="bgcolor" value="#ffffff" />
-		                    <param name="allowScriptAccess" value="sameDomain" />
-		                    <param name="allowFullScreen" value="true" />
-		                <!--<![endif]-->
-		                <!--[if gte IE 6]>-->
-		                    <p> 
-		                        Either scripts and active content are not permitted to run or Adobe Flash Player version
-		                        10.2.0 or greater is not installed.
-		                    </p>
-		                <!--<![endif]-->
-		                    <a href="http://www.adobe.com/go/getflashplayer">
-		                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player" />
-		                    </a>
-		                <!--[if !IE]>-->
-		                </object>
-		                <!--<![endif]-->
-		            </object>
-		        </noscript>
+				<script type="text/javascript">
+					document.getElementById('page_heading_div').style.display="inline";
+					document.getElementById("flashContent").style.display = "inline";
+					var params = { wmode: "opaque" };
+					params.allowfullscreen = "true";
+					var flashvars = {};
+					swfobject.embedSWF("site/Main.swf", "flashContent", "510", "100%", "10.0", null, flashvars, params, {name:"flashContent"});				
+				</script>
 				
 				<?php
 			} 
