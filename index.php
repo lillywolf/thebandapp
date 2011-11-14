@@ -1,15 +1,3 @@
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="/site/history/history.css" />
-    <script type="text/javascript" src="/site/history/history.js"></script>
-    <!-- END Browser History required section -->  
- 	<!-- Include support libraries -->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>            
-    <script type="text/javascript" src="/site/swfobject.js"></script>
-	<!-- Include FBJSBridge to allow for SWF to Facebook communication. -->
-	<script type="text/javascript" src="/site/FBJSBridge.js"></script>
-</head>
-<body>	
 <?php
 
 	require_once('php-sdk/src/facebook.php');
@@ -33,6 +21,7 @@
 			$signed_request = $facebook->getSignedRequest();
 			if ($signed_request['page']['liked']) { ?>
 		        <script type="text/javascript">
+					alert("liked");
 		            // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
 		            // var swfVersionStr = "10.2.0";
 		            // // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
@@ -86,5 +75,3 @@
 	}
 
 ?>
-</body>
-</html>
