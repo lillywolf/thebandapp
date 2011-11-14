@@ -74,22 +74,41 @@
 	        error_log($e->getMessage());			
 		}	
 	}
-	else {
-		
-		?>
-		
-		<script type="text/javascript">
-			document.getElementById("page_heading_div").style.display = "inline";
-			document.getElementById("flashContent").style.display = "inline";
-			var params = { wmode: "opaque" };
-			params.allowfullscreen = "true";
-			var flashvars = {};
-			flashvars.downloads_enabled = "false";
-			flashvars.liked = "false";
-			swfobject.embedSWF("site/Main.swf", "flashContent", "510", "100%", "10.0", null, flashvars, params, {name:"flashContent"});				
-		</script>				
-		
-		<?php		
+	else {		
+		$signed_request = $facebook->getSignedRequest();
+		print_r($signed_request);
+		if ($signed_request['page']['liked']) { 
+			?>
+			
+			<script type="text/javascript">
+				document.getElementById("page_heading_div").style.display = "inline";
+				document.getElementById("flashContent").style.display = "inline";
+				var params = { wmode: "opaque" };
+				params.allowfullscreen = "true";
+				var flashvars = {};
+				flashvars.downloads_enabled = "true";
+				flashvars.liked = "true";
+				swfobject.embedSWF("site/Main.swf", "flashContent", "510", "100%", "10.0", null, flashvars, params, {name:"flashContent"});				
+			</script>
+			
+			<?php
+		} 
+		else {
+			?>
+			
+			<script type="text/javascript">
+				document.getElementById("page_heading_div").style.display = "inline";
+				document.getElementById("flashContent").style.display = "inline";
+				var params = { wmode: "opaque" };
+				params.allowfullscreen = "true";
+				var flashvars = {};
+				flashvars.downloads_enabled = "false";
+				flashvars.liked = "false";
+				swfobject.embedSWF("site/Main.swf", "flashContent", "510", "100%", "10.0", null, flashvars, params, {name:"flashContent"});				
+			</script>				
+			
+			<?php
+		}	
 		
 		// FOR ADMIN PANEL
 		
