@@ -7,9 +7,9 @@
 	$appUrl = 'http://apps.facebook.com/thebandapp';
 	
 	$config = array();
-	$config[‘appId’] = $appId;
-	$config[‘secret’] = $appSecret;
-	$config[‘fileUpload’] = false; // optional	
+	$config['appId'] = $appId;
+	$config['secret'] = $appSecret;
+	$config['fileUpload'] = false; // optional	
 
 	$facebook = new Facebook($config);
 		
@@ -20,7 +20,9 @@
 			$user_profile = $facebook->api('/me', 'GET');	
 			$signed_request = $facebook->getSignedRequest();
 			if ($signed_request['page']['liked']) { 
-			} else {
+				echo "liked";
+			} 
+			else {
 			}					
 		}
 		catch(FacebookApiException $e) {
