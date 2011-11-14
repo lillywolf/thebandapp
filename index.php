@@ -9,7 +9,10 @@
 	
 	<div id="page_heading_div" class="hidden">
 	</div>
-    <div id="fb-root"></div>	
+    <div id="fb-root"></div>
+
+    <div id="flashContent">
+    </div>	
 	
 <?php
 
