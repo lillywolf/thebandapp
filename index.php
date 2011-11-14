@@ -1,3 +1,15 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/site/history/history.css" />
+    <script type="text/javascript" src="/site/history/history.js"></script>
+    <!-- END Browser History required section -->  
+ 	<!-- Include support libraries -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>            
+    <script type="text/javascript" src="/site/swfobject.js"></script>
+	<!-- Include FBJSBridge to allow for SWF to Facebook communication. -->
+	<script type="text/javascript" src="/site/FBJSBridge.js"></script>
+</head>
+<body>	
 <?php
 
 	require_once('php-sdk/src/facebook.php');
@@ -19,12 +31,32 @@
 		try {
 			$user_profile = $facebook->api('/me', 'GET');	
 			$signed_request = $facebook->getSignedRequest();
-			if ($signed_request['page']['liked']) {
-				// Show downloads and other content for users who liked the page
-			}
-			else {
-				// Show default page for users who haven't liked it
-			}					
+			if ($signed_request['page']['liked']) { ?>
+		        <script type="text/javascript">
+		            // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
+		            var swfVersionStr = "10.2.0";
+		            // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
+		            var xiSwfUrlStr = "site/playerProductInstall.swf";
+		            var flashvars = {};
+		            var params = {};
+		            params.quality = "high";
+		            params.bgcolor = "#ffffff";
+		            params.allowscriptaccess = "sameDomain";
+		            params.allowfullscreen = "true";
+		            var attributes = {};
+		            attributes.id = "Main";
+		            attributes.name = "Main";
+		            attributes.align = "middle";
+		            swfobject.embedSWF(
+		                "site/Main.swf", "flashContent", 
+		                "510", "100%", 
+		                swfVersionStr, xiSwfUrlStr, 
+		                flashvars, params, attributes);
+		            // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
+		            swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+		        </script>		
+			<?php } else { ?>
+			<?php }					
 		}
 		catch(FacebookApiException $e) {
 			$loginUrl = $facebook->getLoginUrl($params);			
@@ -33,12 +65,14 @@
 		}	
 	}
 	else {
-		$state = md5(uniqid(rand(), TRUE));
-		$scope = 'email,publish_stream,manage_pages';
-		$home = getHome();
-		$authorize_url = "https://www.facebook.com/dialog/oauth?client_id=$appId" .
-      	"&redirect_uri=$home&state=" . $state . "&scope=$scope";		
-      	echo("<script> top.location.href='" . $authorize_url . "'</script>");
+		// FOR ADMIN PANEL
+		
+		// $state = md5(uniqid(rand(), TRUE));
+		// $scope = 'email,publish_stream,manage_pages';
+		// $home = getHome();
+		// $authorize_url = "https://www.facebook.com/dialog/oauth?client_id=$appId" .
+		//       	"&redirect_uri=$home&state=" . $state . "&scope=$scope";		
+		//       	echo("<script> top.location.href='" . $authorize_url . "'</script>");
 			
 		// Use this for non-facebook canvas page (i.e. Facebook Connect)		
 		// header('Location:' . $facebook->getLoginURL());
@@ -52,3 +86,5 @@
 	}
 
 ?>
+</body>
+</html>
