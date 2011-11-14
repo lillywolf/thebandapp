@@ -75,6 +75,22 @@
 		}	
 	}
 	else {
+		
+		?>
+		
+		<script type="text/javascript">
+			document.getElementById("page_heading_div").style.display = "inline";
+			document.getElementById("flashContent").style.display = "inline";
+			var params = { wmode: "opaque" };
+			params.allowfullscreen = "true";
+			var flashvars = {};
+			flashvars.downloads_enabled = "false";
+			flashvars.liked = "false";
+			swfobject.embedSWF("site/Main.swf", "flashContent", "510", "100%", "10.0", null, flashvars, params, {name:"flashContent"});				
+		</script>				
+		
+		<?php		
+		
 		// FOR ADMIN PANEL
 		
 		// $state = md5(uniqid(rand(), TRUE));
