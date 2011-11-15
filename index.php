@@ -9,7 +9,6 @@
 	
 	<div id="page_heading_div" class="hidden">
 	</div>
-    <div id="fb-root"></div>
 
     <div id="flashContent">
     </div>	
@@ -27,10 +26,36 @@
 	$config['secret'] = $appSecret;
 	$config['fileUpload'] = false; // optional	
 
-	$facebook = new Facebook($config);
-		
+	$facebook = new Facebook($config);	
 	$user_id = $facebook->getUser();
+	?>
 	
+    <div id="fb-root"></div>	
+
+	<script type="text/javascript">
+	    window.fbAsyncInit = function() {
+	      FB.init({
+	        appId: '<?php echo $facebook->getAppID() ?>', 
+	        cookie: true, 
+	        xfbml: true,
+	        oauth: true
+	      });
+	      FB.Event.subscribe('auth.login', function(response) {
+	        window.location.reload();
+	      });
+	      FB.Event.subscribe('auth.logout', function(response) {
+	        window.location.reload();
+	      });
+	    };
+	    (function() {
+	      var e = document.createElement('script'); e.async = true;
+	      e.src = document.location.protocol +
+	        '//connect.facebook.net/en_US/all.js';
+	      document.getElementById('fb-root').appendChild(e);
+	    }());	
+	</script>
+	
+	<?php
 	if($user_id) {
 		try {
 			$user_profile = $facebook->api('/me', 'GET');	
@@ -62,7 +87,13 @@
 					var flashvars = {};
 					flashvars.downloads_enabled = "false";
 					flashvars.liked = "false";
-					swfobject.embedSWF("site/Main.swf", "flashContent", "510", "100%", "10.0", null, flashvars, params, {name:"flashContent"});				
+					swfobject.embedSWF("site/Main.swf", "flashContent", "510", "100%", "10.0", null, flashvars, params, {name:"flashContent"});	
+					
+					FB.Event.subscribe('edge.create',
+					    function(response) {
+					        alert('You liked the URL: ' + response);
+					    }
+					);								
 				</script>				
 				
 				<?php
