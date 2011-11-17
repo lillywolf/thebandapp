@@ -15,7 +15,7 @@
     <div id="flashContent">
     </div>	
 
-	<iframe src="www.facebook.com/plugins/add_to_timeline.php?show-faces=true&amp;mode=box&amp;appId=APP_ID" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe>
+	<div class="fb-add-to-timeline" data-show-faces="true"></div>
 	
 <?php
 
