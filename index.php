@@ -11,6 +11,7 @@
 		}
 		
 		function songChanged(songUrl) {
+			alert("found JS");
 			alert("song changed " + songUrl);
 			updateFacebookLikeButton(songUrl);
 		}
