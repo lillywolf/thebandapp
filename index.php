@@ -1,14 +1,35 @@
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 	<script type="text/javascript" src="site/swfobject.js"></script>
 	<script type="text/javascript" src="site/FBJSBridge.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<script type="text/javascript" src="site/history/history.js"></script>
+	<script type="text/javascript">
+	
+		function addLikeButtonOverlay() {
+			
+		}
+		
+		function songChanged(songUrl) {
+			alert("song changed " + songUrl);
+			updateFacebookLikeButton(songUrl);
+		}
+		
+		function updateFacebookLikeButton(url) {
+			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="segoe ui" colorscheme="light" />');
+			if (typeof FB !== 'undefined') {
+			    FB.XFBML.parse(document.getElementById('like'));
+			}
+		}
+	
+	</script>
 </head>	
 <body>
 	
 	<div id="page_heading_div" class="hidden">
 	</div>
+	
+	<span id="like"></span>
 
     <div id="flashContent">
     </div>	
