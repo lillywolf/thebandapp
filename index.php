@@ -41,17 +41,16 @@
 		// }
 		
 		function songChanged(songUrl) {
-			alert("found JS");
 			alert("song changed " + songUrl);
-			//updateFacebookLikeButton(songUrl);
+			updateFacebookLikeButton(songUrl);
 		}
 		
-		// function updateFacebookLikeButton(url) {
-		// 	$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="segoe ui" colorscheme="light" />');
-		// 	if (typeof FB !== 'undefined') {
-		// 	    FB.XFBML.parse(document.getElementById('like'));
-		// 	}
-		// }
+		function updateFacebookLikeButton(url) {
+			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="segoe ui" colorscheme="light" />');
+			if (typeof FB !== 'undefined') {
+			    FB.XFBML.parse(document.getElementById('like'));
+			}
+		}
 	
 	</script>
 
