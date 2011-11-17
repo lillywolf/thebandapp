@@ -14,6 +14,8 @@
 
     <div id="flashContent">
     </div>	
+
+	<iframe src="www.facebook.com/plugins/add_to_timeline.php?show-faces=true&amp;mode=box&amp;appId=APP_ID" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe>
 	
 <?php
 
@@ -46,7 +48,7 @@
 		}
 		
 		function updateFacebookLikeButton(url) {
-			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="segoe ui" colorscheme="light" />');
+			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="segoe ui" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('like'));
 			}
