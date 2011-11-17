@@ -11,6 +11,7 @@
 	</div>
 	
 	<span id="like"></span>
+	<span id="big_like"></span>
 
     <div id="flashContent">
     </div>	
@@ -43,16 +44,24 @@
 		// }
 		
 		function songChanged(songUrl) {
-			alert("song changed " + songUrl);
-			updateFacebookLikeButton(songUrl);
+			// alert("song changed " + songUrl);
+			updateLittleFacebookLikeButton(songUrl);
+			updateBigFacebookLikeButton(songUrl);			
 		}
 		
-		function updateFacebookLikeButton(url) {
+		function updateLittleFacebookLikeButton(url) {
 			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="segoe ui" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('like'));
 			}
 		}
+		
+		function updateBigFacebookLikeButton(url) {
+			$('#big_like').html('<fb:like href="' + url + '" layout="button_count" width="450" show_faces="false" action="like" colorscheme="light" send="true" />');
+			if (typeof FB !== 'undefined') {
+			    FB.XFBML.parse(document.getElementById('big_like'));
+			}
+		}		
 	
 	</script>
 
