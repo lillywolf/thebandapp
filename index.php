@@ -4,26 +4,6 @@
 	<script type="text/javascript" src="site/FBJSBridge.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<script type="text/javascript" src="site/history/history.js"></script>
-	<script type="text/javascript">
-	
-		function addLikeButtonOverlay() {
-			
-		}
-		
-		function songChanged(songUrl) {
-			alert("found JS");
-			alert("song changed " + songUrl);
-			updateFacebookLikeButton(songUrl);
-		}
-		
-		function updateFacebookLikeButton(url) {
-			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="segoe ui" colorscheme="light" />');
-			if (typeof FB !== 'undefined') {
-			    FB.XFBML.parse(document.getElementById('like'));
-			}
-		}
-	
-	</script>
 </head>	
 <body>
 	
@@ -53,6 +33,27 @@
 	?>
 	
     <div id="fb-root"></div>	
+
+	<script type="text/javascript">
+	
+		// function addLikeButtonOverlay() {
+		// 	
+		// }
+		
+		function songChanged(songUrl) {
+			alert("found JS");
+			alert("song changed " + songUrl);
+			//updateFacebookLikeButton(songUrl);
+		}
+		
+		// function updateFacebookLikeButton(url) {
+		// 	$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="segoe ui" colorscheme="light" />');
+		// 	if (typeof FB !== 'undefined') {
+		// 	    FB.XFBML.parse(document.getElementById('like'));
+		// 	}
+		// }
+	
+	</script>
 
 	<script type="text/javascript">
 	    window.fbAsyncInit = function() {
