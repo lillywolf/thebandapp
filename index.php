@@ -94,6 +94,7 @@
 					document.getElementById("flashContent").style.display = "inline";
 					var params = { wmode: "opaque" };
 					params.allowfullscreen = "true";
+					params.allowScriptAccess = "always";
 					var flashvars = {};
 					flashvars.downloads_enabled = "true";
 					flashvars.liked = "true";
@@ -110,6 +111,7 @@
 					document.getElementById("flashContent").style.display = "inline";
 					var params = { wmode: "opaque" };
 					params.allowfullscreen = "true";
+					params.allowScriptAccess = "always";					
 					var flashvars = {};
 					flashvars.downloads_enabled = "false";
 					flashvars.liked = "false";
@@ -142,6 +144,7 @@
 				document.getElementById("flashContent").style.display = "inline";
 				var params = { wmode: "opaque" };
 				params.allowfullscreen = "true";
+				params.allowScriptAccess = "always";				
 				var flashvars = {};
 				flashvars.downloads_enabled = "true";
 				flashvars.liked = "true";
@@ -158,6 +161,7 @@
 				document.getElementById("flashContent").style.display = "inline";
 				var params = { wmode: "opaque" };
 				params.allowfullscreen = "true";
+				params.allowScriptAccess = "always";				
 				var flashvars = {};
 				flashvars.downloads_enabled = "false";
 				flashvars.liked = "false";
