@@ -50,14 +50,14 @@
 		}
 		
 		function updateLittleFacebookLikeButton(url) {
-			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="segoe ui" colorscheme="light" send="true" />');
+			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="Arial" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('like'));
 			}
 		}
 		
 		function updateBigFacebookLikeButton(url) {
-			$('#big_like').html('<fb:like href="' + url + '" layout="button_count" width="450" show_faces="false" action="like" colorscheme="light" send="true" />');
+			$('#big_like').html('<fb:like href="' + url + '" layout="standard" width="450" show_faces="false" action="like" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('big_like'));
 			}
