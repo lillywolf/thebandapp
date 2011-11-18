@@ -59,7 +59,7 @@
 		// }
 		
 		function songChanged(songUrl) {
-			alert("song changed " + songUrl);
+			// alert("song changed " + songUrl);
 			updateLittleFacebookLikeButton(songUrl);
 			updateBigFacebookLikeButton(songUrl);			
 		}
@@ -67,7 +67,6 @@
 		function updateLittleFacebookLikeButton(url) {
 			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
-				alert("updating little like btn");
 			    FB.XFBML.parse(document.getElementById('like'));
 			}
 		}
