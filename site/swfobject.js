@@ -127,7 +127,6 @@ var swfobject = function() {
 		try { // test if we can really add/remove elements to/from the DOM; we don't want to fire it too early
 			var t = doc.getElementsByTagName("body")[0].appendChild(createElement("span"));
 			t.parentNode.removeChild(t);
-            alert("load event");
 		}
 		catch (e) { return; }
 		isDomLoaded = true;

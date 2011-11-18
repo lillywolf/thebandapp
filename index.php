@@ -30,7 +30,7 @@
 	<span id="like"></span>
 	<span id="big_like"></span>
 
-	<span class="progressBar" id="loadingBar">15%</span>
+	<!--span class="progressBar" id="loadingBar">15%</span-->
 
     <div id="flashContent">
     </div>	
