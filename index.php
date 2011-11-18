@@ -139,6 +139,10 @@
 
 				<object width="516" height="440">
 				    <param name="movie" value="site/Main.swf">
+					<param name="allowfullscreen" value="true">
+					<param name="allowscriptaccess" value="true">
+					<param name="scale" value="noscale">
+					<param name="flashvars" value="downloads_enabled=true&liked=true">
 				    <embed src="site/Main.swf" width="516" height="440">
 				    </embed>
 				</object>			
