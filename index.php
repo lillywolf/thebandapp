@@ -137,14 +137,23 @@
 					// swfobject.embedSWF("site/Main.swf", "flashContent", "514", "100%", "10.0", null, flashvars, params, attributes);				
 				</script>
 
-				<object width="516" height="440">
+				<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="516" height="440">
 				    <param name="movie" value="site/Main.swf">
-					<param name="allowfullscreen" value="true">
-					<param name="allowscriptaccess" value="true">
+					<param name="allowFullScreen" value="true">
+					<param name="allowScriptAccess" value="always">
 					<param name="scale" value="noscale">
 					<param name="flashvars" value="downloads_enabled=true&liked=true">
-				    <embed src="site/Main.swf" width="516" height="440">
-				    </embed>
+	                <!--[if !IE]>-->
+	                <object type="application/x-shockwave-flash" data="site/Main.swf" width="516" height="440">
+	                    <param name="quality" value="high" />
+	                    <param name="bgcolor" value="#ffffff" />
+	                    <param name="allowScriptAccess" value="always" />
+	                    <param name="allowFullScreen" value="true" />	
+						<param name="flashvars" value="downloads_enabled=true&liked=true">					
+				    <!--embed src="site/Main.swf" width="516" height="440">
+				    </embed-->
+	                <!--[if !IE]>-->
+	                </object>				
 				</object>			
 				
 				<?php
