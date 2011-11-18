@@ -352,7 +352,6 @@ var swfobject = function() {
 					}
 				})();
 			}
-			alert("create swf");
 			createSWF(att, par, replaceElemIdStr);
 		}
 	}
@@ -698,6 +697,8 @@ var swfobject = function() {
 				});
 			}
 			else if (callbackFn) { callbackFn(callbackObj);	}
+			
+			alert("called create");
 		},
 		
 		switchOffAutoHideShow: function() {
