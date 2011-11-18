@@ -59,7 +59,7 @@
 		// }
 		
 		function songChanged(songUrl) {
-			// alert("song changed " + songUrl);
+			alert("song changed " + songUrl);
 			updateLittleFacebookLikeButton(songUrl);
 			updateBigFacebookLikeButton(songUrl);			
 		}
