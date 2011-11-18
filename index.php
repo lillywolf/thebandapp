@@ -56,35 +56,6 @@
 	
     <div id="fb-root"></div>
 
-    <noscript>
-        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="516" height="440" id="Main">
-            <param name="movie" value="/site/Main.swf" />
-            <param name="quality" value="high" />
-            <param name="bgcolor" value="#ffffff" />
-            <param name="allowScriptAccess" value="sameDomain" />
-            <param name="allowFullScreen" value="true" />
-            <!--[if !IE]>-->
-            <object type="application/x-shockwave-flash" data="/site/Main.swf" width="516" height="440">
-                <param name="quality" value="high" />
-                <param name="bgcolor" value="#ffffff" />
-                <param name="allowScriptAccess" value="sameDomain" />
-                <param name="allowFullScreen" value="true" />
-            <!--<![endif]-->
-            <!--[if gte IE 6]>-->
-                <p> 
-                    Either scripts and active content are not permitted to run or Adobe Flash Player version
-                    10.2.0 or greater is not installed.
-                </p>
-            <!--<![endif]-->
-                <a href="http://www.adobe.com/go/getflashplayer">
-                    <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player" />
-                </a>
-            <!--[if !IE]>-->
-            </object>
-            <!--<![endif]-->
-        </object>
-    </noscript>	
-
 	<script type="text/javascript">
 	
 		// function addLikeButtonOverlay() {
@@ -152,21 +123,48 @@
 				?>
 				
 				<script type="text/javascript">				
-					document.getElementById("page_heading_div").style.display = "inline";
-					document.getElementById("flashContent").style.display = "inline";
-					var params = { wmode: "opaque" };
-					params.allowfullscreen = "true";
-					params.allowscriptaccess = "always";
-					// params.salign = "tl";
-					params.scale = "noscale";
-					var attributes = {};
-					attributes.name = "flashContent";	
-					// attributes.align = "t";				
-					var flashvars = {};
-					flashvars.downloads_enabled = "true";
-					flashvars.liked = "true";
+					// document.getElementById("page_heading_div").style.display = "inline";
+					// document.getElementById("flashContent").style.display = "inline";
+					// var params = { wmode: "opaque" };
+					// params.allowfullscreen = "true";
+					// params.allowscriptaccess = "always";
+					// params.scale = "noscale";
+					// var attributes = {};
+					// attributes.name = "flashContent";	
+					// var flashvars = {};
+					// flashvars.downloads_enabled = "true";
+					// flashvars.liked = "true";
 					// swfobject.embedSWF("site/Main.swf", "flashContent", "514", "100%", "10.0", null, flashvars, params, attributes);				
 				</script>
+				
+			    <noscript>
+			        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="516" height="440" id="Main">
+			            <param name="movie" value="/site/Main.swf" />
+			            <param name="quality" value="high" />
+			            <param name="bgcolor" value="#ffffff" />
+			            <param name="allowScriptAccess" value="sameDomain" />
+			            <param name="allowFullScreen" value="true" />
+			            <!--[if !IE]>-->
+			            <object type="application/x-shockwave-flash" data="/site/Main.swf" width="516" height="440">
+			                <param name="quality" value="high" />
+			                <param name="bgcolor" value="#ffffff" />
+			                <param name="allowScriptAccess" value="sameDomain" />
+			                <param name="allowFullScreen" value="true" />
+			            <!--<![endif]-->
+			            <!--[if gte IE 6]>-->
+			                <p> 
+			                    Either scripts and active content are not permitted to run or Adobe Flash Player version
+			                    10.2.0 or greater is not installed.
+			                </p>
+			            <!--<![endif]-->
+			                <a href="http://www.adobe.com/go/getflashplayer">
+			                    <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player" />
+			                </a>
+			            <!--[if !IE]>-->
+			            </object>
+			            <!--<![endif]-->
+			        </object>
+			    </noscript>				
 				
 				<?php
 			} 
