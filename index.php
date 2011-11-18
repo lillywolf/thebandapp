@@ -130,7 +130,6 @@
                 <param name="bgcolor" value="#ffffff" />
                 <param name="allowScriptAccess" value="always" />
                 <param name="allowFullScreen" value="true" />	
-				<param name="wmode" value="transparent" />
 				<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . true'">					
 		    <!--embed src="site/Main.swf" width="514" height="440">
 		    </embed-->
