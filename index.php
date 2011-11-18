@@ -74,8 +74,8 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('like'));
 			}
-			window.document.getElementById("like").style.top = yOffset + 85;
-			window.document.getElementById("like").style.left = 320;
+			window.document.getElementById("like").style.top = yOffset + 79;
+			window.document.getElementById("like").style.left = 321;
 		}
 		
 		function updateBigFacebookLikeButton(url) {
