@@ -18,7 +18,7 @@
 		}
 	</style>
 </head>	
-<body>
+<body id="mainContent">
 	
 	<div id="page_heading_div" class="hidden">
 	</div>
@@ -55,6 +55,10 @@
 		// function addLikeButtonOverlay() {
 		// 	
 		// }
+		
+		document.getElementById("mainContent").addEventListener("onLoad", function() {
+			alert("loaded!");
+		});
 		
 		function songChanged(songUrl) {
 			// alert("song changed " + songUrl);
