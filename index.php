@@ -18,7 +18,7 @@
 		}
 	</style>
 </head>	
-<body onload="showLoad()">
+<body>
 	
 	<div id="page_heading_div" class="hidden">
 	</div>
@@ -29,7 +29,7 @@
     <div id="flashContent">
     </div>	
 
-	<div class="fb-add-to-timeline" data-show-faces="true"></div>
+	<!--div class="fb-add-to-timeline" data-show-faces="true"></div-->
 	
 <?php
 
@@ -56,7 +56,7 @@
 		// 	
 		// }
 		
-		function showLoad() {
+		window.onload = function() {
 			alert("loaded!");
 		}
 		
