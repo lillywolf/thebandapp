@@ -4,6 +4,15 @@
 	<script type="text/javascript" src="site/FBJSBridge.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<script type="text/javascript" src="site/history/history.js"></script>
+	
+	<style>
+		#flashContent {
+			
+		}
+		#fb-root {
+			overflow-y: hidden;
+		}
+	</style>
 </head>	
 <body>
 	
