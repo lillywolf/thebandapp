@@ -459,6 +459,7 @@ var swfobject = function() {
 				r = o;
 			}
 		}
+		alert("swf return");
 		return r;
 	}
 	
