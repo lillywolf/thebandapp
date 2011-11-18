@@ -122,7 +122,7 @@
 			<param name="allowFullScreen" value="true">
 			<param name="allowScriptAccess" value="always">
 			<param name="scale" value="noscale">
-			<param name="wmode" value="opaque">
+			<param name="wmode" value="transparent">
 			<param name="flashvars" value="downloads_enabled=true&liked=true">
             <!--[if !IE]>-->
             <object type="application/x-shockwave-flash" data="site/Main.swf" width="514" height="440">
@@ -130,7 +130,7 @@
                 <param name="bgcolor" value="#ffffff" />
                 <param name="allowScriptAccess" value="always" />
                 <param name="allowFullScreen" value="true" />	
-				<param name="wmode" value="opaque">
+				<param name="wmode" value="transparent">
 				<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . true'">					
 		    <!--embed src="site/Main.swf" width="514" height="440">
 		    </embed-->
