@@ -1,13 +1,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 	<script type="text/javascript" src="site/swfobject.js"></script>
-	<script type="text/javascript" src="site/FBJSBridge.js"></script>
+	<!--script type="text/javascript" src="site/FBJSBridge.js"></script-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	<script type="text/javascript" src="site/history/history.js"></script>
+	<!--script type="text/javascript" src="site/history/history.js"></script-->
 	<!-- jsProgressBarHandler prerequisites : prototype.js -->
-	<script type="text/javascript" src="scripts/progress-bar/js/prototype/prototype.js"></script>
+	<!--script type="text/javascript" src="scripts/progress-bar/js/prototype/prototype.js"></script-->
 	<!-- jsProgressBarHandler core -->
-	<script type="text/javascript" src="scripts/progress-bar/js/bramus/jsProgressBarHandler.js"></script>	
+	<!--script type="text/javascript" src="scripts/progress-bar/js/bramus/jsProgressBarHandler.js"></script-->	
 	
 	<style>
 		body {
