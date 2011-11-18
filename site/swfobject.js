@@ -458,7 +458,6 @@ var swfobject = function() {
 				r = o;
 			}
 		}
-		alert("swf return");
 		return r;
 	}
 	
@@ -696,9 +695,7 @@ var swfobject = function() {
 					if (callbackFn) { callbackFn(callbackObj); }
 				});
 			}
-			else if (callbackFn) { callbackFn(callbackObj);	}
-			
-			alert("called create");
+			else if (callbackFn) { callbackFn(callbackObj);	}			
 		},
 		
 		switchOffAutoHideShow: function() {
