@@ -4,6 +4,10 @@
 	<script type="text/javascript" src="site/FBJSBridge.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<script type="text/javascript" src="site/history/history.js"></script>
+	<!-- jsProgressBarHandler prerequisites : prototype.js -->
+	<script type="text/javascript" src="scripts/progress-bar/js/prototype/prototype.js"></script>
+	<!-- jsProgressBarHandler core -->
+	<script type="text/javascript" src="scripts/progress-bar/js/bramus/jsProgressBarHandler.js"></script>	
 	
 	<style>
 		body {
@@ -19,12 +23,14 @@
 	</style>
 </head>	
 <body>
-	
+		
 	<div id="page_heading_div" class="hidden">
 	</div>
 	
 	<span id="like"></span>
 	<span id="big_like"></span>
+
+	<span class="progressBar" id="loadingBar">15%</span>
 
     <div id="flashContent">
     </div>	
@@ -117,6 +123,8 @@
 				?>
 				
 				<script type="text/javascript">
+					alert("show swf");
+				
 					document.getElementById("page_heading_div").style.display = "inline";
 					document.getElementById("flashContent").style.display = "inline";
 					var params = { wmode: "opaque" };
