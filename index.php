@@ -7,7 +7,7 @@
 	
 	<style>
 		body {
-			padding: 0px;
+			margin: 0px;
 			overflow-y: hidden;
 		}
 		#flashContent {
@@ -124,7 +124,7 @@
 					var flashvars = {};
 					flashvars.downloads_enabled = "true";
 					flashvars.liked = "true";
-					swfobject.embedSWF("site/Main.swf", "flashContent", "500", "410", "10.0", null, flashvars, params, attributes);				
+					swfobject.embedSWF("site/Main.swf", "flashContent", "510", "420", "10.0", null, flashvars, params, attributes);				
 				</script>
 				
 				<?php
@@ -144,7 +144,7 @@
 					var flashvars = {};
 					flashvars.downloads_enabled = "false";
 					flashvars.liked = "false";
-					swfobject.embedSWF("site/Main.swf", "flashContent", "500", "410", "10.0", null, flashvars, params, attributes);	
+					swfobject.embedSWF("site/Main.swf", "flashContent", "510", "420", "10.0", null, flashvars, params, attributes);	
 					
 					FB.Event.subscribe('edge.create',
 					    function(response) {
@@ -180,7 +180,7 @@
 				var flashvars = {};
 				flashvars.downloads_enabled = "true";
 				flashvars.liked = "true";
-				swfobject.embedSWF("site/Main.swf", "flashContent", "500", "410", "10.0", null, flashvars, params, attributes);				
+				swfobject.embedSWF("site/Main.swf", "flashContent", "510", "420", "10.0", null, flashvars, params, attributes);				
 			</script>
 			
 			<?php
@@ -200,7 +200,7 @@
 				var flashvars = {};
 				flashvars.downloads_enabled = "false";
 				flashvars.liked = "false";
-				swfobject.embedSWF("site/Main.swf", "flashContent", "500", "410", "10.0", null, flashvars, params, attributes);				
+				swfobject.embedSWF("site/Main.swf", "flashContent", "510", "420", "10.0", null, flashvars, params, attributes);				
 			</script>				
 			
 			<?php
