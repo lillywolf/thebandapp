@@ -118,14 +118,14 @@
 					var params = { wmode: "opaque" };
 					params.allowfullscreen = "true";
 					params.allowscriptaccess = "always";
-					params.align = "t";
+					params.salign = "tl";
 					params.scale = "noscale";
 					var attributes = {};
 					attributes.name = "flashContent";					
 					var flashvars = {};
 					flashvars.downloads_enabled = "true";
 					flashvars.liked = "true";
-					swfobject.embedSWF("site/Main.swf", "flashContent", "510", "440", "10.0", null, flashvars, params, attributes);				
+					swfobject.embedSWF("site/Main.swf", "flashContent", "506", "440", "10.0", null, flashvars, params, attributes);				
 				</script>
 				
 				<?php
@@ -139,14 +139,14 @@
 					var params = { wmode: "opaque" };
 					params.allowfullscreen = "true";
 					params.allowscriptaccess = "always";
-					params.align = "t";
+					params.salign = "tl";
 					params.scale = "noscale";						
 					var attributes = {};
 					attributes.name = "flashContent";									
 					var flashvars = {};
 					flashvars.downloads_enabled = "false";
 					flashvars.liked = "false";
-					swfobject.embedSWF("site/Main.swf", "flashContent", "510", "440", "10.0", null, flashvars, params, attributes);	
+					swfobject.embedSWF("site/Main.swf", "flashContent", "506", "440", "10.0", null, flashvars, params, attributes);	
 					
 					FB.Event.subscribe('edge.create',
 					    function(response) {
@@ -176,14 +176,14 @@
 				var params = { wmode: "opaque" };
 				params.allowfullscreen = "true";
 				params.allowscriptaccess = "always";
-				params.align = "t";
+				params.salign = "tl";
 				params.scale = "noscale";					
 				var attributes = {};
 				attributes.name = "flashContent";			
 				var flashvars = {};
 				flashvars.downloads_enabled = "true";
 				flashvars.liked = "true";
-				swfobject.embedSWF("site/Main.swf", "flashContent", "510", "440", "10.0", null, flashvars, params, attributes);				
+				swfobject.embedSWF("site/Main.swf", "flashContent", "506", "440", "10.0", null, flashvars, params, attributes);				
 			</script>
 			
 			<?php
@@ -197,14 +197,14 @@
 				var params = { wmode: "opaque" };
 				params.allowfullscreen = "true";
 				params.allowscriptaccess = "always";
-				params.align = "t";
+				params.salign = "tl";
 				params.scale = "noscale";				
 				var attributes = {};
 				attributes.name = "flashContent";								
 				var flashvars = {};
 				flashvars.downloads_enabled = "false";
 				flashvars.liked = "false";
-				swfobject.embedSWF("site/Main.swf", "flashContent", "510", "440", "10.0", null, flashvars, params, attributes);				
+				swfobject.embedSWF("site/Main.swf", "flashContent", "506", "440", "10.0", null, flashvars, params, attributes);				
 			</script>				
 			
 			<?php
