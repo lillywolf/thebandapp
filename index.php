@@ -121,7 +121,8 @@
 					params.salign = "tl";
 					params.scale = "noscale";
 					var attributes = {};
-					attributes.name = "flashContent";					
+					attributes.name = "flashContent";	
+					attributes.align = "t";				
 					var flashvars = {};
 					flashvars.downloads_enabled = "true";
 					flashvars.liked = "true";
@@ -142,7 +143,8 @@
 					params.salign = "tl";
 					params.scale = "noscale";						
 					var attributes = {};
-					attributes.name = "flashContent";									
+					attributes.name = "flashContent";	
+					attributes.align = "t";																	
 					var flashvars = {};
 					flashvars.downloads_enabled = "false";
 					flashvars.liked = "false";
@@ -179,7 +181,8 @@
 				params.salign = "tl";
 				params.scale = "noscale";					
 				var attributes = {};
-				attributes.name = "flashContent";			
+				attributes.name = "flashContent";	
+				attributes.align = "t";										
 				var flashvars = {};
 				flashvars.downloads_enabled = "true";
 				flashvars.liked = "true";
@@ -200,7 +203,8 @@
 				params.salign = "tl";
 				params.scale = "noscale";				
 				var attributes = {};
-				attributes.name = "flashContent";								
+				attributes.name = "flashContent";	
+				attributes.align = "t";															
 				var flashvars = {};
 				flashvars.downloads_enabled = "false";
 				flashvars.liked = "false";
