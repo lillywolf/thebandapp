@@ -16,6 +16,9 @@
 		#fb-root {
 			overflow-y: hidden;
 		}
+		#like {
+			position: absolute;
+		}
 	</style>
 </head>	
 <body>
@@ -60,8 +63,8 @@
 		
 		function songChanged(songUrl) {
 			// alert("song changed " + songUrl);
-			updateLittleFacebookLikeButton(songUrl);
 			updateBigFacebookLikeButton(songUrl);			
+			updateLittleFacebookLikeButton(songUrl);			
 		}
 		
 		function updateLittleFacebookLikeButton(url) {
@@ -71,6 +74,8 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('like'));
 			}
+			window.document.getElementById("like").style.top = yOffset + 100;
+			window.document.getElementById("like").style.left = 300;
 		}
 		
 		function updateBigFacebookLikeButton(url) {
