@@ -122,9 +122,7 @@
 			if ($signed_request['page']['liked']) { 
 				?>
 				
-				<script type="text/javascript">
-					alert("show swf");
-				
+				<script type="text/javascript">				
 					document.getElementById("page_heading_div").style.display = "inline";
 					document.getElementById("flashContent").style.display = "inline";
 					var params = { wmode: "opaque" };

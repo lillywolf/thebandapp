@@ -352,6 +352,7 @@ var swfobject = function() {
 					}
 				})();
 			}
+			alert("create swf");
 			createSWF(att, par, replaceElemIdStr);
 		}
 	}
