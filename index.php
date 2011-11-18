@@ -65,6 +65,8 @@
 		}
 		
 		function updateLittleFacebookLikeButton(url) {
+			var yOffset = getOffset(window.document.getElementById("music-player"));
+			alert(yOffset);
 			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('like'));
@@ -76,7 +78,19 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('big_like'));
 			}
-		}		
+		}
+		
+		function getOffset( el ) {
+		    var _x = 0;
+		    var _y = 0;
+		    while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
+		        _x += el.offsetLeft - el.scrollLeft;
+		        _y += el.offsetTop - el.scrollTop;
+		        el = el.parentNode;
+		    }
+			return _y;
+		    // return { top: _y, left: _x };
+		}				
 	
 	</script>
 
@@ -109,7 +123,7 @@
 	<?php
 	
 	function printSwf($liked, $downloads_enabled) {
-		echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="514" height="440">
+		echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="music-player" width="514" height="440">
 		    <param name="movie" value="site/Main.swf">
 			<param name="allowFullScreen" value="true">
 			<param name="allowScriptAccess" value="always">
