@@ -18,7 +18,7 @@
 		}
 	</style>
 </head>	
-<body id="mainContent">
+<body onload="showLoad()">
 	
 	<div id="page_heading_div" class="hidden">
 	</div>
@@ -56,9 +56,9 @@
 		// 	
 		// }
 		
-		document.getElementById("mainContent").addEventListener("onLoad", function() {
+		function showLoad() {
 			alert("loaded!");
-		});
+		}
 		
 		function songChanged(songUrl) {
 			// alert("song changed " + songUrl);
