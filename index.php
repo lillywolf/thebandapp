@@ -115,11 +115,34 @@
 	</script>
 	
 	<?php
+	
+	function printSwf($liked, $downloads_enabled) {
+		echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="514" height="440">
+		    <param name="movie" value="site/Main.swf">
+			<param name="allowFullScreen" value="true">
+			<param name="allowScriptAccess" value="always">
+			<param name="scale" value="noscale">
+			<param name="flashvars" value="downloads_enabled=true&liked=true">
+            <!--[if !IE]>-->
+            <object type="application/x-shockwave-flash" data="site/Main.swf" width="514" height="440">
+                <param name="quality" value="high" />
+                <param name="bgcolor" value="#ffffff" />
+                <param name="allowScriptAccess" value="always" />
+                <param name="allowFullScreen" value="true" />	
+				<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . true'">					
+		    <!--embed src="site/Main.swf" width="514" height="440">
+		    </embed-->
+            <!--[if !IE]>-->
+            </object>				
+		</object>';
+	}
+	
 	if($user_id) {
 		try {
 			$user_profile = $facebook->api('/me', 'GET');	
 			$signed_request = $facebook->getSignedRequest();
 			if ($signed_request['page']['liked']) { 
+				printSwf("true", "true");
 				?>
 				
 				<script type="text/javascript">				
@@ -135,47 +158,14 @@
 					// flashvars.downloads_enabled = "true";
 					// flashvars.liked = "true";
 					// swfobject.embedSWF("site/Main.swf", "flashContent", "514", "100%", "10.0", null, flashvars, params, attributes);				
-				</script>
-
-				<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="516" height="440">
-				    <param name="movie" value="site/Main.swf">
-					<param name="allowFullScreen" value="true">
-					<param name="allowScriptAccess" value="always">
-					<param name="scale" value="noscale">
-					<param name="flashvars" value="downloads_enabled=true&liked=true">
-	                <!--[if !IE]>-->
-	                <object type="application/x-shockwave-flash" data="site/Main.swf" width="516" height="440">
-	                    <param name="quality" value="high" />
-	                    <param name="bgcolor" value="#ffffff" />
-	                    <param name="allowScriptAccess" value="always" />
-	                    <param name="allowFullScreen" value="true" />	
-						<param name="flashvars" value="downloads_enabled=true&liked=true">					
-				    <!--embed src="site/Main.swf" width="516" height="440">
-				    </embed-->
-	                <!--[if !IE]>-->
-	                </object>				
-				</object>			
+				</script>			
 				
 				<?php
-			} 
-			else {
+			} else {
+				printSwf("false", "false");				
 				?>
 				
 				<script type="text/javascript">
-					document.getElementById("page_heading_div").style.display = "inline";
-					document.getElementById("flashContent").style.display = "inline";
-					var params = { wmode: "opaque" };
-					params.allowfullscreen = "true";
-					params.allowscriptaccess = "always";
-					// params.salign = "tl";
-					params.scale = "noscale";						
-					var attributes = {};
-					attributes.name = "flashContent";	
-					// attributes.align = "t";																	
-					var flashvars = {};
-					flashvars.downloads_enabled = "false";
-					flashvars.liked = "false";
-					swfobject.embedSWF("site/Main.swf", "flashContent", "514", "100%", "10.0", null, flashvars, params, attributes);	
 					
 					FB.Event.subscribe('edge.create',
 					    function(response) {
@@ -197,48 +187,9 @@
 		$signed_request = $facebook->getSignedRequest();
 		print_r($signed_request);
 		if ($signed_request['page']['liked']) { 
-			?>
-			
-			<script type="text/javascript">
-				document.getElementById("page_heading_div").style.display = "inline";
-				document.getElementById("flashContent").style.display = "inline";
-				var params = { wmode: "opaque" };
-				params.allowfullscreen = "true";
-				params.allowscriptaccess = "always";
-				// params.salign = "tl";
-				params.scale = "noscale";					
-				var attributes = {};
-				attributes.name = "flashContent";	
-				// attributes.align = "t";										
-				var flashvars = {};
-				flashvars.downloads_enabled = "true";
-				flashvars.liked = "true";
-				swfobject.embedSWF("site/Main.swf", "flashContent", "514", "100%", "10.0", null, flashvars, params, attributes);				
-			</script>
-			
-			<?php
-		} 
-		else {
-			?>
-			
-			<script type="text/javascript">
-				document.getElementById("page_heading_div").style.display = "inline";
-				document.getElementById("flashContent").style.display = "inline";
-				var params = { wmode: "opaque" };
-				params.allowfullscreen = "true";
-				params.allowscriptaccess = "always";
-				// params.salign = "tl";
-				params.scale = "noscale";				
-				var attributes = {};
-				attributes.name = "flashContent";	
-				// attributes.align = "t";															
-				var flashvars = {};
-				flashvars.downloads_enabled = "false";
-				flashvars.liked = "false";
-				swfobject.embedSWF("site/Main.swf", "flashContent", "514", "100%", "10.0", null, flashvars, params, attributes);				
-			</script>				
-			
-			<?php
+			printSwf("true", "true");
+		} else {
+			printSwf("false", "false");
 		}	
 		
 		// FOR ADMIN PANEL
