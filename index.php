@@ -50,7 +50,7 @@
 		}
 		
 		function updateLittleFacebookLikeButton(url) {
-			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="Arial" colorscheme="light" send="true" />');
+			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('like'));
 			}
@@ -105,10 +105,13 @@
 					var params = { wmode: "opaque" };
 					params.allowfullscreen = "true";
 					params.allowscriptaccess = "always";
+					var attributes = {};
+					attributes.align = "top";
+					attributes.name = "flashContent";					
 					var flashvars = {};
 					flashvars.downloads_enabled = "true";
 					flashvars.liked = "true";
-					swfobject.embedSWF("site/Main.swf", "flashContent", "510", "100%", "10.0", null, flashvars, params, {name:"flashContent"});				
+					swfobject.embedSWF("site/Main.swf", "flashContent", "500", "100%", "10.0", null, flashvars, params, attributes);				
 				</script>
 				
 				<?php
@@ -121,11 +124,14 @@
 					document.getElementById("flashContent").style.display = "inline";
 					var params = { wmode: "opaque" };
 					params.allowfullscreen = "true";
-					params.allowscriptaccess = "always";					
+					params.allowscriptaccess = "always";	
+					var attributes = {};
+					attributes.align = "top";
+					attributes.name = "flashContent";									
 					var flashvars = {};
 					flashvars.downloads_enabled = "false";
 					flashvars.liked = "false";
-					swfobject.embedSWF("site/Main.swf", "flashContent", "510", "100%", "10.0", null, flashvars, params, {name:"flashContent"});	
+					swfobject.embedSWF("site/Main.swf", "flashContent", "500", "100%", "10.0", null, flashvars, params, attributes);	
 					
 					FB.Event.subscribe('edge.create',
 					    function(response) {
@@ -154,11 +160,14 @@
 				document.getElementById("flashContent").style.display = "inline";
 				var params = { wmode: "opaque" };
 				params.allowfullscreen = "true";
-				params.allowscriptaccess = "always";				
+				params.allowscriptaccess = "always";	
+				var attributes = {};
+				attributes.align = "top";
+				attributes.name = "flashContent";			
 				var flashvars = {};
 				flashvars.downloads_enabled = "true";
 				flashvars.liked = "true";
-				swfobject.embedSWF("site/Main.swf", "flashContent", "510", "100%", "10.0", null, flashvars, params, {name:"flashContent"});				
+				swfobject.embedSWF("site/Main.swf", "flashContent", "500", "100%", "10.0", null, flashvars, params, attributes);				
 			</script>
 			
 			<?php
@@ -171,11 +180,14 @@
 				document.getElementById("flashContent").style.display = "inline";
 				var params = { wmode: "opaque" };
 				params.allowfullscreen = "true";
-				params.allowscriptaccess = "always";				
+				params.allowscriptaccess = "always";
+				var attributes = {};
+				attributes.align = "top";
+				attributes.name = "flashContent";								
 				var flashvars = {};
 				flashvars.downloads_enabled = "false";
 				flashvars.liked = "false";
-				swfobject.embedSWF("site/Main.swf", "flashContent", "510", "100%", "10.0", null, flashvars, params, {name:"flashContent"});				
+				swfobject.embedSWF("site/Main.swf", "flashContent", "500", "100%", "10.0", null, flashvars, params, attributes);				
 			</script>				
 			
 			<?php
