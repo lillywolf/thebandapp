@@ -44,6 +44,8 @@
 	$appSecret = '10cc0163136a373aa6192f6ceafda96e';
 	$appUrl = 'http://apps.facebook.com/thebandapp';
 	
+	$fbPageUrl = "facebook.com/lillywolfmusic";
+	
 	$config = array();
 	$config['appId'] = $appId;
 	$config['secret'] = $appSecret;
@@ -56,6 +58,8 @@
     <div id="fb-root"></div>
 
 	<script type="text/javascript">
+	
+		FB_PAGE_URL = <?php echo $fbPageUrl; ?>
 	
 		// function addLikeButtonOverlay() {
 		// 	
@@ -78,7 +82,7 @@
 		}
 		
 		function updateBigFacebookLikeButton(url) {
-			$('#big_like').html('<fb:like href="' + url + '" layout="standard" width="450" show_faces="false" action="like" colorscheme="light" send="true" />');
+			$('#big_like').html('<fb:like href="' + url + '" layout="standard" width="507" show_faces="false" action="like" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('big_like'));
 			}
@@ -113,7 +117,13 @@
 	      	// 	        	window.location.reload();
 	      	// });
 			FB.Event.subscribe('edge.create', function(response) {
-	        	window.location.reload();
+				if (response.indexOf(FB_PAGE_URL) != -1) {
+		        	window.location.reload();					
+				}
+				else
+				{
+					alert("not a page like!");
+				}
 			});	
 	    };
 	    (function() {
@@ -181,8 +191,12 @@
 					
 					FB.Event.subscribe('edge.create',
 					    function(response) {
-					        alert('You liked the URL: ' + response);
-					    }
+							if (response.indexOf(FB_PAGE_URL) != -1) {
+					        	window.location.reload();					
+							} else {
+								alert("not a page like!");
+							}					    
+						}
 					);								
 				</script>				
 				
