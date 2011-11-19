@@ -88,12 +88,11 @@
 		function getOffset( el ) {
 		    var _x = 0;
 		    var _y = 0;
-			_y = el.offsetTop - el.scrollTop;
-		    // while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
-		    //     _x += el.offsetLeft - el.scrollLeft;
-		    //     _y += el.offsetTop - el.scrollTop;
-		    //     el = el.parentNode;
-		    // }
+		    while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
+		        _x += el.offsetLeft - el.scrollLeft;
+		        _y += el.offsetTop - el.scrollTop;
+		        el = el.parentNode;
+		    }
 			return _y;
 		    // return { top: _y, left: _x };
 		}				
@@ -129,7 +128,7 @@
 	<?php
 	
 	function printSwf($liked, $downloads_enabled) {
-		echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="music-player" width="514" height="440">
+		echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="514" height="440">
 		    <param name="movie" value="site/Main.swf">
 			<param name="allowFullScreen" value="true">
 			<param name="allowScriptAccess" value="always">
@@ -137,7 +136,7 @@
 			<param name="wmode" value="transparent">
 			<param name="flashvars" value="downloads_enabled=true&liked=true">
             <!--[if !IE]>-->
-            <object type="application/x-shockwave-flash" data="site/Main.swf" width="514" height="440">
+            <object type="application/x-shockwave-flash" data="site/Main.swf" id="music-player" width="514" height="440">
                 <param name="quality" value="high" />
                 <param name="bgcolor" value="#ffffff" />
                 <param name="allowScriptAccess" value="always" />
