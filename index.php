@@ -69,12 +69,11 @@
 		
 		function updateLittleFacebookLikeButton(url, likeBtnY) {
 			var yOffset = getOffset(window.document.getElementById("music-player"));
-			alert(window.document.getElementById("big_like").offsetHeight);
 			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('like'));
 			}
-			window.document.getElementById("like").style.top = window.document.getElementById("big_like").offsetHeight + parseInt(likeBtnY);
+			window.document.getElementById("like").style.top = window.document.getElementById("big_like").offsetHeight + parseInt(likeBtnY) + 12;
 			window.document.getElementById("like").style.left = 321;
 		}
 		
