@@ -61,20 +61,20 @@
 		// 	
 		// }
 		
-		function songChanged(songUrl) {
+		function songChanged(songUrl, likeBtnY) {
 			// alert("song changed " + songUrl);
 			updateBigFacebookLikeButton(songUrl);			
-			updateLittleFacebookLikeButton(songUrl);			
+			updateLittleFacebookLikeButton(songUrl, likeBtnY);			
 		}
 		
-		function updateLittleFacebookLikeButton(url) {
+		function updateLittleFacebookLikeButton(url, likeBtnY) {
 			var yOffset = getOffset(window.document.getElementById("music-player"));
-			alert(yOffset);
+			alert(likeBtnY);
 			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('like'));
 			}
-			window.document.getElementById("like").style.top = yOffset + 79;
+			window.document.getElementById("like").style.top = parseInt(likeBtnY);
 			window.document.getElementById("like").style.left = 321;
 		}
 		
