@@ -137,14 +137,13 @@
 	<?php
 	
 	function printSwf($liked, $downloads_enabled) {
-		print_r($liked);
 		echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="514" height="440">
 		    <param name="movie" value="site/Main.swf">
 			<param name="allowFullScreen" value="true">
 			<param name="allowScriptAccess" value="always">
 			<param name="scale" value="noscale">
 			<param name="wmode" value="transparent">
-			<param name="flashvars" value="downloads_enabled=true&liked=true">
+			<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
             <!--[if !IE]>-->
             <object type="application/x-shockwave-flash" data="site/Main.swf" id="music-player" width="514" height="440">
                 <param name="quality" value="high" />
