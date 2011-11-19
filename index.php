@@ -73,7 +73,7 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('like'));
 			}
-			window.document.getElementById("like").style.top = window.document.getElementById("big_like").offsetHeight + parseInt(likeBtnY) + 12;
+			window.document.getElementById("like").style.top = window.document.getElementById("big_like").offsetHeight + parseInt(likeBtnY) + 14;
 			window.document.getElementById("like").style.left = 321;
 		}
 		
