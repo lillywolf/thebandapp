@@ -137,6 +137,7 @@
 	<?php
 	
 	function printSwf($liked, $downloads_enabled) {
+		print_r($liked);
 		echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="514" height="440">
 		    <param name="movie" value="site/Main.swf">
 			<param name="allowFullScreen" value="true">
@@ -211,7 +212,6 @@
 	}
 	else {		
 		$signed_request = $facebook->getSignedRequest();
-		print_r($signed_request);
 		if ($signed_request['page']['liked']) { 
 			printSwf("true", "true");
 		} else {
