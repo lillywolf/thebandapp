@@ -2,6 +2,7 @@
 <head>
 	<script type="text/javascript" src="site/swfobject.js"></script>
 	<script type="text/javascript" src="site/FBJSBridge.js"></script>
+	<script type="text/javascript" src="scripts/spin.js"></script>	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<!--script type="text/javascript" src="site/history/history.js"></script-->
 	
@@ -26,6 +27,7 @@
 	<div id="page_heading_div" class="hidden">
 	</div>
 	
+	<div id="spinner"></div>
 	<span id="like"></span>
 	<span id="big_like"></span>
 
@@ -64,6 +66,30 @@
 		// function addLikeButtonOverlay() {
 		// 	
 		// }
+		
+		var spinner;
+		preload();
+		
+		function preLoad() {
+			var opts = {
+			  lines: 10, // The number of lines to draw
+			  length: 12, // The length of each line
+			  width: 7, // The line thickness
+			  radius: 16, // The radius of the inner circle
+			  color: '#000', // #rgb or #rrggbb
+			  speed: 1, // Rounds per second
+			  trail: 60, // Afterglow percentage
+			  shadow: false // Whether to render a shadow
+			};
+			var target = document.getElementById('spinner');
+			spinner = new Spinner(opts).spin(target);
+			target.appendChild(spinner.el);						
+		}
+		
+		function stopPreLoad() {
+			spinner.stop();
+			document.getElementById('spinner').style.visibility = "hidden";
+		}
 		
 		function songChanged(songUrl, likeBtnY) {
 			// alert("song changed " + songUrl);
