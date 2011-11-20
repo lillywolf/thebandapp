@@ -86,6 +86,7 @@
 		
 		function stopPreload() {
 			spinner.stop();
+			window.document.getElementById('spinner').style.margin = "0px";			
 			window.document.getElementById('spinner').style.visibility = "hidden";
 		}
 		
