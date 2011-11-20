@@ -60,7 +60,7 @@
 	<script type="text/javascript">
 	
 		// FB_PAGE_URL = <?php echo $fbPageUrl; ?>
-		var SOUNDCLOUD_CONSUMER_KEY = "738091d6d02582ddd19de7109b79e47b";
+		// var SOUNDCLOUD_CONSUMER_KEY = "738091d6d02582ddd19de7109b79e47b";
 
 		var spinner;
 		preload();
@@ -80,7 +80,7 @@
 			  trail: 60, // Afterglow percentage
 			  shadow: false // Whether to render a shadow
 			};
-			var target = window.document.getElementById('music-player');
+			var target = window.document.getElementById('spinner');
 			spinner = new Spinner(opts).spin(target);
 			target.appendChild(spinner.el);						
 		}
