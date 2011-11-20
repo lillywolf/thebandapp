@@ -25,7 +25,7 @@
 <body>
 		
 	<div id="page_heading_div" class="hidden"></div>
-	<div id="spinner"></div>
+	<!--div id="spinner"></div-->
 	<span id="like"></span>
 	<span id="big_like"></span>
     <div id="flashContent"></div>	
@@ -53,7 +53,7 @@
 
 	<script type="text/javascript">
 	
-		FB_PAGE_URL = <?php echo $fbPageUrl; ?>
+		// FB_PAGE_URL = <?php echo $fbPageUrl; ?>
 	
 		// function addLikeButtonOverlay() {
 		// 	
