@@ -60,7 +60,7 @@
 	<script type="text/javascript">
 	
 		// FB_PAGE_URL = <?php echo $fbPageUrl; ?>
-		// var SOUNDCLOUD_CONSUMER_KEY = "738091d6d02582ddd19de7109b79e47b";
+		var SOUNDCLOUD_CONSUMER_KEY = "738091d6d02582ddd19de7109b79e47b";
 
 		var spinner;
 		preload();
@@ -86,7 +86,6 @@
 		}
 		
 		function stopPreload() {
-			alert("stop preloader");
 			spinner.stop();
 			window.document.getElementById('spinner').style.visibility = "hidden";
 		}
