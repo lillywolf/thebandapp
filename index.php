@@ -61,8 +61,8 @@
 		
 		window.onload = function() {
 			alert("do shit");
-			var spinner;
-			preload();			
+			// var spinner;
+			// preload();			
 		}
 		
 		function preLoad() {
