@@ -140,6 +140,7 @@
   proto = Spinner.prototype = {
     spin: function(target) {
       this.stop();
+	  alert("spinning");
       var self = this,
           el = self.el = css(createEl(), {position: 'relative'}),
           ep, // element position

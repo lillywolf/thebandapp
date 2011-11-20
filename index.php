@@ -24,18 +24,11 @@
 </head>	
 <body>
 		
-	<div id="page_heading_div" class="hidden">
-	</div>
-	
+	<div id="page_heading_div" class="hidden"></div>
 	<div id="spinner"></div>
 	<span id="like"></span>
 	<span id="big_like"></span>
-
-	<!--span class="progressBar" id="loadingBar">15%</span-->
-
-    <div id="flashContent">
-    </div>	
-
+    <div id="flashContent"></div>	
 	<!--div class="fb-add-to-timeline" data-show-faces="true"></div-->
 	
 <?php
@@ -44,8 +37,7 @@
 
 	$appId = '107796503671';
 	$appSecret = '10cc0163136a373aa6192f6ceafda96e';
-	$appUrl = 'http://apps.facebook.com/thebandapp';
-	
+	$appUrl = 'http://apps.facebook.com/thebandapp';	
 	$fbPageUrl = "facebook.com/lillywolfmusic";
 	
 	$config = array();
@@ -92,7 +84,6 @@
 		}
 		
 		function songChanged(songUrl, likeBtnY) {
-			// alert("song changed " + songUrl);
 			updateBigFacebookLikeButton(songUrl);			
 			updateLittleFacebookLikeButton(songUrl, likeBtnY);			
 		}
