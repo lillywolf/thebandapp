@@ -91,6 +91,14 @@
 		// 	window.document.getElementById('spinner').style.visibility = "hidden";
 		// }
 		
+		function downloadSong(downloadUrl) {
+			alert(downloadUrl);
+		}
+		
+		function buySong(buyUrl) {
+			alert(buyUrl);
+		}
+		
 		function songChanged(songUrl, likeBtnY) {
 			updateBigFacebookLikeButton(songUrl);			
 			updateLittleFacebookLikeButton(songUrl, likeBtnY);			
