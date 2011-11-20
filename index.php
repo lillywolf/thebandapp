@@ -23,6 +23,9 @@
 		#big_like {
 			margin: 5px 0;
 		}
+		#spinner {
+			margin: 150px 0;
+		}
 	</style>
 </head>	
 <body>
@@ -57,21 +60,15 @@
 	<script type="text/javascript">
 	
 		// FB_PAGE_URL = <?php echo $fbPageUrl; ?>
-	
-		// function addLikeButtonOverlay() {
-		// 	
-		// }
-		
+
 		var spinner;
 		preload();
 		
 		window.onload = function() {
-			alert("do shit");
 			// preload();			
 		}
 		
 		function preload() {
-			alert("preload");
 			var opts = {
 			  lines: 10, // The number of lines to draw
 			  length: 12, // The length of each line
@@ -83,7 +80,6 @@
 			  shadow: false // Whether to render a shadow
 			};
 			var target = window.document.getElementById('spinner');
-			alert("found target: " + target);
 			spinner = new Spinner(opts).spin(target);
 			target.appendChild(spinner.el);						
 		}
@@ -192,7 +188,11 @@
 		    </embed-->
             <!--[if !IE]>-->
             </object>				
-		</object>';
+		</object>
+		
+		<script type="text/javascript">
+			stopPreload();
+		</script>';
 	}
 	
 	if($user_id) {
