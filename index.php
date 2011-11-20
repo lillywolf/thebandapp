@@ -24,7 +24,7 @@
 			margin: 5px 0;
 		}
 		#spinner {
-			margin: 150px 0;
+			/* margin: 150px 0; */
 		}
 	</style>
 </head>	
@@ -60,6 +60,7 @@
 	<script type="text/javascript">
 	
 		// FB_PAGE_URL = <?php echo $fbPageUrl; ?>
+		SOUNDCLOUD_CONSUMER_KEY = "738091d6d02582ddd19de7109b79e47b";
 
 		var spinner;
 		preload();
@@ -90,8 +91,7 @@
 		}
 		
 		function downloadSong(downloadUrl) {
-			alert(downloadUrl);
-			window.open(downloadUrl, "download");
+			window.open(downloadUrl+"?consumer_key="+SOUNDCLOUD_CONSUMER_KEY, "download");
 		}
 		
 		function buySong(buyUrl) {
