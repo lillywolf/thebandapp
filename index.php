@@ -59,6 +59,7 @@
 		// 	
 		// }
 		
+		alert("do shit");
 		var spinner;
 		preload();
 		
