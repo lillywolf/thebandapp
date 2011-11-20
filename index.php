@@ -2,7 +2,7 @@
 <head>
 	<script type="text/javascript" src="site/swfobject.js"></script>
 	<script type="text/javascript" src="site/FBJSBridge.js"></script>
-	<!--script type="text/javascript" src="scripts/spin.js"></script-->	
+	<script type="text/javascript" src="scripts/spin.js"></script>	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<!--script type="text/javascript" src="site/history/history.js"></script-->
 	
@@ -20,12 +20,15 @@
 		#like {
 			position: absolute;
 		}
+		#big_like {
+			margin: 5px 0;
+		}
 	</style>
 </head>	
 <body>
 		
 	<div id="page_heading_div" class="hidden"></div>
-	<!--div id="spinner"></div-->
+	<div id="spinner"></div>
 	<span id="like"></span>
 	<span id="big_like"></span>
     <div id="flashContent"></div>	
