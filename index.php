@@ -59,9 +59,11 @@
 		// 	
 		// }
 		
-		alert("do shit");
-		var spinner;
-		preload();
+		window.document.addEventListener("onLoad", function() {
+			alert("do shit");
+			var spinner;
+			preload();			
+		});
 		
 		function preLoad() {
 			alert("preload");
