@@ -60,7 +60,7 @@
 	<script type="text/javascript">
 	
 		// FB_PAGE_URL = <?php echo $fbPageUrl; ?>
-		var SOUNDCLOUD_CONSUMER_KEY = "738091d6d02582ddd19de7109b79e47b";
+		// var SOUNDCLOUD_CONSUMER_KEY = "738091d6d02582ddd19de7109b79e47b";
 
 		var spinner;
 		preload();
@@ -91,7 +91,7 @@
 		}
 		
 		function downloadSong(downloadUrl) {
-			window.open(downloadUrl+"?consumer_key="+SOUNDCLOUD_CONSUMER_KEY, "download");
+			window.open(downloadUrl+"?consumer_key=738091d6d02582ddd19de7109b79e47b", "download");
 		}
 		
 		function buySong(buyUrl) {
@@ -188,11 +188,7 @@
 		    </embed-->
             <!--[if !IE]>-->
             </object>				
-		</object>
-		
-		<script type="text/javascript">
-			stopPreload();
-		</script>';
+		</object>';
 	}
 	
 	if($user_id) {
