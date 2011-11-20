@@ -63,13 +63,14 @@
 		// }
 		
 		var spinner;
+		preload();
 		
 		window.onload = function() {
 			alert("do shit");
-			preload();			
+			// preload();			
 		}
 		
-		function preLoad() {
+		function preload() {
 			alert("preload");
 			var opts = {
 			  lines: 10, // The number of lines to draw
@@ -87,14 +88,14 @@
 			target.appendChild(spinner.el);						
 		}
 		
-		function stopPreLoad() {
+		function stopPreload() {
 			spinner.stop();
 			window.document.getElementById('spinner').style.visibility = "hidden";
 		}
 		
 		function downloadSong(downloadUrl) {
 			alert(downloadUrl);
-			// window.open(downloadUrl, "download");
+			window.open(downloadUrl, "download");
 		}
 		
 		function buySong(buyUrl) {
