@@ -24,7 +24,7 @@
 			margin: 5px 0;
 		}
 		#spinner {
-			/* margin: 150px 0; */
+			margin: 150px 0;
 		}
 	</style>
 </head>	
