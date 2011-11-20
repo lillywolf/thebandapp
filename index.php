@@ -73,14 +73,15 @@
 			  trail: 60, // Afterglow percentage
 			  shadow: false // Whether to render a shadow
 			};
-			var target = document.getElementById('spinner');
+			var target = window.document.getElementById('spinner');
+			alert("found target: " + target);
 			spinner = new Spinner(opts).spin(target);
 			target.appendChild(spinner.el);						
 		}
 		
 		function stopPreLoad() {
 			spinner.stop();
-			document.getElementById('spinner').style.visibility = "hidden";
+			window.document.getElementById('spinner').style.visibility = "hidden";
 		}
 		
 		function songChanged(songUrl, likeBtnY) {
