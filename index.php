@@ -63,6 +63,7 @@
 		preload();
 		
 		function preLoad() {
+			alert("preload");
 			var opts = {
 			  lines: 10, // The number of lines to draw
 			  length: 12, // The length of each line
