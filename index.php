@@ -62,37 +62,39 @@
 		// 	
 		// }
 		
+		var spinner;
+		
 		window.onload = function() {
 			alert("do shit");
-			// var spinner;
-			// preload();			
+			preload();			
 		}
 		
-		// function preLoad() {
-		// 	alert("preload");
-		// 	var opts = {
-		// 	  lines: 10, // The number of lines to draw
-		// 	  length: 12, // The length of each line
-		// 	  width: 7, // The line thickness
-		// 	  radius: 16, // The radius of the inner circle
-		// 	  color: '#000', // #rgb or #rrggbb
-		// 	  speed: 1, // Rounds per second
-		// 	  trail: 60, // Afterglow percentage
-		// 	  shadow: false // Whether to render a shadow
-		// 	};
-		// 	var target = window.document.getElementById('spinner');
-		// 	alert("found target: " + target);
-		// 	spinner = new Spinner(opts).spin(target);
-		// 	target.appendChild(spinner.el);						
-		// }
+		function preLoad() {
+			alert("preload");
+			var opts = {
+			  lines: 10, // The number of lines to draw
+			  length: 12, // The length of each line
+			  width: 7, // The line thickness
+			  radius: 16, // The radius of the inner circle
+			  color: '#000', // #rgb or #rrggbb
+			  speed: 1, // Rounds per second
+			  trail: 60, // Afterglow percentage
+			  shadow: false // Whether to render a shadow
+			};
+			var target = window.document.getElementById('spinner');
+			alert("found target: " + target);
+			spinner = new Spinner(opts).spin(target);
+			target.appendChild(spinner.el);						
+		}
 		
-		// function stopPreLoad() {
-		// 	spinner.stop();
-		// 	window.document.getElementById('spinner').style.visibility = "hidden";
-		// }
+		function stopPreLoad() {
+			spinner.stop();
+			window.document.getElementById('spinner').style.visibility = "hidden";
+		}
 		
 		function downloadSong(downloadUrl) {
 			alert(downloadUrl);
+			// window.open(downloadUrl, "download");
 		}
 		
 		function buySong(buyUrl) {
