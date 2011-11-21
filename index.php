@@ -21,7 +21,7 @@
 			position: absolute;
 		}
 		#big_like {
-			margin: 5px 0;
+			position: absolute;
 		}
 		#spinner {
 			margin: 150px 0;
@@ -92,6 +92,10 @@
 		
 		function downloadSong(downloadUrl) {
 			window.open(downloadUrl+"?consumer_key=738091d6d02582ddd19de7109b79e47b", "download");
+		}
+		
+		function downloadAllSongs() {
+			alert("download all songs");
 		}
 		
 		function buySong(buyUrl) {
