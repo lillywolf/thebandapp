@@ -3,6 +3,7 @@
 	<script type="text/javascript" src="site/swfobject.js"></script>
 	<script type="text/javascript" src="site/FBJSBridge.js"></script>
 	<script type="text/javascript" src="scripts/spin.js"></script>	
+	<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<!--script type="text/javascript" src="site/history/history.js"></script-->
 	
@@ -123,7 +124,7 @@
 		}
 		
 		function updateTweetButton(url, likeBtnY) {
-			$('#tweet').html('<a href="https://twitter.com/share" class="twitter-share-button" data-url="' + url + '" data-count="none" data-via="lillywolf">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>');			
+			$('#tweet').html('<a href="https://twitter.com/share" class="twitter-share-button" data-url="' + url + '" data-count="none" data-via="lillywolf">Tweet</a>');			
 			window.document.getElementById("tweet").style.top = parseInt(likeBtnY) + 2;
 			window.document.getElementById("tweet").style.left = 260;			
 		}
