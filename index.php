@@ -104,7 +104,7 @@
 		
 		function songChanged(songUrl, likeBtnY) {
 			updateLittleFacebookLikeButton(songUrl, likeBtnY);			
-			updateBigFacebookLikeButton(songUrl);						
+			updateBigFacebookLikeButton(songUrl, likeBtnY);						
 		}
 		
 		function updateLittleFacebookLikeButton(url, likeBtnY) {
@@ -117,12 +117,12 @@
 			window.document.getElementById("like").style.left = 321;
 		}
 		
-		function updateBigFacebookLikeButton(url) {
+		function updateBigFacebookLikeButton(url, likeBtnY) {
 			$('#big_like').html('<fb:like href="' + url + '" layout="standard" width="507" show_faces="false" action="like" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('big_like'));
 			}
-			window.document.getElementById("big_like").style.top = window.document.getElementById("like").style.top - window.document.getElementById("big_like").offsetHeight - 34;
+			window.document.getElementById("big_like").style.top = parseInt(likeBtnY) - window.document.getElementById("big_like").offsetHeight - 34;
 		}
 		
 		function getOffset( el ) {
