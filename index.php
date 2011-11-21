@@ -113,7 +113,7 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('like'));
 			}
-			window.document.getElementById("like").style.top = parseInt(likeBtnY) + 14;
+			window.document.getElementById("like").style.top = parseInt(likeBtnY) + 2;
 			window.document.getElementById("like").style.left = 321;
 		}
 		
@@ -122,7 +122,7 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('big_like'));
 			}
-			window.document.getElementById("big_like").style.top = parseInt(likeBtnY) - window.document.getElementById("big_like").offsetHeight - 34;
+			window.document.getElementById("big_like").style.top = parseInt(likeBtnY) - window.document.getElementById("big_like").offsetHeight - 67;
 		}
 		
 		function getOffset( el ) {
@@ -174,7 +174,7 @@
 	<?php
 	
 	function printSwf($liked, $downloads_enabled) {
-		echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="514" height="440">
+		echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="514" height="740">
 		    <param name="movie" value="site/Main.swf">
 			<param name="allowFullScreen" value="true">
 			<param name="allowScriptAccess" value="always">
@@ -182,14 +182,14 @@
 			<param name="wmode" value="transparent">
 			<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
             <!--[if !IE]>-->
-            <object type="application/x-shockwave-flash" data="site/Main.swf" id="music-player" width="514" height="440">
+            <object type="application/x-shockwave-flash" data="site/Main.swf" id="music-player" width="514" height="740">
                 <param name="quality" value="high" />
                 <param name="bgcolor" value="#ffffff" />
                 <param name="allowScriptAccess" value="always" />
                 <param name="allowFullScreen" value="true" />	
 				<param name="wmode" value="transparent" />
 				<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
-		    <!--embed src="site/Main.swf" width="514" height="440">
+		    <!--embed src="site/Main.swf" width="514" height="740">
 		    </embed-->
             <!--[if !IE]>-->
             </object>				
