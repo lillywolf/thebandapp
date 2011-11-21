@@ -103,8 +103,8 @@
 		}
 		
 		function songChanged(songUrl, likeBtnY) {
-			updateBigFacebookLikeButton(songUrl);			
 			updateLittleFacebookLikeButton(songUrl, likeBtnY);			
+			updateBigFacebookLikeButton(songUrl);						
 		}
 		
 		function updateLittleFacebookLikeButton(url, likeBtnY) {
@@ -113,7 +113,7 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('like'));
 			}
-			window.document.getElementById("like").style.top = window.document.getElementById("big_like").offsetHeight + parseInt(likeBtnY) + 14;
+			window.document.getElementById("like").style.top = parseInt(likeBtnY) + 14;
 			window.document.getElementById("like").style.left = 321;
 		}
 		
@@ -122,6 +122,7 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('big_like'));
 			}
+			window.document.getElementById("big_like").style.top = window.document.getElementById("like").style.top - window.document.getElementById("big_like").offsetHeight - 34;
 		}
 		
 		function getOffset( el ) {
