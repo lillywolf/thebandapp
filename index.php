@@ -140,10 +140,23 @@
 		
 		function downloadAllSongs(downloadUrlString) {
 			alert("download all: " + downloadUrlString);
+			var i = 0;
 			var urls = downloadUrlString.split(",");
-			for (var i = 0; i < urls.length; i++) {
-				window.document.getElementById("downloader-frame").src=urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";				
-			}
+			// for (var i = 0; i < urls.length; i++) {
+				// var e = window.document.createElement("iframe");
+				// e.style.visibility = "hidden";
+				// e.style.height = "0";
+				// body.appendChild(e);
+				// e.src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
+			// }
+			window.document.getElementById("downloader-frame").src=urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
+			window.document.getElementById("downloader-frame").onload = function() {
+				alert("iframe load complete: " + urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b");
+				if (i < urls.length) {
+					i++;
+					window.document.getElementById("downloader-frame").src=urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";					
+				}				
+			}				
 		}
 		
 		function buySong(buyUrl) {
