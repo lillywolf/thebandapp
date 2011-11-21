@@ -138,6 +138,13 @@
 			window.document.getElementById("big_like").style.top = parseInt(likeBtnY) - window.document.getElementById("big_like").offsetHeight - 81;
 		}
 		
+		function showValues(val1, val2) {
+			if (val1)
+			{
+				alert("show value: " + val1);				
+			}
+		}
+		
 		function getOffset( el ) {
 		    var _x = 0;
 		    var _y = 0;
