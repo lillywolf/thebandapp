@@ -149,12 +149,12 @@
 				// body.appendChild(e);
 				// e.src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
 			// }
-			window.document.getElementById("downloader-frame").src=urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
+			window.document.getElementById("downloader-frame").src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
 			window.document.getElementById("downloader-frame").onload = function() {
-				alert("iframe load complete: " + urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b");
+				alert("iframe load complete: " + i);
 				if (i < urls.length) {
 					i++;
-					window.document.getElementById("downloader-frame").src=urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";					
+					window.document.getElementById("downloader-frame").src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";					
 				}				
 			}				
 		}
