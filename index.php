@@ -38,7 +38,6 @@
 			filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='(http://a1.sndcdn.com/images/badges/fmonsc/horizontal/dark-orange.png?6485e1c)', sizingMethod='crop') !important;
 		}	
 		.soundcloud-badge {
-			float: left;
 			text-align: left; 
 			display: block; 
 			margin: 0 auto 4px auto; 
