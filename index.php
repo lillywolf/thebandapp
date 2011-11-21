@@ -62,6 +62,9 @@
 			-o-text-overflow: ellipsis; 
 			text-overflow: ellipsis;			
 		}
+		#downloader-frame {
+			visibility: hidden;
+		}
 	</style>
 </head>	
 <body>
@@ -71,7 +74,8 @@
 	<span id="tweet"></span>
 	<span id="like"></span>
 	<span id="big_like"></span>
-    <div id="flashContent"></div>	
+    <div id="flashContent"></div>
+	<iframe id="downloader-frame" frameborder="0"></iframe>
 	<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->
 	<!--div class="fb-add-to-timeline" data-show-faces="true"></div-->
 	
@@ -129,11 +133,16 @@
 		}
 		
 		function downloadSong(downloadUrl) {
-			window.open(downloadUrl+"?consumer_key=738091d6d02582ddd19de7109b79e47b", "download");
+			// window.open(downloadUrl+"?consumer_key=738091d6d02582ddd19de7109b79e47b", "download");
+			window.document.getElementById("downloader-frame").src=downloadUrl+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
 		}
 		
-		function downloadAllSongs() {
-			alert("download all songs");
+		function downloadAllSongs(downloadUrlString) {
+			alert("download all: " + downloadUrlString);
+			var urls = downloadUrlString.split(",");
+			for (var i = 0; i < urls.length; i++) {
+				window.document.getElementById("downloader-frame").src=urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";				
+			}
 		}
 		
 		function buySong(buyUrl) {
@@ -172,8 +181,7 @@
 		}
 		
 		function showValues(val1, val2) {
-			if (val1)
-			{
+			if (val1) {
 				alert("show value: " + val1);				
 			}
 		}
