@@ -77,6 +77,7 @@
 	<span id="big_like"></span>
     <div id="flashContent"></div>
 	<iframe id="downloader-frame" frameborder="0"></iframe>
+	<span id="downloaders"></span>
 	<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->
 	<!--div class="fb-add-to-timeline" data-show-faces="true"></div-->
 	
@@ -140,17 +141,17 @@
 		
 		function downloadAllSongs(downloadUrlString) {
 			alert("download all: " + downloadUrlString);
-			var i = 0;
 			var urls = downloadUrlString.split(",");
 			for (var i = 0; i < urls.length; i++) {
 				var e = window.document.createElement("iframe");
 				e.style.visibility = "hidden";
 				e.style.height = "0";
-				body.appendChild(e);
+				alert(e);
+				window.document.getElementById("downloaders").appendChild(e);
 				e.src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";				
 				e.onload = function() {
 					// Remove when onload complete
-					body.removeChild(e);
+					window.document.getElementById("downloaders").removeChild(e);
 				}
 			}
 			// window.document.getElementById("downloader-frame").src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
