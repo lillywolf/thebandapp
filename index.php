@@ -72,7 +72,6 @@
 	<span id="like"></span>
 	<span id="big_like"></span>
     <div id="flashContent"></div>	
-	<a href='http://soundcloud.com/lillywolf/follow' class='soundcloud-badge'><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a>
 	<!--div class="fb-add-to-timeline" data-show-faces="true"></div-->
 	
 <?php
@@ -246,7 +245,8 @@
 		    </embed-->
             <!--[if !IE]>-->
             </object>				
-		</object>';
+		</object>
+		<a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a>';
 	}
 	
 	if($user_id) {
