@@ -64,6 +64,7 @@
 		}
 		#downloader-frame {
 			visibility: hidden;
+			height: 0px;
 		}
 	</style>
 </head>	
