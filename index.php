@@ -17,6 +17,9 @@
 		#fb-root {
 			overflow-y: hidden;
 		}
+		#tweet {
+			position: absolute;
+		}
 		#like {
 			position: absolute;
 		}
@@ -32,6 +35,7 @@
 		
 	<div id="page_heading_div" class="hidden"></div>
 	<div id="spinner"></div>
+	<span id="tweet"></span>
 	<span id="like"></span>
 	<span id="big_like"></span>
     <div id="flashContent"></div>	
@@ -104,17 +108,24 @@
 		
 		function songChanged(songUrl, likeBtnY) {
 			updateLittleFacebookLikeButton(songUrl, likeBtnY);			
-			updateBigFacebookLikeButton(songUrl, likeBtnY);						
+			updateBigFacebookLikeButton(songUrl, likeBtnY);	
+			updateTweetButton(songUrl, likeBtnY);					
 		}
 		
 		function updateLittleFacebookLikeButton(url, likeBtnY) {
-			var yOffset = getOffset(window.document.getElementById("music-player"));
+			// var yOffset = getOffset(window.document.getElementById("music-player"));
 			$('#like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('like'));
 			}
 			window.document.getElementById("like").style.top = parseInt(likeBtnY) + 2;
 			window.document.getElementById("like").style.left = 321;
+		}
+		
+		function updateTweetButton(url, likeBtnY) {
+			$('#tweet').html('<a href="https://twitter.com/share" class="twitter-share-button" data-url="' + url + '" data-count="none" data-via="lillywolf">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>');			
+			window.document.getElementById("tweet").style.top = parseInt(likeBtnY) + 2;
+			window.document.getElementById("tweet").style.left = 260;			
 		}
 		
 		function updateBigFacebookLikeButton(url, likeBtnY) {
