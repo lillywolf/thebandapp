@@ -127,7 +127,7 @@
 			$('#tweet').html('<a href="https://twitter.com/share" class="twitter-share-button" data-url="' + url + '" data-text="Listening To: " data-count="none" data-via="lillywolf">Tweet</a>');
 			$.ajax({ url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true});						
 			window.document.getElementById("tweet").style.top = parseInt(likeBtnY) + 2;
-			window.document.getElementById("tweet").style.left = 400;			
+			window.document.getElementById("tweet").style.left = 407;			
 		}
 		
 		function updateBigFacebookLikeButton(url, likeBtnY) {
