@@ -30,6 +30,38 @@
 		#spinner {
 			margin: 150px 0;
 		}
+		a.soundcloud-badge:hover {
+			background-position: bottom left !important;
+		}
+		*html a.soundcloud-badge {
+			background-image: none !important; 
+			filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='(http://a1.sndcdn.com/images/badges/fmonsc/horizontal/dark-orange.png?6485e1c)', sizingMethod='crop') !important;
+		}	
+		.soundcloud-badge {
+			text-align: left; 
+			display: block; 
+			margin: 0 auto 4px auto; 
+			width: 246px; 
+			height: 27px; 
+			font-size: 11px; 
+			padding: 36px 0 0 104px; 
+			background: transparent url(http://a1.sndcdn.com/images/badges/fmonsc/horizontal/dark-orange.png?6485e1c) top left no-repeat; 
+			color: #ffffff; 
+			text-decoration: none; 
+			font-family: "Lucida Grande", Helvetica, Arial, sans-serif; 
+			line-height: 1.3em; 
+			outline: 0;			
+		}
+		#soundcloud-badge-inner {
+			display: block; 
+			width: 230px; 
+			white-space: nowrap; 
+			height: 20px; 
+			margin: 0 0 0 0; 
+			overflow: hidden; 
+			-o-text-overflow: ellipsis; 
+			text-overflow: ellipsis;			
+		}
 	</style>
 </head>	
 <body>
@@ -40,6 +72,7 @@
 	<span id="like"></span>
 	<span id="big_like"></span>
     <div id="flashContent"></div>	
+	<a href='http://soundcloud.com/lillywolf/follow' class='soundcloud-badge'><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a>
 	<!--div class="fb-add-to-timeline" data-show-faces="true"></div-->
 	
 <?php
