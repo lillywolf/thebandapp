@@ -120,14 +120,14 @@
 			    FB.XFBML.parse(document.getElementById('like'));
 			}
 			window.document.getElementById("like").style.top = parseInt(likeBtnY) + 2;
-			window.document.getElementById("like").style.left = 321;
+			window.document.getElementById("like").style.left = 271;
 		}
 		
 		function updateTweetButton(url, likeBtnY) {
 			$('#tweet').html('<a href="https://twitter.com/share" class="twitter-share-button" data-url="' + url + '" data-text="Listening To: " data-count="none" data-via="lillywolf">Tweet</a>');
 			$.ajax({ url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true});						
 			window.document.getElementById("tweet").style.top = parseInt(likeBtnY) + 2;
-			window.document.getElementById("tweet").style.left = 260;			
+			window.document.getElementById("tweet").style.left = 400;			
 		}
 		
 		function updateBigFacebookLikeButton(url, likeBtnY) {
