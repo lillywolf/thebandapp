@@ -122,7 +122,7 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('big_like'));
 			}
-			window.document.getElementById("big_like").style.top = parseInt(likeBtnY) - window.document.getElementById("big_like").offsetHeight - 67;
+			window.document.getElementById("big_like").style.top = parseInt(likeBtnY) - window.document.getElementById("big_like").offsetHeight - 79;
 		}
 		
 		function getOffset( el ) {
