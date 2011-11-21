@@ -142,18 +142,9 @@
 		function downloadAllSongs(downloadUrlString) {
 			alert("download all: " + downloadUrlString);
 			var urls = downloadUrlString.split(",");
-			for (var i = 0; i < urls.length; i++) {
-				var e = window.document.createElement("iframe");
-				e.style.visibility = "hidden";
-				e.style.height = "0";
-				alert(e);
-				window.document.getElementById("downloaders").appendChild(e);
-				e.src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";				
-				e.onload = function() {
-					// Remove when onload complete
-					window.document.getElementById("downloaders").removeChild(e);
-				}
-			}
+			// for (var i = 0; i < urls.length; i++) {
+			createDownloadElement(urls, 0, urls.length);
+			// }
 			// window.document.getElementById("downloader-frame").src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
 			// window.document.getElementById("downloader-frame").onload = function() {
 			// 	if (i < urls.length) {
@@ -162,6 +153,21 @@
 			// 		window.document.getElementById("downloader-frame").src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";					
 			// 	}				
 			// }				
+		}
+		
+		function createDownloadElement(urls, i, limit) {
+			var e = window.document.createElement("iframe");
+			e.style.visibility = "hidden";
+			e.style.height = "0";
+			alert(e);
+			window.document.getElementById("downloaders").appendChild(e);
+			e.src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
+			e.onload = function() {
+				i = i + 1;
+				if (i < limit) {
+					createDownloadElement(urls, i, limit);
+				}
+			}			
 		}
 		
 		function buySong(buyUrl) {
