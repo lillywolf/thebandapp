@@ -156,18 +156,20 @@
 		}
 		
 		function createDownloadElement(urls, i, limit) {
-			var e = window.document.createElement("iframe");
-			e.style.visibility = "hidden";
-			e.style.height = "0";
-			alert(e);
-			window.document.getElementById("downloaders").appendChild(e);
-			e.src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
-			e.onload = function() {
-				i = i + 1;
-				if (i < limit) {
-					createDownloadElement(urls, i, limit);
-				}
-			}			
+			for (i = 0; i < limit; i++) {
+				var e = window.document.createElement("iframe");
+				e.style.visibility = "hidden";
+				e.style.height = "0";
+				alert(e);
+				window.document.getElementById("downloaders").appendChild(e);
+				e.src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";				
+			}
+			// e.onload = function() {
+			// 	i = i + 1;
+			// 	if (i < limit) {
+			// 		createDownloadElement(urls, i, limit);
+			// 	}
+			// }			
 		}
 		
 		function buySong(buyUrl) {
