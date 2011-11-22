@@ -160,9 +160,14 @@
 				var e = window.document.createElement("iframe");
 				e.style.visibility = "hidden";
 				e.style.height = "0";
-				alert(e);
-				window.document.getElementById("downloaders").appendChild(e);
+				e.style.frameborder = "0";
+				e.onreadystatechange = function() {
+					if (e.readyState == "interactive") {
+						window.setTimeout("createDownloadElement()", 100);
+					}
+				}
 				e.src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";				
+				window.document.getElementById("downloaders").appendChild(e);
 			}
 			// e.onload = function() {
 			// 	i = i + 1;
