@@ -197,7 +197,7 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('big_like'));
 			}
-			window.document.getElementById("big_like").style.top = parseInt(likeBtnY) - window.document.getElementById("big_like").offsetHeight - 81;
+			window.document.getElementById("big_like").style.top = parseInt(likeBtnY) - window.document.getElementById("big_like").offsetHeight - 80;
 		}
 		
 		function showValues(val1, val2) {
