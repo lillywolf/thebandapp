@@ -135,24 +135,12 @@
 		}
 		
 		function downloadSong(downloadUrl) {
-			// window.open(downloadUrl+"?consumer_key=738091d6d02582ddd19de7109b79e47b", "download");
 			window.document.getElementById("downloader-frame").src=downloadUrl+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
 		}
 		
 		function downloadAllSongs(downloadUrlString) {
-			alert("download all: " + downloadUrlString);
 			var urls = downloadUrlString.split(",");
-			// for (var i = 0; i < urls.length; i++) {
-			createDownloadElement(urls, 0, urls.length);
-			// }
-			// window.document.getElementById("downloader-frame").src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
-			// window.document.getElementById("downloader-frame").onload = function() {
-			// 	if (i < urls.length) {
-			// 		i = i + 1;
-			// 		alert("iframe load complete: " + urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b");					
-			// 		window.document.getElementById("downloader-frame").src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";					
-			// 	}				
-			// }				
+			createDownloadElement(urls, 0, urls.length);			
 		}
 		
 		function createDownloadElement(urls, i, limit) {
@@ -171,13 +159,7 @@
 				}
 				e.src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";				
 				window.document.getElementById("downloaders").appendChild(e);
-			}
-			// e.onload = function() {
-			// 	i = i + 1;
-			// 	if (i < limit) {
-			// 		createDownloadElement(urls, i, limit);
-			// 	}
-			// }			
+			}	
 		}
 		
 		function buySong(buyUrl) {
@@ -289,7 +271,8 @@
 		    </embed-->
             <!--[if !IE]>-->
             </object>				
-		</object>';
+		</object>
+		<a href="https://twitter.com/lillywolf" class="twitter-follow-button" data-show-count="false">Follow @lillywolf</a>';
 	}
 	
 	if($user_id) {
