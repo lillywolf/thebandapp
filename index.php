@@ -243,7 +243,7 @@
 					alert("not a page like!");
 				}
 			});	
-			FB.Canvas.setSize({ width: 520, height: 900 });
+			FB.Canvas.setSize({ width: 520, height: 1200 });
 	    };
 	    (function() {
 	      var e = document.createElement('script'); e.async = true;
