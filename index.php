@@ -332,7 +332,8 @@
 	
 	function shiftElements() {
 		echo '<script>
-			alert("hi");
+			var offY = window.document.getElementById("flash").offsetHeight;
+			window.document.getElementById("extra-content").style.top = offY.toString();
 		</script>';
 	}
 	
@@ -362,7 +363,8 @@
 				
 				<?php
 			} else {
-				printSwf("false", "false");				
+				printSwf("false", "false");	
+				shiftElements();			
 				?>
 				
 				<script type="text/javascript">
@@ -391,8 +393,10 @@
 		$signed_request = $facebook->getSignedRequest();
 		if ($signed_request['page']['liked']) { 
 			printSwf("true", "true");
+			shiftElements();
 		} else {
 			printSwf("false", "false");
+			shiftElements();
 		}	
 		
 		// FOR ADMIN PANEL
