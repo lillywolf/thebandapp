@@ -20,9 +20,11 @@
 		}
 		#tweet {
 			position: absolute;
+			z-index: 6;
 		}
 		#like {
 			position: absolute;
+			z-index: 5;
 		}
 		#big_like {
 			position: absolute;
