@@ -188,6 +188,12 @@
 			shiftElements();
 		}
 		
+		function shiftElements() {
+			var offY = window.document.getElementById("flash").offsetHeight;
+			window.document.getElementById("extra-content").style.top = offY.toString();
+			alert(window.document.getElementById("extra-content").style.top);
+		}		
+		
 		function downloadSong(downloadUrl) {
 			window.document.getElementById("downloader-frame").src=downloadUrl+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
 		}
@@ -329,14 +335,6 @@
 	            </object>				
 			</object>
 		</div>';
-	}
-	
-	function shiftElements() {
-		echo '<script>
-			var offY = window.document.getElementById("flash").offsetHeight;
-			window.document.getElementById("extra-content").style.top = offY.toString();
-			alert(window.document.getElementById("extra-content").style.top);
-		</script>';
 	}
 	
 	if($user_id) {
