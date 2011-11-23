@@ -193,7 +193,6 @@
 		function shiftElements() {
 			var offY = window.document.getElementById("flash").offsetHeight;
 			window.document.getElementById("extra-content").style.top = offY.toString();
-			alert(window.document.getElementById("extra-content").style.top);
 		}		
 		
 		function downloadSong(downloadUrl) {
