@@ -71,6 +71,12 @@
 		}
 		#shows {
 			font-family: Arial;
+			color: #8F8668;
+			font-size: 14px;
+		}
+		#flash {
+			position: absolute;
+			top: 0px;
 		}
 	</style>
 </head>	
@@ -81,7 +87,7 @@
 	<span id="tweet"></span>
 	<span id="like"></span>
 	<span id="big_like"></span>
-    <div id="flashContent"></div>
+    <!--div id="flashContent"></div-->
 	<iframe id="downloader-frame" frameborder="0"></iframe>
 	<span id="downloaders"></span>
 	<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->
@@ -288,26 +294,28 @@
 	<?php
 	
 	function printSwf($liked, $downloads_enabled) {
-		echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="514" height="880">
-		    <param name="movie" value="site/Main.swf">
-			<param name="allowFullScreen" value="true">
-			<param name="allowScriptAccess" value="always">
-			<param name="scale" value="noscale">
-			<param name="wmode" value="transparent">
-			<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
-            <!--[if !IE]>-->
-            <object type="application/x-shockwave-flash" data="site/Main.swf" id="music-player" width="514" height="880">
-                <param name="quality" value="high" />
-                <param name="bgcolor" value="#ffffff" />
-                <param name="allowScriptAccess" value="always" />
-                <param name="allowFullScreen" value="true" />	
-				<param name="wmode" value="transparent" />
+		echo '<div id="flash">
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="514" height="880">
+			    <param name="movie" value="site/Main.swf">
+				<param name="allowFullScreen" value="true">
+				<param name="allowScriptAccess" value="always">
+				<param name="scale" value="noscale">
+				<param name="wmode" value="transparent">
 				<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
-		    <!--embed src="site/Main.swf" width="514" height="880">
-		    </embed-->
-            <!--[if !IE]>-->
-            </object>				
-		</object>
+	            <!--[if !IE]>-->
+	            <object type="application/x-shockwave-flash" data="site/Main.swf" id="music-player" width="514" height="880">
+	                <param name="quality" value="high" />
+	                <param name="bgcolor" value="#ffffff" />
+	                <param name="allowScriptAccess" value="always" />
+	                <param name="allowFullScreen" value="true" />	
+					<param name="wmode" value="transparent" />
+					<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
+			    <!--embed src="site/Main.swf" width="514" height="880">
+			    </embed-->
+	            <!--[if !IE]>-->
+	            </object>				
+			</object>
+		</div>
 		<a href="https://twitter.com/lillywolf" class="twitter-follow-button" data-show-count="false">Follow @lillywolf</a>';
 	}
 	
