@@ -69,6 +69,9 @@
 			visibility: hidden;
 			height: 0px;
 		}
+		#shows {
+			font-family: Arial;
+		}
 	</style>
 </head>	
 <body>
@@ -109,7 +112,6 @@
 	# string suitable for pg_connect. Put this in your app.
 	function pg_connection_string_from_database_url() {
 	  extract(parse_url($_ENV["DATABASE_URL"]));
-	  # return "host=$host port=5432 dbname=$dbname user=$dbuser sslmode=require password=$pass"; # <- you may want to add sslmode=require there too
 	  return "user=$user password=$pass host=$host dbname=" . substr($path, 1);
 	}
 
@@ -119,14 +121,16 @@
 	# Now let's use the connection for something silly just to prove it works:
 	$result = pg_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
 
-	print "<pre>\n";
+	print "<div id='shows'>";
 	if (!pg_num_rows($result)) {
-	  print("Your connection is working, but your database is empty.\nFret not. This is expected for new apps.\n");
+	  # print("Your connection is working, but your database is empty.\nFret not. This is expected for new apps.\n");
 	} else {
-	  print "Tables in your database:\n";
-	  while ($row = pg_fetch_row($result)) { print("- $row[0]\n"); }
+	  	while ($row = pg_fetch_row($result)) { 
+			# print("- $row[0]\n"); 
+			print("<span class='show'>$row[0]</span>"); 
+		}
 	}
-	print "\n";	
+	print "</div>";	
 	
 	?>
 	
