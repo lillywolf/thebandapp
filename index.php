@@ -77,10 +77,12 @@
 			color: #5E5751;
 			font-size: 13px;
 			position: absolute;
-			margin: 15px 0;
 		}
 		.show {
 			margin: 5px 15px;
+		}
+		#shows-header {
+			margin-bottom: 15px;
 		}
 		#flash {
 			position: absolute;
@@ -136,7 +138,7 @@
 	# Now let's use the connection for something silly just to prove it works:
 	$result = pg_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
 
-	print "<div id='shows'><img src='/images/headers/shows_header.png'/>";
+	print "<div id='shows'><img id='shows-header' src='/images/headers/shows_header.png'/>";
 	if (!pg_num_rows($result)) {
 	  # print("Your connection is working, but your database is empty.\nFret not. This is expected for new apps.\n");
 	} else {
