@@ -320,7 +320,9 @@
 	
 	function shiftElements() {
 		echo '<script>
-			window.document.getElementById("shows").offsetTop = window.document.getElementById("flash").offsetHeight;
+			var offsetY = window.document.getElementById("flash").offsetHeight;
+			alert(offsetY);
+			window.document.getElementById("shows").style.top = offsetY;
 		</script>';
 	}
 	
