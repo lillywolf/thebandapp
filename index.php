@@ -73,6 +73,7 @@
 			font-family: Arial;
 			color: #8F8668;
 			font-size: 14px;
+			position: absolute;
 		}
 		#flash {
 			position: absolute;
