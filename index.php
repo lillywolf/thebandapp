@@ -333,8 +333,8 @@
 	function shiftElements() {
 		echo '<script>
 			var offY = window.document.getElementById("flash").offsetHeight;
+			alert(offY);
 			window.document.getElementById("extra-content").style.top = offY.toString();
-			window.document.getElementById("extra-content").offsetTop = offY.toString();
 			alert(window.document.getElementById("extra-content").style.top);
 		</script>';
 	}
