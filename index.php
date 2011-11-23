@@ -321,7 +321,7 @@
 	function shiftElements() {
 		echo '<script>
 			var offsetY = window.document.getElementById("flash").offsetHeight;
-			window.document.getElementById("shows").offsetTop = parseInt(offsetY);
+			window.document.getElementById("shows").style.top = offsetY.toString()+"px";
 		</script>';
 	}
 	
