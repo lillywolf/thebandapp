@@ -77,7 +77,10 @@
 			color: #5E5751;
 			font-size: 13px;
 			position: absolute;
-			margin: 30px 0;
+			margin: 15px 0;
+		}
+		.show {
+			margin: 5px 15px;
 		}
 		#flash {
 			position: absolute;
