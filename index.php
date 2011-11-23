@@ -101,7 +101,7 @@
 	$facebook = new Facebook($config);	
 	$user_id = $facebook->getUser();
 	
-	$user="uc3rwdprf7ijm9z";
+	$dbuser="uc3rwdprf7ijm9z";
 	$pass="pab1kv3jcunuilewgh4op7kwht";
 	$host="ec2-107-22-196-151.compute-1.amazonaws.com";
 	$dbname="dcw8wyqwdih0rv";
@@ -109,7 +109,7 @@
 	# string suitable for pg_connect. Put this in your app.
 	function pg_connection_string_from_database_url() {
 	  extract(parse_url($_ENV["DATABASE_URL"]));
-	  return "host=$host port=5432 dbname=$dbname user=$user password=$pass"; # <- you may want to add sslmode=require there too
+	  return "host=$host port=5432 dbname=$dbname user=$dbuser sslmode=require password=$pass"; # <- you may want to add sslmode=require there too
 	}
 
 	# Here we establish the connection. Yes, that's all.
