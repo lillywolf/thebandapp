@@ -332,8 +332,7 @@
 	
 	function shiftElements() {
 		echo '<script>
-			window.document.getElementById("extra-content").style.top = "880px";
-			alert(window.document.getElementById("extra-content").style.top);
+			alert("hi");
 		</script>';
 	}
 	
