@@ -82,7 +82,7 @@
 			margin: 5px 15px;
 		}
 		#shows-header {
-			margin-bottom: 15px;
+			margin-bottom: 10px;
 		}
 		#flash {
 			position: absolute;
