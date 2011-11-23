@@ -185,6 +185,7 @@
 			spinner.stop();
 			window.document.getElementById('spinner').style.margin = "0px";			
 			window.document.getElementById('spinner').style.visibility = "hidden";
+			shiftElements();
 		}
 		
 		function downloadSong(downloadUrl) {
@@ -344,7 +345,6 @@
 			$signed_request = $facebook->getSignedRequest();
 			if ($signed_request['page']['liked']) { 
 				printSwf("true", "true");
-				shiftElements();
 				?>
 				
 				<script type="text/javascript">				
@@ -365,7 +365,6 @@
 				<?php
 			} else {
 				printSwf("false", "false");	
-				shiftElements();			
 				?>
 				
 				<script type="text/javascript">
@@ -394,10 +393,8 @@
 		$signed_request = $facebook->getSignedRequest();
 		if ($signed_request['page']['liked']) { 
 			printSwf("true", "true");
-			shiftElements();
 		} else {
 			printSwf("false", "false");
-			shiftElements();
 		}	
 		
 		// FOR ADMIN PANEL
