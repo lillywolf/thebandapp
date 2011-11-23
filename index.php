@@ -109,7 +109,7 @@
 	# string suitable for pg_connect. Put this in your app.
 	function pg_connection_string_from_database_url() {
 	  extract(parse_url($_ENV["DATABASE_URL"]));
-	  return "user=$user password=$pass host=$host dbname=$dbname sslmode=require"; # <- you may want to add sslmode=require there too
+	  return "host=$host user=$user password=$pass dbname=$dbname"; # <- you may want to add sslmode=require there too
 	}
 
 	# Here we establish the connection. Yes, that's all.
