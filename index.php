@@ -30,6 +30,9 @@
 		#spinner {
 			margin: 150px 0;
 		}
+		#extra-content {
+			position: absolute;
+		}
 		.twitter-follow-button {
 			margin: 15px 0;
 		}
@@ -71,9 +74,10 @@
 		}
 		#shows {
 			font-family: Arial;
-			color: #8F8668;
-			font-size: 14px;
+			color: #5E5751;
+			font-size: 13px;
 			position: absolute;
+			margin: 30px 0;
 		}
 		#flash {
 			position: absolute;
@@ -90,6 +94,8 @@
 	<span id="big_like"></span>
 	<iframe id="downloader-frame" frameborder="0"></iframe>
 	<span id="downloaders"></span>
+	<div id="extra-content">
+		<a href="https://twitter.com/lillywolf" class="twitter-follow-button" data-show-count="false">Follow @lillywolf</a>
 	<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->
 	<!--div class="fb-add-to-timeline" data-show-faces="true"></div-->
 	
@@ -127,7 +133,7 @@
 	# Now let's use the connection for something silly just to prove it works:
 	$result = pg_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
 
-	print "<div id='shows'>";
+	print "<div id='shows'><img src='/images/headers/shows_header.png'/>";
 	if (!pg_num_rows($result)) {
 	  # print("Your connection is working, but your database is empty.\nFret not. This is expected for new apps.\n");
 	} else {
@@ -140,7 +146,8 @@
 	
 	?>
 	
-    <div id="fb-root"></div>
+    	<div id="fb-root"></div>
+	</div>
 
 	<script type="text/javascript">
 	
@@ -315,15 +322,13 @@
 	            <!--[if !IE]>-->
 	            </object>				
 			</object>
-		</div>
-		<a href="https://twitter.com/lillywolf" class="twitter-follow-button" data-show-count="false">Follow @lillywolf</a>';
+		</div>';
 	}
 	
 	function shiftElements() {
 		echo '<script>
 			var offY = window.document.getElementById("flash").offsetHeight;
-			window.document.getElementById("shows").style.top = offY.toString();
-			alert(window.document.getElementById("shows").style.top);
+			window.document.getElementById("extra-content").style.top = offY.toString();
 		</script>';
 	}
 	
