@@ -87,7 +87,6 @@
 	<span id="tweet"></span>
 	<span id="like"></span>
 	<span id="big_like"></span>
-    <!--div id="flashContent"></div-->
 	<iframe id="downloader-frame" frameborder="0"></iframe>
 	<span id="downloaders"></span>
 	<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->
@@ -319,12 +318,19 @@
 		<a href="https://twitter.com/lillywolf" class="twitter-follow-button" data-show-count="false">Follow @lillywolf</a>';
 	}
 	
+	function shiftElements() {
+		echo '<script>
+			window.document.getElementById("shows").offsetTop = window.document.getElementById("flash").offsetHeight;
+		</script>';
+	}
+	
 	if($user_id) {
 		try {
 			$user_profile = $facebook->api('/me', 'GET');	
 			$signed_request = $facebook->getSignedRequest();
 			if ($signed_request['page']['liked']) { 
 				printSwf("true", "true");
+				shiftElements();
 				?>
 				
 				<script type="text/javascript">				
