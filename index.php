@@ -332,8 +332,7 @@
 	
 	function shiftElements() {
 		echo '<script>
-			var offY = window.document.getElementById("flash").offsetHeight;
-			alert(offY);
+			var offY = window.document.getElementById("flash").scrollHeight;
 			window.document.getElementById("extra-content").style.top = offY.toString();
 			alert(window.document.getElementById("extra-content").style.top);
 		</script>';
