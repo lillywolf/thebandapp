@@ -57,7 +57,7 @@
 
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
-		$user_id = 0;
+		# getSignedRequest();
 	
 		#####
 		# Connect to the database
@@ -284,59 +284,61 @@
 	// 	</div>';
 	// }
 	
-	if($user_id) {
-		try {
-			$user_profile = $facebook->api('/me', 'GET');	
+	function getSignedRequest() {
+		if($user_id) {
+			try {
+				$user_profile = $facebook->api('/me', 'GET');	
+				$signed_request = $facebook->getSignedRequest();
+				if ($signed_request['page']['liked']) { 
+					echo '<script>alert("got req"); updateSongDownloads("true");</script>';
+				} else {
+					echo '<script>alert("got req"); updateSongDownloads("false");</script>';
+					?>
+
+					<script type="text/javascript">
+
+						FB.Event.subscribe('edge.create',
+						    function(response) {
+								if (response.indexOf(FB_PAGE_URL) != -1) {
+						        	window.location.reload();					
+								} else {
+									alert("not a page like!");
+								}					    
+							}
+						);								
+					</script>				
+
+					<?php
+				}					
+			}
+			catch(FacebookApiException $e) {
+				$loginUrl = $facebook->getLoginUrl($params);			
+		        error_log($e->getType());
+		        error_log($e->getMessage());			
+			}	
+		}
+		else {		
 			$signed_request = $facebook->getSignedRequest();
 			if ($signed_request['page']['liked']) { 
+				# printSwf("true", "true");
 				echo '<script>alert("got req"); updateSongDownloads("true");</script>';
 			} else {
+				# printSwf("false", "false");
 				echo '<script>alert("got req"); updateSongDownloads("false");</script>';
-				?>
-				
-				<script type="text/javascript">
-					
-					FB.Event.subscribe('edge.create',
-					    function(response) {
-							if (response.indexOf(FB_PAGE_URL) != -1) {
-					        	window.location.reload();					
-							} else {
-								alert("not a page like!");
-							}					    
-						}
-					);								
-				</script>				
-				
-				<?php
-			}					
-		}
-		catch(FacebookApiException $e) {
-			$loginUrl = $facebook->getLoginUrl($params);			
-	        error_log($e->getType());
-	        error_log($e->getMessage());			
-		}	
-	}
-	else {		
-		$signed_request = $facebook->getSignedRequest();
-		if ($signed_request['page']['liked']) { 
-			# printSwf("true", "true");
-			echo '<script>alert("got req"); updateSongDownloads("true");</script>';
-		} else {
-			# printSwf("false", "false");
-			echo '<script>alert("got req"); updateSongDownloads("false");</script>';
-		}	
-		
-		# FOR ADMIN PANEL
-		
-		$state = md5(uniqid(rand(), TRUE));
-		$scope = 'email,publish_stream,manage_pages';
-		$home = getHome();
-		$authorize_url = "https://www.facebook.com/dialog/oauth?client_id=$appId" .
-		      	"&redirect_uri=$home&state=" . $state . "&scope=$scope";		
-		      	echo("<script> top.location.href='" . $authorize_url . "'</script>");
-			
-		# Use this for non-facebook canvas page (i.e. Facebook Connect)		
-		header('Location:' . $facebook->getLoginURL());
+			}	
+
+			# FOR ADMIN PANEL
+
+			$state = md5(uniqid(rand(), TRUE));
+			$scope = 'email,publish_stream,manage_pages';
+			$home = getHome();
+			$authorize_url = "https://www.facebook.com/dialog/oauth?client_id=$appId" .
+			      	"&redirect_uri=$home&state=" . $state . "&scope=$scope";		
+			      	echo("<script> top.location.href='" . $authorize_url . "'</script>");
+
+			# Use this for non-facebook canvas page (i.e. Facebook Connect)		
+			header('Location:' . $facebook->getLoginURL());
+		}		
 	}
 	
 	/**
