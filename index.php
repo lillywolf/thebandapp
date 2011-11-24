@@ -51,6 +51,10 @@
 	  	protected static function base64UrlDecode($input) {
 	    	return base64_decode(strtr($input, '-_', '+/'));
 	  	}	
+	
+	  	protected function getSignedRequestCookieName() {
+	    	return 'fbsr_'.$appId();
+	  	}
 		
 	  	/**
 	   	* Parses a signed_request and validates the signature.
