@@ -256,11 +256,10 @@
 		
 		window.fbAsyncInit = function() {
 			FB.init({
-		    	appId      : '<?php echo $facebook->getAppID() ?>', // App ID
-		    	// channelURL : '//simple-ocean-7178.herokuapp.com/fb_auth/channel.html', // Channel File
-		    	cookie     : true, // enable cookies to allow the server to access the session
-		    	oauth      : true, // enable OAuth 2.0
-		    	xfbml      : true  // parse XFBML
+		    	appId      : '<?php echo $facebook->getAppID() ?>', 
+		    	cookie     : true,
+		    	oauth      : true,
+		    	xfbml      : true 
 		  	});
 
 			alert("fb init complete");
