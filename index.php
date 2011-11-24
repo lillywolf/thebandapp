@@ -57,6 +57,8 @@
 		$config['secret'] = $appSecret;
 		$config['fileUpload'] = false; // optional	
 
+		session_start();
+		$_SESSION['var1'] = 'value1';
 		# $facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
 		# $this->getSignedRequest();
@@ -95,6 +97,7 @@
 		} else {
 			$out = "GET /fb_auth/ HTTP/1.1\r\n";
 			$out .= "Host: simple-ocean-7178.herokuapp.com\r\n";
+			$out .= "Cookie: PHPSESSID=" . $_COOKIE['PHPSESSID'] . "\r\n");
 			$out .= "Connection: Close\r\n\r\n";
 			$result = fwrite($fp, $out);
 			// fwrite($fp, "GET /fb_auth/ HTTP/1.1\r\n" );
@@ -104,7 +107,11 @@
 			print_r($result);
 			// fflush($fp);
 			fclose($fp);
-		}				
+		}	
+		
+		echo '<pre>';
+		print_r($_SESSION);
+		echo $_COOKIE['PHPSESSID'] . "\r\n";			
 	
 		?>
 	

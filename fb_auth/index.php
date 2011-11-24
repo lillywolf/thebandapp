@@ -17,10 +17,11 @@
 		$config['secret'] = $appSecret;
 		$config['fileUpload'] = false; // optional	
 		
-	    session_start();
-		error_log(var_export($_REQUEST, true));
-		// $facebook = new Facebook($config);	
-		// $user_id = $facebook->getUser();
+		session_start();
+		error_log(print_r($_SESSION, true));
+		
+		$facebook = new Facebook($config);	
+		$user_id = $facebook->getUser();
 	
 		if($user_id) {
 			error_log("found user id");
