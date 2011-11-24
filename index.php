@@ -59,10 +59,11 @@
 
 		session_start();
 		$_SESSION['var1'] = 'value1';
-		print_r("liked?? " . $_REQUEST['signed_request']['page']['liked']);
-		# $facebook = new Facebook($config);	
+		# print_r("liked?? " . $_REQUEST['signed_request']);
+		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
-		# $this->getSignedRequest();
+		$req = $facebook->getSignedRequest();
+		print_r($req);
 	
 		#####
 		# Connect to the database
