@@ -30,8 +30,13 @@
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
 		$req = $facebook->getSignedRequest();
-		$liked = $req['page']['liked'];
-		$downloads_enabled = $liked;
+		if ($req['page']['liked']) {
+			$liked = "true";
+			$downloads_enabled = "true";
+		} else {
+			$liked = "false";
+			$downloads_enabled = "false";
+		}
 		
 		?>
 		
@@ -106,17 +111,8 @@
 			$out .= "Cookie: PHPSESSID=" . $_COOKIE['PHPSESSID'] . "\r\n";
 			$out .= "Connection: Close\r\n\r\n";
 			$result = fwrite($fp, $out);
-			// fwrite($fp, "GET /fb_auth/ HTTP/1.1\r\n" );
-			// fwrite($fp, "Host: simple-ocean-7178.herokuapp.com\r\n");
-			// fwrite($fp, "Connection: Close\r\n");
-			// fwrite($fp, "\r\n");
-			print_r($result);
-			// fflush($fp);
 			fclose($fp);
-		}	
-		
-		echo '<pre>';
-		echo $_COOKIE['PHPSESSID'] . "\r\n";			
+		}				
 	
 		?>
 	
@@ -132,15 +128,7 @@
 		
 		window.onload = function() {
 		}
-		
-		// new Ajax.Request('fb_auth/index.php', {
-		//   method: 'get',
-		//   onSuccess: function(transport) {
-		// 	var notice = window.document.getElementById("notice");
-		//     notice.innerHTML = transport.responseText;
-		//   }
-		// });
-		
+
 		function preload() {
 			var opts = {
 			  lines: 10, // The number of lines to draw
@@ -202,6 +190,7 @@
 		}
 		
 		function songChanged(songUrl, likeBtnY) {
+			alert("update like btns");
 			updateLittleFacebookLikeButton(songUrl, likeBtnY);			
 			updateBigFacebookLikeButton(songUrl, likeBtnY);	
 			updateTweetButton(songUrl, likeBtnY);					
