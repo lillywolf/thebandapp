@@ -25,8 +25,6 @@
 		$config['secret'] = $appSecret;
 		$config['fileUpload'] = false; // optional	
 
-		session_start();
-		$_SESSION['var1'] = 'value1';
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
 		$req = $facebook->getSignedRequest();
@@ -264,11 +262,6 @@
 
 			alert("fb init complete");
 		  	// Additional initialization code here
-		 	FB.Event.subscribe('edge.create', function(response) {
-				if (response.indexOf(FB_PAGE_URL) != -1) {
-			 		window.location.reload();					
-				}
-			}
 			FB.Canvas.setSize({ width: 520, height: 1200 });			
 		};
 
