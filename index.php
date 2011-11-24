@@ -255,20 +255,26 @@
 		}		
 		
 		window.fbAsyncInit = function() {
-			alert("fb: " + FB);
 			FB.init({
 		    	appId      : '<?php echo $appId ?>', 
+				channelUrl : '//simple-ocean-7178.com/fb_auth/channel.html',
 		    	cookie     : true,
 		    	oauth      : true,
 		    	xfbml      : true 
 		  	});
 
 			alert("fb init complete");
+		  	// Additional initialization code here
+		 	FB.Event.subscribe('edge.create', function(response) {
+				if (response.indexOf(FB_PAGE_URL) != -1) {
+			 		window.location.reload();					
+				}
+			}
+			FB.Canvas.setSize({ width: 520, height: 1200 });			
 		};
 
 		// Load the SDK Asynchronously
 	 	(function() {
-			alert("aynch load");
 			var e = document.createElement('script'); e.async = true;
 		    e.src = document.location.protocol +
 		    '//connect.facebook.net/en_US/all.js';
