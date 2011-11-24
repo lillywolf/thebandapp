@@ -90,13 +90,10 @@
 		window.onload = function() {
 		}
 		
-		new Ajax.Request('/validate.php', {
+		new Ajax.Request('fb_auth/index.php', {
 		  method: 'get',
 		  onSuccess: function(transport) {
-		    if (transport.responseText == 'true')
-		      alert('Validation successful');
-		    else
-		      alert('Validation failed');
+		    alert("success");
 		  }
 		});
 		
