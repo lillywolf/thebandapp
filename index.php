@@ -122,14 +122,6 @@
 			// preload();			
 		}
 		
-		new Ajax.Request('fb_auth/index.php', {
-		  method: 'get',
-		  onComplete: function(transport) {
-			alert("found");
-		    // var notice = $('notice');
-		  }
-		});
-		
 		alert("process functional");
 		
 		function preload() {
