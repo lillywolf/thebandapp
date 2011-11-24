@@ -90,7 +90,16 @@
 		window.onload = function() {
 		}
 		
-		alert("process functional");
+		new Ajax.Request('/validate.php', {
+		  method: 'get',
+		  onSuccess: function(transport) {
+		    var notice = $('notice');
+		    if (transport.responseText == 'true')
+		      notice.update('Validation successful');
+		    else
+		      notice.update('Validation failed');
+		  }
+		});
 		
 		function preload() {
 			var opts = {
