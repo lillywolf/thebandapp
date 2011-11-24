@@ -39,7 +39,7 @@
 			$downloads_enabled = "false";
 		}
 		
-		public function getSignedRequest() {
+		function getSignedRequest() {
 	  		if (isset($_REQUEST['signed_request'])) {
 	        	$signedRequest = parseSignedRequest($_REQUEST['signed_request']);
 	      	} else if (isset($_COOKIE[getSignedRequestCookieName()])) {
@@ -48,11 +48,11 @@
 	    	return $signedRequest;
 	  	}	
 	
-	  	protected static function base64UrlDecode($input) {
+	  	function base64UrlDecode($input) {
 	    	return base64_decode(strtr($input, '-_', '+/'));
 	  	}	
 	
-	  	protected function getSignedRequestCookieName() {
+	  	function getSignedRequestCookieName() {
 	    	return 'fbsr_'.$appId();
 	  	}
 		
@@ -62,7 +62,7 @@
 	   	* @param string $signed_request A signed token
 	   	* @return array The payload inside it or null if the sig is wrong
 	   	*/
-	  	protected function parseSignedRequest($signed_request) {
+	  	function parseSignedRequest($signed_request) {
 	    	list($encoded_sig, $payload) = explode('.', $signed_request, 2);
 
 	    	// decode the data
