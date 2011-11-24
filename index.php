@@ -216,30 +216,30 @@
 			thisMovie("musicPlayer").updateDownloads(enable.toString());
 		}					
 
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId: '<?php echo $facebook->getAppID() ?>', 
-				cookie: true, 
-				xfbml: true,
-				oauth: true
-			});
-			FB.Event.subscribe('edge.create', function(response) {
-				if (response.indexOf(FB_PAGE_URL) != -1) {
-					window.location.reload();					
-				}
-				else
-				{
-					alert("not a page like!");
-				}
-			});	
-			FB.Canvas.setSize({ width: 520, height: 1200 });
-		};
-	    (function() {
-	      var e = document.createElement('script'); e.async = true;
-	      e.src = document.location.protocol +
-	        '//connect.facebook.net/en_US/all.js';
-	      document.getElementById('fb-root').appendChild(e);
-	    }());	
+		// window.fbAsyncInit = function() {
+		// 	FB.init({
+		// 		appId: '<?php echo $facebook->getAppID() ?>', 
+		// 		cookie: true, 
+		// 		xfbml: true,
+		// 		oauth: true
+		// 	});
+		// 	FB.Event.subscribe('edge.create', function(response) {
+		// 		if (response.indexOf(FB_PAGE_URL) != -1) {
+		// 			window.location.reload();					
+		// 		}
+		// 		else
+		// 		{
+		// 			alert("not a page like!");
+		// 		}
+		// 	});	
+		// 	FB.Canvas.setSize({ width: 520, height: 1200 });
+		// };
+		// 	    (function() {
+		// 	      var e = document.createElement('script'); e.async = true;
+		// 	      e.src = document.location.protocol +
+		// 	        '//connect.facebook.net/en_US/all.js';
+		// 	      document.getElementById('fb-root').appendChild(e);
+		// 	    }());	
 	
 	</script>
 	
