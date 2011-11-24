@@ -45,11 +45,7 @@
 			} else {
 				error_log("not liked");
 			}	
-			catch(FacebookApiException $e) {
-				$loginUrl = $facebook->getLoginUrl($params);			
-		        error_log($e->getType());
-		        error_log($e->getMessage());
-			}
+			error_log($signed_request);
 		}		
 
 	?>
