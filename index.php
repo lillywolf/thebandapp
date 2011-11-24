@@ -55,9 +55,9 @@
 		$config['secret'] = $appSecret;
 		$config['fileUpload'] = false; // optional	
 
-		$facebook = new Facebook($config);	
-		$user_id = $facebook->getUser();
-		getSignedRequest();
+		# $facebook = new Facebook($config);	
+		# $user_id = $facebook->getUser();
+		# $this->getSignedRequest();
 	
 		#####
 		# Connect to the database
@@ -87,7 +87,18 @@
 		 	}
 		}
 		print "</div>"; */	
-	
+		
+		$fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
+		if (!$fp) {
+		    echo "$errstr ($errno)<br />\n";
+		} else {
+			fwrite($fp, "GET /fb_auth.php HTTP/1.1\r\n");
+			fwrite($fp, "Host: simple-ocean-7178.herokuapp.com\r\n");
+			fwrite($fp, "Connection: close\r\n");
+			fwrite($fp, "\r\n");
+			fflush($fp);
+			fclose($fp);
+		}
 		?>
 	
     	<div id="fb-root"></div>
