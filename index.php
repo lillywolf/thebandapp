@@ -63,7 +63,7 @@
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
 		$req = $facebook->getSignedRequest();
-		print_r($req);
+		print_r($req['page']['liked']);
 	
 		#####
 		# Connect to the database
@@ -112,8 +112,6 @@
 		}	
 		
 		echo '<pre>';
-		print_r($_SESSION);
-		print_r($_REQUEST);
 		echo $_COOKIE['PHPSESSID'] . "\r\n";			
 	
 		?>
