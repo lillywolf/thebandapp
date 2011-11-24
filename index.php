@@ -130,6 +130,8 @@
 		  }
 		});
 		
+		alert("process functional");
+		
 		function preload() {
 			var opts = {
 			  lines: 10, // The number of lines to draw
