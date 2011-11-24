@@ -10,38 +10,6 @@
 	<!--script type="text/javascript" src="site/history/history.js"></script-->
 </head>	
 <body>
-		
-	<div id="page_heading_div" class="hidden"></div>
-	<div id="notice"></div>
-	<div id="flash">
-		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="880">
-		    <param name="movie" value="site/Main.swf">
-			<param name="allowFullScreen" value="true">
-			<param name="allowScriptAccess" value="always">
-			<param name="scale" value="noscale">
-			<param name="wmode" value="transparent">
-			<!--param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '"-->					
-            <!--[if !IE]>-->
-            <object type="application/x-shockwave-flash" data="site/Main.swf" id="musicPlayer" width="514" height="880">
-                <param name="quality" value="high" />
-                <param name="bgcolor" value="#ffffff" />
-                <param name="allowScriptAccess" value="always" />
-                <param name="allowFullScreen" value="true" />	
-				<param name="wmode" value="transparent" />
-				<!--param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '"-->					
-            <!--[if !IE]>-->
-            </object>				
-		</object>
-	</div>	
-	<div id="spinner"></div>
-	<span id="tweet"></span>
-	<span id="like"></span>
-	<span id="big_like"></span>
-	<iframe id="downloader-frame" frameborder="0"></iframe>
-	<span id="downloaders"></span>
-	<div id="extra-content">
-		<a href="https://twitter.com/lillywolf" class="twitter-follow-button" data-show-count="false">Follow @lillywolf</a>
-	<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->
 	
 		<?php
 
@@ -59,11 +27,47 @@
 
 		session_start();
 		$_SESSION['var1'] = 'value1';
-		# print_r("liked?? " . $_REQUEST['signed_request']);
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
 		$req = $facebook->getSignedRequest();
-		print_r($req['page']);
+		$liked = $req['page']['liked'];
+		$downloads_enabled = $liked;
+		
+		?>
+		
+		<div id="page_heading_div" class="hidden"></div>
+		<div id="notice"></div>
+		<div id="flash">
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="880">
+			    <param name="movie" value="site/Main.swf">
+				<param name="allowFullScreen" value="true">
+				<param name="allowScriptAccess" value="always">
+				<param name="scale" value="noscale">
+				<param name="wmode" value="transparent">
+				<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
+	            <!--[if !IE]>-->
+	            <object type="application/x-shockwave-flash" data="site/Main.swf" id="musicPlayer" width="514" height="880">
+	                <param name="quality" value="high" />
+	                <param name="bgcolor" value="#ffffff" />
+	                <param name="allowScriptAccess" value="always" />
+	                <param name="allowFullScreen" value="true" />	
+					<param name="wmode" value="transparent" />
+					<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
+	            <!--[if !IE]>-->
+	            </object>				
+			</object>
+		</div>	
+		<div id="spinner"></div>
+		<span id="tweet"></span>
+		<span id="like"></span>
+		<span id="big_like"></span>
+		<iframe id="downloader-frame" frameborder="0"></iframe>
+		<span id="downloaders"></span>
+		<div id="extra-content">
+			<a href="https://twitter.com/lillywolf" class="twitter-follow-button" data-show-count="false">Follow @lillywolf</a>
+		<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->		
+		
+		<?php
 	
 		#####
 		# Connect to the database
