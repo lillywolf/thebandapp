@@ -18,8 +18,7 @@
 		$config['fileUpload'] = false; // optional	
 		
 	    session_start();
-	    $code = $_REQUEST["code"];
-		error_log(print_r($_REQUEST, true));
+		error_log(var_export($_REQUEST, true));
 		// $facebook = new Facebook($config);	
 		// $user_id = $facebook->getUser();
 	
