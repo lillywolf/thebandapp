@@ -39,7 +39,7 @@
 		?>
 		
 		<div id="page_heading_div" class="hidden"></div>
-		<div id="notice"><?php echo $liked ?></div>
+		<div id="notice"></div>
 		<div id="flash">
 			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="880">
 			    <param name="movie" value="site/Main.swf">
@@ -119,7 +119,7 @@
 
 	<script type="text/javascript">
 	
-		// FB_PAGE_URL = <?php echo $fbPageUrl; ?>
+		fbPageUrl = '<?php echo $fbPageUrl; ?>';
 
 		var spinner;
 		preload();
@@ -262,7 +262,12 @@
 
 			alert("fb init complete");
 		  	// Additional initialization code here
-			FB.Canvas.setSize({ width: 520, height: 1200 });			
+			FB.Canvas.setSize({ width: 520, height: 1200 });
+			FB.Event.subscribe('edge.create', function(response) {
+				if (response.indexOf(fbPageUrl) != -1) {
+			 		window.location.reload();					
+				}
+			}			
 		};
 
 		// Load the SDK Asynchronously
