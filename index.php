@@ -63,7 +63,7 @@
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
 		$req = $facebook->getSignedRequest();
-		print_r($req['page']['liked']);
+		print_r($req['page']);
 	
 		#####
 		# Connect to the database
