@@ -93,11 +93,10 @@
 		new Ajax.Request('/validate.php', {
 		  method: 'get',
 		  onSuccess: function(transport) {
-		    var notice = $('notice');
 		    if (transport.responseText == 'true')
-		      notice.update('Validation successful');
+		      alert('Validation successful');
 		    else
-		      notice.update('Validation failed');
+		      alert('Validation failed');
 		  }
 		});
 		
