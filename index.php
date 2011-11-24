@@ -255,6 +255,7 @@
 		window.fbAsyncInit = function() {
 			FB.init({
 		    	appId      : '<?php echo $appId ?>', 
+				channelURL : 'simple-ocean-7178.herokuapp.com/fb_auth/channel.html',
 		    	cookie     : true,
 		    	oauth      : true,
 		    	xfbml      : true 
@@ -264,7 +265,9 @@
 		  	// Additional initialization code here
 			FB.Canvas.setSize({ width: 520, height: 1200 });
 			FB.Event.subscribe('edge.create', function(response) {
-				alert("like clicked");
+				if (response.indexOf(fbPageUrl) != -1) {
+			 		window.location.reload();					
+				}
 			});			
 		};
 
