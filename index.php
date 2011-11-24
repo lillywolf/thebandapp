@@ -93,7 +93,7 @@
 		new Ajax.Request('fb_auth/index.php', {
 		  method: 'get',
 		  onSuccess: function(transport) {
-		    alert(transport);
+		    alert(transport.responseText);
 		  }
 		});
 		
