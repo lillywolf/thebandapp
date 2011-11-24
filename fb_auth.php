@@ -19,34 +19,31 @@
 
 		$facebook = new Facebook($config);	
 		$user_id = $facebook->getUser();
-		$this->getSignedRequest();
 	
-		function getSignedRequest() {
-			if($user_id) {
-				try {
-					$user_profile = $facebook->api('/me', 'GET');	
-					$signed_request = $facebook->getSignedRequest();
-					if ($signed_request['page']['liked']) { 
-						echo '<script>alert("got req");</script>';
-					} else {
-						echo '<script>alert("got req");</script>';
-					}					
-				}
-				catch(FacebookApiException $e) {
-					$loginUrl = $facebook->getLoginUrl($params);			
-			        error_log($e->getType());
-			        error_log($e->getMessage());			
-				}	
-			}
-			else {		
+		if($user_id) {
+			try {
+				$user_profile = $facebook->api('/me', 'GET');	
 				$signed_request = $facebook->getSignedRequest();
 				if ($signed_request['page']['liked']) { 
 					echo '<script>alert("got req");</script>';
 				} else {
 					echo '<script>alert("got req");</script>';
-				}	
-			}		
-		}	
+				}					
+			}
+			catch(FacebookApiException $e) {
+				$loginUrl = $facebook->getLoginUrl($params);			
+		        error_log($e->getType());
+		        error_log($e->getMessage());			
+			}	
+		}
+		else {		
+			$signed_request = $facebook->getSignedRequest();
+			if ($signed_request['page']['liked']) { 
+				echo '<script>alert("got req");</script>';
+			} else {
+				echo '<script>alert("got req");</script>';
+			}	
+		}		
 
 	?>
 	
