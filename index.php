@@ -59,6 +59,7 @@
 
 		session_start();
 		$_SESSION['var1'] = 'value1';
+		$code = $_REQUEST["code"];
 		# $facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
 		# $this->getSignedRequest();
@@ -111,6 +112,7 @@
 		
 		echo '<pre>';
 		print_r($_SESSION);
+		print_r($_REQUEST);
 		echo $_COOKIE['PHPSESSID'] . "\r\n";			
 	
 		?>
