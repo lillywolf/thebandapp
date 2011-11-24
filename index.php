@@ -13,7 +13,7 @@
 	
 		<?php
 
-		# require_once('php-sdk/src/facebook.php');
+		require_once('php-sdk/src/facebook.php');
 
 		$appId = '107796503671';
 		$appSecret = '10cc0163136a373aa6192f6ceafda96e';
@@ -25,64 +25,16 @@
 		$config['secret'] = $appSecret;
 		$config['fileUpload'] = false; // optional	
 
-		# $facebook = new Facebook($config);	
+		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
-		# $req = $facebook->getSignedRequest();
-		session_start();
-		$req = getSignedRequest();
-		print_r($req);
+		$req = $facebook->getSignedRequest();
 		if ($req['page']['liked']) {
 			$liked = "true";
 			$downloads_enabled = "true";
 		} else {
 			$liked = "false";
 			$downloads_enabled = "false";
-		}
-		
-		function getSignedRequest() {
-	  		if (isset($_REQUEST['signed_request'])) {
-	        	$signedRequest = parseSignedRequest($_REQUEST['signed_request']);
-	      	} else if (isset($_COOKIE[getSignedRequestCookieName()])) {
-	        	$signedRequest = parseSignedRequest($_COOKIE[getSignedRequestCookieName()]);
-	      	}
-	    	return $signedRequest;
-	  	}	
-	
-	  	function base64UrlDecode($input) {
-	    	return base64_decode(strtr($input, '-_', '+/'));
-	  	}	
-	
-	  	function getSignedRequestCookieName() {
-	    	return 'fbsr_'.$appId();
-	  	}
-		
-	  	/**
-	   	* Parses a signed_request and validates the signature.
-	   	*
-	   	* @param string $signed_request A signed token
-	   	* @return array The payload inside it or null if the sig is wrong
-	   	*/
-	  	function parseSignedRequest($signed_request) {
-	    	list($encoded_sig, $payload) = explode('.', $signed_request, 2);
-
-	    	// decode the data
-	    	$sig = base64UrlDecode($encoded_sig);
-	    	$data = json_decode(base64UrlDecode($payload), true);
-
-	    	if (strtoupper($data['algorithm']) !== 'HMAC-SHA256') {
-	      		# self::errorLog('Unknown algorithm. Expected HMAC-SHA256');
-	      		return null;
-	    	}
-	
-	    	// check sig
-	    	$expected_sig = hash_hmac('sha256', $payload, $appSecret, $raw = true);
-	    	if ($sig !== $expected_sig) {
-	      		# self::errorLog('Bad Signed JSON signature!');
-	      		return null;
-	    	}
-
-	    	return $data;
-	  	}		
+		}		
 		
 		?>
 		
