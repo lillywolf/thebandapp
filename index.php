@@ -145,6 +145,7 @@
 		
 		function stopPreload() {
 			spinner.stop();
+			initializeJS();
 			window.document.getElementById('spinner').style.margin = "0px";			
 			window.document.getElementById('spinner').style.visibility = "hidden";
 			shiftElements();
@@ -252,32 +253,34 @@
 			thisMovie("musicPlayer").updateDownloads(enable.toString());
 		}		
 		
-		window.fbAsyncInit = function() {
-			FB.init({
-		    	appId      : '<?php echo $appId ?>', 
-				channelURL : 'simple-ocean-7178.herokuapp.com/fb_auth/channel.html',
-		    	cookie     : true,
-		    	oauth      : true,
-		    	xfbml      : true 
-		  	});
+		function initializeJS() {
+			window.fbAsyncInit = function() {
+				FB.init({
+			    	appId      : '<?php echo $appId ?>', 
+					channelURL : 'simple-ocean-7178.herokuapp.com/fb_auth/channel.html',
+			    	cookie     : true,
+			    	oauth      : true,
+			    	xfbml      : true 
+			  	});
 
-			alert("fb init complete");
-		  	// Additional initialization code here
-			FB.Canvas.setSize({ width: 520, height: 1200 });
-			FB.Event.subscribe('edge.create', function(response) {
-				if (response.indexOf(fbPageUrl) != -1) {
-			 		window.location.reload();					
-				}
-			});			
-		};
+				alert("fb init complete");
+			  	// Additional initialization code here
+				FB.Canvas.setSize({ width: 520, height: 1200 });
+				FB.Event.subscribe('edge.create', function(response) {
+					if (response.indexOf(fbPageUrl) != -1) {
+				 		window.location.reload();					
+					}
+				});			
+			};
 
-		// Load the SDK Asynchronously
-	 	(function() {
-			var e = document.createElement('script'); e.async = true;
-		    e.src = document.location.protocol +
-		    '//connect.facebook.net/en_US/all.js';
-			document.getElementById('fb-root').appendChild(e);
-		}());
+			// Load the SDK Asynchronously
+		 	(function() {
+				var e = document.createElement('script'); e.async = true;
+			    e.src = document.location.protocol +
+			    '//connect.facebook.net/en_US/all.js';
+				document.getElementById('fb-root').appendChild(e);
+			}());			
+		}
 	
 	</script>
 	
