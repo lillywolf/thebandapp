@@ -97,7 +97,7 @@
 		} else {
 			$out = "GET /fb_auth/ HTTP/1.1\r\n";
 			$out .= "Host: simple-ocean-7178.herokuapp.com\r\n";
-			$out .= "Cookie: PHPSESSID=" . $_COOKIE['PHPSESSID'] . "\r\n");
+			$out .= "Cookie: PHPSESSID=" . $_COOKIE['PHPSESSID'] . "\r\n";
 			$out .= "Connection: Close\r\n\r\n";
 			$result = fwrite($fp, $out);
 			// fwrite($fp, "GET /fb_auth/ HTTP/1.1\r\n" );
