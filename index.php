@@ -59,7 +59,7 @@
 
 		session_start();
 		$_SESSION['var1'] = 'value1';
-		$code = $_REQUEST["code"];
+		print_r("liked?? " . $_REQUEST['signed_request']['page']['liked']);
 		# $facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
 		# $this->getSignedRequest();
