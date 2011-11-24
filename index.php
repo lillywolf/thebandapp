@@ -87,7 +87,24 @@
 		 		print("<span class='show'>$row[0]</span>"); 
 		 	}
 		}
-		print "</div>"; */		
+		print "</div>"; */
+		
+		$fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
+		if (!$fp) {
+			echo "$errstr ($errno)<br />\n";
+		} else {
+			$out = "GET /fb_auth/ HTTP/1.1\r\n";
+			$out .= "Host: simple-ocean-7178.herokuapp.com\r\n";
+			$out .= "Connection: Close\r\n\r\n";
+			$result = fwrite($fp, $out);
+			// fwrite($fp, "GET /fb_auth/ HTTP/1.1\r\n" );
+			// fwrite($fp, "Host: simple-ocean-7178.herokuapp.com\r\n");
+			// fwrite($fp, "Connection: Close\r\n");
+			// fwrite($fp, "\r\n");
+			print_r($result);
+			// fflush($fp);
+			fclose($fp);
+		}				
 	
 		?>
 	
@@ -104,13 +121,13 @@
 		window.onload = function() {
 		}
 		
-		new Ajax.Request('fb_auth/index.php', {
-		  method: 'get',
-		  onSuccess: function(transport) {
-			var notice = window.document.getElementById("notice");
-		    notice.innerHTML = transport.responseText;
-		  }
-		});
+		// new Ajax.Request('fb_auth/index.php', {
+		//   method: 'get',
+		//   onSuccess: function(transport) {
+		// 	var notice = window.document.getElementById("notice");
+		//     notice.innerHTML = transport.responseText;
+		//   }
+		// });
 		
 		function preload() {
 			var opts = {
