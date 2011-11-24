@@ -125,11 +125,7 @@
 		new Ajax.Request('fb_auth/index.php', {
 		  method: 'get',
 		  onComplete: function(transport) {
-			if (200 == transport.status) {
-				alert("blech");
-			} else {
-				alert("cool");
-			}
+			alert("found");
 		    // var notice = $('notice');
 		  }
 		});
