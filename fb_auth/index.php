@@ -19,7 +19,7 @@
 		
 	    session_start();
 	    $code = $_REQUEST["code"];
-		error_log($_REQUEST);
+		error_log(print_r($_REQUEST, true));
 		// $facebook = new Facebook($config);	
 		// $user_id = $facebook->getUser();
 	
