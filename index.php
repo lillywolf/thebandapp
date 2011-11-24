@@ -41,7 +41,7 @@
 		?>
 		
 		<div id="page_heading_div" class="hidden"></div>
-		<div id="notice"></div>
+		<div id="notice"><?php echo $liked ?></div>
 		<div id="flash">
 			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="880">
 			    <param name="movie" value="site/Main.swf">
@@ -49,7 +49,7 @@
 				<param name="allowScriptAccess" value="always">
 				<param name="scale" value="noscale">
 				<param name="wmode" value="transparent">
-				<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
+				<param name="flashvars" value="downloads_enabled=<?php echo $downloads_enabled ?>&liked=<?php echo $liked ?>">					
 	            <!--[if !IE]>-->
 	            <object type="application/x-shockwave-flash" data="site/Main.swf" id="musicPlayer" width="514" height="880">
 	                <param name="quality" value="high" />
@@ -57,7 +57,7 @@
 	                <param name="allowScriptAccess" value="always" />
 	                <param name="allowFullScreen" value="true" />	
 					<param name="wmode" value="transparent" />
-					<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
+					<param name="flashvars" value="downloads_enabled=<?php echo $downloads_enabled ?>&liked=<?php echo $liked ?>">					
 	            <!--[if !IE]>-->
 	            </object>				
 			</object>
