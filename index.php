@@ -265,7 +265,7 @@
 			FB.Canvas.setSize({ width: 520, height: 1200 });
 			FB.Event.subscribe('edge.create', function(response) {
 				alert("like clicked");
-			}			
+			});			
 		};
 
 		// Load the SDK Asynchronously
