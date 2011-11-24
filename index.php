@@ -66,8 +66,8 @@
 	    	list($encoded_sig, $payload) = explode('.', $signed_request, 2);
 
 	    	// decode the data
-	    	$sig = self::base64UrlDecode($encoded_sig);
-	    	$data = json_decode(self::base64UrlDecode($payload), true);
+	    	$sig = base64UrlDecode($encoded_sig);
+	    	$data = json_decode(base64UrlDecode($payload), true);
 
 	    	if (strtoupper($data['algorithm']) !== 'HMAC-SHA256') {
 	      		# self::errorLog('Unknown algorithm. Expected HMAC-SHA256');
