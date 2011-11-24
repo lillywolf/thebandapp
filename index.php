@@ -124,8 +124,12 @@
 		
 		new Ajax.Request('fb_auth/index.php', {
 		  method: 'get',
-		  onSuccess: function() {
-			alert("returned!");
+		  onComplete: function(transport) {
+			if (200 == transport.status) {
+				alert("blech");
+			} else {
+				alert("cool");
+			}
 		    // var notice = $('notice');
 		  }
 		});
