@@ -92,7 +92,7 @@
 		if (!$fp) {
 		    echo "$errstr ($errno)<br />\n";
 		} else {
-			fwrite($fp, "GET /fb_auth.php/ HTTP/1.1\r\n");
+			fwrite($fp, "GET /fb_auth/ HTTP/1.1\r\n");
 			fwrite($fp, "Host: simple-ocean-7178.herokuapp.com\r\n");
 			fwrite($fp, "Connection: close\r\n");
 			fwrite($fp, "\r\n");
