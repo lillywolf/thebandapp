@@ -5,7 +5,7 @@
 	<script type="text/javascript" src="scripts/spin.js"></script>	
 	<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="index.css" />
+	<link rel="stylesheet" type="text/css" href="site/index.css" />
 	<!--script type="text/javascript" src="site/history/history.js"></script-->
 </head>	
 <body>
@@ -230,24 +230,24 @@
 	</script>
 
 	<script type="text/javascript">
-	    window.fbAsyncInit = function() {
-			FB.init({
-	        	appId: '<?php echo $facebook->getAppID() ?>', 
-	        	cookie: true, 
-	        	xfbml: true,
-	        	oauth: true
-	      	});
-			FB.Event.subscribe('edge.create', function(response) {
-				if (response.indexOf(FB_PAGE_URL) != -1) {
-		        	window.location.reload();					
-				}
-				else
-				{
-					alert("not a page like!");
-				}
-			});	
-			FB.Canvas.setSize({ width: 520, height: 1200 });
-	    };
+			// 	    window.fbAsyncInit = function() {
+			// FB.init({
+			// 	        	appId: '<?php echo $facebook->getAppID() ?>', 
+			// 	        	cookie: true, 
+			// 	        	xfbml: true,
+			// 	        	oauth: true
+			// 	      	});
+			// FB.Event.subscribe('edge.create', function(response) {
+			// 	if (response.indexOf(FB_PAGE_URL) != -1) {
+			// 		        	window.location.reload();					
+			// 	}
+			// 	else
+			// 	{
+			// 		alert("not a page like!");
+			// 	}
+			// });	
+			// FB.Canvas.setSize({ width: 520, height: 1200 });
+			// 	    };
 	    (function() {
 	      var e = document.createElement('script'); e.async = true;
 	      e.src = document.location.protocol +
