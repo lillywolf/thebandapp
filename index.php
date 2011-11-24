@@ -107,7 +107,7 @@
 		new Ajax.Request('fb_auth/index.php', {
 		  method: 'get',
 		  onSuccess: function(transport) {
-		    $('notice').update(transport.responseText);
+		    window.getElementById("notice").appendText(transport.responseText.toString());
 		  }
 		});
 		
