@@ -4,7 +4,7 @@
 	<script type="text/javascript" src="site/FBJSBridge.js"></script>
 	<script type="text/javascript" src="scripts/spin.js"></script>	
 	<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>	
-	<script type="text/javascript" src-"scripts/prototype.js"></script>
+	<script type="text/javascript" src="scripts/prototype.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="site/index.css" />
 	<!--script type="text/javascript" src="site/history/history.js"></script-->
