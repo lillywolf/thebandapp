@@ -102,7 +102,7 @@
 		}
 		print "</div>"; */
 		
-		$fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
+		/* $fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
 		if (!$fp) {
 			echo "$errstr ($errno)<br />\n";
 		} else {
@@ -112,7 +112,7 @@
 			$out .= "Connection: Close\r\n\r\n";
 			$result = fwrite($fp, $out);
 			fclose($fp);
-		}				
+		} */				
 	
 		?>
 	
@@ -258,12 +258,12 @@
 			FB.init({
 		    	appId      : '<?php echo $facebook->getAppID() ?>', // App ID
 		    	channelURL : '//simple-ocean-7178.herokuapp.com/fb_auth/channel.html', // Channel File
-		    	status     : true, // check login status
 		    	cookie     : true, // enable cookies to allow the server to access the session
 		    	oauth      : true, // enable OAuth 2.0
 		    	xfbml      : true  // parse XFBML
 		  	});
 
+			alert("fb init complete");
 		  	// Additional initialization code here
 		 	FB.Event.subscribe('edge.create', function(response) {
 				if (response.indexOf(FB_PAGE_URL) != -1) {
