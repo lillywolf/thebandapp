@@ -12,6 +12,7 @@
 <body>
 		
 	<div id="page_heading_div" class="hidden"></div>
+	<div id="notice"></div>
 	<div id="flash">
 		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="880">
 		    <param name="movie" value="site/Main.swf">
@@ -74,6 +75,19 @@
 		  extract(parse_url($_ENV["DATABASE_URL"]));
 		  return "user=$user password=$pass host=$host dbname=" . substr($path, 1);
 		}
+		# Here we establish the connection
+		# $pg_conn = pg_connect(pg_connection_string_from_database_url());
+		# Get shows data
+		# $result = pg_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
+		# Print shows data
+		# print "<div id='shows'><img id='shows-header' src='/images/headers/shows_header.png'/>";
+		/* if (!pg_num_rows($result)) {
+		} else {
+			while ($row = pg_fetch_row($result)) { 
+		 		print("<span class='show'>$row[0]</span>"); 
+		 	}
+		}
+		print "</div>"; */		
 	
 		?>
 	
@@ -93,7 +107,7 @@
 		new Ajax.Request('fb_auth/index.php', {
 		  method: 'get',
 		  onSuccess: function(transport) {
-		    alert(transport.responseText);
+		    $('notice').update(transport.responseText);
 		  }
 		});
 		
