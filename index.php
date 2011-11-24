@@ -257,7 +257,6 @@
 		window.fbAsyncInit = function() {
 			FB.init({
 		    	appId      : '<?php echo $appId ?>', 
-				channelUrl : '//simple-ocean-7178.com/fb_auth/channel.html',
 		    	cookie     : true,
 		    	oauth      : true,
 		    	xfbml      : true 
