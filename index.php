@@ -43,7 +43,7 @@
 	  		if (isset($_REQUEST['signed_request'])) {
 	        	$signedRequest = parseSignedRequest($_REQUEST['signed_request']);
 	      	} else if (isset($_COOKIE[getSignedRequestCookieName()])) {
-	        	$signedRequest = parseSignedRequest($_COOKIE[$this->getSignedRequestCookieName()]);
+	        	$signedRequest = parseSignedRequest($_COOKIE[getSignedRequestCookieName()]);
 	      	}
 	    	return $signedRequest;
 	  	}	
