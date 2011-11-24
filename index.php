@@ -96,8 +96,9 @@
 			fwrite($fp, "Host: simple-ocean-7178.herokuapp.com\r\n");
 			fwrite($fp, "Connection: close\r\n");
 			fwrite($fp, "\r\n");
-			$line = fgets($fp, 1024);
-			print_r($line);
+			while (!feof($fp)) {
+				echo fgets($fp, 128);
+			}
 			fflush($fp);
 			fclose($fp);
 		}
