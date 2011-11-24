@@ -124,6 +124,7 @@
 		new Ajax.Request('/fb_auth/index.php', {
 		  method: 'get',
 		  onSuccess: function(transport) {
+			alert("returned!");
 		    var notice = $('notice');
 		    if (transport.responseText == 'true')
 		      notice.update('Validation successful');
