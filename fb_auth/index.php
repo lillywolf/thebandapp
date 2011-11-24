@@ -16,9 +16,12 @@
 		$config['appId'] = $appId;
 		$config['secret'] = $appSecret;
 		$config['fileUpload'] = false; // optional	
-
-		$facebook = new Facebook($config);	
-		$user_id = $facebook->getUser();
+		
+	    session_start();
+	    $code = $_REQUEST["code"];
+		error_log($code);
+		// $facebook = new Facebook($config);	
+		// $user_id = $facebook->getUser();
 	
 		if($user_id) {
 			error_log("found user id");
