@@ -56,8 +56,8 @@
 		$config['fileUpload'] = false; // optional	
 
 		$facebook = new Facebook($config);	
-		# $user_id = $facebook->getUser();
-		# getSignedRequest();
+		$user_id = $facebook->getUser();
+		getSignedRequest();
 	
 		#####
 		# Connect to the database
@@ -75,18 +75,18 @@
 		}
 
 		# Here we establish the connection
-		$pg_conn = pg_connect(pg_connection_string_from_database_url());
+		# $pg_conn = pg_connect(pg_connection_string_from_database_url());
 		# Get shows data
-		$result = pg_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
+		# $result = pg_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
 		# Print shows data
-		print "<div id='shows'><img id='shows-header' src='/images/headers/shows_header.png'/>";
-		if (!pg_num_rows($result)) {
+		# print "<div id='shows'><img id='shows-header' src='/images/headers/shows_header.png'/>";
+		/* if (!pg_num_rows($result)) {
 		} else {
 	   		while ($row = pg_fetch_row($result)) { 
 		 		print("<span class='show'>$row[0]</span>"); 
 		 	}
 		}
-		print "</div>";	
+		print "</div>"; */	
 	
 		?>
 	
@@ -227,10 +227,7 @@
 		function updateSongDownloads(enable) {
 			thisMovie("musicPlayer").updateDownloads(enable.toString());
 		}					
-	
-	</script>
 
-	<script type="text/javascript">
 		window.fbAsyncInit = function() {
 			FB.init({
 				appId: '<?php echo $facebook->getAppID() ?>', 
@@ -255,6 +252,7 @@
 	        '//connect.facebook.net/en_US/all.js';
 	      document.getElementById('fb-root').appendChild(e);
 	    }());	
+	
 	</script>
 	
 	<?php
