@@ -92,11 +92,15 @@
 		if (!$fp) {
 		    echo "$errstr ($errno)<br />\n";
 		} else {
-			fwrite($fp, "GET /fb_auth/ HTTP/1.1\r\n");
-			fwrite($fp, "Host: simple-ocean-7178.herokuapp.com\r\n");
-			fwrite($fp, "Connection: close\r\n");
-			fwrite($fp, "\r\n");
-			echo fread($fp, 26);
+			$out = "GET /fb_auth/ HTTP/1.1\r\n";
+			$out .= "Host: simple-ocean-7178.herokuapp.com\r\n";
+			$out .= "Connection: Close\r\n\r\n";
+			$result = fwrite($fp, $out);
+			// fwrite($fp, "GET /fb_auth/ HTTP/1.1\r\n" );
+			// fwrite($fp, "Host: simple-ocean-7178.herokuapp.com\r\n");
+			// fwrite($fp, "Connection: Close\r\n");
+			// fwrite($fp, "\r\n");
+			print_r($result);
 			fflush($fp);
 			fclose($fp);
 		}
