@@ -92,6 +92,7 @@
 		if (!$fp) {
 		    echo "$errstr ($errno)<br />\n";
 		} else {
+			print_r("socket success");
 			fwrite($fp, "GET /fb_auth.php HTTP/1.1\r\n");
 			fwrite($fp, "Host: simple-ocean-7178.herokuapp.com\r\n");
 			fwrite($fp, "Connection: close\r\n");
