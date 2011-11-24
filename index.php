@@ -108,7 +108,6 @@
 		  method: 'get',
 		  onSuccess: function(transport) {
 			var notice = window.document.getElementById("notice");
-			alert(notice);
 		    notice.innerHTML = transport.responseText;
 		  }
 		});

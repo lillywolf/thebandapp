@@ -25,9 +25,9 @@
 				$user_profile = $facebook->api('/me', 'GET');	
 				$signed_request = $facebook->getSignedRequest();
 				if ($signed_request['page']['liked']) { 
-					echo '<script>alert("got req");</script>';
+					echo 'liked';
 				} else {
-					echo '<script>alert("got req");</script>';
+					echo 'not liked';
 				}					
 			}
 			catch(FacebookApiException $e) {
@@ -39,9 +39,9 @@
 		else {		
 			$signed_request = $facebook->getSignedRequest();
 			if ($signed_request['page']['liked']) { 
-				echo '<script>alert("got req");</script>';
+				echo 'liked';
 			} else {
-				echo '<script>alert("got req");</script>';
+				echo 'not liked';
 			}	
 		}		
 
