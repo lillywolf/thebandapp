@@ -255,25 +255,20 @@
 		}		
 		
 		window.fbAsyncInit = function() {
+			alert("fb: " + FB);
 			FB.init({
-		    	appId      : '<?php echo $facebook->getAppID() ?>', 
+		    	appId      : '<?php echo $appId ?>', 
 		    	cookie     : true,
 		    	oauth      : true,
 		    	xfbml      : true 
 		  	});
 
 			alert("fb init complete");
-		  	// Additional initialization code here
-		 	FB.Event.subscribe('edge.create', function(response) {
-				if (response.indexOf(FB_PAGE_URL) != -1) {
-			 		window.location.reload();					
-				}
-			}
-			FB.Canvas.setSize({ width: 520, height: 1200 });
 		};
 
 		// Load the SDK Asynchronously
 	 	(function() {
+			alert("aynch load");
 			var e = document.createElement('script'); e.async = true;
 		    e.src = document.location.protocol +
 		    '//connect.facebook.net/en_US/all.js';
@@ -282,89 +277,7 @@
 	
 	</script>
 	
-	<?php
-	
-	// function printSwf($liked, $downloads_enabled) {
-	// 	echo '<div id="flash">
-	// 		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="880">
-	// 		    <param name="movie" value="site/Main.swf">
-	// 			<param name="allowFullScreen" value="true">
-	// 			<param name="allowScriptAccess" value="always">
-	// 			<param name="scale" value="noscale">
-	// 			<param name="wmode" value="transparent">
-	// 			<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
-	//             <!--[if !IE]>-->
-	//             <object type="application/x-shockwave-flash" data="site/Main.swf" id="musicPlayer" width="514" height="880">
-	//                 <param name="quality" value="high" />
-	//                 <param name="bgcolor" value="#ffffff" />
-	//                 <param name="allowScriptAccess" value="always" />
-	//                 <param name="allowFullScreen" value="true" />	
-	// 				<param name="wmode" value="transparent" />
-	// 				<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
-	// 		    <!--embed src="site/Main.swf" width="514" height="880">
-	// 		    </embed-->
-	//             <!--[if !IE]>-->
-	//             </object>				
-	// 		</object>
-	// 	</div>';
-	// }
-	
-	function getSignedRequest() {
-		if($user_id) {
-			try {
-				$user_profile = $facebook->api('/me', 'GET');	
-				$signed_request = $facebook->getSignedRequest();
-				if ($signed_request['page']['liked']) { 
-					echo '<script>alert("got req"); updateSongDownloads("true");</script>';
-				} else {
-					echo '<script>alert("got req"); updateSongDownloads("false");</script>';
-					?>
-
-					<script type="text/javascript">
-
-						FB.Event.subscribe('edge.create',
-						    function(response) {
-								if (response.indexOf(FB_PAGE_URL) != -1) {
-						        	window.location.reload();					
-								} else {
-									alert("not a page like!");
-								}					    
-							}
-						);								
-					</script>				
-
-					<?php
-				}					
-			}
-			catch(FacebookApiException $e) {
-				$loginUrl = $facebook->getLoginUrl($params);			
-		        error_log($e->getType());
-		        error_log($e->getMessage());			
-			}	
-		}
-		else {		
-			$signed_request = $facebook->getSignedRequest();
-			if ($signed_request['page']['liked']) { 
-				# printSwf("true", "true");
-				echo '<script>alert("got req"); updateSongDownloads("true");</script>';
-			} else {
-				# printSwf("false", "false");
-				echo '<script>alert("got req"); updateSongDownloads("false");</script>';
-			}	
-
-			# FOR ADMIN PANEL
-
-			$state = md5(uniqid(rand(), TRUE));
-			$scope = 'email,publish_stream,manage_pages';
-			$home = getHome();
-			$authorize_url = "https://www.facebook.com/dialog/oauth?client_id=$appId" .
-			      	"&redirect_uri=$home&state=" . $state . "&scope=$scope";		
-			      	echo("<script> top.location.href='" . $authorize_url . "'</script>");
-
-			# Use this for non-facebook canvas page (i.e. Facebook Connect)		
-			header('Location:' . $facebook->getLoginURL());
-		}		
-	}
+<?php
 	
 	/**
 	 * @return the home URL for this site
