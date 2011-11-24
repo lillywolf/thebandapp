@@ -5,96 +5,32 @@
 	<script type="text/javascript" src="scripts/spin.js"></script>	
 	<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="index.css" />
 	<!--script type="text/javascript" src="site/history/history.js"></script-->
-	
-	<style>
-		body {
-			margin: 0px;
-			overflow-y: hidden;
-		}
-		#flashContent {
-			
-		}
-		#fb-root {
-			overflow-y: hidden;
-		}
-		#tweet {
-			position: absolute;
-			z-index: 6;
-		}
-		#like {
-			position: absolute;
-			z-index: 5;
-		}
-		#big_like {
-			position: absolute;
-		}
-		#spinner {
-			margin: 150px 0;
-		}
-		#extra-content {
-			position: absolute;
-		}
-		.twitter-follow-button {
-			margin: 15px 0;
-		}
-		a.soundcloud-badge:hover {
-			background-position: bottom left !important;
-		}
-		*html a.soundcloud-badge {
-			background-image: none !important; 
-			filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='(http://a1.sndcdn.com/images/badges/fmonsc/horizontal/dark-orange.png?6485e1c)', sizingMethod='crop') !important;
-		}	
-		.soundcloud-badge {
-			text-align: left; 
-			display: block; 
-			margin: 0 auto 4px auto; 
-			width: 246px; 
-			height: 27px; 
-			font-size: 11px; 
-			padding: 36px 0 0 104px; 
-			background: transparent url(http://a1.sndcdn.com/images/badges/fmonsc/horizontal/dark-orange.png?6485e1c) top left no-repeat; 
-			color: #ffffff; 
-			text-decoration: none; 
-			font-family: "Lucida Grande", Helvetica, Arial, sans-serif; 
-			line-height: 1.3em; 
-			outline: 0;			
-		}
-		#soundcloud-badge-inner {
-			display: block; 
-			width: 230px; 
-			white-space: nowrap; 
-			height: 20px; 
-			margin: 0 0 0 0; 
-			overflow: hidden; 
-			-o-text-overflow: ellipsis; 
-			text-overflow: ellipsis;			
-		}
-		#downloader-frame {
-			visibility: hidden;
-			height: 0px;
-		}
-		#shows {
-			font-family: Arial;
-			color: #5E5751;
-			font-size: 13px;
-			position: absolute;
-		}
-		.show {
-			margin: 5px 15px;
-		}
-		#shows-header {
-			margin-bottom: 10px;
-		}
-		#flash {
-			position: absolute;
-			top: 0px;
-		}
-	</style>
 </head>	
 <body>
 		
 	<div id="page_heading_div" class="hidden"></div>
+	<div id="flash">
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="880">
+		    <param name="movie" value="site/Main.swf">
+			<param name="allowFullScreen" value="true">
+			<param name="allowScriptAccess" value="always">
+			<param name="scale" value="noscale">
+			<param name="wmode" value="transparent">
+			<!--param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '"-->					
+            <!--[if !IE]>-->
+            <object type="application/x-shockwave-flash" data="site/Main.swf" id="musicPlayer" width="514" height="880">
+                <param name="quality" value="high" />
+                <param name="bgcolor" value="#ffffff" />
+                <param name="allowScriptAccess" value="always" />
+                <param name="allowFullScreen" value="true" />	
+				<param name="wmode" value="transparent" />
+				<!--param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '"-->					
+            <!--[if !IE]>-->
+            </object>				
+		</object>
+	</div>	
 	<div id="spinner"></div>
 	<span id="tweet"></span>
 	<span id="like"></span>
@@ -104,54 +40,54 @@
 	<div id="extra-content">
 		<a href="https://twitter.com/lillywolf" class="twitter-follow-button" data-show-count="false">Follow @lillywolf</a>
 	<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->
-	<!--div class="fb-add-to-timeline" data-show-faces="true"></div-->
 	
-<?php
+		<?php
 
-	require_once('php-sdk/src/facebook.php');
+		require_once('php-sdk/src/facebook.php');
 
-	$appId = '107796503671';
-	$appSecret = '10cc0163136a373aa6192f6ceafda96e';
-	$appUrl = 'http://apps.facebook.com/thebandapp';	
-	$fbPageUrl = "facebook.com/lillywolfmusic";
+		$appId = '107796503671';
+		$appSecret = '10cc0163136a373aa6192f6ceafda96e';
+		$appUrl = 'http://apps.facebook.com/thebandapp';	
+		$fbPageUrl = "facebook.com/lillywolfmusic";
 	
-	$config = array();
-	$config['appId'] = $appId;
-	$config['secret'] = $appSecret;
-	$config['fileUpload'] = false; // optional	
+		$config = array();
+		$config['appId'] = $appId;
+		$config['secret'] = $appSecret;
+		$config['fileUpload'] = false; // optional	
 
-	$facebook = new Facebook($config);	
-	$user_id = $facebook->getUser();
+		$facebook = new Facebook($config);	
+		$user_id = $facebook->getUser();
 	
-	$dbuser="uc3rwdprf7ijm9z";
-	$pass="pab1kv3jcunuilewgh4op7kwht";
-	$host="ec2-107-22-196-151.compute-1.amazonaws.com";
-	$dbname="dcw8wyqwdih0rv";
-	# This function reads your DATABASE_URL config var and returns a connection
-	# string suitable for pg_connect. Put this in your app.
-	function pg_connection_string_from_database_url() {
-	  extract(parse_url($_ENV["DATABASE_URL"]));
-	  return "user=$user password=$pass host=$host dbname=" . substr($path, 1);
-	}
-
-	# Here we establish the connection. Yes, that's all.
-	$pg_conn = pg_connect(pg_connection_string_from_database_url());
-
-	# Now let's use the connection for something silly just to prove it works:
-	$result = pg_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
-
-	print "<div id='shows'><img id='shows-header' src='/images/headers/shows_header.png'/>";
-	if (!pg_num_rows($result)) {
-	  # print("Your connection is working, but your database is empty.\nFret not. This is expected for new apps.\n");
-	} else {
-	  	while ($row = pg_fetch_row($result)) { 
-			# print("- $row[0]\n"); 
-			print("<span class='show'>$row[0]</span>"); 
+		#####
+		# Connect to the database
+		#####
+		$dbuser="uc3rwdprf7ijm9z";
+		$pass="pab1kv3jcunuilewgh4op7kwht";
+		$host="ec2-107-22-196-151.compute-1.amazonaws.com";
+		$dbname="dcw8wyqwdih0rv";
+	
+		# This function reads your DATABASE_URL config var and returns a connection
+		# string suitable for pg_connect. Put this in your app.
+		function pg_connection_string_from_database_url() {
+		  extract(parse_url($_ENV["DATABASE_URL"]));
+		  return "user=$user password=$pass host=$host dbname=" . substr($path, 1);
 		}
-	}
-	print "</div>";	
+
+		# Here we establish the connection
+		$pg_conn = pg_connect(pg_connection_string_from_database_url());
+		# Get shows data
+		$result = pg_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
+		# Print shows data
+		print "<div id='shows'><img id='shows-header' src='/images/headers/shows_header.png'/>";
+		if (!pg_num_rows($result)) {
+		} else {
+		  	while ($row = pg_fetch_row($result)) { 
+				print("<span class='show'>$row[0]</span>"); 
+			}
+		}
+		print "</div>";	
 	
-	?>
+		?>
 	
     	<div id="fb-root"></div>
 	</div>
@@ -274,7 +210,22 @@
 		    }
 			return _y;
 		    // return { top: _y, left: _x };
-		}				
+		}	
+		
+		function thisMovie(movieName) {
+		    var movie;
+		    try {
+		        movie = document[movieName];
+		        movie = (movie == null) ? window[movieName] : movie;        
+		    } catch (e) {
+		        return null;
+		    }
+		    return movie;
+		}
+		
+		function updateSongDownloads(enable) {
+			thisMovie("musicPlayer").updateDownloads(enable.toString());
+		}					
 	
 	</script>
 
@@ -286,12 +237,6 @@
 	        	xfbml: true,
 	        	oauth: true
 	      	});
-	      	// FB.Event.subscribe('auth.login', function(response) {
-	      	// 	        	window.location.reload();
-	      	// });
-	      	// FB.Event.subscribe('auth.logout', function(response) {
-	      	// 	        	window.location.reload();
-	      	// });
 			FB.Event.subscribe('edge.create', function(response) {
 				if (response.indexOf(FB_PAGE_URL) != -1) {
 		        	window.location.reload();					
@@ -313,57 +258,39 @@
 	
 	<?php
 	
-	function printSwf($liked, $downloads_enabled) {
-		echo '<div id="flash">
-			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="514" height="880">
-			    <param name="movie" value="site/Main.swf">
-				<param name="allowFullScreen" value="true">
-				<param name="allowScriptAccess" value="always">
-				<param name="scale" value="noscale">
-				<param name="wmode" value="transparent">
-				<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
-	            <!--[if !IE]>-->
-	            <object type="application/x-shockwave-flash" data="site/Main.swf" id="music-player" width="514" height="880">
-	                <param name="quality" value="high" />
-	                <param name="bgcolor" value="#ffffff" />
-	                <param name="allowScriptAccess" value="always" />
-	                <param name="allowFullScreen" value="true" />	
-					<param name="wmode" value="transparent" />
-					<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
-			    <!--embed src="site/Main.swf" width="514" height="880">
-			    </embed-->
-	            <!--[if !IE]>-->
-	            </object>				
-			</object>
-		</div>';
-	}
+	// function printSwf($liked, $downloads_enabled) {
+	// 	echo '<div id="flash">
+	// 		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="880">
+	// 		    <param name="movie" value="site/Main.swf">
+	// 			<param name="allowFullScreen" value="true">
+	// 			<param name="allowScriptAccess" value="always">
+	// 			<param name="scale" value="noscale">
+	// 			<param name="wmode" value="transparent">
+	// 			<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
+	//             <!--[if !IE]>-->
+	//             <object type="application/x-shockwave-flash" data="site/Main.swf" id="musicPlayer" width="514" height="880">
+	//                 <param name="quality" value="high" />
+	//                 <param name="bgcolor" value="#ffffff" />
+	//                 <param name="allowScriptAccess" value="always" />
+	//                 <param name="allowFullScreen" value="true" />	
+	// 				<param name="wmode" value="transparent" />
+	// 				<param name="flashvars" value="downloads_enabled=' . $downloads_enabled . '&liked=' . $liked . '">					
+	// 		    <!--embed src="site/Main.swf" width="514" height="880">
+	// 		    </embed-->
+	//             <!--[if !IE]>-->
+	//             </object>				
+	// 		</object>
+	// 	</div>';
+	// }
 	
 	if($user_id) {
 		try {
 			$user_profile = $facebook->api('/me', 'GET');	
 			$signed_request = $facebook->getSignedRequest();
 			if ($signed_request['page']['liked']) { 
-				printSwf("true", "true");
-				?>
-				
-				<script type="text/javascript">				
-					// document.getElementById("page_heading_div").style.display = "inline";
-					// document.getElementById("flashContent").style.display = "inline";
-					// var params = { wmode: "opaque" };
-					// params.allowfullscreen = "true";
-					// params.allowscriptaccess = "always";
-					// params.scale = "noscale";
-					// var attributes = {};
-					// attributes.name = "flashContent";	
-					// var flashvars = {};
-					// flashvars.downloads_enabled = "true";
-					// flashvars.liked = "true";
-					// swfobject.embedSWF("site/Main.swf", "flashContent", "514", "100%", "10.0", null, flashvars, params, attributes);				
-				</script>			
-				
-				<?php
+				echo '<script>alert("got req"); updateSongDownloads("true");</script>';
 			} else {
-				printSwf("false", "false");	
+				echo '<script>alert("got req"); updateSongDownloads("false");</script>';
 				?>
 				
 				<script type="text/javascript">
@@ -391,9 +318,11 @@
 	else {		
 		$signed_request = $facebook->getSignedRequest();
 		if ($signed_request['page']['liked']) { 
-			printSwf("true", "true");
+			# printSwf("true", "true");
+			echo '<script>alert("got req"); updateSongDownloads("true");</script>';
 		} else {
-			printSwf("false", "false");
+			# printSwf("false", "false");
+			echo '<script>alert("got req"); updateSongDownloads("false");</script>';
 		}	
 		
 		// FOR ADMIN PANEL
