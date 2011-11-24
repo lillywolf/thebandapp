@@ -124,13 +124,9 @@
 		
 		new Ajax.Request('fb_auth/index.php', {
 		  method: 'get',
-		  onSuccess: function(transport) {
+		  onSuccess: function() {
 			alert("returned!");
-		    var notice = $('notice');
-		    if (transport.responseText == 'true')
-		      notice.update('Validation successful');
-		    else
-		      notice.update('Validation failed');
+		    // var notice = $('notice');
 		  }
 		});
 		
