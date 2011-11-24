@@ -27,10 +27,8 @@
 				$signed_request = $facebook->getSignedRequest();
 				if ($signed_request['page']['liked']) { 
 					error_log("liked");
-					return 'liked';
 				} else {
 					error_log("not liked");
-					return 'not liked';
 				}					
 			}
 			catch(FacebookApiException $e) {
@@ -44,10 +42,8 @@
 			$signed_request = $facebook->getSignedRequest();
 			if ($signed_request['page']['liked']) { 
 				error_log("liked");
-				return 'liked';
 			} else {
 				error_log("not liked");
-				return 'not liked';
 			}	
 			catch(FacebookApiException $e) {
 				$loginUrl = $facebook->getLoginUrl($params);			
