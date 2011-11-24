@@ -56,7 +56,8 @@
 		$config['fileUpload'] = false; // optional	
 
 		$facebook = new Facebook($config);	
-		$user_id = $facebook->getUser();
+		# $user_id = $facebook->getUser();
+		$user_id = 0;
 	
 		#####
 		# Connect to the database
@@ -230,24 +231,24 @@
 	</script>
 
 	<script type="text/javascript">
-			// 	    window.fbAsyncInit = function() {
-			// FB.init({
-			// 	        	appId: '<?php echo $facebook->getAppID() ?>', 
-			// 	        	cookie: true, 
-			// 	        	xfbml: true,
-			// 	        	oauth: true
-			// 	      	});
-			// FB.Event.subscribe('edge.create', function(response) {
-			// 	if (response.indexOf(FB_PAGE_URL) != -1) {
-			// 		        	window.location.reload();					
-			// 	}
-			// 	else
-			// 	{
-			// 		alert("not a page like!");
-			// 	}
-			// });	
-			// FB.Canvas.setSize({ width: 520, height: 1200 });
-			// 	    };
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId: '<?php echo $facebook->getAppID() ?>', 
+				cookie: true, 
+				xfbml: true,
+				oauth: true
+			});
+			FB.Event.subscribe('edge.create', function(response) {
+				if (response.indexOf(FB_PAGE_URL) != -1) {
+					window.location.reload();					
+				}
+				else
+				{
+					alert("not a page like!");
+				}
+			});	
+			FB.Canvas.setSize({ width: 520, height: 1200 });
+		};
 	    (function() {
 	      var e = document.createElement('script'); e.async = true;
 	      e.src = document.location.protocol +
@@ -316,26 +317,26 @@
 		}	
 	}
 	else {		
-		// $signed_request = $facebook->getSignedRequest();
-		// if ($signed_request['page']['liked']) { 
-		// 	# printSwf("true", "true");
-		// 	echo '<script>alert("got req"); updateSongDownloads("true");</script>';
-		// } else {
-		// 	# printSwf("false", "false");
-		// 	echo '<script>alert("got req"); updateSongDownloads("false");</script>';
-		// }	
+		$signed_request = $facebook->getSignedRequest();
+		if ($signed_request['page']['liked']) { 
+			# printSwf("true", "true");
+			echo '<script>alert("got req"); updateSongDownloads("true");</script>';
+		} else {
+			# printSwf("false", "false");
+			echo '<script>alert("got req"); updateSongDownloads("false");</script>';
+		}	
 		
-		// FOR ADMIN PANEL
+		# FOR ADMIN PANEL
 		
-		// $state = md5(uniqid(rand(), TRUE));
-		// $scope = 'email,publish_stream,manage_pages';
-		// $home = getHome();
-		// $authorize_url = "https://www.facebook.com/dialog/oauth?client_id=$appId" .
-		//       	"&redirect_uri=$home&state=" . $state . "&scope=$scope";		
-		//       	echo("<script> top.location.href='" . $authorize_url . "'</script>");
+		$state = md5(uniqid(rand(), TRUE));
+		$scope = 'email,publish_stream,manage_pages';
+		$home = getHome();
+		$authorize_url = "https://www.facebook.com/dialog/oauth?client_id=$appId" .
+		      	"&redirect_uri=$home&state=" . $state . "&scope=$scope";		
+		      	echo("<script> top.location.href='" . $authorize_url . "'</script>");
 			
-		// Use this for non-facebook canvas page (i.e. Facebook Connect)		
-		// header('Location:' . $facebook->getLoginURL());
+		# Use this for non-facebook canvas page (i.e. Facebook Connect)		
+		header('Location:' . $facebook->getLoginURL());
 	}
 	
 	/**
