@@ -12,7 +12,6 @@
 <body>
 		
 	<div id="page_heading_div" class="hidden"></div>
-	<span id="notice"></span>
 	<div id="flash">
 		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="880">
 		    <param name="movie" value="site/Main.swf">
@@ -75,37 +74,7 @@
 		  extract(parse_url($_ENV["DATABASE_URL"]));
 		  return "user=$user password=$pass host=$host dbname=" . substr($path, 1);
 		}
-
-		# Here we establish the connection
-		# $pg_conn = pg_connect(pg_connection_string_from_database_url());
-		# Get shows data
-		# $result = pg_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
-		# Print shows data
-		# print "<div id='shows'><img id='shows-header' src='/images/headers/shows_header.png'/>";
-		/* if (!pg_num_rows($result)) {
-		} else {
-	   		while ($row = pg_fetch_row($result)) { 
-		 		print("<span class='show'>$row[0]</span>"); 
-		 	}
-		}
-		print "</div>"; */	
-		
-		// $fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
-		// 		if (!$fp) {
-		// 		    echo "$errstr ($errno)<br />\n";
-		// 		} else {
-		// 			$out = "GET /fb_auth/ HTTP/1.1\r\n";
-		// 			$out .= "Host: simple-ocean-7178.herokuapp.com\r\n";
-		// 			$out .= "Connection: Close\r\n\r\n";
-		// 			$result = fwrite($fp, $out);
-		// 			// fwrite($fp, "GET /fb_auth/ HTTP/1.1\r\n" );
-		// 			// fwrite($fp, "Host: simple-ocean-7178.herokuapp.com\r\n");
-		// 			// fwrite($fp, "Connection: Close\r\n");
-		// 			// fwrite($fp, "\r\n");
-		// 			print_r($result);
-		// 			// fflush($fp);
-		// 			fclose($fp);
-		// 		}
+	
 		?>
 	
     	<div id="fb-root"></div>
@@ -119,7 +88,6 @@
 		preload();
 		
 		window.onload = function() {
-			// preload();			
 		}
 		
 		alert("process functional");
