@@ -21,6 +21,7 @@
 		$user_id = $facebook->getUser();
 	
 		if($user_id) {
+			error_log("found user id");
 			try {
 				$user_profile = $facebook->api('/me', 'GET');	
 				$signed_request = $facebook->getSignedRequest();
@@ -38,7 +39,8 @@
 		        error_log($e->getMessage());			
 			}	
 		}
-		else {		
+		else {	
+			error_log("no user id");	
 			$signed_request = $facebook->getSignedRequest();
 			if ($signed_request['page']['liked']) { 
 				error_log("liked");
@@ -47,6 +49,11 @@
 				error_log("not liked");
 				return 'not liked';
 			}	
+			catch(FacebookApiException $e) {
+				$loginUrl = $facebook->getLoginUrl($params);			
+		        error_log($e->getType());
+		        error_log($e->getMessage());
+			}
 		}		
 
 	?>
