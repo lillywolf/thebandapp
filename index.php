@@ -89,16 +89,17 @@
 		# Here we establish the connection
 		$pg_conn = pg_connect(pg_connection_string_from_database_url());
 		# Get shows data
-		# $result = pg_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
+		pg_send_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
 		# Print shows data
-		# print "<div id='shows'><img id='shows-header' src='/images/headers/shows_header.png'/>";
+		$result = pg_get_result($pg_conn);
+		print "<div id='shows'><img id='shows-header' src='/images/headers/shows_header.png'/>";
 		/* if (!pg_num_rows($result)) {
 		} else {
 			while ($row = pg_fetch_row($result)) { 
 		 		print("<span class='show'>$row[0]</span>"); 
 		 	}
-		}
-		print "</div>"; */
+		} */
+		print "</div>";
 		
 		/* $fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
 		if (!$fp) {
