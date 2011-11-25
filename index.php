@@ -67,7 +67,7 @@
 		<iframe id="downloader-frame" frameborder="0"></iframe>
 		<span id="downloaders"></span>
 		<div id="extra-content">
-			<a href="https://twitter.com/lillywolf" class="twitter-follow-button" data-show-count="false">Follow @lillywolf</a>
+			<!--a href="https://twitter.com/lillywolf" class="twitter-follow-button" data-show-count="false">Follow @lillywolf</a-->
 		<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->		
 		
 		<?php
