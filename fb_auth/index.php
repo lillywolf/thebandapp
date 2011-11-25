@@ -27,7 +27,8 @@
 	$last_result = true;
 	while ($result != false) {
 		$result = pg_get_result($pg_conn);
-		if ($result == $last_result || !pg_num_rows($result)) {
+		error_log(print_r($result, true));
+		if (!$result || $result == $last_result || !pg_num_rows($result)) {
 		} else {
 			$last_result = $result;
 			while ($row = pg_fetch_row($result)) { 
