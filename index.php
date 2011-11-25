@@ -13,8 +13,8 @@
 		
 		<?php
 		
-		print_r("LETZGO");
-
+		$then = strtotime("now");
+		
 		require_once('php-sdk/src/facebook.php');
 
 		$appId = '107796503671';
@@ -36,7 +36,11 @@
 		} else {
 			$liked = "false";
 			$downloads_enabled = "false";
-		}		
+		}
+		
+		$after = strtotime("now");
+		
+		print_r(parseInt($after) - parseInt($now));		
 		
 		?>
 		
