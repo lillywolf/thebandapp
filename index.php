@@ -11,6 +11,8 @@
 </head>	
 <body>
 	
+		<script>alert("go!");</script>
+	
 		<?php
 
 		require_once('php-sdk/src/facebook.php');
