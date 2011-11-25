@@ -25,7 +25,7 @@
 	$shows_result = "";	
 	$result = true;
 	$last_result = true;
-	while ($result != false) {
+	while ($result && $result != false) {
 		$result = pg_get_result($pg_conn);
 		error_log(print_r($result, true));
 		if (!$result || $result == $last_result || !pg_num_rows($result)) {
@@ -37,6 +37,7 @@
 		 	}
 		}		
 	}
+	error_log($shows_result);
 	print_r($shows_result);
 	# print "</div>";
 
