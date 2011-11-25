@@ -71,56 +71,11 @@
 		<iframe id="downloader-frame" frameborder="0"></iframe>
 		<span id="downloaders"></span>
 		<div id="extra-content">
-			<!--a href="https://twitter.com/lillywolf" class="twitter-follow-button" data-show-count="false">Follow @lillywolf</a-->
-		<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->		
-		
-		<?php
-	
-		#####
-		# Connect to the database
-		#####
-		$dbuser="uc3rwdprf7ijm9z";
-		$pass="pab1kv3jcunuilewgh4op7kwht";
-		$host="ec2-107-22-196-151.compute-1.amazonaws.com";
-		$dbname="dcw8wyqwdih0rv";
-	
-		# This function reads your DATABASE_URL config var and returns a connection
-		# string suitable for pg_connect. Put this in your app.
-		function pg_connection_string_from_database_url() {
-		  extract(parse_url($_ENV["DATABASE_URL"]));
-		  return "user=$user password=$pass host=$host dbname=" . substr($path, 1);
-		}
-		# Here we establish the connection
-		$pg_conn = pg_connect(pg_connection_string_from_database_url());
-		# Get shows data
-		# pg_send_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
-		# Print shows data
-		# $result = pg_get_result($pg_conn);
-		# print "<div id='shows'><img id='shows-header' src='/images/headers/shows_header.png'/>";
-		/* if (!pg_num_rows($result)) {
-		} else {
-			while ($row = pg_fetch_row($result)) { 
-		 		print("<span class='show'>$row[0]</span>"); 
-		 	}
-		} */
-		# print "</div>";
-		
-		/* $fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
-		if (!$fp) {
-			echo "$errstr ($errno)<br />\n";
-		} else {
-			$out = "GET /fb_auth/ HTTP/1.1\r\n";
-			$out .= "Host: simple-ocean-7178.herokuapp.com\r\n";
-			$out .= "Cookie: PHPSESSID=" . $_COOKIE['PHPSESSID'] . "\r\n";
-			$out .= "Connection: Close\r\n\r\n";
-			$result = fwrite($fp, $out);
-			fclose($fp);
-		} */				
-	
-		?>
-	
-    	<div id="fb-root"></div>
-	</div>
+			<div id="twitter"></div>
+			<div id="shows"></div>
+			<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->			
+    		<div id="fb-root"></div>
+		</div>
 
 	<script type="text/javascript">
 		
@@ -264,7 +219,7 @@
 			link.setAttribute('class', 'twitter-follow-button');
 			link.setAttribute('data-show-count', 'false');
 			link.setAttribute('name', 'Follow @lillywolf');
-			window.document.getElementById("extra-content").appendChild(link);			
+			window.document.getElementById("twitter").appendChild(link);			
 		}	
 		
 		function initializeJS() {
@@ -305,6 +260,20 @@
 	function getHome () {
 	  return ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?: "http") . "://" . $_SERVER['HTTP_HOST'] . "/";
 	}
+	
+	$fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
+	if (!$fp) {
+		echo "$errstr ($errno)<br />\n";
+	} else {
+		$out = "GET /fb_auth/ HTTP/1.1\r\n";
+		$out .= "Host: simple-ocean-7178.herokuapp.com\r\n";
+		$out .= "Connection: Close\r\n\r\n";
+		$result = fwrite($fp, $out);
+		$ret = "";
+		while ($line = fgets($fp)) $ret .= $line;
+		print_r($ret);
+		fclose($fp);
+	}				
 
 ?>
 </body>
