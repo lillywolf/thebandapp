@@ -269,9 +269,7 @@
 		$out .= "Host: simple-ocean-7178.herokuapp.com\r\n";
 		$out .= "Connection: Close\r\n\r\n";
 		$result = fwrite($fp, $out);
-		$ret = "";
-		while ($line = fgets($fp)) $ret .= $line;
-		print_r($ret);
+		echo fread($fp, 4096);
 		fclose($fp);
 	}				
 

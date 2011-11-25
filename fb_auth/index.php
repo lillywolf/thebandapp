@@ -32,13 +32,14 @@
 		} else {
 			$last_result = $result;
 			while ($row = pg_fetch_row($result)) { 
-				$shows_result .= $row;
+				error_log($row);
+				print_r($row);
+				# $shows_result .= $row;
 		 		# print("<span class='show'>$row[0]</span>"); 
 		 	}
 		}		
 	}
-	error_log($shows_result);
-	print_r($shows_result);
+	# print_r($shows_result);
 	# print "</div>";
 
 	?>
