@@ -10,10 +10,10 @@
 	<!--script type="text/javascript" src="site/history/history.js"></script-->
 </head>	
 <body>
-	
-		<script>alert("go!");</script>
-	
+		
 		<?php
+		
+		print_r("LETZGO");
 
 		require_once('php-sdk/src/facebook.php');
 
