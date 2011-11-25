@@ -120,6 +120,8 @@
 
 	<script type="text/javascript">
 	
+		alert("dumb crap complete");
+	
 		fbPageUrl = '<?php echo $fbPageUrl; ?>';
 
 		var spinner;
