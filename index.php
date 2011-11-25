@@ -91,7 +91,7 @@
 		  return "user=$user password=$pass host=$host dbname=" . substr($path, 1);
 		}
 		# Here we establish the connection
-		# $pg_conn = pg_connect(pg_connection_string_from_database_url());
+		$pg_conn = pg_connect(pg_connection_string_from_database_url());
 		# Get shows data
 		# pg_send_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
 		# Print shows data
