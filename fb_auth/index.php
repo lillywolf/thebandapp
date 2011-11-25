@@ -24,10 +24,12 @@
 	pg_send_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
 	$shows_result = "";	
 	$result = true;
+	$last_result = true;
 	while ($result != false) {
 		$result = pg_get_result($pg_conn);
-		if (!pg_num_rows($result)) {
+		if ($result == $last_result || !pg_num_rows($result)) {
 		} else {
+			$last_result = $result;
 			while ($row = pg_fetch_row($result)) { 
 				$shows_result .= $row;
 		 		# print("<span class='show'>$row[0]</span>"); 
