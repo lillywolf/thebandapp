@@ -13,7 +13,7 @@
 		
 		<?php
 		
-		$then = strtotime("now");
+		$then = microtime();
 		
 		require_once('php-sdk/src/facebook.php');
 
@@ -38,7 +38,7 @@
 			$downloads_enabled = "false";
 		}
 		
-		$after = strtotime("now");
+		$after = microtime();
 		
 		print_r($after - $then);		
 		
