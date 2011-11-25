@@ -40,7 +40,7 @@
 		
 		$after = strtotime("now");
 		
-		print_r(parseInt($after) - parseInt($now));		
+		print_r((int)$after - (int)$now);		
 		
 		?>
 		
