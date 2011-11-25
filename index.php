@@ -138,7 +138,7 @@
 			  length: 12, // The length of each line
 			  width: 7, // The line thickness
 			  radius: 16, // The radius of the inner circle
-			  color: '#000', // #rgb or #rrggbb
+			  color: '#00E1FA', // #rgb or #rrggbb
 			  speed: 1, // Rounds per second
 			  trail: 60, // Afterglow percentage
 			  shadow: false // Whether to render a shadow
@@ -154,6 +154,7 @@
 			window.document.getElementById('spinner').style.margin = "0px";			
 			window.document.getElementById('spinner').style.visibility = "hidden";
 			shiftElements();
+			addTwitterFollowButton();
 		}
 		
 		function shiftElements() {
@@ -255,7 +256,16 @@
 		
 		function updateSongDownloads(enable) {
 			thisMovie("musicPlayer").updateDownloads(enable.toString());
-		}		
+		}	
+		
+		function addTwitterFollowButton() {
+			var link = document.createElement('a');
+			link.setAttribute('href', 'https://twitter.com/lillywolf');
+			link.setAttribute('class', 'twitter-follow-button');
+			link.setAttribute('data-show-count', 'false');
+			link.setAttribute('name', 'Follow @lillywolf');
+			window.document.getElementById("extra-content").appendChild(link);			
+		}	
 		
 		function initializeJS() {
 			window.fbAsyncInit = function() {
