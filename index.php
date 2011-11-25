@@ -15,7 +15,7 @@
 		
 		$then = microtime();
 		
-		require_once('php-sdk/src/facebook.php');
+		# require_once('php-sdk/src/facebook.php');
 
 		$appId = '107796503671';
 		$appSecret = '10cc0163136a373aa6192f6ceafda96e';
@@ -27,21 +27,21 @@
 		$config['secret'] = $appSecret;
 		$config['fileUpload'] = false; // optional	
 
-		$facebook = new Facebook($config);	
+		# $facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
-		$req = $facebook->getSignedRequest();
+		/* $req = $facebook->getSignedRequest();
 		if ($req['page']['liked']) {
 			$liked = "true";
 			$downloads_enabled = "true";
 		} else {
 			$liked = "false";
 			$downloads_enabled = "false";
-		}
+		}*/
+		$liked = "true";
+		$downloads_enabled = "true";
 		
 		$after = microtime();
-		
-		print_r($after - $then);		
-		
+				
 		?>
 		
 		<div id="page_heading_div" class="hidden"></div>
