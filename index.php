@@ -29,17 +29,15 @@
 
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
-		/* $req = $facebook->getSignedRequest();
+		$req = $facebook->getSignedRequest();
 		if ($req['page']['liked']) {
 			$liked = "true";
 			$downloads_enabled = "true";
 		} else {
 			$liked = "false";
 			$downloads_enabled = "false";
-		}*/
-		$liked = "true";
-		$downloads_enabled = "true";
-		
+		}
+
 		$after = microtime();
 				
 		?>
