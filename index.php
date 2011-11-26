@@ -258,7 +258,7 @@
 						e.appendChild(pd);						
 						document.getElementById('extra-content').appendChild(e);
 					}
-				  // alert('Your p: ' + response);
+				  alert('Your p: ' + response.length);
 				});		
 			};
 
