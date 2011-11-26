@@ -247,12 +247,12 @@
 						var e = document.createElement('div');
 						e.setAttribute('class', 'fb-post');
 						var pn = document.createElement('div');
-						pn.setAttribute('name', response.data[i].message);
+						pn.appendChild(document.createTextNode(response.data[i].message));
 						pn.setAttribute('class', 'post-name');
 						e.appendChild(pn);
 						var pd = document.createElement('div');
-						alert(response.data[i].story);
-						pd.setAttribute('name', response.data[i].story);
+						alert(response.data[i].type);
+						pd.appendChild(document.createTextNode(response.data[i].type));
 						pd.setAttribute('class', 'post-description');
 						e.appendChild(pd);						
 						document.getElementById('shows').appendChild(e);
