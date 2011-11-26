@@ -290,7 +290,7 @@
 							e.appendChild(pi);						
 						}
 						if (i != MAX_POSTS-1 && i != response.data.length-1) {
-							// e.style.border-bottom = "1px solid #E9E9E9";
+							e.style.borderBottom = "1px solid #E9E9E9";
 						}				
 						document.getElementById('shows').appendChild(e);
 					}						
