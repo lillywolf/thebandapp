@@ -70,6 +70,7 @@ a.soundcloud-badge:hover {
 	font-size: 13px;
 	position: relative;
 	line-height: 18px;
+	margin-top: 5px;
 }
 .show {
 	margin: 5px 15px;
@@ -105,4 +106,7 @@ a.soundcloud-badge:hover {
 }
 .post-icon {
 	margin-top: 4px;
+}
+.post-like {
+	width: 100px;
 }
