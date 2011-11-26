@@ -257,7 +257,7 @@
 						pd.setAttribute('name', response.data[i].story);
 						pd.setAttribute('class', 'post-description');
 						e.appendChild(pd);						
-						document.getElementById('extra-content').appendChild(e);
+						document.getElementById('shows').appendChild(e);
 					}						
 				});				
 			};
