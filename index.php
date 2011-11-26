@@ -261,7 +261,7 @@
 	  return ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?: "http") . "://" . $_SERVER['HTTP_HOST'] . "/";
 	}
 	
-	$fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
+	/*$fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
 	if (!$fp) {
 		echo "$errstr ($errno)<br />\n";
 	} else {
@@ -275,7 +275,7 @@
 		}
 		print_r($ret);
 		fclose($fp);
-	}				
+	}*/				
 
 ?>
 </body>
