@@ -249,15 +249,44 @@
 					for (var i = 0; i < response.data.length; i++) {
 						var e = document.createElement('div');
 						e.setAttribute('class', 'fb-post');
-						var pn = document.createElement('div');
-						pn.appendChild(document.createTextNode(response.data[i].message));
-						pn.setAttribute('class', 'post-name');
-						e.appendChild(pn);
-						var pd = document.createElement('div');
-						alert(response.data[i].story);
-						pd.appendChild(document.createTextNode(response.data[i].story));
-						pd.setAttribute('class', 'post-description');
-						e.appendChild(pd);						
+						if (response.data[i].from) {
+							var pf = document.createElement('a');
+							pf.setAttribute('name', response.data[i].from.name);
+							pf.setAttribute('href', 'http://facebook.com/' + response.data[i].from.id);
+							pf.setAttribute('class', 'post-from');
+							e.appendChild(pf);							
+						}
+						if (response.data[i].message) {
+							var pm = document.createElement('div');
+							pm.appendChild(document.createTextNode(response.data[i].message));
+							pm.setAttribute('class', 'post-message');
+							e.appendChild(pm);							
+						}
+						if (response.data[i].name) {
+							var pn = document.createElement('a');
+							pn.setAttribute('name', response.data[i].name);
+							pn.setAttribute('href', response.data[i].link)
+							pn.setAttribute('class', 'post-name');
+							e.appendChild(pn);							
+						}
+						if (response.data[i].caption) {
+							var pc = document.createElement('div');
+							pc.appendChild(document.createTextNode(response.data[i].caption));
+							pc.setAttribute('class', 'post-caption');
+							e.appendChild(pc);							
+						}					
+						if (response.data[i].description) {
+							var pd = document.createElement('div');
+							pd.appendChild(document.createTextNode(response.data[i].description));
+							pd.setAttribute('class', 'post-description');
+							e.appendChild(pd);						
+						}
+						if (response.data[i].icon) {
+							var pi = document.createElement('img');
+							pi.setAttribute('src', response.data[i].icon);
+							pi.setAttribute('class', 'post-icon');
+							e.appendChild(pi);						
+						}					
 						document.getElementById('shows').appendChild(e);
 					}						
 				});				
