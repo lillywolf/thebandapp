@@ -69,14 +69,22 @@ a.soundcloud-badge:hover {
 	color: #5E5751;
 	font-size: 13px;
 	position: relative;
+	line-height: 18px;
 }
 .show {
 	margin: 5px 15px;
 }
-#shows-header {
+#shows-header, #posts-header {
 	margin-bottom: 10px;
 }
 #flash {
 	position: absolute;
 	top: 0px;
+}
+.fb-post {
+	margin: 6px 0;
+}
+.fb-post a {
+	text-decoration: none;
+	color: #3B5998;
 }
