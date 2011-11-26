@@ -25,14 +25,7 @@
 		$config = array();
 		$config['appId'] = $appId;
 		$config['secret'] = $appSecret;
-		$config['fileUpload'] = false; // optional	
-		
-		$state = md5(uniqid(rand(), TRUE));
-		$scope = 'email,publish_stream,manage_pages,offline_access';
-		$home = getHome();
-		$authorize_url = "https://www.facebook.com/dialog/oauth?client_id=$appId" .
-		      	"&redirect_uri=" . $home . "&state=" . $state . "&scope=$scope";		
-		      	echo("<script> top.location.href='" . $authorize_url . "'</script>");			
+		$config['fileUpload'] = false; // optional			
 
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
