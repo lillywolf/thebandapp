@@ -289,10 +289,24 @@
 							pi.setAttribute('class', 'post-icon');
 							e.appendChild(pi);						
 						}
+						
+						document.getElementById('shows').appendChild(e);
+						
+						for (j = 0; j < response.data[i].actions.length; j++) {
+							if (response.data[i].actions[j].name == "Like") {
+								var post_like = document.createElement('div');
+								document.setAttribute('id', 'post-like-' + i.toString());
+								document.setAttribute('class', 'post-like');
+								e.appendChild(post_like);
+								$('#post-like-' + i.toString()).html('<fb:like href="' + response.data[i].actions[j].link + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="false" />');
+								if (typeof FB !== 'undefined') {
+								    FB.XFBML.parse(document.getElementById('post-like-' + i.toString()));
+								}
+							}
+						}
 						if (i != MAX_POSTS-1 && i != response.data.length-1) {
 							e.style.borderBottom = "1px solid #E9E9E9";
 						}				
-						document.getElementById('shows').appendChild(e);
 					}						
 				});				
 			};
