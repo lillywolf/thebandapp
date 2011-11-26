@@ -104,9 +104,13 @@ a.soundcloud-badge:hover {
 .post-line {
 	color: #E9E9E9;
 }
-.post-icon {
+.post-footer {
 	margin-top: 4px;
+}
+.post-icon {
+	float: left;
 }
 .post-like {
 	width: 100px;
+	float: left;
 }
