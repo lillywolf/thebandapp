@@ -251,8 +251,8 @@
 						pn.setAttribute('class', 'post-name');
 						e.appendChild(pn);
 						var pd = document.createElement('div');
-						alert(response.data[i].type);
-						pd.appendChild(document.createTextNode(response.data[i].type));
+						alert(response.data[i].story);
+						pd.appendChild(document.createTextNode(response.data[i].story));
 						pd.setAttribute('class', 'post-description');
 						e.appendChild(pd);						
 						document.getElementById('shows').appendChild(e);
