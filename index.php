@@ -25,7 +25,7 @@
 		$config = array();
 		$config['appId'] = $appId;
 		$config['secret'] = $appSecret;
-		$config['fileUpload'] = false; // optional	
+		$config['fileUpload'] = false; // optional		
 
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
