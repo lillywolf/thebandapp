@@ -243,21 +243,21 @@
 				
 				FB.api('/<?php echo $pageId ?>/posts', function(response) {
 					var i = 0;
-					for (i = 0; i < response.length; i++) {
-						alert("show post " + response[i]);
-						var e = document.createElement('div');
-						e.setAttribute('class', 'fb-post');
-						var pn = document.createElement('div');
-						alert("name: " + response[i].name);
-						pn.setAttribute('name', response[i].name);
-						pn.setAttribute('class', 'post-name');
-						e.appendChild(pn);
-						var pd = document.createElement('div');
-						pd.setAttribute('name', response[i].description);
-						pd.setAttribute('class', 'post-description');
-						e.appendChild(pd);						
-						document.getElementById('extra-content').appendChild(e);
-					}
+					// for (i = 0; i < response.length; i++) {
+					// 	alert("show post " + response[i]);
+					// 	var e = document.createElement('div');
+					// 	e.setAttribute('class', 'fb-post');
+					// 	var pn = document.createElement('div');
+					// 	alert("name: " + response[i].name);
+					// 	pn.setAttribute('name', response[i].name);
+					// 	pn.setAttribute('class', 'post-name');
+					// 	e.appendChild(pn);
+					// 	var pd = document.createElement('div');
+					// 	pd.setAttribute('name', response[i].description);
+					// 	pd.setAttribute('class', 'post-description');
+					// 	e.appendChild(pd);						
+					// 	document.getElementById('extra-content').appendChild(e);
+					// }
 				  alert('Your p: ' + response.toSource());
 				});		
 			};
