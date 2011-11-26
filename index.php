@@ -83,6 +83,7 @@
 		
 		fbPageUrl = '<?php echo $fbPageUrl; ?>';
 
+		var MAX_POSTS = 5;
 		var spinner;
 		preload();
 		
@@ -246,7 +247,7 @@
 					var header = document.createElement('img');
 					header.setAttribute('src', '/images/headers/posts_header.png');
 					document.getElementById('shows').appendChild(header);
-					for (var i = 0; i < response.data.length; i++) {
+					for (var i = 0; i < Math.min(response.data.length, MAX_POSTS); i++) {
 						var e = document.createElement('div');
 						e.setAttribute('class', 'fb-post');
 						if (response.data[i].from) {
