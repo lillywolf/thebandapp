@@ -30,7 +30,7 @@
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
 		$req = $facebook->getSignedRequest();
-		$accessToken = $facebook->getApplicationAccessToken();
+		$accessToken = $facebook->getAccessToken();
 		$pageId = $req['page']['id'];
 		if ($req['page']['liked']) {
 			$liked = "true";
