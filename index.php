@@ -242,8 +242,8 @@
 					}
 				});	
 				
-				alert("access token: <?php echo $accessToken ?>");
-				FB.api('/<?php echo $pageId ?>/posts?access_token=<?php echo $accessToken ?>', function(response) {
+				alert("get url: <?php echo $pageId ?>?access_token=<?php echo $accessToken ?>");
+				FB.api('/<?php echo $pageId ?>?access_token=<?php echo $accessToken ?>', function(response) {
 					var i = 0;
 					// for (i = 0; i < response.length; i++) {
 					// 	alert("show post " + response[i]);
