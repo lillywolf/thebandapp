@@ -25,7 +25,14 @@
 		$config = array();
 		$config['appId'] = $appId;
 		$config['secret'] = $appSecret;
-		$config['fileUpload'] = false; // optional		
+		$config['fileUpload'] = false; // optional	
+		
+		$state = md5(uniqid(rand(), TRUE));
+		$scope = 'email,publish_stream,read_stream,manage_pages';
+		$home = getHome();
+		$authorize_url = "https://www.facebook.com/dialog/oauth?client_id=$appId" .
+		      	"&state=" . $state . "&redirect_uri=apps.facebook.com/thebandapp" . "&scope=$scope" . "&response_type=token";
+		echo("<script> top.location.href='" . $authorize_url . "'</script>");		
 
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
