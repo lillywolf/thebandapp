@@ -30,7 +30,7 @@
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
 		$req = $facebook->getSignedRequest();
-		$accessToken = $facebook->getApplicationAccessToken();
+		# $accessToken = $facebook->getApplicationAccessToken();
 		$pageId = $req['page']['id'];
 		if ($req['page']['liked']) {
 			$liked = "true";
@@ -241,36 +241,22 @@
 				 		window.location.reload();					
 					}
 				});	
-				
-				alert("app access token: <?php echo $accessToken ?>");	
-				
-				FB.api('/202357?access_token=<?php echo $accessToken ?>', function(response) {
-					alert("access token: " + response.toSource());
-				});
-				
+								
 				FB.api('/<?php echo $pageId ?>/posts?access_token=AAAAAGRksHHcBAEHhDiAkSg6IKmhBHB9ZBirFtLh2AKCsSH5sU8oHtIUfVwDfqNEjk7MSEWeKsjpMQDJsY5NQRJN0tXxT3PM6CwvYlnwZDZD', function(response) {
-					alert("access token: " + response.toSource());
+					for (var i = 0; i < response.length; i++) {
+						var e = document.createElement('div');
+						e.setAttribute('class', 'fb-post');
+						var pn = document.createElement('div');
+						pn.setAttribute('name', response.data[i].message);
+						pn.setAttribute('class', 'post-name');
+						e.appendChild(pn);
+						var pd = document.createElement('div');
+						pd.setAttribute('name', response.data[i].story);
+						pd.setAttribute('class', 'post-description');
+						e.appendChild(pd);						
+						document.getElementById('extra-content').appendChild(e);
+					}						
 				});				
-				
-				// alert("get url: <?php echo $pageId ?>?access_token=<?php echo $accessToken ?>");
-				// FB.api('/<?php echo $pageId ?>?access_token=<?php echo $accessToken ?>', function(response) {
-					// for (var i = 0; i < response.length; i++) {
-					// 	alert("show post " + response[i]);
-					// 	var e = document.createElement('div');
-					// 	e.setAttribute('class', 'fb-post');
-					// 	var pn = document.createElement('div');
-					// 	alert("name: " + response[i].name);
-					// 	pn.setAttribute('name', response[i].name);
-					// 	pn.setAttribute('class', 'post-name');
-					// 	e.appendChild(pn);
-					// 	var pd = document.createElement('div');
-					// 	pd.setAttribute('name', response[i].description);
-					// 	pd.setAttribute('class', 'post-description');
-					// 	e.appendChild(pd);						
-					// 	document.getElementById('extra-content').appendChild(e);
-					// }
-				  // alert('Your p: ' + response.toSource());
-				// });		
 			};
 
 			// Load the SDK Asynchronously
