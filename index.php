@@ -30,6 +30,7 @@
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
 		$req = $facebook->getSignedRequest();
+		$pageId = $req['page']['id'];
 		if ($req['page']['liked']) {
 			$liked = "true";
 			$downloads_enabled = "true";
@@ -238,7 +239,11 @@
 					if (response.indexOf(fbPageUrl) != -1) {
 				 		window.location.reload();					
 					}
-				});			
+				});	
+				
+				FB.api('/<?php echo $pageId ?>/posts', function(response) {
+				  alert('Your events: ' + response);
+				});		
 			};
 
 			// Load the SDK Asynchronously
