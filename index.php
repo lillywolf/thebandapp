@@ -30,7 +30,7 @@
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
 		$req = $facebook->getSignedRequest();
-		$accessToken = $facebook->getAccessToken();
+		$accessToken = $facebook->getApplicationAccessToken();
 		$pageId = $req['page']['id'];
 		if ($req['page']['liked']) {
 			$liked = "true";
@@ -242,18 +242,11 @@
 					}
 				});	
 				
-				alert("app access token: <?php echo $accessToken ?>");
+				alert("app access token: <?php echo $accessToken ?>");	
 				
-				FB.getLoginStatus(function (response) {
-					alert(response.toSource());
-					if (response.session) {
-						alert("access token: " + response.session.access_token);
-					}
-				});		
-				
-				//FB.api('/202357?access_token=<?php echo $accessToken ?>', function(response) {
-				//	alert("access token: " + response.toSource());
-				//});
+				FB.api('/202357?access_token=<?php echo $accessToken ?>', function(response) {
+					alert("access token: " + response.toSource());
+				});
 				
 				// alert("get url: <?php echo $pageId ?>?access_token=<?php echo $accessToken ?>");
 				// FB.api('/<?php echo $pageId ?>?access_token=<?php echo $accessToken ?>', function(response) {
