@@ -295,8 +295,8 @@
 						for (j = 0; j < response.data[i].actions.length; j++) {
 							if (response.data[i].actions[j].name == "Like") {
 								var post_like = document.createElement('div');
-								document.setAttribute('id', 'post-like-' + i.toString());
-								document.setAttribute('class', 'post-like');
+								post_like.setAttribute('id', 'post-like-' + i.toString());
+								post_like.setAttribute('class', 'post-like');
 								e.appendChild(post_like);
 								$('#post-like-' + i.toString()).html('<fb:like href="' + response.data[i].actions[j].link + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="false" />');
 								if (typeof FB !== 'undefined') {
