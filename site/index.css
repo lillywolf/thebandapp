@@ -89,8 +89,13 @@ a.soundcloud-badge:hover {
 	color: #3B5998;
 }
 .post-from, .post-message {
-	font-size: 12px;
+	font-size: 11px;
+	line-height: 16px;
+}
+.post-caption {
+	font-size: 11px;
 }
 .post-name {
-	margin: 5px 0 0 0;
+	margin: 10px 0 0 0;
+	display: block;
 }
