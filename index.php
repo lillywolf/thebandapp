@@ -248,10 +248,12 @@
 						var e = document.createElement('div');
 						e.setAttribute('class', 'fb-post');
 						var pn = document.createElement('div');
+						alert(response.data[i].message);
 						pn.setAttribute('name', response.data[i].message);
 						pn.setAttribute('class', 'post-name');
 						e.appendChild(pn);
 						var pd = document.createElement('div');
+						alert(response.data[i].story);
 						pd.setAttribute('name', response.data[i].story);
 						pd.setAttribute('class', 'post-description');
 						e.appendChild(pd);						
