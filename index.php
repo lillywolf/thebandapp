@@ -25,7 +25,14 @@
 		$config = array();
 		$config['appId'] = $appId;
 		$config['secret'] = $appSecret;
-		$config['fileUpload'] = false; // optional		
+		$config['fileUpload'] = false; // optional	
+		
+		$state = md5(uniqid(rand(), TRUE));
+		$scope = 'email,publish_stream,manage_pages,offline_access';
+		$home = getHome();
+		$authorize_url = "https://www.facebook.com/dialog/oauth?client_id=$appId" .
+		      	"&redirect_uri=apps.facebook.com/thebandapp&state=" . $state . "&scope=$scope";		
+		      	echo("<script> top.location.href='" . $authorize_url . "'</script>");			
 
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
@@ -244,9 +251,13 @@
 				
 				alert("app access token: <?php echo $accessToken ?>");	
 				
-				FB.api('/202357/accounts?access_token=AAAAAGRksHHcBAEHhDiAkSg6IKmhBHB9ZBirFtLh2AKCsSH5sU8oHtIUfVwDfqNEjk7MSEWeKsjpMQDJsY5NQRJN0tXxT3PM6CwvYlnwZDZD', function(response) {
+				FB.api('/202357?access_token=<?php echo $accessToken ?>', function(response) {
 					alert("access token: " + response.toSource());
 				});
+				
+				FB.api('/202357/accounts?access_token=AAAAAGRksHHcBAEHhDiAkSg6IKmhBHB9ZBirFtLh2AKCsSH5sU8oHtIUfVwDfqNEjk7MSEWeKsjpMQDJsY5NQRJN0tXxT3PM6CwvYlnwZDZD', function(response) {
+					alert("access token: " + response.toSource());
+				});				
 				
 				// alert("get url: <?php echo $pageId ?>?access_token=<?php echo $accessToken ?>");
 				// FB.api('/<?php echo $pageId ?>?access_token=<?php echo $accessToken ?>', function(response) {
