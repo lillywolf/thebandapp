@@ -243,12 +243,10 @@
 				});	
 								
 				FB.api('/<?php echo $pageId ?>/posts?access_token=AAAAAGRksHHcBAEHhDiAkSg6IKmhBHB9ZBirFtLh2AKCsSH5sU8oHtIUfVwDfqNEjk7MSEWeKsjpMQDJsY5NQRJN0tXxT3PM6CwvYlnwZDZD', function(response) {
-					alert(response.data.length);
 					for (var i = 0; i < response.data.length; i++) {
 						var e = document.createElement('div');
 						e.setAttribute('class', 'fb-post');
 						var pn = document.createElement('div');
-						alert(response.data[i].message);
 						pn.setAttribute('name', response.data[i].message);
 						pn.setAttribute('class', 'post-name');
 						e.appendChild(pn);

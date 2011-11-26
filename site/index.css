@@ -68,7 +68,7 @@ a.soundcloud-badge:hover {
 	font-family: Arial;
 	color: #5E5751;
 	font-size: 13px;
-	position: absolute;
+	position: relative;
 }
 .show {
 	margin: 5px 15px;
