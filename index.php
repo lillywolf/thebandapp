@@ -242,7 +242,20 @@
 				});	
 				
 				FB.api('/<?php echo $pageId ?>/posts', function(response) {
-				  alert('Your events: ' + response);
+					for (var i = 0; i < response.length; i++) {
+						var e = document.createElement('div');
+						e.setAttribute('class', 'fb-post');
+						var pn = document.createElement('div');
+						pn.setAttribute('name', response[i].name);
+						pn.setAttribute('class', 'post-name');
+						e.appendChild(pn);
+						var pd = document.createElement('div');
+						pd.setAttribute('name', response[i].description);
+						pd.setAttribute('class', 'post-description');
+						e.appendChild(pd);						
+						document.getElementById('extra-content').appendChild(e);
+					}
+				  // alert('Your p: ' + response);
 				});		
 			};
 
