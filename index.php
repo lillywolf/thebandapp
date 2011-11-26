@@ -282,6 +282,18 @@
 	  return ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?: "http") . "://" . $_SERVER['HTTP_HOST'] . "/";
 	}
 	
+	# FOR ADMIN PANEL
+
+	$state = md5(uniqid(rand(), TRUE));
+	$scope = 'email,publish_stream,read_stream,manage_pages';
+	$home = getHome();
+	$authorize_url = "https://www.facebook.com/dialog/oauth?client_id=$appId" .
+	      	"&redirect_uri=$home&state=" . $state . "&scope=$scope";		
+	      	echo("<script> top.location.href='" . $authorize_url . "'</script>");
+
+	# Use this for non-facebook canvas page (i.e. Facebook Connect)		
+	# header('Location:' . $facebook->getLoginURL());	
+	
 	/*$fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
 	if (!$fp) {
 		echo "$errstr ($errno)<br />\n";
