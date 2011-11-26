@@ -243,6 +243,9 @@
 				});	
 								
 				FB.api('/<?php echo $pageId ?>/posts?access_token=AAAAAGRksHHcBAEHhDiAkSg6IKmhBHB9ZBirFtLh2AKCsSH5sU8oHtIUfVwDfqNEjk7MSEWeKsjpMQDJsY5NQRJN0tXxT3PM6CwvYlnwZDZD', function(response) {
+					var header = document.createElement('img');
+					header.setAttribute('src', '/images/posts_header.png');
+					document.getElementById('shows').appendChild(header);
 					for (var i = 0; i < response.data.length; i++) {
 						var e = document.createElement('div');
 						e.setAttribute('class', 'fb-post');
