@@ -30,7 +30,7 @@
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
 		$req = $facebook->getSignedRequest();
-		$accessToken = $req['oauth_token'];
+		$accessToken = $facebook->getApplicationAccessToken();
 		$pageId = $req['page']['id'];
 		if ($req['page']['liked']) {
 			$liked = "true";
@@ -241,6 +241,8 @@
 				 		window.location.reload();					
 					}
 				});	
+				
+				alert("app access token: <?php echo $accessToken ?>");
 				
 				FB.getLoginStatus(function (response) {
 					alert(response.toSource());
