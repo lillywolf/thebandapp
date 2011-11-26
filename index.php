@@ -107,11 +107,11 @@
 		
 		function stopPreload() {
 			spinner.stop();
-			initializeJS();
 			window.document.getElementById('spinner').style.margin = "0px";			
 			window.document.getElementById('spinner').style.visibility = "hidden";
 			shiftElements();
 			addTwitterFollowButton();
+			initializeJS();
 		}
 		
 		function shiftElements() {
@@ -254,9 +254,9 @@
 						e.appendChild(pn);
 						var pd = document.createElement('div');
 						alert(response.data[i].story);
-						// pd.setAttribute('name', response.data[i].story);
-						// pd.setAttribute('class', 'post-description');
-						// e.appendChild(pd);						
+						pd.setAttribute('name', response.data[i].story);
+						pd.setAttribute('class', 'post-description');
+						e.appendChild(pd);						
 						document.getElementById('extra-content').appendChild(e);
 					}						
 				});				
