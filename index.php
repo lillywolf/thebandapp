@@ -243,7 +243,7 @@
 				});	
 				
 				FB.api('/<?php echo $pageId ?>?fields=access_token', function(response) {
-					alert("access token: " + response.toSource());
+					alert("access token: " + response);
 				});
 				
 				// alert("get url: <?php echo $pageId ?>?access_token=<?php echo $accessToken ?>");
