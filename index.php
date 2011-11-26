@@ -244,14 +244,14 @@
 								
 				FB.api('/<?php echo $pageId ?>/posts?access_token=AAAAAGRksHHcBAEHhDiAkSg6IKmhBHB9ZBirFtLh2AKCsSH5sU8oHtIUfVwDfqNEjk7MSEWeKsjpMQDJsY5NQRJN0tXxT3PM6CwvYlnwZDZD', function(response) {
 					var header = document.createElement('img');
-					header.setAttribute('src', '/images/posts_header.png');
+					header.setAttribute('src', '/images/headers/posts_header.png');
 					document.getElementById('shows').appendChild(header);
 					for (var i = 0; i < response.data.length; i++) {
 						var e = document.createElement('div');
 						e.setAttribute('class', 'fb-post');
 						if (response.data[i].from) {
 							var pf = document.createElement('a');
-							pf.setAttribute('name', response.data[i].from.name);
+							pf.appendChild(document.createTextNode(response.data[i].from.name));
 							pf.setAttribute('href', 'http://facebook.com/' + response.data[i].from.id);
 							pf.setAttribute('class', 'post-from');
 							e.appendChild(pf);							
@@ -264,7 +264,7 @@
 						}
 						if (response.data[i].name) {
 							var pn = document.createElement('a');
-							pn.setAttribute('name', response.data[i].name);
+							pn.appendChild(document.createTextNode(response.data[i].name));
 							pn.setAttribute('href', response.data[i].link)
 							pn.setAttribute('class', 'post-name');
 							e.appendChild(pn);							
