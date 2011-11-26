@@ -83,6 +83,7 @@ a.soundcloud-badge:hover {
 }
 .fb-post {
 	margin: 15px 0;
+	padding: 0 0 10px 0;
 }
 .fb-post a {
 	text-decoration: none;
@@ -101,4 +102,7 @@ a.soundcloud-badge:hover {
 }
 .post-line {
 	color: #E9E9E9;
+}
+.post-icon {
+	margin-top: 4px;
 }
