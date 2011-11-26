@@ -242,10 +242,13 @@
 					}
 				});	
 				
-				alert("get url: <?php echo $pageId ?>?access_token=<?php echo $accessToken ?>");
-				FB.api('/<?php echo $pageId ?>?access_token=<?php echo $accessToken ?>', function(response) {
-					var i = 0;
-					// for (i = 0; i < response.length; i++) {
+				FB.api('/<?php echo $pageId ?>?fields=access_token', function(response) {
+					alert("access token: " + response.toSource());
+				});
+				
+				// alert("get url: <?php echo $pageId ?>?access_token=<?php echo $accessToken ?>");
+				// FB.api('/<?php echo $pageId ?>?access_token=<?php echo $accessToken ?>', function(response) {
+					// for (var i = 0; i < response.length; i++) {
 					// 	alert("show post " + response[i]);
 					// 	var e = document.createElement('div');
 					// 	e.setAttribute('class', 'fb-post');
@@ -260,8 +263,8 @@
 					// 	e.appendChild(pd);						
 					// 	document.getElementById('extra-content').appendChild(e);
 					// }
-				  alert('Your p: ' + response.toSource());
-				});		
+				  // alert('Your p: ' + response.toSource());
+				// });		
 			};
 
 			// Load the SDK Asynchronously
