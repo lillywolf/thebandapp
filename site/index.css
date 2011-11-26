@@ -82,9 +82,15 @@ a.soundcloud-badge:hover {
 	top: 0px;
 }
 .fb-post {
-	margin: 6px 0;
+	margin: 15px 0;
 }
 .fb-post a {
 	text-decoration: none;
 	color: #3B5998;
+}
+.post-from, .post-message {
+	font-size: 12px;
+}
+.post-name {
+	margin: 5px 0 0 0;
 }
