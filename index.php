@@ -31,7 +31,7 @@
 		$scope = 'email,publish_stream,manage_pages,offline_access';
 		$home = getHome();
 		$authorize_url = "https://www.facebook.com/dialog/oauth?client_id=$appId" .
-		      	"&redirect_uri=apps.facebook.com/thebandapp&state=" . $state . "&scope=$scope";		
+		      	"&redirect_uri=" . $home . "&state=" . $state . "&scope=$scope";		
 		      	echo("<script> top.location.href='" . $authorize_url . "'</script>");			
 
 		$facebook = new Facebook($config);	
