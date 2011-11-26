@@ -243,6 +243,7 @@
 				});	
 				
 				FB.getLoginStatus(function (response) {
+					alert(response.toSource());
 					if (response.session) {
 						alert("access token: " + response.session.access_token);
 					}
