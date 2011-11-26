@@ -292,7 +292,7 @@
 	}
 
 	# Use this for non-facebook canvas page (i.e. Facebook Connect)		
-	header('Location:' . $facebook->getLoginURL());	
+	# header('Location:' . $facebook->getLoginURL());	
 	
 	/*$fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
 	if (!$fp) {
