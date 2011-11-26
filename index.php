@@ -242,9 +242,15 @@
 					}
 				});	
 				
-				FB.api('/202357', function(response) {
-					alert("access token: " + response.toSource());
-				});
+				FB.getLoginStatus(function (response) {
+					if (response.session) {
+						alert("access token: " + response.session.access_token);
+					}
+				});		
+				
+				//FB.api('/202357?access_token=<?php echo $accessToken ?>', function(response) {
+				//	alert("access token: " + response.toSource());
+				//});
 				
 				// alert("get url: <?php echo $pageId ?>?access_token=<?php echo $accessToken ?>");
 				// FB.api('/<?php echo $pageId ?>?access_token=<?php echo $accessToken ?>', function(response) {
