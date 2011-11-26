@@ -289,10 +289,8 @@
 							pi.setAttribute('class', 'post-icon');
 							e.appendChild(pi);						
 						}
-						if (i != MAX_POSTS && i != response.data.length) {
-							pl = document.createElement('hr');
-							pl.setAttribute('class', 'post-line');
-							e.appendChild(pl);	
+						if (i != MAX_POSTS-1 && i != response.data.length-1) {
+							e.setStyle({border-bottom: "#E9E9E9"});
 						}				
 						document.getElementById('shows').appendChild(e);
 					}						
