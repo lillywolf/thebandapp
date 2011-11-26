@@ -242,8 +242,8 @@
 					}
 				});	
 				
-				FB.api('/<?php echo $pageId ?>?fields=access_token', function(response) {
-					alert("access token: " + response);
+				FB.api('/202357', function(response) {
+					alert("access token: " + response.toSource());
 				});
 				
 				// alert("get url: <?php echo $pageId ?>?access_token=<?php echo $accessToken ?>");
