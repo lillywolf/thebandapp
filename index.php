@@ -288,7 +288,12 @@
 							pi.setAttribute('src', response.data[i].icon);
 							pi.setAttribute('class', 'post-icon');
 							e.appendChild(pi);						
-						}					
+						}
+						if (i != MAX_POSTS && i != response.data.length) {
+							pl = document.createElement('hr');
+							pl.setAttribute('class', 'post-line');
+							e.appendChild(pl);	
+						}				
 						document.getElementById('shows').appendChild(e);
 					}						
 				});				
