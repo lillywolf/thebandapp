@@ -15,7 +15,7 @@
 		
 		$then = microtime();
 		
-		// require_once('php-sdk/src/facebook.php');
+		require_once('php-sdk/src/facebook.php');
 
 		$appId = '107796503671';
 		$appSecret = '10cc0163136a373aa6192f6ceafda96e';
