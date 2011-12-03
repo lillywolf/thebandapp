@@ -31,18 +31,15 @@
 		# $user_id = $facebook->getUser();
 		$req = $facebook->getSignedRequest();
 		# $accessToken = $facebook->getApplicationAccessToken();
-		// $pageId = $req['page']['id'];
-		// if ($req['page']['liked']) {
-		// 	$liked = "true";
-		// 	$downloads_enabled = "true";
-		// } else {
-		// 	$liked = "false";
-		// 	$downloads_enabled = "false";
-		// }
+		$pageId = $req['page']['id'];
+		if ($req['page']['liked']) {
+			$liked = "true";
+		 	$downloads_enabled = "true";
+		} else {
+		 	$liked = "false";
+		 	$downloads_enabled = "false";
+		}
 		
-		$liked = "true";
-		$downloads_enabled = "true";
-
 		$after = microtime();	
 				
 		?>
@@ -115,7 +112,7 @@
 			window.document.getElementById('spinner').style.visibility = "hidden";
 			shiftElements();
 			// addTwitterFollowButton();
-			// initializeJS();
+			initializeJS();
 		}
 		
 		function shiftElements() {
@@ -246,79 +243,9 @@
 				 		window.location.reload();					
 					}
 				});	
-								
-				FB.api('/<?php echo $pageId ?>/posts?access_token=AAAAAGRksHHcBAEHhDiAkSg6IKmhBHB9ZBirFtLh2AKCsSH5sU8oHtIUfVwDfqNEjk7MSEWeKsjpMQDJsY5NQRJN0tXxT3PM6CwvYlnwZDZD', function(response) {
-					var header = document.createElement('img');
-					header.setAttribute('src', '/images/headers/posts_header.png');
-					document.getElementById('shows').appendChild(header);
-					for (var i = 0; i < Math.min(response.data.length, MAX_POSTS); i++) {
-						var e = document.createElement('div');
-						e.setAttribute('class', 'fb-post');
-						if (response.data[i].from) {
-							var pf = document.createElement('a');
-							pf.appendChild(document.createTextNode(response.data[i].from.name));
-							pf.setAttribute('href', 'http://facebook.com/' + response.data[i].from.id);
-							pf.setAttribute('class', 'post-from');
-							e.appendChild(pf);							
-						}
-						if (response.data[i].message) {
-							var pm = document.createElement('div');
-							pm.appendChild(document.createTextNode(response.data[i].message));
-							pm.setAttribute('class', 'post-message');
-							e.appendChild(pm);							
-						}
-						if (response.data[i].name) {
-							var pn = document.createElement('a');
-							pn.appendChild(document.createTextNode(response.data[i].name));
-							pn.setAttribute('href', response.data[i].link)
-							pn.setAttribute('class', 'post-name');
-							e.appendChild(pn);							
-						}
-						if (response.data[i].caption) {
-							var pc = document.createElement('div');
-							pc.appendChild(document.createTextNode(response.data[i].caption));
-							pc.setAttribute('class', 'post-caption');
-							e.appendChild(pc);							
-						}					
-						if (response.data[i].description) {
-							var pd = document.createElement('div');
-							pd.appendChild(document.createTextNode(response.data[i].description));
-							pd.setAttribute('class', 'post-description');
-							e.appendChild(pd);						
-						}
-						
-						document.getElementById('shows').appendChild(e);
-						
-						if (response.data[i].icon) {
-							var pf = document.createElement('div');
-							pf.setAttribute('class', 'post-footer');
-							e.appendChild(pf);
-							
-							var pi = document.createElement('img');
-							pi.setAttribute('src', response.data[i].icon);
-							pi.setAttribute('class', 'post-icon');
-							pf.appendChild(pi);		
-							
-							for (j = 0; j < response.data[i].actions.length; j++) {
-								if (response.data[i].actions[j].name == "Like") {
-									var post_like = document.createElement('div');
-									post_like.setAttribute('id', 'post-like-' + i.toString());
-									post_like.setAttribute('class', 'post-like');
-									pf.appendChild(post_like);
-									$('#post-like-' + i.toString()).html('<fb:like href="' + response.data[i].actions[j].link + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="false" />');
-									if (typeof FB !== 'undefined') {
-									    FB.XFBML.parse(document.getElementById('post-like-' + i.toString()));
-									}
-								}
-							}				
-						}
-											
-						if (i != MAX_POSTS-1 && i != response.data.length-1) {
-							e.style.borderBottom = "1px solid #E9E9E9";
-						}				
-					}						
-				});				
 			};
+			
+			// loadWall();	
 
 			// Load the SDK Asynchronously
 		 	(function() {
@@ -327,6 +254,80 @@
 			    '//connect.facebook.net/en_US/all.js';
 				document.getElementById('fb-root').appendChild(e);
 			}());			
+		}
+		
+		function loadWall() {
+			FB.api('/<?php echo $pageId ?>/posts?access_token=AAAAAGRksHHcBAEHhDiAkSg6IKmhBHB9ZBirFtLh2AKCsSH5sU8oHtIUfVwDfqNEjk7MSEWeKsjpMQDJsY5NQRJN0tXxT3PM6CwvYlnwZDZD', function(response) {
+				var header = document.createElement('img');
+				header.setAttribute('src', '/images/headers/posts_header.png');
+				document.getElementById('shows').appendChild(header);
+				for (var i = 0; i < Math.min(response.data.length, MAX_POSTS); i++) {
+					var e = document.createElement('div');
+					e.setAttribute('class', 'fb-post');
+					if (response.data[i].from) {
+						var pf = document.createElement('a');
+						pf.appendChild(document.createTextNode(response.data[i].from.name));
+						pf.setAttribute('href', 'http://facebook.com/' + response.data[i].from.id);
+						pf.setAttribute('class', 'post-from');
+						e.appendChild(pf);							
+					}
+					if (response.data[i].message) {
+						var pm = document.createElement('div');
+						pm.appendChild(document.createTextNode(response.data[i].message));
+						pm.setAttribute('class', 'post-message');
+						e.appendChild(pm);							
+					}
+					if (response.data[i].name) {
+						var pn = document.createElement('a');
+						pn.appendChild(document.createTextNode(response.data[i].name));
+						pn.setAttribute('href', response.data[i].link)
+						pn.setAttribute('class', 'post-name');
+						e.appendChild(pn);							
+					}
+					if (response.data[i].caption) {
+						var pc = document.createElement('div');
+						pc.appendChild(document.createTextNode(response.data[i].caption));
+						pc.setAttribute('class', 'post-caption');
+						e.appendChild(pc);							
+					}					
+					if (response.data[i].description) {
+						var pd = document.createElement('div');
+						pd.appendChild(document.createTextNode(response.data[i].description));
+						pd.setAttribute('class', 'post-description');
+						e.appendChild(pd);						
+					}
+					
+					document.getElementById('shows').appendChild(e);
+					
+					if (response.data[i].icon) {
+						var pf = document.createElement('div');
+						pf.setAttribute('class', 'post-footer');
+						e.appendChild(pf);
+						
+						var pi = document.createElement('img');
+						pi.setAttribute('src', response.data[i].icon);
+						pi.setAttribute('class', 'post-icon');
+						pf.appendChild(pi);		
+						
+						for (j = 0; j < response.data[i].actions.length; j++) {
+							if (response.data[i].actions[j].name == "Like") {
+								var post_like = document.createElement('div');
+								post_like.setAttribute('id', 'post-like-' + i.toString());
+								post_like.setAttribute('class', 'post-like');
+								pf.appendChild(post_like);
+								$('#post-like-' + i.toString()).html('<fb:like href="' + response.data[i].actions[j].link + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="false" />');
+								if (typeof FB !== 'undefined') {
+								    FB.XFBML.parse(document.getElementById('post-like-' + i.toString()));
+								}
+							}
+						}				
+					}
+										
+					if (i != MAX_POSTS-1 && i != response.data.length-1) {
+						e.style.borderBottom = "1px solid #E9E9E9";
+					}				
+				}						
+			});							
 		}
 	
 	</script>
