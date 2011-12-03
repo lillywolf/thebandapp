@@ -27,10 +27,10 @@
 		$config['secret'] = $appSecret;
 		$config['fileUpload'] = false; // optional			
 
-		// $facebook = new Facebook($config);	
-		// # $user_id = $facebook->getUser();
-		// $req = $facebook->getSignedRequest();
-		// # $accessToken = $facebook->getApplicationAccessToken();
+		$facebook = new Facebook($config);	
+		# $user_id = $facebook->getUser();
+		$req = $facebook->getSignedRequest();
+		# $accessToken = $facebook->getApplicationAccessToken();
 		// $pageId = $req['page']['id'];
 		// if ($req['page']['liked']) {
 		// 	$liked = "true";
@@ -88,7 +88,7 @@
 
 		var MAX_POSTS = 5;
 		var spinner;
-		// preload();
+		preload();
 		
 		window.onload = function() {
 		}
@@ -113,7 +113,7 @@
 			spinner.stop();
 			window.document.getElementById('spinner').style.margin = "0px";			
 			window.document.getElementById('spinner').style.visibility = "hidden";
-			// shiftElements();
+			shiftElements();
 			// addTwitterFollowButton();
 			// initializeJS();
 		}
