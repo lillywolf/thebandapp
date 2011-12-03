@@ -47,7 +47,7 @@
 		<div id="page_heading_div" class="hidden"></div>
 		<div id="notice"></div>
 		<div id="flash">
-			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="880">
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="960">
 			    <param name="movie" value="site/Main.swf">
 				<param name="allowFullScreen" value="true">
 				<param name="allowScriptAccess" value="always">
@@ -55,7 +55,7 @@
 				<param name="wmode" value="transparent">
 				<param name="flashvars" value="downloads_enabled=<?php echo $downloads_enabled ?>&liked=<?php echo $liked ?>">					
 	            <!--[if !IE]>-->
-	            <object type="application/x-shockwave-flash" data="site/Main.swf" id="musicPlayer" width="514" height="880">
+	            <object type="application/x-shockwave-flash" data="site/Main.swf" id="musicPlayer" width="514" height="960">
 	                <param name="quality" value="high" />
 	                <param name="bgcolor" value="#ffffff" />
 	                <param name="allowScriptAccess" value="always" />
