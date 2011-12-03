@@ -1,10 +1,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
-	<script type="text/javascript" src="site/swfobject.js"></script>
-	<script type="text/javascript" src="site/FBJSBridge.js"></script>
+	<!--script type="text/javascript" src="site/swfobject.js"></script-->
+	<!--script type="text/javascript" src="site/FBJSBridge.js"></script-->
 	<script type="text/javascript" src="scripts/spin.js"></script>	
-	<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>	
-	<script type="text/javascript" src="scripts/prototype.js"></script>
+	<!--script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script-->	
+	<!--script type="text/javascript" src="scripts/prototype.js"></script-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="site/index.css" />
 	<!--script type="text/javascript" src="site/history/history.js"></script-->
@@ -15,7 +15,7 @@
 		
 		$then = microtime();
 		
-		require_once('php-sdk/src/facebook.php');
+		// require_once('php-sdk/src/facebook.php');
 
 		$appId = '107796503671';
 		$appSecret = '10cc0163136a373aa6192f6ceafda96e';
@@ -88,7 +88,7 @@
 
 		var MAX_POSTS = 5;
 		var spinner;
-		preload();
+		// preload();
 		
 		window.onload = function() {
 		}
