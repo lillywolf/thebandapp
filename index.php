@@ -27,18 +27,21 @@
 		$config['secret'] = $appSecret;
 		$config['fileUpload'] = false; // optional			
 
-		$facebook = new Facebook($config);	
-		# $user_id = $facebook->getUser();
-		$req = $facebook->getSignedRequest();
-		# $accessToken = $facebook->getApplicationAccessToken();
-		$pageId = $req['page']['id'];
-		if ($req['page']['liked']) {
-			$liked = "true";
-			$downloads_enabled = "true";
-		} else {
-			$liked = "false";
-			$downloads_enabled = "false";
-		}
+		// $facebook = new Facebook($config);	
+		// # $user_id = $facebook->getUser();
+		// $req = $facebook->getSignedRequest();
+		// # $accessToken = $facebook->getApplicationAccessToken();
+		// $pageId = $req['page']['id'];
+		// if ($req['page']['liked']) {
+		// 	$liked = "true";
+		// 	$downloads_enabled = "true";
+		// } else {
+		// 	$liked = "false";
+		// 	$downloads_enabled = "false";
+		// }
+		
+		$liked = "true";
+		$downloads_enabled = "true";
 
 		$after = microtime();	
 				
@@ -110,9 +113,9 @@
 			spinner.stop();
 			window.document.getElementById('spinner').style.margin = "0px";			
 			window.document.getElementById('spinner').style.visibility = "hidden";
-			shiftElements();
-			addTwitterFollowButton();
-			initializeJS();
+			// shiftElements();
+			// addTwitterFollowButton();
+			// initializeJS();
 		}
 		
 		function shiftElements() {
