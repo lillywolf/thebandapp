@@ -114,11 +114,11 @@
 				
 		if (SC.isConnected()) {
 			alert("is connected");
-			getUserTracks();
+			// getUserTracks();
 		} else {
 			SC.connect(function() {
 				alert("connect");
-				getUserTracks();
+				// getUserTracks();
 			});	
 		}
 								
