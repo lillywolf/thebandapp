@@ -98,7 +98,7 @@
 			{limit: 1}, 
 			function (received_tracks) {
 				tracks = received_tracks;
-				alert(tracks.toSource());
+				alert(tracks);
 		    	// alert("Latest track: " + tracks[0].title);
 			}
 		);	
