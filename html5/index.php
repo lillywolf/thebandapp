@@ -16,6 +16,7 @@
 		
 		$then = microtime();
 		
+		require_once('../sc-api/Soundcloud.php');
 		require_once('../php-sdk/src/facebook.php');
 
 		$appId = '107796503671';
@@ -43,6 +44,16 @@
 		 	$downloads_enabled = "false";
 		}
 		
+		$soundcloud = new Services_Soundcloud('738091d6d02582ddd19de7109b79e47b', 'b8f231ac6dc380b6efb2a8a88cd6d9fe', 'http://apps.facebook.com/thebandapp');
+		$authorizeUrl = $soundcloud->getAuthorizeUrl();
+		
+		try {
+		    $accessToken = $soundcloud->accessToken($_GET['code']);
+			print_r($accessToken);
+		} catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) {
+		    exit($e->getMessage());
+		}
+				
 		$after = microtime();	
 				
 		?>
@@ -86,16 +97,16 @@
 		
 		var tracks;
 			
-		SC.initialize({
-			// client_id: '<?php echo $scConsumerKey; ?>',
-			// redirect_uri: '<?php echo $fbPageUrl; ?>',
-			client_id: '738091d6d02582ddd19de7109b79e47b',
-			redirect_uri: 'http://facebook.com/lillywolfanddrnu?sk=app_107796503671',
-		});
+		// SC.initialize({
+		// 	// client_id: '<?php echo $scConsumerKey; ?>',
+		// 	// redirect_uri: '<?php echo $fbPageUrl; ?>',
+		// 	client_id: '738091d6d02582ddd19de7109b79e47b',
+		// 	redirect_uri: 'http://facebook.com/lillywolfanddrnu?sk=app_107796503671',
+		// });
 		
-		SC.connect(function(){
-			alert("connected");
-		});
+		// SC.connect(function(){
+		// 	alert("connected");
+		// });
 			
 		// SC.get("/groups/<?php echo $scAccessCode; ?>/tracks", 
 		// 	{limit: 1}, 
