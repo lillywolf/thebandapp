@@ -55,7 +55,9 @@
 		} catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) {
 		    exit($e->getMessage());
 		}
-								
+		
+		$track_uri = $trackdata[0]['stream_url'];
+						
 		$after = microtime();	
 				
 		?>
@@ -64,7 +66,7 @@
 		<div id="notice"></div>
 		<div id="flash">
 			<audio id="audio" id="audio_with_controls" controls="controls">
-				<source src="<?php echo $trackdata[0]['stream_url'] ?>" type="audio/mpeg" />
+				<source src="<?php echo $track_uri ?>" />
 				
 				<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="960">
 				    <param name="movie" value="../site/Main.swf">
