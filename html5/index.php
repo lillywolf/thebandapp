@@ -64,11 +64,8 @@
 		
 		<div id="page_heading_div" class="hidden"></div>
 		<div id="notice"></div>
-		<audio id="audio">
-			<source src="<?php echo $trackdata[0]['stream_url'] ?>" type="audio/mpeg" />
-		</audio>
 		<div id="flash">
-			<audio id="audio">
+			<audio id="audio" id="audio_with_controls" controls>
 				<source src="<?php echo $trackdata[0]['stream_url'] ?>" type="audio/mpeg" />
 				
 				<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="960">
