@@ -44,7 +44,7 @@
 		 	$downloads_enabled = "false";
 		}
 		
-		$soundcloud = new Services_Soundcloud('738091d6d02582ddd19de7109b79e47b', 'b8f231ac6dc380b6efb2a8a88cd6d9fe', 'http://simple-ocean-7178.herokuapp.com/auth/', true);
+		$soundcloud = new Services_Soundcloud('738091d6d02582ddd19de7109b79e47b', 'b8f231ac6dc380b6efb2a8a88cd6d9fe', 'http://simple-ocean-7178.herokuapp.com/auth/');
 		# $soundcloud->setAccessToken('302883');
 		$authorizeUrl = $soundcloud->getAuthorizeUrl();
 		
