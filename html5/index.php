@@ -18,6 +18,8 @@
 		
 		require_once('../sc-api/Soundcloud.php');
 		require_once('../php-sdk/src/facebook.php');
+		
+		session_start();
 
 		$appId = '107796503671';
 		$appSecret = '10cc0163136a373aa6192f6ceafda96e';
@@ -44,15 +46,18 @@
 		 	$downloads_enabled = "false";
 		}
 		
-		$soundcloud = new Services_Soundcloud('738091d6d02582ddd19de7109b79e47b', 'b8f231ac6dc380b6efb2a8a88cd6d9fe', 'http://simple-ocean-7178.herokuapp.com/auth/');
-		# $soundcloud->setAccessToken('302883');
+		$soundcloud = new Services_Soundcloud('738091d6d02582ddd19de7109b79e47b', 'b8f231ac6dc380b6efb2a8a88cd6d9fe', 'http://simple-ocean-7178.herokuapp.com/html5/');
 		$authorizeUrl = $soundcloud->getAuthorizeUrl();
-		
 		echo '<p><a href='.$authorizeUrl.'>Connect to Soundcloud</a></p>';
 		
 		try {
-			$accessToken = $soundcloud->accessToken($_GET['code']);
-			print_r($accessToken);
+			if (!isset($_SESSION['token'])) {
+				$accessToken = $soundcloud->accessToken($_GET['code']);
+				$_SESSION['token'] = $accessToken['access_token'];
+			} else {
+				$soundcloud->setAccessToken($_SESSION['token']);
+				print_r("authenticated");
+			}			
 		} catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) {
 		    exit($e->getMessage());
 		}
