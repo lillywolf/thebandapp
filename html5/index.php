@@ -105,25 +105,25 @@
 		
 		var tracks;
 			
-		// SC.initialize({
-		// 	// client_id: '<?php echo $scConsumerKey; ?>',
-		// 	// redirect_uri: '<?php echo $fbPageUrl; ?>',
-		// 	client_id: '738091d6d02582ddd19de7109b79e47b',
-		// 	redirect_uri: 'http://facebook.com/lillywolfanddrnu?sk=app_107796503671',
-		// });
+		SC.initialize({
+			client_id: '738091d6d02582ddd19de7109b79e47b',
+			redirect_uri: 'http://simple-ocean-7178.herokuapp.com/auth/',
+		});
 		
-		// SC.connect(function(){
-		// 	alert("connected");
-		// });
-			
-		// SC.get("/groups/<?php echo $scAccessCode; ?>/tracks", 
-		// 	{limit: 1}, 
-		// 	function (received_tracks) {
-		// 		tracks = received_tracks;
-		// 		alert(tracks);
-		//     	// alert("Latest track: " + tracks[0].title);
-		// 	}
-		// );	
+		if (SC.isConnected()) {
+			getUserTracks();
+		} else {
+			SC.connect(function() {
+				getUserTracks();
+			});	
+		}
+		
+		function getUserTracks() {
+			alert("get tracks");
+			SC.get("/me/tracks", function(those_tracks) {
+				alert(those_tracks);
+			});			
+		}	
 		
 		// SC.whenStreamingReady(function() {
 		//   var soundObj = SC.stream(tracks[0].id);
