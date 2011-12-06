@@ -46,21 +46,33 @@
 		 	$downloads_enabled = "false";
 		}
 		
-		$soundcloud = new Services_Soundcloud('738091d6d02582ddd19de7109b79e47b', 'b8f231ac6dc380b6efb2a8a88cd6d9fe', 'http://simple-ocean-7178.herokuapp.com/auth/');
-		$authorizeUrl = $soundcloud->getAuthorizeUrl();
-		echo '<p><a href="'.$authorizeUrl.'&scope=non-expiring">Connect to Soundcloud</a></p>';
+		$accessToken = {
+			access_token: '1-12872-7625335-94e91695a1ea1e98',
+			scope: 'non-expiring',
+		};
 		
+		$soundcloud = new Services_Soundcloud('738091d6d02582ddd19de7109b79e47b', 'b8f231ac6dc380b6efb2a8a88cd6d9fe', 'http://simple-ocean-7178.herokuapp.com/auth/');
+		$_SESSION['token'] = '1-12872-7625335-94e91695a1ea1e98';
 		try {
-			if (!isset($_SESSION['token'])) {
-				$accessToken = $soundcloud->accessToken($_GET['code']);
-				$_SESSION['token'] = $accessToken['access_token'];
-			} else {
-				$soundcloud->setAccessToken($_SESSION['token']);
-				print_r("authenticated");
-			}			
+		    $response = json_decode($soundcloud->get('me'), true);
+			print_r($response);
 		} catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) {
 		    exit($e->getMessage());
 		}
+		// $authorizeUrl = $soundcloud->getAuthorizeUrl();
+		// echo '<p><a href="'.$authorizeUrl.'&scope=non-expiring">Connect to Soundcloud</a></p>';
+		
+		// try {
+		// 	if (!isset($_SESSION['token'])) {
+		// 		$accessToken = $soundcloud->accessToken($_GET['code']);
+		// 		$_SESSION['token'] = $accessToken['access_token'];
+		// 	} else {
+		// 		$soundcloud->setAccessToken($_SESSION['token']);
+		// 		print_r("authenticated");
+		// 	}			
+		// } catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) {
+		//     exit($e->getMessage());
+		// }
 				
 		$after = microtime();	
 				
