@@ -21,7 +21,7 @@
 		$appId = '107796503671';
 		$appSecret = '10cc0163136a373aa6192f6ceafda96e';
 		$appUrl = 'http://apps.facebook.com/thebandapp';	
-		$fbPageUrl = "facebook.com/lillywolfmusic";
+		$fbPageUrl = "facebook.com/lillywolfanddrnu?sk=app_107796503671";
 		$scAccessCode = "302883";
 		$scConsumerKey = "738091d6d02582ddd19de7109b79e47b";
 	
@@ -87,21 +87,24 @@
 		var tracks;
 			
 		SC.initialize({
-			client_id: '<?php echo $scConsumerKey; ?>',
+			// client_id: '<?php echo $scConsumerKey; ?>',
+			// redirect_uri: '<?php echo $fbPageUrl; ?>',
+			client_id: '738091d6d02582ddd19de7109b79e47b',
+			redirect_uri: 'http://facebook.com/lillywolfanddrnu?sk=app_107796503671',
 		});
 		
-		SC.connect(function() {
+		SC.connect(function(){
 			alert("connected");
 		});
 			
-		SC.get("/groups/<?php echo $scAccessCode; ?>/tracks", 
-			{limit: 1}, 
-			function (received_tracks) {
-				tracks = received_tracks;
-				alert(tracks);
-		    	// alert("Latest track: " + tracks[0].title);
-			}
-		);	
+		// SC.get("/groups/<?php echo $scAccessCode; ?>/tracks", 
+		// 	{limit: 1}, 
+		// 	function (received_tracks) {
+		// 		tracks = received_tracks;
+		// 		alert(tracks);
+		//     	// alert("Latest track: " + tracks[0].title);
+		// 	}
+		// );	
 		
 		// SC.whenStreamingReady(function() {
 		//   var soundObj = SC.stream(tracks[0].id);
