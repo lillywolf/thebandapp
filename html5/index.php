@@ -86,23 +86,23 @@
 		
 		var tracks;
 			
-		SC.initialize({
-	      client_id: '<?php echo $scConsumerKey; ?>',
-	    });
+		// SC.initialize({
+		// 	      client_id: '<?php echo $scConsumerKey; ?>',
+		// 	    });
 	
-		SC.get("/groups/<?php echo $scAccessCode; ?>/tracks", 
-			{limit: 10}, 
-			function (received_tracks) {
-				tracks = received_tracks;
-		    	alert("Latest track: " + tracks[0].title);
-			}
-		);	
-		
-		SC.whenStreamingReady(function() {
-		  var soundObj = SC.stream(tracks[0].id);
-		  soundObj.play();
-		});
-		
+		// SC.get("/groups/<?php echo $scAccessCode; ?>/tracks", 
+		// 	{limit: 10}, 
+		// 	function (received_tracks) {
+		// 		tracks = received_tracks;
+		//     	alert("Latest track: " + tracks[0].title);
+		// 	}
+		// );	
+		// 
+		// SC.whenStreamingReady(function() {
+		//   var soundObj = SC.stream(tracks[0].id);
+		//   soundObj.play();
+		// });
+		// 
 		fbPageUrl = '<?php echo $fbPageUrl; ?>';
 
 		var MAX_POSTS = 5;
