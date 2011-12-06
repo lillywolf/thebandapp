@@ -56,7 +56,7 @@
 		    exit($e->getMessage());
 		}
 		
-		$track_uri = $trackdata[0]['stream_url'];
+		$track_uri = $trackdata[0]['uri'];
 						
 		$after = microtime();	
 				
