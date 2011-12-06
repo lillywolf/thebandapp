@@ -110,17 +110,22 @@
 			redirect_uri: 'http://simple-ocean-7178.herokuapp.com/auth/',
 		});
 		
-		if (SC.isConnected()) {
-			getUserTracks();
-		} else {
-			SC.connect(function() {
-				getUserTracks();
-			}, scope: 'non-expiring');	
-		}
+		SC.accessToken = '1-12872-7625335-94e91695a1ea1e98';
+		
+		// if (SC.isConnected()) {
+		// 	// getUserTracks();
+		// } else {
+		// 	SC.connect(function() {
+		// 		alert();
+		// 		// getUserTracks();
+		// 	});	
+		// }
+				
+		getUserTracks();		
 				
 		function getUserTracks() {
 			alert("get tracks");
-			SC.get("/me/tracks?oauth_token=1-12872-7625335-94e91695a1ea1e98", function(those_tracks) {
+			SC.get("/me/tracks", function(those_tracks) {
 				alert(those_tracks);
 			});			
 		}	
