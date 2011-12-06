@@ -44,7 +44,7 @@
 		 	$downloads_enabled = "false";
 		}
 		
-		$soundcloud = new Services_Soundcloud('738091d6d02582ddd19de7109b79e47b', 'b8f231ac6dc380b6efb2a8a88cd6d9fe', 'http://simple-ocean-7178.herokuapp.com/html5/index.php');
+		$soundcloud = new Services_Soundcloud('738091d6d02582ddd19de7109b79e47b', 'b8f231ac6dc380b6efb2a8a88cd6d9fe', 'http://simple-ocean-7178.herokuapp.com/html5/index.php', true);
 		# $soundcloud->setAccessToken('302883');
 		$authorizeUrl = $soundcloud->getAuthorizeUrl();
 		
@@ -54,7 +54,7 @@
 			$accessToken = $soundcloud->accessToken($_GET['code']);
 			print_r($accessToken);
 		} catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) {
-		    echo($e->getMessage());
+		    exit($e->getMessage());
 		}
 				
 		$after = microtime();	
