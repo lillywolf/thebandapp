@@ -21,7 +21,7 @@
 
 		$scAccessCode = "302883";
 		$scConsumerKey = "738091d6d02582ddd19de7109b79e47b";
-		
+				
 		$soundcloud = new Services_Soundcloud('738091d6d02582ddd19de7109b79e47b', 'b8f231ac6dc380b6efb2a8a88cd6d9fe', 'http://simple-ocean-7178.herokuapp.com/auth/');				
 		try {
 			$accessToken = $soundcloud->accessToken($_GET['code']);
@@ -33,41 +33,6 @@
 		$after = microtime();	
 				
 		?>
-		
-		<div id="page_heading_div" class="hidden"></div>
-		<div id="notice"></div>
-		<div id="flash">
-			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="960">
-			    <param name="movie" value="../site/Main.swf">
-				<param name="allowFullScreen" value="true">
-				<param name="allowScriptAccess" value="always">
-				<param name="scale" value="noscale">
-				<param name="wmode" value="transparent">
-				<param name="flashvars" value="downloads_enabled=<?php echo $downloads_enabled ?>&liked=<?php echo $liked ?>">					
-	            <!--[if !IE]>-->
-	            <object type="application/x-shockwave-flash" data="../site/Main.swf" id="musicPlayer" width="514" height="960">
-	                <param name="quality" value="high" />
-	                <param name="bgcolor" value="#ffffff" />
-	                <param name="allowScriptAccess" value="always" />
-	                <param name="allowFullScreen" value="true" />	
-					<param name="wmode" value="transparent" />
-					<param name="flashvars" value="downloads_enabled=<?php echo $downloads_enabled ?>&liked=<?php echo $liked ?>">					
-	            <!--[if !IE]>-->
-	            </object>				
-			</object>
-		</div>	
-		<div id="spinner"></div>
-		<span id="tweet"></span>
-		<span id="like"></span>
-		<span id="big_like"></span>
-		<iframe id="downloader-frame" frameborder="0"></iframe>
-		<span id="downloaders"></span>
-		<div id="extra-content">
-			<div id="twitter"></div>
-			<div id="shows"></div>
-			<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->			
-    		<div id="fb-root"></div>
-		</div>
 		
 	<script type="text/javascript">
 		
