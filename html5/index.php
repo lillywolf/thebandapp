@@ -51,24 +51,12 @@
 		
 		try {
 		    $response = json_decode($soundcloud->get('me/tracks'), true);
-			print_r($response);
+			$trackdata = $response;
 		} catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) {
 		    exit($e->getMessage());
 		}
-		// $authorizeUrl = $soundcloud->getAuthorizeUrl();
-		// echo '<p><a href="'.$authorizeUrl.'&scope=non-expiring">Connect to Soundcloud</a></p>';
 		
-		// try {
-		// 	if (!isset($_SESSION['token'])) {
-		// 		$accessToken = $soundcloud->accessToken($_GET['code']);
-		// 		$_SESSION['token'] = $accessToken['access_token'];
-		// 	} else {
-		// 		$soundcloud->setAccessToken($_SESSION['token']);
-		// 		print_r("authenticated");
-		// 	}			
-		// } catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) {
-		//     exit($e->getMessage());
-		// }
+		print_r($trackdata[0]);
 				
 		$after = microtime();	
 				
@@ -77,24 +65,28 @@
 		<div id="page_heading_div" class="hidden"></div>
 		<div id="notice"></div>
 		<div id="flash">
-			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="960">
-			    <param name="movie" value="../site/Main.swf">
-				<param name="allowFullScreen" value="true">
-				<param name="allowScriptAccess" value="always">
-				<param name="scale" value="noscale">
-				<param name="wmode" value="transparent">
-				<param name="flashvars" value="downloads_enabled=<?php echo $downloads_enabled ?>&liked=<?php echo $liked ?>">					
-	            <!--[if !IE]>-->
-	            <object type="application/x-shockwave-flash" data="../site/Main.swf" id="musicPlayer" width="514" height="960">
-	                <param name="quality" value="high" />
-	                <param name="bgcolor" value="#ffffff" />
-	                <param name="allowScriptAccess" value="always" />
-	                <param name="allowFullScreen" value="true" />	
-					<param name="wmode" value="transparent" />
+			<audio>
+				<source src="<?php echo $trackdata[0].uri ?>" type="audio/mpeg" />
+				
+				<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="960">
+				    <param name="movie" value="../site/Main.swf">
+					<param name="allowFullScreen" value="true">
+					<param name="allowScriptAccess" value="always">
+					<param name="scale" value="noscale">
+					<param name="wmode" value="transparent">
 					<param name="flashvars" value="downloads_enabled=<?php echo $downloads_enabled ?>&liked=<?php echo $liked ?>">					
-	            <!--[if !IE]>-->
-	            </object>				
-			</object>
+		            <!--[if !IE]>-->
+		            <object type="application/x-shockwave-flash" data="../site/Main.swf" id="musicPlayer" width="514" height="960">
+		                <param name="quality" value="high" />
+		                <param name="bgcolor" value="#ffffff" />
+		                <param name="allowScriptAccess" value="always" />
+		                <param name="allowFullScreen" value="true" />	
+						<param name="wmode" value="transparent" />
+						<param name="flashvars" value="downloads_enabled=<?php echo $downloads_enabled ?>&liked=<?php echo $liked ?>">					
+		            <!--[if !IE]>-->
+		            </object>				
+				</object>
+			</audio>
 		</div>	
 		<div id="spinner"></div>
 		<span id="tweet"></span>
