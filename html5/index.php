@@ -54,7 +54,7 @@
 			$accessToken = $soundcloud->accessToken($_GET['code']);
 			print_r($accessToken);
 		} catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) {
-		    exit($e->getMessage());
+		    echo($e->getMessage());
 		}
 				
 		$after = microtime();	
