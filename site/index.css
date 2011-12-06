@@ -82,6 +82,10 @@ a.soundcloud-badge:hover {
 	position: absolute;
 	top: 0px;
 }
+#audio {
+	width: 400px;
+	height: 20px;
+}
 .fb-post {
 	margin: 15px 0;
 	padding: 0 0 10px 0;
