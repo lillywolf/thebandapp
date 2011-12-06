@@ -116,7 +116,7 @@
 		    "https://api.soundcloud.com/me?oauth_token=1-12872-7625335-e561f85b896d9158",
 		    // {paramOne : 1, paramX : 'abc'},
 		    function(data) {
-		       alert('page content: ' + data);
+		       alert('page content: ' + data.toSource());
 		    }
 		);
 								
