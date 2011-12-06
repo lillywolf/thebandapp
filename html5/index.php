@@ -56,7 +56,7 @@
 		    exit($e->getMessage());
 		}
 		
-		print_r($trackdata[0].stream_url);
+		print_r($trackdata[0]=>stream_url);
 						
 		$after = microtime();	
 				
@@ -66,7 +66,7 @@
 		<div id="notice"></div>
 		<div id="flash">
 			<audio id="audio">
-				<source src="<?php echo $trackdata[0].stream_url ?>" type="audio/mpeg" />
+				<source src="<?php echo $trackdata[0]=>stream_url ?>" type="audio/mpeg" />
 				
 				<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="960">
 				    <param name="movie" value="../site/Main.swf">
