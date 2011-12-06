@@ -110,10 +110,16 @@
 			redirect_uri: 'http://simple-ocean-7178.herokuapp.com/auth/',
 		});
 		
-		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
+		// SC.accessToken = '1-12872-7625335-e561f85b896d9158';
 		
-		alert(SC.isConnected());
-						
+		$.get(
+		    "https://api.soundcloud.com/me?oauth_token=1-12872-7625335-e561f85b896d9158",
+		    // {paramOne : 1, paramX : 'abc'},
+		    function(data) {
+		       alert('page content: ' + data);
+		    }
+		);
+								
 		// if (SC.isConnected()) {
 		// 	alert("is connected");
 		// 	// getUserTracks();
