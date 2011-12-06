@@ -48,7 +48,7 @@
 		# $soundcloud->setAccessToken('302883');
 		$authorizeUrl = $soundcloud->getAuthorizeUrl();
 		
-		echo '<p><a href='.$authorizeUrl.'></a></p>';
+		echo '<p><a href='.$authorizeUrl.'>Connect to Soundcloud</a></p>';
 		
 		try {
 			$accessToken = $soundcloud->accessToken($_GET['code']);
