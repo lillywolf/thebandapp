@@ -89,15 +89,13 @@
 		SC.initialize({
 			client_id: '<?php echo $scConsumerKey; ?>',
 		});
-		
-		alert("check one");
-	
+			
 		SC.get("/groups/<?php echo $scAccessCode; ?>/tracks", 
 			{limit: 1}, 
 			function (received_tracks) {
-				alert("sc callback!");
 				tracks = received_tracks;
-		    	alert("Latest track: " + tracks[0].title);
+				alert(tracks);
+		    	// alert("Latest track: " + tracks[0].title);
 			}
 		);	
 		
