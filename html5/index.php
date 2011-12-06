@@ -46,10 +46,10 @@
 		 	$downloads_enabled = "false";
 		}
 		
-		$accessToken = {
-			access_token: '1-12872-7625335-94e91695a1ea1e98',
-			scope: 'non-expiring',
-		};
+		// $accessToken = {
+		// 	access_token: '1-12872-7625335-94e91695a1ea1e98',
+		// 	scope: 'non-expiring',
+		// };
 		
 		$soundcloud = new Services_Soundcloud('738091d6d02582ddd19de7109b79e47b', 'b8f231ac6dc380b6efb2a8a88cd6d9fe', 'http://simple-ocean-7178.herokuapp.com/auth/');
 		$_SESSION['token'] = '1-12872-7625335-94e91695a1ea1e98';
