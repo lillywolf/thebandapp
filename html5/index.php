@@ -7,7 +7,7 @@
 	<!--script type="text/javascript" src="scripts/prototype.js"></script-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<script src="http://connect.soundcloud.com/sdk.js" type="text/javascript"></script>	
-	<link rel="stylesheet" type="text/css" href="site/index.css" />
+	<link rel="stylesheet" type="text/css" href="../site/index.css" />
 	<!--script type="text/javascript" src="site/history/history.js"></script-->
 </head>	
 <body>
@@ -51,14 +51,14 @@
 		<div id="notice"></div>
 		<div id="flash">
 			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="960">
-			    <param name="movie" value="site/Main.swf">
+			    <param name="movie" value="../site/Main.swf">
 				<param name="allowFullScreen" value="true">
 				<param name="allowScriptAccess" value="always">
 				<param name="scale" value="noscale">
 				<param name="wmode" value="transparent">
 				<param name="flashvars" value="downloads_enabled=<?php echo $downloads_enabled ?>&liked=<?php echo $liked ?>">					
 	            <!--[if !IE]>-->
-	            <object type="application/x-shockwave-flash" data="site/Main.swf" id="musicPlayer" width="514" height="960">
+	            <object type="application/x-shockwave-flash" data="../site/Main.swf" id="musicPlayer" width="514" height="960">
 	                <param name="quality" value="high" />
 	                <param name="bgcolor" value="#ffffff" />
 	                <param name="allowScriptAccess" value="always" />
@@ -86,28 +86,28 @@
 		
 		var tracks;
 			
-		// SC.initialize({
-		// 	      client_id: '<?php echo $scConsumerKey; ?>',
-		// 	    });
+		SC.initialize({
+			      client_id: '<?php echo $scConsumerKey; ?>',
+			    });
 	
-		// SC.get("/groups/<?php echo $scAccessCode; ?>/tracks", 
-		// 	{limit: 10}, 
-		// 	function (received_tracks) {
-		// 		tracks = received_tracks;
-		//     	alert("Latest track: " + tracks[0].title);
-		// 	}
-		// );	
-		// 
-		// SC.whenStreamingReady(function() {
-		//   var soundObj = SC.stream(tracks[0].id);
-		//   soundObj.play();
-		// });
-		// 
+		SC.get("/groups/<?php echo $scAccessCode; ?>/tracks", 
+			{limit: 10}, 
+			function (received_tracks) {
+				tracks = received_tracks;
+		    	alert("Latest track: " + tracks[0].title);
+			}
+		);	
+		
+		SC.whenStreamingReady(function() {
+		  var soundObj = SC.stream(tracks[0].id);
+		  soundObj.play();
+		});
+		
 		fbPageUrl = '<?php echo $fbPageUrl; ?>';
 
 		var MAX_POSTS = 5;
 		var spinner;
-		preload();
+		// preload();
 		
 		window.onload = function() {
 		}
