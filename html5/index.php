@@ -111,6 +111,8 @@
 		});
 		
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
+		
+		alert(SC.toSource());
 				
 		if (SC.isConnected()) {
 			alert("is connected");
@@ -121,13 +123,13 @@
 				// getUserTracks();
 			});	
 		}
-								
-		function getUserTracks() {
-			alert("get tracks");
-			SC.get("/me", function(me) {
-				alert(me.toSource());
-			});			
-		}	
+		// 						
+		// function getUserTracks() {
+		// 	alert("get tracks");
+		// 	SC.get("/me", function(me) {
+		// 		alert(me.toSource());
+		// 	});			
+		// }	
 		
 		// SC.whenStreamingReady(function() {
 		//   var soundObj = SC.stream(tracks[0].id);
