@@ -64,6 +64,9 @@
 		
 		<div id="page_heading_div" class="hidden"></div>
 		<div id="notice"></div>
+		<audio id="audio">
+			<source src="<?php echo $trackdata[0]['stream_url'] ?>" type="audio/mpeg" />
+		</audio>
 		<div id="flash">
 			<audio id="audio">
 				<source src="<?php echo $trackdata[0]['stream_url'] ?>" type="audio/mpeg" />
