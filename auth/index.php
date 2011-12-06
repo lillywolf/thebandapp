@@ -19,37 +19,10 @@
 		require_once('../sc-api/Soundcloud.php');
 		require_once('../php-sdk/src/facebook.php');
 
-		$appId = '107796503671';
-		$appSecret = '10cc0163136a373aa6192f6ceafda96e';
-		$appUrl = 'http://apps.facebook.com/thebandapp';	
-		$fbPageUrl = "facebook.com/lillywolfanddrnu?sk=app_107796503671";
 		$scAccessCode = "302883";
 		$scConsumerKey = "738091d6d02582ddd19de7109b79e47b";
-	
-		$config = array();
-		$config['appId'] = $appId;
-		$config['secret'] = $appSecret;
-		$config['fileUpload'] = false; // optional			
-
-		$facebook = new Facebook($config);	
-		# $user_id = $facebook->getUser();
-		$req = $facebook->getSignedRequest();
-		# $accessToken = $facebook->getApplicationAccessToken();
-		$pageId = $req['page']['id'];
-		if ($req['page']['liked']) {
-			$liked = "true";
-		 	$downloads_enabled = "true";
-		} else {
-		 	$liked = "false";
-		 	$downloads_enabled = "false";
-		}
 		
-		$soundcloud = new Services_Soundcloud('738091d6d02582ddd19de7109b79e47b', 'b8f231ac6dc380b6efb2a8a88cd6d9fe', 'http://simple-ocean-7178.herokuapp.com/auth/', true);
-		# $soundcloud->setAccessToken('302883');
-		$authorizeUrl = $soundcloud->getAuthorizeUrl();
-		
-		echo '<p><a href='.$authorizeUrl.'>Connect to Soundcloud</a></p>';
-		
+		$soundcloud = new Services_Soundcloud('738091d6d02582ddd19de7109b79e47b', 'b8f231ac6dc380b6efb2a8a88cd6d9fe', 'http://simple-ocean-7178.herokuapp.com/html5/index.php', true);				
 		try {
 			$accessToken = $soundcloud->accessToken($_GET['code']);
 			print_r($accessToken);
