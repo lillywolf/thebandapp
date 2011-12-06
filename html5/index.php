@@ -89,6 +89,10 @@
 		SC.initialize({
 			client_id: '<?php echo $scConsumerKey; ?>',
 		});
+		
+		SC.connect(function() {
+			alert("connected");
+		});
 			
 		SC.get("/groups/<?php echo $scAccessCode; ?>/tracks", 
 			{limit: 1}, 
@@ -99,10 +103,10 @@
 			}
 		);	
 		
-		SC.whenStreamingReady(function() {
-		  var soundObj = SC.stream(tracks[0].id);
-		  soundObj.play();
-		});
+		// SC.whenStreamingReady(function() {
+		//   var soundObj = SC.stream(tracks[0].id);
+		//   soundObj.play();
+		// });
 		
 		fbPageUrl = '<?php echo $fbPageUrl; ?>';
 
