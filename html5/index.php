@@ -112,6 +112,8 @@
 		
 		SC.accessToken = '1-12872-7625335-94e91695a1ea1e98';
 		
+		alert(SC.toSource());
+		
 		// if (SC.isConnected()) {
 		// 	// getUserTracks();
 		// } else {
@@ -121,7 +123,7 @@
 		// 	});	
 		// }
 				
-		getUserTracks();		
+		// getUserTracks();		
 				
 		function getUserTracks() {
 			alert("get tracks");
