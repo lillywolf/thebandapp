@@ -68,28 +68,24 @@
 		<div id="notice"></div>
 		<iframe width="100%" height="450" scrolling="no" frameborder="no" src="http://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F<?php echo $playlist_id ?>&amp;auto_play=false&amp;show_artwork=true&amp;color=ff7700"></iframe>
 		<div id="flash">
-			<audio id="audio" id="audio_with_controls" controls="controls">
-				<source src="<?php echo $track_uri ?>" />
-				
-				<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="960">
-				    <param name="movie" value="../site/Main.swf">
-					<param name="allowFullScreen" value="true">
-					<param name="allowScriptAccess" value="always">
-					<param name="scale" value="noscale">
-					<param name="wmode" value="transparent">
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="960">
+			    <param name="movie" value="../site/Main.swf">
+				<param name="allowFullScreen" value="true">
+				<param name="allowScriptAccess" value="always">
+				<param name="scale" value="noscale">
+				<param name="wmode" value="transparent">
+				<param name="flashvars" value="downloads_enabled=<?php echo $downloads_enabled ?>&liked=<?php echo $liked ?>">					
+	            <!--[if !IE]>-->
+	            <object type="application/x-shockwave-flash" data="../site/Main.swf" id="musicPlayer" width="514" height="960">
+	                <param name="quality" value="high" />
+	                <param name="bgcolor" value="#ffffff" />
+	                <param name="allowScriptAccess" value="always" />
+	                <param name="allowFullScreen" value="true" />	
+					<param name="wmode" value="transparent" />
 					<param name="flashvars" value="downloads_enabled=<?php echo $downloads_enabled ?>&liked=<?php echo $liked ?>">					
-		            <!--[if !IE]>-->
-		            <object type="application/x-shockwave-flash" data="../site/Main.swf" id="musicPlayer" width="514" height="960">
-		                <param name="quality" value="high" />
-		                <param name="bgcolor" value="#ffffff" />
-		                <param name="allowScriptAccess" value="always" />
-		                <param name="allowFullScreen" value="true" />	
-						<param name="wmode" value="transparent" />
-						<param name="flashvars" value="downloads_enabled=<?php echo $downloads_enabled ?>&liked=<?php echo $liked ?>">					
-		            <!--[if !IE]>-->
-		            </object>				
-				</object>
-			</audio>
+	            <!--[if !IE]>-->
+	            </object>				
+			</object>
 		</div>	
 		<div id="spinner"></div>
 		<span id="tweet"></span>
