@@ -3,8 +3,6 @@
 	<!--script type="text/javascript" src="site/swfobject.js"></script-->
 	<!--script type="text/javascript" src="site/FBJSBridge.js"></script-->
 	<script type="text/javascript" src="../scripts/spin.js"></script>	
-	<script type="text/javascript" src="../scripts/soundcloud.player.api.js"></script>
-	<script type="text/javascript" src="../scripts/sc-player.js"></script>
 	<!--script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script-->	
 	<!--script type="text/javascript" src="scripts/prototype.js"></script-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
