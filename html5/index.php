@@ -57,6 +57,7 @@
 		}
 		
 		$track_uri = $trackdata[0]['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b';
+		print_r($track_uri);
 						
 		$after = microtime();	
 				
@@ -133,7 +134,7 @@
 		getUserTracks();					
 		function getUserTracks() {
 			alert("get tracks");
-			SC.get("/me", function(me) {
+			SC.get("me", function(me) {
 				alert(me.toSource());
 			});			
 		}	
