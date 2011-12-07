@@ -72,6 +72,7 @@
 		
 		<div id="flash">
 			<div id="player" style="display: none">
+				<div id="player_bg"></div>
 				<?php $i = 1; foreach ($trackdata as $track) {
 					echo '<audio id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
 					<button onClick="document.getElementById(\'audio_' . $i . '\').play()">Play</button><button onClick="document.getElementById(\'audio_' . $i . '\').pause()">Pause</button>';
