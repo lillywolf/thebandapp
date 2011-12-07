@@ -69,17 +69,11 @@
 		<div id="page_heading_div" class="hidden"></div>
 		<div id="notice"></div>
 		<!--iframe id="sc_iframe" width="100%" height="450" scrolling="no" frameborder="no" src="http://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F<?php echo $playlist_id ?>&amp;auto_play=false&amp;show_artwork=true&amp;color=ff7700&amp;allowscriptaccess=always"></iframe-->
-		<object height="81" width="100%">
-		  <param name="movie" 
-		    value="http://player.soundcloud.com/player.swf?&url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F<?php echo $playlist_id ?>"></param>
-		  <param name="allowscriptaccess" value="always"></param>
-		  <embed 
-		    src="http://player.soundcloud.com/player.swf?&url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F<?php echo $playlist_id ?>" 
-		    allowscriptaccess="always" height="81"  type="application/x-shockwave-flash" width="100%">
-		  </embed>
-		</object>
 		
 		<div id="flash">
+			<audio id="audio" controls="controls">
+				<source src="<?php echo $track_uri ?>" type="audio/mpeg" />
+				
 			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="960">
 			    <param name="movie" value="../site/Main.swf">
 				<param name="allowFullScreen" value="true">
@@ -98,6 +92,7 @@
 	            <!--[if !IE]>-->
 	            </object>				
 			</object>
+			</audio>
 		</div>	
 		<div id="spinner"></div>
 		<span id="tweet"></span>
@@ -122,6 +117,7 @@
 		});
 		
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
+		alert(navigator.appName);
 		
 		// var cssLink = document.createElement("link"); 
 		// cssLink.href = "../site/index.css"; 
