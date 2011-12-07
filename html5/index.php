@@ -72,12 +72,13 @@
 		
 		<div id="flash">
 			<div id="player" style="display: none">
-				<div id="player_bg"></div>
-				<?php $i = 1; foreach ($trackdata as $track) {
-					echo '<audio id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
-					<button onClick="document.getElementById(\'audio_' . $i . '\').play()">Play</button><button onClick="document.getElementById(\'audio_' . $i . '\').pause()">Pause</button>';
-					$i++;
-				} ?>
+				<div id="player_bg">
+					<?php $i = 1; foreach ($trackdata as $track) {
+						echo '<audio id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
+						<button onClick="document.getElementById(\'audio_' . $i . '\').play()">Play</button><button onClick="document.getElementById(\'audio_' . $i . '\').pause()">Pause</button>';
+						$i++;
+					} ?>
+				</div>
 			</div>
 			
 				<!--source src="<?php echo $track_uri ?>" type="audio/mpeg" /-->
@@ -124,7 +125,6 @@
 		});
 		
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
-		alert(navigator.appName);
 		
 		if(!!document.createElement('audio').canPlayType('audio/mpeg')) {
 			var source = document.createElement('source');
