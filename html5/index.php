@@ -120,6 +120,15 @@
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
 		alert(navigator.appName);
 		
+		// var source = document.createElement('source');
+		// if (audio.canPlayType('audio/mpeg;')) {
+		//     source.type= 'audio/mpeg';
+		//     source.src= 'audio/song.mp3';
+		// } else {
+		//     source.type= 'audio/ogg';
+		//     source.src= 'audio/song.ogg';
+		// }
+		
 		// var cssLink = document.createElement("link"); 
 		// cssLink.href = "../site/index.css"; 
 		// cssLink.rel = "stylesheet"; 
