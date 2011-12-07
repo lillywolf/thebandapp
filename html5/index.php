@@ -72,7 +72,10 @@
 		
 		<div id="flash">
 			<audio id="audio" controls="controls">
-				<source src="<?php echo $track_uri ?>" type="audio/mpeg" />
+				<?php foreach ($trackdata as $track) {
+					echo '<source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" />';
+				} ?>
+				<!--source src="<?php echo $track_uri ?>" type="audio/mpeg" /-->
 				
 			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="960">
 			    <param name="movie" value="../site/Main.swf">
