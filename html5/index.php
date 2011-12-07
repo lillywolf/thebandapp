@@ -3,11 +3,14 @@
 	<!--script type="text/javascript" src="site/swfobject.js"></script-->
 	<!--script type="text/javascript" src="site/FBJSBridge.js"></script-->
 	<script type="text/javascript" src="../scripts/spin.js"></script>	
+	<!--script type="text/javascript" src="../scripts/soundcloud.player.api.js"></script-->
+	<!--script type="text/javascript" src="../scripts/sc-player.js"></script-->
 	<!--script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script-->	
 	<!--script type="text/javascript" src="scripts/prototype.js"></script-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<script src="http://connect.soundcloud.com/sdk.js" type="text/javascript"></script>	
 	<link rel="stylesheet" type="text/css" href="../site/index.css" />
+	<!--link rel="stylesheet" href="../css/sc-player.css" type="text/css"-->
 	<!--script type="text/javascript" src="site/history/history.js"></script-->
 </head>	
 <body>
@@ -112,24 +115,24 @@
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
 		
 		var cssLink = document.createElement("link"); 
-		cssLink.href = "style.css"; 
+		cssLink.href = "../site/index.css"; 
 		cssLink.rel = "stylesheet"; 
 		cssLink.type = "text/css"; 
-		// document.getElementById('sc_iframe').document.body.getElementsByTagName()
+		document.getElementById('sc_iframe').document.body.appendChild(cssLink);
 		
-		replaceContentInContainer('tracklist');
-		function replaceContentInContainer(matchClass)
-		{
-			var elems = document.getElementById('sc_iframe').document.body.getElementsByTagName('*');
-			var i;
-			alert(elems);
-		    for (i in elems) {
-		        if((" " + elems[i].className + " ").indexOf(" " + matchClass + " ") > -1) {
-					alert("found element");
-		            // elems[i].style.background = 'transparent';
-				}
-			}
-		}
+		// replaceContentInContainer('tracklist');
+		// function replaceContentInContainer(matchClass)
+		// {
+		// 	var elems = document.getElementById('sc_iframe').document.body.getElementsByTagName('*');
+		// 	var i;
+		// 	alert(elems);
+		//     for (i in elems) {
+		//         if((" " + elems[i].className + " ").indexOf(" " + matchClass + " ") > -1) {
+		// 			alert("found element");
+		//             // elems[i].style.background = 'transparent';
+		// 		}
+		// 	}
+		// }
 		
 		// $.getJSON(
 		//     "https://api.soundcloud.com/me?oauth_token=1-12872-7625335-e561f85b896d9158",
