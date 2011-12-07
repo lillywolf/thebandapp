@@ -138,6 +138,7 @@ a.soundcloud-badge:hover {
 	margin: 10px 0 0 15px;
 	height: 109px;
 	width: 474px;
+	z-index: 2;
 }
 #songlist {
 	margin-top: 20px;
