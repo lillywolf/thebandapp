@@ -50,14 +50,14 @@
 		$soundcloud->setAccessToken('1-12872-7625335-e561f85b896d9158');
 		
 		try {
-		    $response = json_decode($soundcloud->get('me/tracks'), true);
-			$trackdata = $response;
+		    $trackdata = json_decode($soundcloud->get('me/tracks'), true);
+			$playlistdata = json_decode($soundcloud->get('me/playlists'), true);
 		} catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) {
 		    exit($e->getMessage());
 		}
 		
 		$track_uri = $trackdata[0]['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b';
-		print_r($track_uri);
+		$playlist = $playlistdata[0]['id'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b';
 						
 		$after = microtime();	
 				
@@ -65,6 +65,7 @@
 		
 		<div id="page_heading_div" class="hidden"></div>
 		<div id="notice"></div>
+		<iframe width="100%" height="450" scrolling="no" frameborder="no" src="http://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%<?php echo $playlist ?>&amp;auto_play=false&amp;show_artwork=true&amp;color=ff7700"></iframe>
 		<div id="flash">
 			<audio id="audio" id="audio_with_controls" controls="controls">
 				<source src="<?php echo $track_uri ?>" />
