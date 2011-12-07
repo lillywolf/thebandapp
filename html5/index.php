@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<script src="http://connect.soundcloud.com/sdk.js" type="text/javascript"></script>	
 	<link rel="stylesheet" type="text/css" href="../site/index.css" />
+	<link rel="stylesheet" type="text/css" href="../style/sc-player-standard.css" />
 	<!--script type="text/javascript" src="site/history/history.js"></script-->
 </head>	
 <body>
