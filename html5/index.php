@@ -74,7 +74,7 @@
 			<div id="player" style="display: none">
 				<div id="player_bg">
 					<?php $i = 1; foreach ($trackdata as $track) {
-						echo '<audio id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
+						echo '<audio class="song" id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
 						<button onClick="document.getElementById(\'audio_' . $i . '\').play()">Play</button><button onClick="document.getElementById(\'audio_' . $i . '\').pause()">Pause</button>';
 						$i++;
 					} ?>
@@ -126,21 +126,13 @@
 		
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
 		
-		if(!!document.createElement('audio').canPlayType('audio/mpeg')) {
-			var source = document.createElement('source');
-		    source.type= 'audio/mpeg';
-		    source.src= 'audio/song.mp3';			
-		} else {
-			// ...
-		}
-		
-		if (document.createElement('audio').canPlayType) {
-			if (!document.createElement('audio').canPlayType('audio/mpeg')) {
-		      // SWFObject script lines here ...
-		    } else { 
-		      document.getElementById('player').style.display = 'block';
-		    }
-		}
+		// if (document.createElement('audio').canPlayType) {
+		// 	if (!document.createElement('audio').canPlayType('audio/mpeg')) {
+		//       // SWFObject script lines here ...
+		//     } else { 
+		//       document.getElementById('player').style.display = 'block';
+		//     }
+		// }
 		
 		// var cssLink = document.createElement("link"); 
 		// cssLink.href = "../site/index.css"; 
