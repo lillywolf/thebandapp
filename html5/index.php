@@ -120,6 +120,7 @@
 		// cssLink.type = "text/css"; 
 		var cssLink = document.createElement('div');
 		cssLink.innerHTML = 'I am a test!';
+		alert(document.getElementById('sc_iframe').id);
 		document.getElementById('sc_iframe').document.body.appendChild(cssLink);
 		
 		// replaceContentInContainer('tracklist');
