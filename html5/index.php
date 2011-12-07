@@ -71,7 +71,8 @@
 		<!--iframe id="sc_iframe" width="100%" height="450" scrolling="no" frameborder="no" src="http://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F<?php echo $playlist_id ?>&amp;auto_play=false&amp;show_artwork=true&amp;color=ff7700&amp;allowscriptaccess=always"></iframe-->
 		
 		<div id="flash">
-			<div id="player" style="display: none">
+			<!--div id="player" style="display: none"-->
+			<div id="player">	
 				<div id="player_bg">
 					<?php $i = 1; foreach ($trackdata as $track) {
 						echo '<audio class="song" id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
