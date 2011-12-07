@@ -111,6 +111,19 @@
 		
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
 		
+		replaceContentInContainer('tracklist');
+		function replaceContentInContainer(matchClass)
+		{
+			var elems = document.getElementsByTagName('*');
+			var i;
+		    for (i in elems) {
+		        if((" " + elems[i].className + " ").indexOf(" " + matchClass + " ") > -1) {
+					alert("found element");
+		            elems[i].style.background = 'transparent';
+				}
+			}
+		}
+		
 		// $.getJSON(
 		//     "https://api.soundcloud.com/me?oauth_token=1-12872-7625335-e561f85b896d9158",
 		//     // {paramOne : 1, paramX : 'abc'},
