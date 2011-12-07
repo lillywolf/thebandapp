@@ -128,7 +128,8 @@ a.soundcloud-badge:hover {
 	left: -509px;
 	height: 700px;
 	width: 1000px;
+	z-index: 0;
 }
 .song {
-	float: left;
+	z-index: 1;
 }
