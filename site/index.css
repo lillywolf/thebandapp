@@ -121,3 +121,6 @@ a.soundcloud-badge:hover {
 	width: 100px;
 	float: left;
 }
+.tracklist {
+	background: transparent !important;
+}
