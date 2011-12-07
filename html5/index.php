@@ -114,10 +114,12 @@
 		
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
 		
-		var cssLink = document.createElement("link"); 
-		cssLink.href = "../site/index.css"; 
-		cssLink.rel = "stylesheet"; 
-		cssLink.type = "text/css"; 
+		// var cssLink = document.createElement("link"); 
+		// cssLink.href = "../site/index.css"; 
+		// cssLink.rel = "stylesheet"; 
+		// cssLink.type = "text/css"; 
+		var cssLink = document.createElement('div');
+		cssLink.innerHTML = 'I am a test!';
 		document.getElementById('sc_iframe').document.body.appendChild(cssLink);
 		
 		// replaceContentInContainer('tracklist');
