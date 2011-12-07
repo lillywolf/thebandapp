@@ -57,7 +57,8 @@
 		}
 		
 		$track_uri = $trackdata[0]['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b';
-		$playlist = $playlistdata[0]['id'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b';
+		$playlist_id = $playlistdata[0]['id'];
+		echo $playlist_id;
 						
 		$after = microtime();	
 				
@@ -65,7 +66,7 @@
 		
 		<div id="page_heading_div" class="hidden"></div>
 		<div id="notice"></div>
-		<iframe width="100%" height="450" scrolling="no" frameborder="no" src="http://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%<?php echo $playlist ?>&amp;auto_play=false&amp;show_artwork=true&amp;color=ff7700"></iframe>
+		<iframe width="100%" height="450" scrolling="no" frameborder="no" src="http://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%<?php echo $playlist_id ?>&amp;auto_play=false&amp;show_artwork=true&amp;color=ff7700"></iframe>
 		<div id="flash">
 			<audio id="audio" id="audio_with_controls" controls="controls">
 				<source src="<?php echo $track_uri ?>" />
