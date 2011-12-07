@@ -3,6 +3,8 @@
 	<!--script type="text/javascript" src="site/swfobject.js"></script-->
 	<!--script type="text/javascript" src="site/FBJSBridge.js"></script-->
 	<script type="text/javascript" src="../scripts/spin.js"></script>	
+	<script type="text/javascript" src="../scripts/soundcloud.player.api.js"></script>
+	<script type="text/javascript" src="../scripts/sc-player.js"></script>
 	<!--script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script-->	
 	<!--script type="text/javascript" src="scripts/prototype.js"></script-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
@@ -57,8 +59,8 @@
 		}
 		
 		$track_uri = $trackdata[0]['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b';
-		$playlist_id = $playlistdata[0]['id'];
-		echo $playlist_id;
+		$playlist_uri = $playlistdata[0]['uri'];
+		echo $playlist_uri;
 						
 		$after = microtime();	
 				
@@ -66,7 +68,8 @@
 		
 		<div id="page_heading_div" class="hidden"></div>
 		<div id="notice"></div>
-		<iframe id="sc_iframe" width="100%" height="450" scrolling="no" frameborder="no" src="http://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F<?php echo $playlist_id ?>&amp;auto_play=false&amp;show_artwork=true&amp;color=ff7700&amp;allowscriptaccess=always"></iframe>
+		<!--iframe id="sc_iframe" width="100%" height="450" scrolling="no" frameborder="no" src="http://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F<?php echo $playlist_id ?>&amp;auto_play=false&amp;show_artwork=true&amp;color=ff7700&amp;allowscriptaccess=always"></iframe-->
+		<a href="<?php echo $playlist_uri ?>" class="sc-player">Test</a>
 		<div id="flash">
 			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="960">
 			    <param name="movie" value="../site/Main.swf">
