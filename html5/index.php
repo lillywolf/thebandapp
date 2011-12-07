@@ -100,14 +100,6 @@
     		<div id="fb-root"></div>
 		</div>
 		
-		<style>
-		
-		#sc_iframe .tracklist {
-			background-color: transparent !important;
-		}
-		
-		</style>
-		
 	<script type="text/javascript">
 		
 		var tracks;
@@ -119,15 +111,22 @@
 		
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
 		
+		var cssLink = document.createElement("link"); 
+		cssLink.href = "style.css"; 
+		cssLink.rel = "stylesheet"; 
+		cssLink.type = "text/css"; 
+		// document.getElementById('sc_iframe').document.body.getElementsByTagName()
+		
 		replaceContentInContainer('tracklist');
 		function replaceContentInContainer(matchClass)
 		{
-			var elems = document.getElementsByTagName('*');
+			var elems = document.getElementById('sc_iframe').document.body.getElementsByTagName('*');
 			var i;
+			alert(elems);
 		    for (i in elems) {
 		        if((" " + elems[i].className + " ").indexOf(" " + matchClass + " ") > -1) {
 					alert("found element");
-		            elems[i].style.background = 'transparent';
+		            // elems[i].style.background = 'transparent';
 				}
 			}
 		}
@@ -149,14 +148,7 @@
 		// 		// getUserTracks();
 		// 	});	
 		// }
-		// 	
-		getUserTracks();					
-		function getUserTracks() {
-			alert("get tracks");
-			SC.get("me", function(me) {
-				alert(me.toSource());
-			});			
-		}	
+		// 		
 		
 		// SC.whenStreamingReady(function() {
 		//   var soundObj = SC.stream(tracks[0].id);
