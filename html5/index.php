@@ -71,9 +71,13 @@
 		<!--iframe id="sc_iframe" width="100%" height="450" scrolling="no" frameborder="no" src="http://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F<?php echo $playlist_id ?>&amp;auto_play=false&amp;show_artwork=true&amp;color=ff7700&amp;allowscriptaccess=always"></iframe-->
 		
 		<div id="flash">
-			<?php foreach ($trackdata as $track) {
-				echo '<audio id="audio" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>';
-			} ?>
+			<div id="player" style="display: none">
+				<?php foreach ($trackdata as $track) {
+					echo '<audio id="audio" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
+					<button onClick="document.getElementById(\'audio\').play()">Play</button><button onClick="document.getElementById(\'audio\').pause()">Pause</button>';
+				} ?>
+			</div>
+			
 				<!--source src="<?php echo $track_uri ?>" type="audio/mpeg" /-->
 				
 			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="musicPlayer" width="514" height="960">
@@ -120,14 +124,21 @@
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
 		alert(navigator.appName);
 		
-		// var source = document.createElement('source');
-		// if (audio.canPlayType('audio/mpeg;')) {
-		//     source.type= 'audio/mpeg';
-		//     source.src= 'audio/song.mp3';
-		// } else {
-		//     source.type= 'audio/ogg';
-		//     source.src= 'audio/song.ogg';
-		// }
+		if(!!document.createElement('audio').canPlayType('audio/mpeg')) {
+			var source = document.createElement('source');
+		    source.type= 'audio/mpeg';
+		    source.src= 'audio/song.mp3';			
+		} else {
+			// ...
+		}
+		
+		if (document.createElement('audio').canPlayType) {
+			if (!document.createElement('audio').canPlayType('audio/mpeg')) {
+		      // SWFObject script lines here ...
+		    } else { 
+		      document.getElementById('player').style.display = 'block';
+		    }
+		}
 		
 		// var cssLink = document.createElement("link"); 
 		// cssLink.href = "../site/index.css"; 
