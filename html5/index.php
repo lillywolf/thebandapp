@@ -76,7 +76,7 @@
 				<div id="player_bg">
 					<div id="top_player">
 						<div id="top_pic"></div>
-						<div id="play_btn"></div>
+						<div id="play_btn" onClick="playButtonClick()"></div>
 						<div id="player_items">
 							<div id="top_text">
 								<div id="top_title"></div>
@@ -91,7 +91,7 @@
 					</div>	
 					<div id="songlist">
 						<?php $i = 1; foreach ($trackdata as $track) {
-							echo '<div class="song" onClick="populatePlayer(\'' . $track['title'] . '\'); document.getElementById(\'audio_' . $i . '\').play()"><audio class="audio_tag" id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
+							echo '<div class="song" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . '); document.getElementById(\'audio_' . $i . '\').play()"><audio class="audio_tag" id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
 							<div class="song_title">' . $track['title'] . '</div>
 							<!--button onClick="document.getElementById(\'audio_' . $i . '\').pause()">Pause</button--></div>';
 							$i++;
@@ -136,7 +136,8 @@
 		
 	<script type="text/javascript">
 		
-		var tracks;
+		var isPlaying = false;
+		var currentTrackIndex;
 			
 		SC.initialize({
 			client_id: '738091d6d02582ddd19de7109b79e47b',
@@ -145,9 +146,37 @@
 		
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
 		
-		function populatePlayer(title) {
-			// alert(title);
+		function populatePlayer(title, trackIndex) {
+			isPlaying = true;
+			currentTrackIndex = trackIndex;
 			document.getElementById('top_title').innerHTML = title;
+			showPause();
+		}
+		
+		function showPause() {
+			document.getElementById('play_btn').style.backgroundImage = url('../images/html5/buy_btn.png');			
+		}
+		
+		function showPlay() {
+			document.getElementById('play_btn').style.backgroundImage = url('../images/html5/play_btns.png');			
+		}
+		
+		function playButtonClick() {
+			if (isPlaying) {
+				doPause();
+			} else {
+				doPlay();
+			}
+		}
+		
+		function doPlay() {
+			document.getElementById('audio_'+currentTrackIndex.toString()).play();
+			showPause();
+		}
+		
+		function doPause() {
+			document.getElementById('audio_'+currentTrackIndex.toString()).pause();
+			showPlay();
 		}
 		
 		// if (document.createElement('audio').canPlayType) {
