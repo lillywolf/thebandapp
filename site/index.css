@@ -160,3 +160,44 @@ a.soundcloud-badge:hover {
 .audio_tag {
 	display: none;
 }
+#top_pic {
+	background-image: url('../images/html5/player_pic.png');
+	float: left;
+	width: 105px;
+	height: 101px;
+}
+#play_btn {
+	background-image: url('../images/html5/play_btn.png');
+	float: left;
+	width: 48px;
+	height: 40px;
+}
+#player_items {
+	float: left;
+}
+#top_text {
+	font-size: 15px;
+}
+#top_title {
+	float: left;
+}
+#top_timer {
+	float: right;
+}
+#top_buttons {
+	float: left;
+	clear: both;
+}
+.download_btn {
+	background-image: url('../images/html5/download_btn.png');
+	width: 82px;
+	height: 35px;
+}
+.buy_btn {
+	background-image: url('../images/html5/buy_btn.png');
+	width: 54px;
+	height: 35px;
+}
+#top_buttons div {
+	float: left;
+}

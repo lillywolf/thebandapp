@@ -75,10 +75,23 @@
 			<div id="player">	
 				<div id="player_bg">
 					<div id="top_player">
+						<div id="top_pic"></div>
+						<div id="play_btn"></div>
+						<div id="player_items">
+							<div id="top_text">
+								<div id="top_title"></div>
+								<div id="top_timer"></div>
+							</div>
+							<div id="song_bar"></div>
+							<div id="top_buttons">
+								<div class="download_btn"></div>
+								<div class="buy_btn"></div>
+							</div>
+						</div>
 					</div>	
 					<div id="songlist">
 						<?php $i = 1; foreach ($trackdata as $track) {
-							echo '<div class="song" onClick="document.getElementById(\'audio_' . $i . '\').play()"><audio class="audio_tag" id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
+							echo '<div class="song" onClick="populatePlayer(' . $track['title'] . '); document.getElementById(\'audio_' . $i . '\').play()"><audio class="audio_tag" id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
 							<div class="song_title">' . $track['title'] . '</div>
 							<!--button onClick="document.getElementById(\'audio_' . $i . '\').pause()">Pause</button--></div>';
 							$i++;
@@ -131,6 +144,10 @@
 		});
 		
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
+		
+		function populatePlayer(title) {
+			document.getElementById('top_title').innerHTML = title;
+		}
 		
 		// if (document.createElement('audio').canPlayType) {
 		// 	if (!document.createElement('audio').canPlayType('audio/mpeg')) {
