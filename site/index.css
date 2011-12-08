@@ -175,9 +175,9 @@ a.soundcloud-badge:hover {
 #play_btn_wrapper {
 	float: left;
 	width: 55px;
-	height: 53px;
+	height: 50px;
 	overflow: hidden;
-	margin: 10px 0 0 0;
+	margin: 15px 0 0 0;
 }
 #play_btn {
 	background-image: url('../images/html5/play_btns.png');
@@ -185,7 +185,7 @@ a.soundcloud-badge:hover {
 	width: 55px;
 }
 #play_btn:hover {
-	margin-top: -50px;
+	margin-top: -49px;
 }
 #pause_btn {
 	background-image: url('../images/html5/pause_btns.png');
@@ -194,7 +194,7 @@ a.soundcloud-badge:hover {
 	width: 57px;
 }
 #pause_btn:hover {
-	margin-top: -50px;
+	margin-top: -49px;
 }
 #player_items {
 	float: left;
