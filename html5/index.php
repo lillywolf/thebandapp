@@ -146,8 +146,8 @@
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
 		
 		function populatePlayer(title) {
-			alert(title);
-			// document.getElementById('top_title').innerHTML = title;
+			// alert(title);
+			document.getElementById('top_title').innerHTML = title;
 		}
 		
 		// if (document.createElement('audio').canPlayType) {
