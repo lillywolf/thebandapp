@@ -76,7 +76,10 @@
 				<div id="player_bg">
 					<div id="top_player">
 						<div id="top_pic"></div>
-						<div id="play_btn" onClick="playButtonClick()"></div>
+						<div id="play_btn_wrapper">
+							<div id="play_btn" onClick="playButtonClick()"></div>
+							<div id="pause_btn" onClick="playButtonClick()"></div>
+						</div>	
 						<div id="player_items">
 							<div id="top_text">
 								<div id="top_title"></div>
@@ -154,11 +157,13 @@
 		}
 		
 		function showPause() {
-			document.getElementById('play_btn').style.backgroundImage = 'url(../images/html5/buy_btn.png)';			
+			document.getElementById('play_btn').style.display = "none";		
+			document.getElementById('pause_btn').style.display = "block";		
 		}
 		
 		function showPlay() {
-			document.getElementById('play_btn').style.backgroundImage = 'url(../images/html5/play_btns.png)';			
+			document.getElementById('pause_btn').style.display = "none";			
+			document.getElementById('play_btn').style.display = "block";			
 		}
 		
 		function playButtonClick() {

@@ -166,20 +166,18 @@ a.soundcloud-badge:hover {
 	width: 105px;
 	height: 101px;
 }
+#play_btn_wrapper {
+	float: left;
+	width: 48px;
+	height: 40px;
+	overflow: hidden;
+}
 #play_btn {
 	background-image: url('../images/html5/play_btns.png');
-	float: left;
-	width: 48px;
-	height: 40px;
-	overflow: hidden;
-	margin-top: 0px;
 }
-#play_btn:hover {
-	margin-top: -40px;
-	float: left;
-	width: 48px;
-	height: 40px;
-	overflow: hidden;
+#pause_btn {
+	background-image: url('../images/html5/buy_btn.png');
+	display: none;
 }
 #player_items {
 	float: left;
