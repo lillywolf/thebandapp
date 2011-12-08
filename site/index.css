@@ -174,7 +174,7 @@ a.soundcloud-badge:hover {
 }
 #play_btn {
 	background-image: url('../images/html5/play_btns.png');
-	height: 40px;
+	height: 80px;
 	width: 48px;
 }
 #play_btn:hover {
