@@ -80,7 +80,7 @@
 						<?php $i = 1; foreach ($trackdata as $track) {
 							echo '<div class="song" onClick="document.getElementById(\'audio_' . $i . '\').play()"><audio class="audio_tag" id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
 							<div class="song_title">' . $track['title'] . '</div>
-							<!--button onClick="document.getElementById(\'audio_' . $i . '\').pause()"-->Pause</button></div>';
+							<!--button onClick="document.getElementById(\'audio_' . $i . '\').pause()">Pause</button--></div>';
 							$i++;
 						} ?>
 					</div>
