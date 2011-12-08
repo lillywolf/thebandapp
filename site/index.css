@@ -177,12 +177,18 @@ a.soundcloud-badge:hover {
 }
 #top_text {
 	font-size: 15px;
+	height: 40px;
+	width: 272px;
 }
 #top_title {
 	float: left;
+	height: 40px;
+	width: 212px;
 }
 #top_timer {
 	float: right;
+	height: 40px;
+	width: 60px;
 }
 #top_buttons {
 	float: left;
