@@ -154,11 +154,11 @@
 		}
 		
 		function showPause() {
-			document.getElementById('play_btn').style.backgroundImage = url('../images/html5/buy_btn.png');			
+			document.getElementById('play_btn').style.backgroundImage = 'url(../images/html5/buy_btn.png)';			
 		}
 		
 		function showPlay() {
-			document.getElementById('play_btn').style.backgroundImage = url('../images/html5/play_btns.png');			
+			document.getElementById('play_btn').style.backgroundImage = 'url(../images/html5/play_btns.png)';			
 		}
 		
 		function playButtonClick() {

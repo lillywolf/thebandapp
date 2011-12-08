@@ -176,6 +176,10 @@ a.soundcloud-badge:hover {
 }
 #play_btn:hover {
 	margin-top: -40px;
+	float: left;
+	width: 48px;
+	height: 40px;
+	overflow: hidden;
 }
 #player_items {
 	float: left;
