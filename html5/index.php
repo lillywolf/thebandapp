@@ -74,23 +74,25 @@
 			<!--div id="player" style="display: none"-->
 			<div id="player">	
 				<div id="player_bg">
-					<div id="top_player">
-						<div id="top_pic"></div>
-						<div id="play_btn_wrapper">
-							<div id="play_btn" onClick="playButtonClick()"></div>
-							<div id="pause_btn" onClick="playButtonClick()"></div>
+					<div id="top_player_wrapper">
+						<div id="top_player">
+							<div id="top_pic"></div>
+							<div id="play_btn_wrapper">
+								<div id="play_btn" onClick="playButtonClick()"></div>
+								<div id="pause_btn" onClick="playButtonClick()"></div>
+							</div>	
+							<div id="player_items">
+								<div id="top_text">
+									<div id="top_title"></div>
+									<div id="top_timer"></div>
+								</div>
+								<div id="song_bar"></div>
+								<div id="top_buttons">
+									<div class="download_btn"></div>
+									<div class="buy_btn"></div>
+								</div>
+							</div>
 						</div>	
-						<div id="player_items">
-							<div id="top_text">
-								<div id="top_title"></div>
-								<div id="top_timer"></div>
-							</div>
-							<div id="song_bar"></div>
-							<div id="top_buttons">
-								<div class="download_btn"></div>
-								<div class="buy_btn"></div>
-							</div>
-						</div>
 					</div>	
 					<div id="songlist">
 						<?php $i = 1; foreach ($trackdata as $track) {
