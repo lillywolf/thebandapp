@@ -184,20 +184,20 @@ a.soundcloud-badge:hover {
 	background-image: url('../images/html5/play_btns.png');
 	height: 106px;
 	width: 55px;
-	margin-top: -3px;
+	margin-top: -8px;
 }
 #play_btn:hover {
-	margin-top: -51px;
+	margin-top: -55px;
 }
 #pause_btn {
 	background-image: url('../images/html5/pause_btns.png');
 	display: none;
 	height: 106px;
 	width: 57px;
-	margin-top: -3px;
+	margin-top: -8px;
 }
 #pause_btn:hover {
-	margin-top: -51px;
+	margin-top: -55px;
 }
 #player_items {
 	float: left;
