@@ -146,6 +146,7 @@ a.soundcloud-badge:hover {
 	color: #5E5751;
 	text-align: left;
 	line-height: 18px;
+	margin: 0 0 0 12px;
 }
 #top_player {
 	background-image: url('../images/html5/top_player_bg.png');
