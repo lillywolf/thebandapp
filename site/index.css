@@ -204,21 +204,20 @@ a.soundcloud-badge:hover {
 }
 #top_text {
 	font-size: 15px;
-	height: 40px;
+	height: 20px;
 	width: 272px;
 	color: #5E5751;
-	margin-top: 10px;
+	margin-top: 26px;
 }
 #top_title {
 	float: left;
-	height: 40px;
 	width: 212px;
 }
 #song_bar {
 	background-image: url('../images/html5/song_loader_bar.png');
 	height: 10px;
 	width: 277px;
-	margin-top: 10px;
+	margin-top: 3px;
 }
 #top_timer {
 	float: right;
