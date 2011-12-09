@@ -247,9 +247,10 @@ a.soundcloud-badge:hover {
 }
 .buy_btn_wrapper {
 	width: 60px;
-	height: 74px;
+	height: 35px;
 	margin-left: -4px;
 	float: left;
+	overflow: hidden;
 }
 .buy_btn {
 	background-image: url('../images/html5/buy_btns.png');
