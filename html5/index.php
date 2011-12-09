@@ -87,14 +87,14 @@
 									<div id="top_timer"></div>
 								</div>
 								<div id="song_bar"></div>
-								<div id="top_buttons">
+								<!--div id="top_buttons"-->
 									<div class="download_btn_wrapper">
 										<div class="download_btn"></div>
 									</div>
 									<div class="buy_btn_wrapper">	
 										<div class="buy_btn"></div>
 									</div>	
-								</div>
+								<!--/div-->
 							</div>
 						</div>	
 					</div>	
