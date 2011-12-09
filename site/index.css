@@ -197,7 +197,7 @@ a.soundcloud-badge:hover {
 	margin-top: -5px;
 }
 #pause_btn:hover {
-	margin-top: -53px;
+	margin-top: -52px;
 }
 #player_items {
 	float: left;
@@ -207,7 +207,7 @@ a.soundcloud-badge:hover {
 	height: 20px;
 	width: 272px;
 	color: #5E5751;
-	margin-top: 26px;
+	margin: 26px 0 0 3px;
 }
 #top_title {
 	float: left;
@@ -217,7 +217,7 @@ a.soundcloud-badge:hover {
 	background-image: url('../images/html5/song_loader_bar.png');
 	height: 10px;
 	width: 277px;
-	margin-top: 3px;
+	margin: 3px 0 0 3px;
 }
 #top_timer {
 	float: right;
@@ -227,7 +227,7 @@ a.soundcloud-badge:hover {
 #top_buttons {
 	float: left;
 	clear: both;
-	margin-top: 10px;
+	margin-top: 2px;
 }
 .download_btn {
 	background-image: url('../images/html5/download_btn.png');
