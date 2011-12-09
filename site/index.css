@@ -277,7 +277,7 @@ a.soundcloud-badge:hover {
 }
 #scroll_up {
 	background-image: url('../images/html5/scroll_up.png');
-	height: 40px;
+	height: 80px;
 	width: 44px;
 }
 #scroll_up:hover {
@@ -285,7 +285,7 @@ a.soundcloud-badge:hover {
 }
 #scroll_down {
 	background-image: url('../images/html5/scroll_down.png');
-	height: 40px;
+	height: 80px;
 	width: 44px;
 }
 #scroll_down:hover {
