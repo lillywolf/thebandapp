@@ -189,17 +189,17 @@ a.soundcloud-badge:hover {
 	margin-top: -5px;
 }
 #play_btn:hover {
-	margin-top: -59px;
+	margin-top: -63px;
 }
 #pause_btn {
 	background-image: url('../images/html5/pause_btns.png');
 	display: none;
 	height: 118px;
 	width: 57px;
-	margin-top: -6px;
+	margin: -9px 0 0 -3px;
 }
 #pause_btn:hover {
-	margin-top: -59px;
+	margin: -62px 0 0 -3px;
 }
 #player_items {
 	float: left;
@@ -237,6 +237,8 @@ a.soundcloud-badge:hover {
 .download_btn {
 	background-image: url('../images/html5/download_btns.png');
 	margin-top: -3px;
+	width: 86px;
+	height: 35px;
 }
 .download_btn:hover {
 	margin-top: -41px;
@@ -249,6 +251,8 @@ a.soundcloud-badge:hover {
 .buy_btn {
 	background-image: url('../images/html5/buy_btn.png');
 	margin-top: -3px;
+	width: 60px;
+	height: 74px;
 }
 .buy_btn:hover {
 	margin-top: -41px;
@@ -258,12 +262,29 @@ a.soundcloud-badge:hover {
 }
 #scrollers {
 	float: left;
-	width: 43px;
+	width: 44px;
 	margin-left: 5px;
 }
-#scrollers img {
-	height: 30px;	
+#scroll_up_wrapper, #scroll_down_wrapper {
+	height: 40px;
+	width: 44px;
+}
+#scroll_down_wrapper {
+	margin-top: 200px;
+}
+#scroll_up {
+	background-image: url('../images/html5/scroll_up.png');
+	height: 40px;
+	width: 44px;
+}
+#scroll_up:hover {
+	margin-top: -40px;
 }
 #scroll_down {
-	margin-top: 200px;
+	background-image: url('../images/html5/scroll_down.png');
+	height: 40px;
+	width: 44px;
+}
+#scroll_down:hover {
+	margin-top: -40px;
 }

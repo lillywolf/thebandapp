@@ -107,8 +107,12 @@
 						} ?>
 					</div>
 					<div id="scrollers">
-						<img id="scroll_up" src="../images/html5/scroll_up.png"></img>
-						<img id="scroll_down" src="../images/html5/scroll_down.png"></img>
+						<div id="scroll_up_wrapper">
+							<div id="scroll_up"></div>
+						</div>
+						<div id="scroll_down_wrapper">
+							<div id="scroll_down"></div>
+						</div>
 					</div>	
 				</div>	
 			</div>
