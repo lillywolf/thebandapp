@@ -233,6 +233,7 @@ a.soundcloud-badge:hover {
 .download_btn_wrapper {
 	width: 86px;
 	height: 35px;	
+	overflow: hidden;
 }
 .download_btn {
 	background-image: url('../images/html5/download_btns.png');
@@ -257,9 +258,6 @@ a.soundcloud-badge:hover {
 .buy_btn:hover {
 	margin-top: -41px;
 }
-#top_buttons div {
-	float: left;
-}
 #scrollers {
 	float: left;
 	width: 44px;
@@ -269,6 +267,7 @@ a.soundcloud-badge:hover {
 	height: 40px;
 	width: 44px;
 	overflow: hidden;
+	float: left;
 }
 #scroll_down_wrapper {
 	margin-top: 200px;
