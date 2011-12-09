@@ -259,12 +259,12 @@ a.soundcloud-badge:hover {
 	float: left;
 }
 #download_btn:hover {
-	margin: -37px 0 0 1px;
+	margin: -36px 0 0 0;
 }
 #buy_btn_wrapper {
 	width: 60px;
 	height: 35px;
-	margin: -2px 0 0 -6px;
+	margin: -2px 0 0 -7px;
 	float: left;
 	overflow: hidden;
 }
