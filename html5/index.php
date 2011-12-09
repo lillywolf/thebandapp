@@ -91,8 +91,8 @@
 									<div id="download_btn_wrapper">
 										<div id="download_btn"></div>
 									</div>
-									<div class="buy_btn_wrapper">	
-										<div class="buy_btn"></div>
+									<div id="buy_btn_wrapper">	
+										<div id="buy_btn"></div>
 									</div>	
 								</div>
 							</div>
@@ -104,7 +104,7 @@
 							<div class="song_title">' . $track['title'] . '</div>
 							<div class="song_btns">
 								<div id="download_btn_wrapper"><div id="download_btn"></div></div>
-								<div class="buy_btn_wrapper"><div class="buy_btn"></div></div>
+								<div id="buy_btn_wrapper"><div id="buy_btn"></div></div>
 							</div>	
 							<!--button onClick="document.getElementById(\'audio_' . $i . '\').pause()">Pause</button--></div>';
 							$i++;
