@@ -244,7 +244,7 @@ a.soundcloud-badge:hover {
 }
 .download_btn:hover {
 	/* margin-top: -41px; */
-	display: none;
+	padding: 10px;
 }
 .buy_btn_wrapper {
 	width: 60px;
