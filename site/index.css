@@ -182,22 +182,22 @@ a.soundcloud-badge:hover {
 }
 #play_btn {
 	background-image: url('../images/html5/play_btns.png');
-	height: 106px;
+	height: 118px;
 	width: 55px;
 	margin-top: -5px;
 }
 #play_btn:hover {
-	margin-top: -53px;
+	margin-top: -59px;
 }
 #pause_btn {
 	background-image: url('../images/html5/pause_btns.png');
 	display: none;
-	height: 106px;
+	height: 118px;
 	width: 57px;
 	margin-top: -6px;
 }
 #pause_btn:hover {
-	margin-top: -53px;
+	margin-top: -59px;
 }
 #player_items {
 	float: left;
@@ -228,17 +228,40 @@ a.soundcloud-badge:hover {
 	float: left;
 	clear: both;
 }
+.download_btn_wrapper {
+	width: 86px;
+	height: 35px;	
+}
 .download_btn {
-	background-image: url('../images/html5/download_btn.png');
-	width: 82px;
-	height: 35px;
+	background-image: url('../images/html5/download_btns.png');
+	margin-top: -3px;
+}
+.download_btn:hover {
+	margin-top: -41px;
+}
+.buy_btn_wrapper {
+	width: 60px;
+	height: 74px;
+	margin-left: -4px;
 }
 .buy_btn {
 	background-image: url('../images/html5/buy_btn.png');
-	width: 54px;
-	height: 35px;
-	margin-left: -4px;
+	margin-top: -3px;
+}
+.buy_btn:hover {
+	margin-top: -41px;
 }
 #top_buttons div {
 	float: left;
+}
+#scrollers {
+	float: left;
+	width: 30px;
+	margin-left: 5px;
+}
+#scrollers img {
+	height: 30px;	
+}
+#scroll_down {
+	margin-top: 200px;
 }

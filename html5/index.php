@@ -88,8 +88,12 @@
 								</div>
 								<div id="song_bar"></div>
 								<div id="top_buttons">
-									<div class="download_btn"></div>
-									<div class="buy_btn"></div>
+									<div class="download_btn_wrapper">
+										<div class="download_btn"></div>
+									</div>
+									<div class="buy_btn_wrapper">	
+										<div class="buy_btn"></div>
+									</div>	
 								</div>
 							</div>
 						</div>	
@@ -102,6 +106,10 @@
 							$i++;
 						} ?>
 					</div>
+					<div id="scrollers">
+						<img id="scroll_up" src="../images/html5/scroll_up.png"></img>
+						<img id="scroll_down" src="../images/html5/scroll_down.png"></img>
+					</div>	
 				</div>	
 			</div>
 			
