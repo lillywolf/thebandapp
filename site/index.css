@@ -162,6 +162,8 @@ a.soundcloud-badge:hover {
 }
 #songlist {
 	margin-top: 20px;
+	width: 450px;
+	float: left;
 }
 .audio_tag {
 	display: none;
@@ -256,7 +258,7 @@ a.soundcloud-badge:hover {
 }
 #scrollers {
 	float: left;
-	width: 30px;
+	width: 43px;
 	margin-left: 5px;
 }
 #scrollers img {
