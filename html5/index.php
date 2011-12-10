@@ -211,6 +211,7 @@
 		}
 		
 		function updateTopFacebookLikeButton(url) {
+			alert(url);
 			$('#top_like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('top_like'));
