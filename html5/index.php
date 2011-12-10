@@ -162,6 +162,7 @@
 		
 		var isPlaying = false;
 		var currentTrackIndex;
+		initializeJS();
 			
 		SC.initialize({
 			client_id: '738091d6d02582ddd19de7109b79e47b',
@@ -306,7 +307,7 @@
 			window.document.getElementById('spinner').style.visibility = "hidden";
 			shiftElements();
 			// addTwitterFollowButton();
-			initializeJS();
+			// initializeJS();
 		}
 		
 		function shiftElements() {
