@@ -215,8 +215,8 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('top_like'));
 			}
-			window.document.getElementById("top_like").style.top = parseInt(likeBtnY) + 2;
-			window.document.getElementById("top_like").style.left = 271;
+			// window.document.getElementById("top_like").style.top = parseInt() + 2;
+			window.document.getElementById("top_like").style.left = 130;
 		}
 		
 		// if (document.createElement('audio').canPlayType) {
