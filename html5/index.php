@@ -94,13 +94,15 @@
 									<div id="buy_btn_wrapper">	
 										<div id="buy_btn"></div>
 									</div>	
+									<div id="top_like"></div>
+									<div id="top_tweet"></div>
 								</div>
 							</div>
 						</div>	
 					</div>	
 					<div id="songlist">
 						<?php $i = 1; foreach ($trackdata as $track) {
-							echo '<div class="song" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . '); document.getElementById(\'audio_' . $i . '\').play()"><audio class="audio_tag" id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
+							echo '<div class="song" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . ', \'' . $track['uri'] . '\'); document.getElementById(\'audio_' . $i . '\').play()"><audio class="audio_tag" id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
 							<div class="song_title">' . $track['title'] . '</div>
 							<div class="song_stats"></div>
 							<div class="song_btns">
@@ -168,11 +170,12 @@
 		
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
 		
-		function populatePlayer(title, trackIndex) {
+		function populatePlayer(title, trackIndex, url) {
 			isPlaying = true;
 			currentTrackIndex = trackIndex;
 			document.getElementById('top_title').innerHTML = title;
 			showPause();
+			updateButtons(url);
 		}
 		
 		function showPause() {
@@ -201,6 +204,19 @@
 		function doPause() {
 			document.getElementById('audio_'+currentTrackIndex.toString()).pause();
 			showPlay();
+		}
+		
+		function updateButtons(url) {
+			updateTopFacebookLikeButton(url);
+		}
+		
+		function updateTopFacebookLikeButton(url) {
+			$('#top_like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="true" />');
+			if (typeof FB !== 'undefined') {
+			    FB.XFBML.parse(document.getElementById('top_like'));
+			}
+			window.document.getElementById("top_like").style.top = parseInt(likeBtnY) + 2;
+			window.document.getElementById("top_like").style.left = 271;
 		}
 		
 		// if (document.createElement('audio').canPlayType) {
