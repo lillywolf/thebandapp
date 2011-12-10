@@ -242,7 +242,7 @@ a.soundcloud-badge:hover {
 	float: left;
 	clear: both;
 	height: 35px;
-	width: 200px;
+	width: 300px;
 }
 #download_btn_wrapper {
 	width: 86px;
@@ -312,4 +312,5 @@ a.soundcloud-badge:hover {
 #top_like {
 	height: 35px;
 	float: left;
+	margin: 6px 0 0 0;
 }

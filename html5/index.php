@@ -214,11 +214,8 @@
 		function updateTopFacebookLikeButton(url) {
 			$('#top_like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
-				alert(url);
 			    FB.XFBML.parse(document.getElementById('top_like'));
 			}
-			// window.document.getElementById("top_like").style.top = parseInt() + 2;
-			// window.document.getElementById("top_like").style.left = 130;
 		}
 		
 		// if (document.createElement('audio').canPlayType) {
