@@ -309,3 +309,7 @@ a.soundcloud-badge:hover {
 #scroll_down:hover {
 	margin-top: -37px;
 }
+#top_like {
+	height: 35px;
+	float: left;
+}
