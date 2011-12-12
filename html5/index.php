@@ -220,7 +220,7 @@
 		            matches.push(elems[i].id);
 		        }
 		    }
-			alert(matches.length);
+			alert(matches.toSource());
 			return matches;
 		}
 		
