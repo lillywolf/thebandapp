@@ -211,7 +211,7 @@
 		
 		function getElementsByClass(matchClass, parentId)
 		{
-			var matches;
+			var matches = [];
 		    var elems = document.getElementById(parentId).getElementsByTagName('*');
 			alert(elems.length);
 			for (var i in elems)
@@ -222,7 +222,7 @@
 		            matches.push(elems[i]);
 		        }
 		    }
-			alert(matches);
+			return matches;
 		}
 		
 		function populatePlayer(title, trackIndex, url, pic_url) {
