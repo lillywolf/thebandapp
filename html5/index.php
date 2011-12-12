@@ -197,13 +197,13 @@
 		function swapAudio(url) {
 			alert(url);
 			audio = $('#top_audio');
-			alert(audio);
 			//audio = document.getElementById('top_audio');
 			// audio.remove();
 			audio.html('<source src="' + url + '" type="audio/mpeg"></source>');
 			// topPlayer.appendChild(newAudio);
 			// addAudioListeners();
 			var topAudio = document.getElementById('top_audio');
+			alert(topAudio.innerHTML);
 			topAudio.play();
 		}
 			
