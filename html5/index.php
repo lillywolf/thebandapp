@@ -78,6 +78,8 @@
 				<div id="player_bg">
 					<div id="top_player_wrapper">
 						<div id="top_player">
+							<audio id="top_audio">
+							</audio>	
 							<div id="top_pic">
 								<img id="top_pic_inner"></img>
 							</div>
