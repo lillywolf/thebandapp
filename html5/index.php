@@ -106,7 +106,7 @@
 					</div>	
 					<div id="songlist">
 						<?php $i = 1; foreach ($trackdata as $track) {
-							echo '<div class="song" id="song_' . $i . '" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . ', \'' . $track['permalink_url'] . ', ' . $track['artwork_url'] . '\'); document.getElementById(\'audio_' . $i . '\').play()"><audio class="audio_tag" id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
+							echo '<div class="song" id="song_' . $i . '" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . ', \'' . $track['permalink_url'] . ', ' . $track['artwork_url'] . '\', ' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b\');"><!--audio class="audio_tag" id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio-->
 							<div class="song_title">' . $track['title'] . '</div>
 							<div class="song_stats">
 								<div class="stat_num_plays">' . $track['playback_count'] . '</div>
@@ -173,6 +173,37 @@
 		var currentScrollIndex = 1;
 		initializeJS();
 		updateDisplayedSongs();
+		
+		var timeleft = $('#top_player #top_timer');
+		var topPlayer = $('#top_player');
+		
+		function addAudioListeners() {
+			var audio = document.getElementById('top_audio');
+			if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
+				$(audio).bind('progress', function) {
+					var loaded = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10);
+				}
+				$(audio).bind('timeupdate', function() {
+					var rem = parseInt(audio.duration - audio.currentTime, 10),
+				  	pos = (audio.currentTime / audio.duration) * 100,
+				  	mins = Math.floor(rem/60,10),
+				  	secs = rem - mins*60;
+				timeleft.text('-' + mins + ':' + (secs > 9 ? secs : '0' + secs));
+			}
+		}
+		
+		function swapAudio(url) {
+			alert(url);
+			var audio = document.getElementById('top_audio');
+			topPlayer.removeChild(audio);
+		  	var newAudio =
+		    	'<audio id="top_audio">\
+		      		<source src="' + url + '"></source>\
+		    	</audio>';
+			topPlayer.appendChild(newAudio);
+			addAudioListeners();
+			newAudio.play();
+		}
 			
 		SC.initialize({
 			client_id: '738091d6d02582ddd19de7109b79e47b',
@@ -223,11 +254,12 @@
 			return matches;
 		}
 		
-		function populatePlayer(title, trackIndex, url, pic_url) {
+		function populatePlayer(title, trackIndex, url, pic_url, stream_url) {
 			isPlaying = true;
 			currentTrackIndex = trackIndex;
 			document.getElementById('top_title').innerHTML = title;
 			showPause();
+			swapAudio(stream_url);
 			updateButtons(url);
 			updatePic(pic_url);
 		}
