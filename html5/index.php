@@ -170,6 +170,7 @@
 		var MAX_TRACKS = 4;
 		var isPlaying = false;
 		var currentTrackIndex = 1;
+		var currentScrollIndex = 1;
 		initializeJS();
 		updateDisplayedSongs();
 			
@@ -182,15 +183,15 @@
 		
 		function scrollSongsDown() {
 			var songs = getElementsByClass('song', 'songlist');
-			if (currentTrackIndex <= songs.length - MAX_TRACKS) {
-				currentTrackIndex = currentTrackIndex + 1;
+			if (currentScrollIndex <= songs.length - MAX_TRACKS) {
+				currentScrollIndex = currentScrollIndex + 1;
 				updateDisplayedSongs();
 			}
 		}
 		
 		function scrollSongsUp() {
-			if (currentTrackIndex > 1) {
-				currentTrackIndex = currentTrackIndex - 1;
+			if (currentScrollIndex > 1) {
+				currentScrollIndex = currentScrollIndex - 1;
 				updateDisplayedSongs();
 			}
 		}
@@ -200,7 +201,7 @@
 			var i;
 			for (i = 1; i <= songs.length; i++) {
 				var song = document.getElementById('song_'+i.toString());
-				if (i >= currentTrackIndex && i < currentTrackIndex + MAX_TRACKS && song != null) {
+				if (i >= currentScrollIndex && i < currentScrollIndex + MAX_TRACKS && song != null) {
 					song.style.display = 'block';
 				} else {
 					song.style.display = 'none';
