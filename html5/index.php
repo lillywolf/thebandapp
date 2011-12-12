@@ -196,6 +196,7 @@
 		}
 		
 		function updateDisplayedSongs() {
+			alert('update displayed songs');
 			var songs = getElementsByClass('song', 'songlist');
 			alert(songs.length);
 			var i;
