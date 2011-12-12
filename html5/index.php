@@ -202,7 +202,7 @@
 			// audio.remove();
 		  	audio =
 		    	'<audio id="top_audio">\
-		      		<source src="' + url + '"></source>\
+		      		<source src="' + url + '" type="audio/mpeg"></source>\
 		    	</audio>';
 			// topPlayer.appendChild(newAudio);
 			// addAudioListeners();
