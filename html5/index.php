@@ -222,6 +222,7 @@
 		            matches.push(elems[i]);
 		        }
 		    }
+			alert(matches);
 		}
 		
 		function populatePlayer(title, trackIndex, url, pic_url) {
