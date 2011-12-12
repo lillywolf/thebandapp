@@ -203,7 +203,8 @@
 			audio.html('<source src="' + url + '" type="audio/mpeg"></source>');
 			// topPlayer.appendChild(newAudio);
 			// addAudioListeners();
-			audio.play();
+			var topAudio = document.getElementById('top_audio');
+			topAudio.play();
 		}
 			
 		SC.initialize({
