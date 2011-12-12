@@ -196,7 +196,6 @@
 		}
 		
 		function updateDisplayedSongs() {
-			alert('update displayed songs');
 			var songs = getElementsByClass('song', 'songlist');
 			alert(songs.length);
 			var i;
@@ -214,9 +213,10 @@
 		{
 			var matches = [];
 		    var elems = document.getElementById(parentId).getElementsByTagName('*');
-			var i;
-			for (i in elems)
+			alert(elems.length);
+			for (var i in elems)
 			{
+				alert(i);
 		        if((' ' + elems[i].className + ' ').indexOf(' ' + matchClass + ' ') > -1)
 				{
 		            matches.push(elems[i]);
