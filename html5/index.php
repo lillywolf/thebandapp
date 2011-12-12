@@ -196,7 +196,7 @@
 		}
 		
 		function updateDisplayedSongs() {
-			var songs = getElementsByClass('song', 'songlist');
+			var songs = getElementIdsByClass('song', 'songlist');
 			alert(songs.length);
 			var i;
 			for (i = 1; i <= songs.length; i++) {
@@ -209,7 +209,7 @@
 			}
 		}
 		
-		function getElementsByClass(matchClass, parentId)
+		function getElementIdsByClass(matchClass, parentId)
 		{
 			var matches = [];
 		    var elems = document.getElementById(parentId).getElementsByTagName('*');
@@ -218,7 +218,7 @@
 		        if(elems[i].className.toString() == matchClass.toString())
 				{
 					alert('match');
-		            matches.push(elems[i]);
+		            matches.push(elems[i].id);
 					alert(matches.toSource());
 		        }
 		    }
