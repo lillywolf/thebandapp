@@ -219,9 +219,9 @@
 				{
 					alert('match');
 		            matches.push(elems[i]);
+					alert(matches.toSource());
 		        }
 		    }
-			alert(matches.length);
 			return matches;
 		}
 		
