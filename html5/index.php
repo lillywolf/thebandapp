@@ -216,9 +216,10 @@
 			alert(elems.length);
 			for (var i in elems)
 			{
-				alert(i);
-		        if((' ' + elems[i].className + ' ').indexOf(' ' + matchClass + ' ') > -1)
+				alert(elems[i].className);
+		        if(elems[i].className.toString() == matchClass.toString())
 				{
+					alert('match');
 		            matches.push(elems[i]);
 		        }
 		    }
