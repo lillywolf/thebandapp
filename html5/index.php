@@ -177,7 +177,7 @@
 		updateDisplayedSongs();
 		
 		// var timeleft = $('#top_player #top_timer');
-		// var topPlayer = $('#top_player');
+		topPlayer = $('#top_player');
 		// 
 		// function addAudioListeners() {
 		// 	var audio = document.getElementById('top_audio');
@@ -196,15 +196,17 @@
 		
 		function swapAudio(url) {
 			alert(url);
-			var audio = document.getElementById('top_audio');
-			topPlayer.removeChild(audio);
+			audio = $('#top_audio');
+			alert(audio);
+			//audio = document.getElementById('top_audio');
+			// topPlayer.removeChild(audio);
 		  	var newAudio =
 		    	'<audio id="top_audio">\
 		      		<source src="' + url + '"></source>\
 		    	</audio>';
-			topPlayer.appendChild(newAudio);
+			// topPlayer.appendChild(newAudio);
 			// addAudioListeners();
-			newAudio.play();
+			// newAudio.play();
 		}
 			
 		SC.initialize({
@@ -257,8 +259,6 @@
 		}
 		
 		function populatePlayer(title, trackIndex, url, picUrl, streamUrl) {
-			alert('something');
-			alert(streamUrl);
 			isPlaying = true;
 			currentTrackIndex = trackIndex;
 			document.getElementById('top_title').innerHTML = title;
