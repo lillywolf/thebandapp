@@ -213,7 +213,6 @@
 		{
 			var matches = [];
 		    var elems = document.getElementById(parentId).getElementsByTagName('*');
-			alert(elems.length);
 			for (var i in elems)
 			{
 		        if(elems[i].className.toString() == matchClass.toString())
@@ -222,6 +221,7 @@
 		            matches.push(elems[i]);
 		        }
 		    }
+			alert(matches.length);
 			return matches;
 		}
 		
