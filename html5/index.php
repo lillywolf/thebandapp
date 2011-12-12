@@ -217,11 +217,10 @@
 			{
 		        if(elems[i].className.toString() == matchClass.toString())
 				{
-					alert(elems[i].id);
 		            matches.push(elems[i].id);
-					alert(matches.toSource());
 		        }
 		    }
+			alert(matches.length);
 			return matches;
 		}
 		
