@@ -200,10 +200,7 @@
 			alert(audio);
 			//audio = document.getElementById('top_audio');
 			// audio.remove();
-		  	audio =
-		    	'<audio id="top_audio">\
-		      		<source src="' + url + '" type="audio/mpeg"></source>\
-		    	</audio>';
+			audio.html('<audio id="top_audio"><source src="' + url + '" type="audio/mpeg"></source></audio>');
 			// topPlayer.appendChild(newAudio);
 			// addAudioListeners();
 			audio.play();
