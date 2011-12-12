@@ -215,7 +215,7 @@
 		    var elems = document.getElementById(parentId).getElementsByTagName('*');
 			for (var i in elems)
 			{
-		        if(elems[i].className.toString() == matchClass.toString())
+		        if(elems[i] != null && elems[i].className != null && elems[i].className.toString() == matchClass.toString())
 				{
 		            matches.push(elems[i].id);
 		        }
