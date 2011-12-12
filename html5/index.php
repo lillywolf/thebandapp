@@ -108,7 +108,7 @@
 					</div>	
 					<div id="songlist">
 						<?php $i = 1; foreach ($trackdata as $track) {
-							echo '<div class="song" id="song_' . $i . '" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . ', \'' . $track['permalink_url'] . '\', \'' . $track['artwork_url'] . '\', \'' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b\');">
+							echo '<div class="song" id="song_' . $i . '" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . ', \'' . $track['permalink_url'] . '\', \'' . $track['artwork_url'] . '\');">
 							<div class="song_title">' . $track['title'] . '</div>
 							<div class="song_stats">
 								<div class="stat_num_plays">' . $track['playback_count'] . '</div>
@@ -256,16 +256,16 @@
 			return matches;
 		}
 		
-		function populatePlayer(title, trackIndex, url, pic_url, stream_url) {
+		function populatePlayer(title, trackIndex, url, picUrl) {
 			alert('something');
-			alert(stream_url);
+			alert(picUrl);
 			isPlaying = true;
 			currentTrackIndex = trackIndex;
 			document.getElementById('top_title').innerHTML = title;
 			showPause();
-			swapAudio(stream_url);
+			// swapAudio(stream_url);
 			updateButtons(url);
-			updatePic(pic_url);
+			updatePic(picUrl);
 		}
 		
 		function updatePic(pic_url) {
