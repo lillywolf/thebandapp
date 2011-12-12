@@ -34,7 +34,9 @@
 		$config = array();
 		$config['appId'] = $appId;
 		$config['secret'] = $appSecret;
-		$config['fileUpload'] = false; // optional			
+		$config['fileUpload'] = false; // optional	
+		
+		$MAX_SONGS_SHOWN = 4;	
 
 		$facebook = new Facebook($config);	
 		# $user_id = $facebook->getUser();
@@ -76,7 +78,9 @@
 				<div id="player_bg">
 					<div id="top_player_wrapper">
 						<div id="top_player">
-							<div id="top_pic"></div>
+							<div id="top_pic">
+								<img id="top_pic_inner"></img>
+							</div>
 							<div id="play_btn_wrapper">
 								<div id="play_btn" onClick="playButtonClick()"></div>
 								<div id="pause_btn" onClick="playButtonClick()"></div>
@@ -102,9 +106,12 @@
 					</div>	
 					<div id="songlist">
 						<?php $i = 1; foreach ($trackdata as $track) {
-							echo '<div class="song" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . ', \'' . $track['uri'] . '\'); document.getElementById(\'audio_' . $i . '\').play()"><audio class="audio_tag" id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
+							echo '<div class="song" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . ', \'' . $track['permalink_url'] . ', ' . $track['artwork_url'] . '\'); document.getElementById(\'audio_' . $i . '\').play()"><audio class="audio_tag" id="audio_' . $i . '" controls><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" type="audio/mpeg" /></audio>
 							<div class="song_title">' . $track['title'] . '</div>
-							<div class="song_stats"></div>
+							<div class="song_stats">
+								<div class="stat_num_plays">' . $track['playback_count'] . '</div>
+								<div class="stat_text_plays">plays</div>
+							</div>
 							<div class="song_btns">
 								<div id="download_btn_wrapper"><div id="download_btn"></div></div>
 								<div id="buy_btn_wrapper"><div id="buy_btn"></div></div>
@@ -115,10 +122,10 @@
 					</div>
 					<div id="scrollers">
 						<div id="scroll_up_wrapper">
-							<div id="scroll_up"></div>
+							<div id="scroll_up" onClick="scrollSongsUp()"></div>
 						</div>
 						<div id="scroll_down_wrapper">
-							<div id="scroll_down"></div>
+							<div id="scroll_down" onClick="scrollSongsDown()"></div>
 						</div>
 					</div>	
 				</div>	
@@ -160,9 +167,11 @@
 		
 	<script type="text/javascript">
 		
+		var MAX_TRACKS = 4;
 		var isPlaying = false;
-		var currentTrackIndex;
+		var currentTrackIndex = 1;
 		initializeJS();
+		updateDisplayedSongs();
 			
 		SC.initialize({
 			client_id: '738091d6d02582ddd19de7109b79e47b',
@@ -171,14 +180,62 @@
 		
 		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
 		
-		function populatePlayer(title, trackIndex, url) {
+		function scrollSongsDown() {
+			var songs = getElementsByClass('song', 'songlist');
+			if (currentTrackIndex < songs.length - MAX_TRACKS) {
+				currentTrackIndex = currentTrackIndex + 1;
+				updateDisplayedSongs();
+			}
+		}
+		
+		function scrollSongsUp() {
+			if (currentTrackIndex > 1) {
+				currentTrackIndex = currentTrackIndex - 1;
+				updateDisplayedSongs();
+			}
+		}
+		
+		function updateDisplayedSongs() {
+			var songs = getElementsByClass('song', 'songlist');
+			alert(songs.length);
+			var i;
+			for (i = 1; i <= songs.length; i++) {
+				var song = document.getElementById('audio_'+i.toString());
+				if (i >= currentTrackIndex && i < currentTrackIndex + MAX_TRACKS && song != null) {
+					song.style.display = 'block';
+				} else {
+					song.style.display = 'none';
+				}
+			}
+		}
+		
+		function getElementsByClass(matchClass, parentId)
+		{
+			var matches = [];
+		    var elems = document.getElementById(parentId).getElementsByTagName('*');
+			var i;
+			for (i in elems)
+			{
+		        if((' ' + elems[i].className + ' ').indexOf(' ' + matchClass + ' ') > -1)
+				{
+		            matches.push(elems[i]);
+		        }
+		    }
+		}
+		
+		function populatePlayer(title, trackIndex, url, pic_url) {
 			isPlaying = true;
 			currentTrackIndex = trackIndex;
 			document.getElementById('top_title').innerHTML = title;
 			showPause();
 			updateButtons(url);
+			updatePic(pic_url);
 		}
 		
+		function updatePic(pic_url) {
+			document.getElementById('top_pic_inner').src = pic_url;
+		}	
+			
 		function showPause() {
 			document.getElementById('play_btn').style.display = "none";		
 			document.getElementById('pause_btn').style.display = "block";		
@@ -216,62 +273,7 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('top_like'));
 			}
-		}
-		
-		// if (document.createElement('audio').canPlayType) {
-		// 	if (!document.createElement('audio').canPlayType('audio/mpeg')) {
-		//       // SWFObject script lines here ...
-		//     } else { 
-		//       document.getElementById('player').style.display = 'block';
-		//     }
-		// }
-		
-		// var cssLink = document.createElement("link"); 
-		// cssLink.href = "../site/index.css"; 
-		// cssLink.rel = "stylesheet"; 
-		// cssLink.type = "text/css"; 
-		// var cssLink = document.createElement('div');
-		// cssLink.innerHTML = 'I am a test!';
-		// alert(document.getElementById('sc_iframe').document.body.style);
-		// document.getElementById('sc_iframe').document.body.appendChild(cssLink);
-		
-		// replaceContentInContainer('tracklist');
-		// function replaceContentInContainer(matchClass)
-		// {
-		// 	var elems = document.getElementById('sc_iframe').document.body.getElementsByTagName('*');
-		// 	var i;
-		// 	alert(elems);
-		//     for (i in elems) {
-		//         if((" " + elems[i].className + " ").indexOf(" " + matchClass + " ") > -1) {
-		// 			alert("found element");
-		//             // elems[i].style.background = 'transparent';
-		// 		}
-		// 	}
-		// }
-		
-		// $.getJSON(
-		//     "https://api.soundcloud.com/me?oauth_token=1-12872-7625335-e561f85b896d9158",
-		//     // {paramOne : 1, paramX : 'abc'},
-		//     function(data) {
-		//        alert('page content: ' + data.toSource());
-		//     }
-		// );
-								
-		// if (SC.isConnected()) {
-		// 	alert("is connected");
-		// 	// getUserTracks();
-		// } else {
-		// 	SC.connect(function() {
-		// 		alert("connect");
-		// 		// getUserTracks();
-		// 	});	
-		// }
-		// 		
-		
-		// SC.whenStreamingReady(function() {
-		//   var soundObj = SC.stream(tracks[0].id);
-		//   soundObj.play();
-		// });
+		}	
 		
 		fbPageUrl = '<?php echo $fbPageUrl; ?>';
 
