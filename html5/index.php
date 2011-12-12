@@ -199,14 +199,14 @@
 			audio = $('#top_audio');
 			alert(audio);
 			//audio = document.getElementById('top_audio');
-			// topPlayer.removeChild(audio);
-		  	var newAudio =
+			// audio.remove();
+		  	audio =
 		    	'<audio id="top_audio">\
 		      		<source src="' + url + '"></source>\
 		    	</audio>';
 			// topPlayer.appendChild(newAudio);
 			// addAudioListeners();
-			// newAudio.play();
+			audio.play();
 		}
 			
 		SC.initialize({
