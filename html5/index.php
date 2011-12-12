@@ -257,6 +257,7 @@
 		}
 		
 		function populatePlayer(title, trackIndex, url, pic_url, stream_url) {
+			alert(stream_url);
 			isPlaying = true;
 			currentTrackIndex = trackIndex;
 			document.getElementById('top_title').innerHTML = title;
