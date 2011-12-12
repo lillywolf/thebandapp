@@ -216,7 +216,6 @@
 			alert(elems.length);
 			for (var i in elems)
 			{
-				alert(elems[i].className);
 		        if(elems[i].className.toString() == matchClass.toString())
 				{
 					alert('match');
