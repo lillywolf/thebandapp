@@ -201,7 +201,7 @@
 		      		<source src="' + url + '"></source>\
 		    	</audio>';
 			topPlayer.appendChild(newAudio);
-			addAudioListeners();
+			// addAudioListeners();
 			newAudio.play();
 		}
 			
