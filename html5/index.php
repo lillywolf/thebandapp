@@ -182,7 +182,7 @@
 		
 		function scrollSongsDown() {
 			var songs = getElementsByClass('song', 'songlist');
-			if (currentTrackIndex < songs.length - MAX_TRACKS) {
+			if (currentTrackIndex <= songs.length - MAX_TRACKS) {
 				currentTrackIndex = currentTrackIndex + 1;
 				updateDisplayedSongs();
 			}
@@ -196,8 +196,7 @@
 		}
 		
 		function updateDisplayedSongs() {
-			var songs = getElementIdsByClass('song', 'songlist');
-			alert(songs.length);
+			var songs = getElementsByClass('song', 'songlist');
 			var i;
 			for (i = 1; i <= songs.length; i++) {
 				var song = document.getElementById('song_'+i.toString());
@@ -209,7 +208,7 @@
 			}
 		}
 		
-		function getElementIdsByClass(matchClass, parentId)
+		function getElementsByClass(matchClass, parentId)
 		{
 			var matches = [];
 		    var elems = document.getElementById(parentId).getElementsByTagName('*');
