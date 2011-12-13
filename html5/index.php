@@ -177,7 +177,7 @@
 		initializeJS();
 		updateDisplayedSongs();
 		
-		timeleft = $('#top_player #top_timer');
+		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
 		 
 		function addAudioListeners(idStr) {
