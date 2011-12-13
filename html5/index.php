@@ -183,15 +183,12 @@
 		 
 		function addAudioListeners(idStr) {
 			audio = $('#'+idStr).get(0);
-			alert(audio.buffered);
 		 	if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
-				alert('buffered');
 		 		// $(audio).bind('progress', function() {
 		 		// 					alert('prog');
 		// 			var loaded = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10);
 		 		// });
 		 		$(audio).bind('timeupdate', function() {
-					alert('timeup');
 		 			var rem = parseInt(audio.duration - audio.currentTime, 10),
 		 				pos = (audio.currentTime / audio.duration) * 100,
 		 		  		mins = Math.floor(rem/60, 10),
@@ -199,7 +196,6 @@
 		 			timeleft.text('-' + mins + ':' + (secs > 9 ? secs : '0' + secs));
 				});
 				$(audio).bind('play', function() {
-				  alert('playit!');  
 				});
 		 	}
 		}
