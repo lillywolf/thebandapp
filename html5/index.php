@@ -182,7 +182,7 @@
 		topPlayer = $('#top_player');
 		 
 		function addAudioListeners(idStr) {
-			audio = $('#'+idStr);
+			audio = $('#'+idStr).get(0);
 			alert(audio.buffered);
 		 	if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
 				alert('buffered');
