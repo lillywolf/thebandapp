@@ -184,14 +184,15 @@
 			audio = $('#'+idStr);
 		 	if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
 		 		$(audio).bind('progress', function() {
+					alert('prog');
 		// 			var loaded = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10);
 		 		});
 		 		$(audio).bind('timeupdate', function() {
+					alert('timeup');
 		 			var rem = parseInt(audio.duration - audio.currentTime, 10),
 		 				pos = (audio.currentTime / audio.duration) * 100,
 		 		  		mins = Math.floor(rem/60, 10),
 		 		  		secs = rem - mins*60;
-					alert(secs);
 		 			timeleft.text('-' + mins + ':' + (secs > 9 ? secs : '0' + secs));
 				});
 		 	}
