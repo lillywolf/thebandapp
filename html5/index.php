@@ -175,6 +175,7 @@
 		var isPlaying = false;
 		var currentTrackIndex = 1;
 		var currentScrollIndex = 1;
+		var currentAudioElement;
 		initializeJS();
 		updateDisplayedSongs();
 		
@@ -183,33 +184,32 @@
 		 
 		function addAudioListeners(idStr) {
 			audio = $('#'+idStr).get(0);
+			audio.currentTime = 0;
 		 	if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
 		 		// $(audio).bind('progress', function() {
-		 		// 					alert('prog');
-		// 			var loaded = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10);
+		 		//	var loaded = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10);
 		 		// });
 		 		$(audio).bind('timeupdate', function() {
-		 			var rem = parseInt(audio.duration - audio.currentTime, 10),
+		 			// var rem = parseInt(audio.duration - audio.currentTime, 10),
+		 			// 	pos = (audio.currentTime / audio.duration) * 100,
+		 			// 		 		  		mins = Math.floor(rem/60, 10),
+		 			// 		 		  		secs = rem - mins*60;
+		 			// timeleft.text('-' + mins + ':' + (secs > 9 ? secs : '0' + secs));
+		
+		 			var rem = parseInt(audio.currentTime, 10),
 		 				pos = (audio.currentTime / audio.duration) * 100,
 		 		  		mins = Math.floor(rem/60, 10),
 		 		  		secs = rem - mins*60;
-		 			timeleft.text('-' + mins + ':' + (secs > 9 ? secs : '0' + secs));
-				});
-				$(audio).bind('play', function() {
+		 			timeleft.text(mins + ':' + (secs > 9 ? secs : '0' + secs));
 				});
 		 	}
 		}
 		
 		function swapAudio(url, trackIndex) {
 			var idStr = 'audio_'+trackIndex.toString();
-			// audio = $(idStr);
-			// alert(audio);
-			//audio = document.getElementById('top_audio');
-			// audio.remove();
-			// audio.html('<source src="' + url + '" type="audio/mpeg"></source>');
-			// topPlayer.appendChild(newAudio);
 			addAudioListeners(idStr);
 			var topAudio = document.getElementById(idStr);
+			currentAudioElement = topAudio;
 			topAudio.play();
 		}
 			
@@ -264,6 +264,9 @@
 		
 		function populatePlayer(title, trackIndex, url, picUrl, streamUrl) {
 			isPlaying = true;
+			if (currentAudioElement != null) {
+				currentAudioElement.pause();
+			}
 			currentTrackIndex = trackIndex;
 			document.getElementById('top_title').innerHTML = title;
 			showPause();
@@ -296,11 +299,13 @@
 		
 		function doPlay() {
 			document.getElementById('audio_'+currentTrackIndex.toString()).play();
+			isPlaying = true;
 			showPause();
 		}
 		
 		function doPause() {
 			document.getElementById('audio_'+currentTrackIndex.toString()).pause();
+			isPlaying = false;
 			showPlay();
 		}
 		
