@@ -184,6 +184,7 @@
 		function addAudioListeners(idStr) {
 			audio = $('#'+idStr);
 		 	if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
+				alert('buffered');
 		 		// $(audio).bind('progress', function() {
 		 		// 					alert('prog');
 		// 			var loaded = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10);
