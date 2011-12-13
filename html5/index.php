@@ -197,7 +197,7 @@
 		
 		function swapAudio(url, trackIndex) {
 			alert(url);
-			audio = $('#audio_'+trackIndex);
+			audio = $('#audio_'+trackIndex.toString());
 			//audio = document.getElementById('top_audio');
 			// audio.remove();
 			// audio.html('<source src="' + url + '" type="audio/mpeg"></source>');
