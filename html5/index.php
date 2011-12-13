@@ -196,6 +196,9 @@
 		 		  		secs = rem - mins*60;
 		 			timeleft.text('-' + mins + ':' + (secs > 9 ? secs : '0' + secs));
 				});
+				$(audio).bind('play', function() {
+				  alert('playit!');  
+				});
 		 	}
 		}
 		
