@@ -7,7 +7,8 @@
 	<script type="text/javascript" src="../scripts/sc-player.js"></script>
 	<!--script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script-->	
 	<!--script type="text/javascript" src="scripts/prototype.js"></script-->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 	<script src="http://connect.soundcloud.com/sdk.js" type="text/javascript"></script>	
 	<link rel="stylesheet" type="text/css" href="../site/index.css" />
 	<link rel="stylesheet" type="text/css" href="../style/sc-player-standard.css" />
@@ -183,10 +184,10 @@
 		function addAudioListeners(idStr) {
 			audio = $('#'+idStr);
 		 	if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
-		 		$(audio).bind('progress', function() {
-					alert('prog');
+		 		// $(audio).bind('progress', function() {
+		 		// 					alert('prog');
 		// 			var loaded = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10);
-		 		});
+		 		// });
 		 		$(audio).bind('timeupdate', function() {
 					alert('timeup');
 		 			var rem = parseInt(audio.duration - audio.currentTime, 10),
