@@ -109,7 +109,7 @@
 					<div id="songlist">
 						<?php $i = 1; foreach ($trackdata as $track) {
 							echo '<div class="song" id="song_' . $i . '" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . ', \'' . $track['permalink_url'] . '\', \'' . $track['artwork_url'] . '\', \'' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b\');">
-							<audio class="hidden_audio" id="audio_' . $i . '"><source="' . $track['stream_url'] . '"></source></audio>
+							<audio class="hidden_audio" id="audio_' . $i . '"><source="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b"></source></audio>
 							<div class="song_title">' . $track['title'] . '</div>
 							<div class="song_stats">
 								<div class="stat_num_plays">' . $track['playback_count'] . '</div>
@@ -180,8 +180,8 @@
 		// var timeleft = $('#top_player #top_timer');
 		topPlayer = $('#top_player');
 		// 
-		// function addAudioListeners() {
-		// 	var audio = document.getElementById('top_audio');
+		function addAudioListeners(idStr) {
+			audio = $(idStr);
 		// 	if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
 		// 		$(audio).bind('progress', function) {
 		// 			var loaded = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10);
@@ -193,7 +193,7 @@
 		// 		  	secs = rem - mins*60;
 		// 		timeleft.text('-' + mins + ':' + (secs > 9 ? secs : '0' + secs));
 		// 	}
-		// }
+		}
 		
 		function swapAudio(url, trackIndex) {
 			var idStr = 'audio_'+trackIndex.toString();
