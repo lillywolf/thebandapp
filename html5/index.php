@@ -196,15 +196,17 @@
 		// }
 		
 		function swapAudio(url, trackIndex) {
-			alert(url);
-			audio = $('#audio_'+trackIndex.toString());
+			var idStr = '#audio_'+trackIndex.toString();
+			alert(idStr);
+			audio = $(idStr);
+			alert(audio);
 			//audio = document.getElementById('top_audio');
 			// audio.remove();
 			// audio.html('<source src="' + url + '" type="audio/mpeg"></source>');
 			// topPlayer.appendChild(newAudio);
 			// addAudioListeners();
 			// var topAudio = document.getElementById('top_audio');
-			alert(audio.innerHTML);
+			// alert(audio.innerHTML);
 			audio.play();
 		}
 			
