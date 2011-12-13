@@ -109,6 +109,7 @@
 					<div id="songlist">
 						<?php $i = 1; foreach ($trackdata as $track) {
 							echo '<div class="song" id="song_' . $i . '" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . ', \'' . $track['permalink_url'] . '\', \'' . $track['artwork_url'] . '\', \'' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b\');">
+							<audio class="hidden_audio" id="audio_' . $i . '"><source="' . $track['stream_url'] . '"></source></audio>
 							<div class="song_title">' . $track['title'] . '</div>
 							<div class="song_stats">
 								<div class="stat_num_plays">' . $track['playback_count'] . '</div>
@@ -194,17 +195,17 @@
 		// 	}
 		// }
 		
-		function swapAudio(url) {
+		function swapAudio(url, trackIndex) {
 			alert(url);
-			audio = $('#top_audio');
+			audio = $('#audio_'+trackIndex);
 			//audio = document.getElementById('top_audio');
 			// audio.remove();
-			audio.html('<source src="' + url + '" type="audio/mpeg"></source>');
+			// audio.html('<source src="' + url + '" type="audio/mpeg"></source>');
 			// topPlayer.appendChild(newAudio);
 			// addAudioListeners();
-			var topAudio = document.getElementById('top_audio');
-			alert(topAudio.innerHTML);
-			topAudio.play();
+			// var topAudio = document.getElementById('top_audio');
+			alert(audio.innerHTML);
+			audio.play();
 		}
 			
 		SC.initialize({
@@ -261,7 +262,7 @@
 			currentTrackIndex = trackIndex;
 			document.getElementById('top_title').innerHTML = title;
 			showPause();
-			swapAudio(streamUrl);
+			swapAudio(streamUrl, trackIndex);
 			updateButtons(url);
 			updatePic(picUrl);
 		}
