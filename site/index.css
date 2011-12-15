@@ -153,8 +153,9 @@ a.soundcloud-badge:hover {
 .song_stats {
 	float: left;
 	width: 51px;
-	height: 40px;
-	margin-top: 4px;
+	height: 38px;
+	margin-top: 6px;
+	color: #5E5751;
 }
 .song_btns {
 	float: left;
@@ -318,6 +319,6 @@ a.soundcloud-badge:hover {
 .song_stats div {
 	float: right;
 	clear: both;
-	line-height: 15px;
+	line-height: 13px;
 	font-size: 11px;
 }
