@@ -96,7 +96,7 @@
 								<div id="song_bar"></div>
 								<div id="top_buttons">
 									<div id="download_btn_wrapper">
-										<div id="download_btn"></div>
+										<div id="download_btn" onClick="downloadCurrentSong()"></div>
 									</div>
 									<div id="buy_btn_wrapper">	
 										<div id="buy_btn"></div>
@@ -109,7 +109,7 @@
 					</div>	
 					<div id="songlist">
 						<?php $i = 1; foreach ($trackdata as $track) {
-							echo '<div class="song" id="song_' . $i . '" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . ', \'' . $track['permalink_url'] . '\', \'' . $track['artwork_url'] . '\', \'' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b\');">
+							echo '<div class="song" id="song_' . $i . '" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . ', \'' . $track['permalink_url'] . '\', \'' . $track['artwork_url'] . '\', \'' . $track['download_url'] . '\', \'' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b\');">
 							<audio class="hidden_audio" id="audio_' . $i . '"><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b"></source></audio>
 							<div class="song_title">' . $track['title'] . '</div>
 							<div class="song_stats">
@@ -176,6 +176,8 @@
 		var currentTrackIndex = 1;
 		var currentScrollIndex = 1;
 		var currentAudioElement;
+		var currentSongData;
+		
 		initializeJS();
 		updateDisplayedSongs();
 		stopButtonPropagations();
@@ -184,8 +186,10 @@
 		topPlayer = $('#top_player');
 		
 		function stopButtonPropagations() {
-			elem = document.getElementById('download_btn');
-			elem.addEventListener('click', stopEvent, false);
+			$('#download_btn').bind('click', function(event) {
+				alert('propagation halted');
+				event.stopPropagation();	
+			});
 		}
 		
 		function stopEvent(ev) {
@@ -264,8 +268,19 @@
 			return matches;
 		}
 		
-		function populatePlayer(title, trackIndex, url, picUrl, streamUrl) {
+		function downloadCurrentSong() {
+			downloadSong(currentSongData.downloadUrl);
+		}
+		
+		function populatePlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl) {
 			isPlaying = true;
+			currentSongData = {
+				title: title,
+				url: url,
+				downloadUrl: downloadUrl,
+				picUrl: picUrl, 
+				streamUrl: streamUrl,
+			};
 			if (currentAudioElement != null) {
 				currentAudioElement.pause();
 			}
