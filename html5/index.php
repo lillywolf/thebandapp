@@ -189,6 +189,7 @@
 		}
 		
 		function stopEvent(ev) {
+			alert('propagation halted');
 			ev.stopPropagation();
 		}
 		 
