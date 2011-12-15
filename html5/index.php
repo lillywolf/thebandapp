@@ -117,7 +117,7 @@
 								<div class="stat_text_plays">plays</div>
 							</div>
 							<div class="song_btns">
-								<div id="download_btn_wrapper"><div id="download_btn"></div></div>
+								<div id="download_btn_wrapper"><div id="download_btn" onClick="downloadSong(\'' . $track['download_url'] . '\')"></div></div>
 								<div id="buy_btn_wrapper"><div id="buy_btn"></div></div>
 							</div>	
 							<!--button onClick="document.getElementById(\'audio_' . $i . '\').pause()">Pause</button--></div>';
@@ -178,24 +178,25 @@
 		var currentAudioElement;
 		initializeJS();
 		updateDisplayedSongs();
+		stopButtonPropagations();
 		
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
+		
+		function stopButtonPropagations() {
+			elem = document.getElementById('download_btn');
+			elem.addEventListener('click', stopEvent, false);
+		}
+		
+		function stopEvent(ev) {
+			ev.stopPropagation();
+		}
 		 
 		function addAudioListeners(idStr) {
 			audio = $('#'+idStr).get(0);
 			audio.currentTime = 0;
 		 	if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
-		 		// $(audio).bind('progress', function() {
-		 		//	var loaded = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10);
-		 		// });
 		 		$(audio).bind('timeupdate', function() {
-		 			// var rem = parseInt(audio.duration - audio.currentTime, 10),
-		 			// 	pos = (audio.currentTime / audio.duration) * 100,
-		 			// 		 		  		mins = Math.floor(rem/60, 10),
-		 			// 		 		  		secs = rem - mins*60;
-		 			// timeleft.text('-' + mins + ':' + (secs > 9 ? secs : '0' + secs));
-		
 		 			var rem = parseInt(audio.currentTime, 10),
 		 				pos = (audio.currentTime / audio.duration) * 100,
 		 		  		mins = Math.floor(rem/60, 10),
