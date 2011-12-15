@@ -232,7 +232,7 @@ a.soundcloud-badge:hover {
 }
 #top_title {
 	float: left;
-	width: 212px;
+	width: 240px;
 }
 #song_bar {
 	background-image: url('../images/html5/song_loader_bar.png');
@@ -243,7 +243,7 @@ a.soundcloud-badge:hover {
 #top_timer {
 	float: right;
 	height: 40px;
-	width: 60px;
+	width: 23px;
 }
 #top_buttons {
 	float: left;
