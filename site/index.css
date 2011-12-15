@@ -189,6 +189,11 @@ a.soundcloud-badge:hover {
 	height: 101px;
 	margin: -1px 0 0 8px;
 }
+#top_pic_inner {
+	width: 95px;
+	height: 95px;
+	margin: 3px 0 0 3px;
+}
 #play_btn_wrapper {
 	float: left;
 	width: 55px;
