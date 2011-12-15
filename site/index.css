@@ -154,7 +154,7 @@ a.soundcloud-badge:hover {
 	float: left;
 	width: 51px;
 	height: 38px;
-	margin-top: 6px;
+	margin-top: 8px;
 	color: #5E5751;
 }
 .song_btns {
@@ -190,9 +190,9 @@ a.soundcloud-badge:hover {
 	margin: -1px 0 0 8px;
 }
 #top_pic_inner {
-	width: 91px;
-	height: 91px;
-	margin: 5px 0 0 7px;
+	width: 89px;
+	height: 89px;
+	margin: 6px 0 0 9px;
 }
 #play_btn_wrapper {
 	float: left;
