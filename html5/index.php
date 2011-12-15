@@ -117,7 +117,7 @@
 								<div class="stat_text_plays">plays</div>
 							</div>
 							<div class="song_btns">
-								<div id="download_btn_wrapper"><div id="download_btn" onClick="downloadSong(\'' . $track['download_url'] . '\')"></div></div>
+								<div id="download_btn_wrapper"><div class="download_song" id="download_btn" onClick="downloadSong(\'' . $track['download_url'] . '\')"></div></div>
 								<div id="buy_btn_wrapper"><div id="buy_btn"></div></div>
 							</div>	
 							<!--button onClick="document.getElementById(\'audio_' . $i . '\').pause()">Pause</button--></div>';
@@ -186,7 +186,7 @@
 		topPlayer = $('#top_player');
 		
 		function stopButtonPropagations() {
-			$('#download_btn').bind('click', function(event) {
+			$('.download_song').bind('click', function(event) {
 				alert('propagation halted');
 				event.stopPropagation();	
 			});
