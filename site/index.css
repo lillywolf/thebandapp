@@ -142,7 +142,6 @@ a.soundcloud-badge:hover {
 	width: 430px;
 }
 .song_bg {
-	position: absolute;
 	background-image: url('../images/html5/song_bgs.png');
 	background-repeat: no-repeat;
 	height: 96px;
