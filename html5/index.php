@@ -169,6 +169,7 @@
 			<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->			
     		<div id="fb-root"></div>
 		</div>
+		<img src="../images/html5/song_bg_hover.png" style="display: none" />
 		
 	<script type="text/javascript">
 		
@@ -182,7 +183,6 @@
 		initializeJS();
 		updateDisplayedSongs();
 		stopButtonPropagations();
-		listenForHovers();
 		
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
