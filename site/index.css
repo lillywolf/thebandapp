@@ -138,7 +138,7 @@ a.soundcloud-badge:hover {
 	overflow: hidden;
 }
 .song {
-	background-image: url('../images/html5/song_bg.png');
+	background-image: url('../images/html5/song_bgs.png');
 	background-repeat: no-repeat;
 	height: 96px;
 	width: 430px;
