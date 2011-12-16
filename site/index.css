@@ -135,11 +135,11 @@ a.soundcloud-badge:hover {
 	background-image: url('../images/html5/song_bg.png');
 	background-repeat: no-repeat;
 	height: 41px;
-	width: 547px;
+	width: 430px;
 	margin: 5px 0 0 19px;
 }
 .song:hover {
-	background-color: rgba(255, 0, 0, 0.5);
+	background-color: rgba(255, 255, 255, 0.5);
 }
 .song_title {
 	font-size: 13px;
