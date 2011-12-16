@@ -169,7 +169,7 @@
 			<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->			
     		<div id="fb-root"></div>
 		</div>
-		<img src="../images/html5/song_bg_hover.png" style="display: none" />
+		<img src="../images/html5/song_bg_hover2.png" style="display: none" />
 		
 	<script type="text/javascript">
 		
