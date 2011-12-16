@@ -131,15 +131,21 @@ a.soundcloud-badge:hover {
 	height: 430px;
 	width: 512px;
 }
-.song {
-	background-image: url('../images/html5/song_bg.png');
-	background-repeat: no-repeat;
+.song_wrapper {
 	height: 41px;
 	width: 430px;
 	margin: 5px 0 0 19px;
+	overflow: hidden;
+}
+.song {
+	background-image: url('../images/html5/song_bg.png');
+	background-repeat: no-repeat;
+	height: 96px;
+	width: 430px;
 }
 .song:hover {
-	background-color: rgba(43, 240, 236, 0.5);
+	/* background-color: rgba(43, 240, 236, 0.5); */
+	margin-top: -46px;
 }
 .song_title {
 	font-size: 13px;
