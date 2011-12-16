@@ -182,6 +182,7 @@
 		initializeJS();
 		updateDisplayedSongs();
 		stopButtonPropagations();
+		listenForHovers();
 		
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
@@ -189,6 +190,14 @@
 		function stopButtonPropagations() {
 			$('.download_song').bind('click', function(event) {
 				event.stopPropagation();	
+			});
+		}
+		
+		function listenForHovers() {
+			$('.song').hover('', function(event) {
+				var elem = event.delegateTarget;
+				alert(elem.id);
+				elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
 			});
 		}
 		 
