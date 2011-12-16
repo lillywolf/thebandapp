@@ -196,7 +196,6 @@
 		function listenForHovers() {
 			$('.song').hover('', function(event) {
 				var elem = event.delegateTarget;
-				alert(elem.id);
 				elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
 			});
 		}
