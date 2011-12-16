@@ -138,12 +138,17 @@ a.soundcloud-badge:hover {
 	overflow: hidden;
 }
 .song {
+	height: 41px;
+	width: 430px;
+}
+.song_bg {
+	position: absolute;
 	background-image: url('../images/html5/song_bgs.png');
 	background-repeat: no-repeat;
 	height: 96px;
 	width: 430px;
 }
-.song:hover {
+.song_bg:hover {
 	/* background-color: rgba(43, 240, 236, 0.5); */
 	margin-top: -46px;
 }
