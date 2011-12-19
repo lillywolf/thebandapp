@@ -1,3 +1,4 @@
+alert("init sm!");
 $.getScript("/soundmanager2.js", function(){
 	
 	alert("Script loaded and executed.");
