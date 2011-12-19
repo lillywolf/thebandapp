@@ -324,6 +324,7 @@
 		}
 		
 		function populatePlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl) {
+			alert("populate");
 			isPlaying = true;
 			currentSongData = {
 				title: title,
@@ -336,6 +337,7 @@
 				if (mp3Support) {
 					currentAudioElement.pause();					
 				} else {
+					alert(streamUrl);
 					// Pause with soundManager
 				}
 			}
