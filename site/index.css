@@ -329,3 +329,7 @@ a.soundcloud-badge:hover {
 	line-height: 13px;
 	font-size: 11px;
 }
+#banner_pic {
+	border: 1px solid #B6AB84;
+	border-radius: 8px;
+}

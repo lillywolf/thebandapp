@@ -134,6 +134,7 @@
 					</div>	
 				</div>	
 			</div>
+			<img id="banner_pic" src="../images/banners/lillywolf_drnu_notext_512.jpg" />
 			
 				<!--source src="<?php echo $track_uri ?>" type="audio/mpeg" /-->
 				
