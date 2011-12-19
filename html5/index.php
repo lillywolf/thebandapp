@@ -248,9 +248,10 @@
 				addAudioListeners(idStr);
 				topAudio.play();				
 			} else {
-				if (soundManager.getSoundById(smSongId) != null) {
+				if (smSongId != null && soundManager.getSoundById(smSongId) != null) {
 					soundManager.destroySound(smSongId);					
 				}
+				alert('play');
 				smSongId = 'sm_'+trackIndex.toString();
 				soundManager.play(smSongId, url);
 			}
