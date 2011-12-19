@@ -262,11 +262,11 @@
 			var idStr = 'audio_'+trackIndex.toString();
 			var topAudio = document.getElementById(idStr);
 			currentAudioElement = topAudio;
-			alert("check for support");
 			if (mp3Support) {
 				addAudioListeners(idStr);
 				topAudio.play();				
 			} else {
+				soundManager.play('currentSong', url);
 				alert(url);
 			}
 		}
