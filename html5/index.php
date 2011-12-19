@@ -1,5 +1,7 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" class="no-js">
 <head>
+	<link rel="stylesheet" type="text/css" href="../site/index.css" />
+	<link rel="stylesheet" type="text/css" href="../style/sc-player-standard.css" />
 	<!--script type="text/javascript" src="site/swfobject.js"></script-->
 	<!--script type="text/javascript" src="site/FBJSBridge.js"></script-->
 	<script type="text/javascript" src="../scripts/spin.js"></script>	
@@ -10,8 +12,7 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 	<script src="http://connect.soundcloud.com/sdk.js" type="text/javascript"></script>	
-	<link rel="stylesheet" type="text/css" href="../site/index.css" />
-	<link rel="stylesheet" type="text/css" href="../style/sc-player-standard.css" />
+	<script src="../scripts/modernizr.custom.41971.js" type="text/javascript"></script>	
 	<!--script type="text/javascript" src="site/history/history.js"></script-->
 </head>	
 <body>
@@ -180,12 +181,23 @@
 		var currentAudioElement;
 		var currentSongData;
 		
-		initializeJS();
-		updateDisplayedSongs();
-		stopButtonPropagations();
-		
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
+		
+		Modernizr.load({
+			test: Modernizr.audio,
+			nope: '../scripts/sm2_init.js',
+			complete: function() {
+				alert("sm load complete");
+				init();
+			}
+		});
+		
+		function init() {
+			initializeJS();
+			updateDisplayedSongs();
+			stopButtonPropagations();			
+		}
 		
 		function stopButtonPropagations() {
 			$('.download_song').bind('click', function(event) {

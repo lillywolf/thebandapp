@@ -333,6 +333,6 @@ a.soundcloud-badge:hover {
 	border: 1px solid #B6AB84;
 	border-radius: 8px;
 	-moz-border-radius: 8px;
-	margin-left: 2px;
+	margin: 8px 0 0 2px;
 	width: 506px;
 }
