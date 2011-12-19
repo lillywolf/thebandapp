@@ -259,10 +259,12 @@
 		}
 		
 		function swapAudio(url, trackIndex) {
+			alert("swap audio");
 			var idStr = 'audio_'+trackIndex.toString();
 			addAudioListeners(idStr);
 			var topAudio = document.getElementById(idStr);
 			currentAudioElement = topAudio;
+			alert("check for support");
 			if (mp3Support) {
 				topAudio.play();				
 			} else {
@@ -324,7 +326,6 @@
 		}
 		
 		function populatePlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl) {
-			alert("populate");
 			isPlaying = true;
 			currentSongData = {
 				title: title,
