@@ -184,28 +184,25 @@
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
 		
+		// Tests for HTML5 mp3 support & SoundManager loading		
 		Modernizr.load({
 			test: Modernizr.audio,
 			nope: '../scripts/sm2/sm2_init.js',
 			complete: function() {
-				testModernizrAudio();
+				if (Modernizr.audio && Modernizr.audio.mp3 == '') {
+					alert("no mp3 support");
+					Modernizr.load({
+						load: '../scripts/sm2/sm2_init.js',
+						complete: function () {
+
+						}
+					});
+				}				
 				init();
 			}
 		});
 		
-		function testModernizrAudio() {
-			var audio = new Audio();
-			if (Modernizr.audio.mp3 == '') {
-				alert("no mp3 support");
-				Modernizr.load({
-					load: '../scripts/sm2/sm2_init.js',
-					complete: function () {
-						
-					}
-				});
-			}
-		}
-		
+		// Initialize stuff
 		function init() {
 			initializeJS();
 			updateDisplayedSongs();
