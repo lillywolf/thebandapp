@@ -186,25 +186,6 @@
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
 		
-		// Tests for HTML5 mp3 support & SoundManager loading		
-		// Modernizr.load({
-		// 	test: Modernizr.audio,
-		// 	// No HTML5 audio support
-		// 	nope: '../scripts/sm2/soundmanager2.js',
-		// 	complete: function() {
-		// 		if (Modernizr.audio && Modernizr.audio.mp3 == '') {
-		// 			// No mp3 support
-		// 			Modernizr.load({
-		// 				load: '../scripts/sm2/soundmanager2.js',
-		// 				complete: function () {
-		// 
-		// 				}
-		// 			});
-		// 		}				
-		// 		init();
-		// 	}
-		// });
-		
 		if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
 			mp3Support = false;
 			initSoundManager();
@@ -212,7 +193,6 @@
 		init();
 		
 		function initSoundManager() {
-			alert("init sm");
 			$.getScript("../scripts/sm2/soundmanager2.js", function(){
 				soundManager.url = '../scripts/sm2/swf/';
 				soundManager.flashVersion = 9; // optional: shiny features (default = 8)
@@ -267,7 +247,6 @@
 				topAudio.play();				
 			} else {
 				soundManager.play('currentSong', url);
-				alert(url);
 			}
 		}
 			
@@ -337,8 +316,7 @@
 				if (mp3Support) {
 					currentAudioElement.pause();					
 				} else {
-					alert(streamUrl);
-					// Pause with soundManager
+					soundManager.pause('currentSong');
 				}
 			}
 			currentTrackIndex = trackIndex;
@@ -375,15 +353,18 @@
 			if (mp3Support) {
 				document.getElementById('audio_'+currentTrackIndex.toString()).play();				
 			} else {
-				alert(currentSongData.toSource());
-				// soundManager( );
+				soundManager.resume('currentSong', currentSongData.streamUrl);
 			}
 			isPlaying = true;
 			showPause();
 		}
 		
 		function doPause() {
-			document.getElementById('audio_'+currentTrackIndex.toString()).pause();
+			if (mp3Support) {
+				document.getElementById('audio_'+currentTrackIndex.toString()).pause();				
+			} else {
+				soundManager.pause('currentSong');
+			}
 			isPlaying = false;
 			showPlay();
 		}
