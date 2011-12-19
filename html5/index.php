@@ -180,27 +180,47 @@
 		var currentScrollIndex = 1;
 		var currentAudioElement;
 		var currentSongData;
+		var soundManager;
 		
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
 		
 		// Tests for HTML5 mp3 support & SoundManager loading		
-		Modernizr.load({
-			test: Modernizr.audio,
-			nope: '../scripts/sm2/sm2_init.js',
-			complete: function() {
-				if (Modernizr.audio && Modernizr.audio.mp3 == '') {
-					alert("no mp3 support");
-					Modernizr.load({
-						load: '../scripts/sm2/sm2_init.js',
-						complete: function () {
-
-						}
-					});
-				}				
-				init();
-			}
-		});
+		// Modernizr.load({
+		// 	test: Modernizr.audio,
+		// 	// No HTML5 audio support
+		// 	nope: '../scripts/sm2/soundmanager2.js',
+		// 	complete: function() {
+		// 		if (Modernizr.audio && Modernizr.audio.mp3 == '') {
+		// 			// No mp3 support
+		// 			Modernizr.load({
+		// 				load: '../scripts/sm2/soundmanager2.js',
+		// 				complete: function () {
+		// 
+		// 				}
+		// 			});
+		// 		}				
+		// 		init();
+		// 	}
+		// });
+		
+		if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
+			alert("init sm");
+			initSoundManager();
+		}
+		init();
+		
+		function initSoundManager() {
+			$.getScript("../scripts/sm2/soundmanager2.js", function(){
+				soundManager.url = '../scripts/sm2/swf/';
+				soundManager.flashVersion = 9; // optional: shiny features (default = 8)
+				soundManager.useFlashBlock = false; // optionally, enable when you're ready to dive in
+				soundManager.onready(function() {
+					alert("soundmanager ready");
+			  		// Ready to use; soundManager.createSound() etc. can now be called.
+				});
+			});			
+		}
 		
 		// Initialize stuff
 		function init() {
@@ -340,7 +360,13 @@
 		}
 		
 		function doPlay() {
-			document.getElementById('audio_'+currentTrackIndex.toString()).play();
+			if (Modernizr.audio && Modernizr.audio.mp3 != '') {
+				document.getElementById('audio_'+currentTrackIndex.toString()).play();				
+			}
+			else {
+				alert(currentSongData.toSource());
+				// soundManager( );
+			}
 			isPlaying = true;
 			showPause();
 		}
