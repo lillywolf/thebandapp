@@ -248,10 +248,8 @@
 				addAudioListeners(idStr);
 				topAudio.play();				
 			} else {
+				soundManager.destroySound(smSongId);
 				smSongId = 'sm_'+trackIndex.toString();
-				if (soundManager.getSoundById(smSongId) != null) {
-					soundManager.setPosition(smSongId, 0);					
-				}
 				soundManager.play(smSongId, url);
 			}
 		}
