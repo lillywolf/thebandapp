@@ -187,13 +187,13 @@
 		Modernizr.load({
 			test: Modernizr.audio,
 			nope: '../scripts/sm2/sm2_init.js',
-			callback: function(result, key) {
+			callback: function(url, result, key) {
 				alert("result: " + result);
-			},
-			complete: function() {
-				alert("sm load complete");
-				init();
-			},
+			}
+			// complete: function() {
+			// 	alert("sm load complete");
+			// 	init();
+			// },
 		});
 		
 		function init() {
