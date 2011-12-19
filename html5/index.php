@@ -193,6 +193,7 @@
 		init();
 		
 		function initSoundManager() {
+			alert("init sm");
 			$.getScript("../scripts/sm2/soundmanager2.js", function(){
 				soundManager.url = '../scripts/sm2/swf/';
 				soundManager.flashVersion = 9; // optional: shiny features (default = 8)
