@@ -212,6 +212,7 @@
 		init();
 		
 		function initSoundManager() {
+			alert("init sm");
 			$.getScript("../scripts/sm2/soundmanager2.js", function(){
 				soundManager.url = '../scripts/sm2/swf/';
 				soundManager.flashVersion = 9; // optional: shiny features (default = 8)
@@ -367,8 +368,7 @@
 		function doPlay() {
 			if (mp3Support) {
 				document.getElementById('audio_'+currentTrackIndex.toString()).play();				
-			}
-			else {
+			} else {
 				alert(currentSongData.toSource());
 				// soundManager( );
 			}
