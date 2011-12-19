@@ -181,6 +181,7 @@
 		var currentAudioElement;
 		var currentSongData;
 		var soundManager;
+		var mp3Support = true;
 		
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
@@ -205,7 +206,7 @@
 		// });
 		
 		if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
-			alert("init sm");
+			mp3Support = false;
 			initSoundManager();
 		}
 		init();
@@ -261,7 +262,11 @@
 			addAudioListeners(idStr);
 			var topAudio = document.getElementById(idStr);
 			currentAudioElement = topAudio;
-			topAudio.play();
+			if (mp3Support) {
+				topAudio.play();				
+			} else {
+				alert(currentSongData.toSource());
+			}
 		}
 			
 		SC.initialize({
@@ -360,7 +365,7 @@
 		}
 		
 		function doPlay() {
-			if (Modernizr.audio && Modernizr.audio.mp3 != '') {
+			if (mp3Support) {
 				document.getElementById('audio_'+currentTrackIndex.toString()).play();				
 			}
 			else {
