@@ -182,6 +182,7 @@
 		var currentSongData;
 		var soundManager;
 		var mp3Support = true;
+		var smSongId;
 		
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
@@ -247,7 +248,8 @@
 				addAudioListeners(idStr);
 				topAudio.play();				
 			} else {
-				soundManager.play('currentSong', url);
+				smSongId = 'sm_'+trackIndex.toString();
+				soundManager.play(smSongId, url);
 			}
 		}
 			
@@ -317,7 +319,8 @@
 				if (mp3Support) {
 					currentAudioElement.pause();					
 				} else {
-					soundManager.pause('currentSong');
+					alert("pause current");
+					soundManager.pause(smSongId);
 				}
 			}
 			currentTrackIndex = trackIndex;
@@ -354,7 +357,7 @@
 			if (mp3Support) {
 				document.getElementById('audio_'+currentTrackIndex.toString()).play();				
 			} else {
-				soundManager.resume('currentSong', currentSongData.streamUrl);
+				soundManager.resume(smSongId, currentSongData.streamUrl);
 			}
 			isPlaying = true;
 			showPause();
@@ -364,7 +367,7 @@
 			if (mp3Support) {
 				document.getElementById('audio_'+currentTrackIndex.toString()).pause();				
 			} else {
-				soundManager.pause('currentSong');
+				soundManager.pause(smSongId);
 			}
 			isPlaying = false;
 			showPlay();
