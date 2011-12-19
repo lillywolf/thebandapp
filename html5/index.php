@@ -196,7 +196,7 @@
 		
 		function testModernizrAudio() {
 			var audio = new Audio();
-			alert(audio.toSource());
+			alert(Modernizr.audio.toSource());
 		}
 		
 		function init() {
