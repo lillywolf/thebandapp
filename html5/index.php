@@ -186,9 +186,8 @@
 		
 		Modernizr.load({
 			test: Modernizr.audio,
-			nope: '../scripts/sm2/sm2_init.js',
+			// nope: '../scripts/sm2/sm2_init.js',
 			complete: function() {
-				alert("sm load complete");
 				testModernizrAudio();
 				init();
 			}
@@ -196,7 +195,14 @@
 		
 		function testModernizrAudio() {
 			var audio = new Audio();
-			alert(Modernizr.audio.mp3);
+			if (Modernizr.audio.mp3 == null) {
+				Modernizr.load({
+					load: '../scripts/sm2/sm2_init.js',
+					complete: function () {
+						
+					}
+				});
+			}
 		}
 		
 		function init() {
