@@ -243,12 +243,15 @@
 		function swapAudio(url, trackIndex) {
 			var idStr = 'audio_'+trackIndex.toString();
 			var topAudio = document.getElementById(idStr);
-			currentAudioElement = topAudio;
+ 			currentAudioElement = topAudio;
 			if (mp3Support) {
 				addAudioListeners(idStr);
 				topAudio.play();				
 			} else {
 				smSongId = 'sm_'+trackIndex.toString();
+				if (soundManager.getSoundById(smSongId) != null) {
+					soundManager.setPosition(smSongId, 0);					
+				}
 				soundManager.play(smSongId, url);
 			}
 		}
@@ -319,7 +322,6 @@
 				if (mp3Support) {
 					currentAudioElement.pause();					
 				} else {
-					alert("pause current");
 					soundManager.pause(smSongId);
 				}
 			}
