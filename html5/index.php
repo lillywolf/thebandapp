@@ -266,7 +266,7 @@
 			if (mp3Support) {
 				topAudio.play();				
 			} else {
-				alert(currentSongData.toSource());
+				alert(url);
 			}
 		}
 			
@@ -333,7 +333,11 @@
 				streamUrl: streamUrl,
 			};
 			if (currentAudioElement != null) {
-				currentAudioElement.pause();
+				if (mp3Support) {
+					currentAudioElement.pause();					
+				} else {
+					// Pause with soundManager
+				}
 			}
 			currentTrackIndex = trackIndex;
 			document.getElementById('top_title').innerHTML = title;
