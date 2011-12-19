@@ -186,7 +186,7 @@
 		
 		Modernizr.load({
 			test: Modernizr.audio,
-			// nope: '../scripts/sm2/sm2_init.js',
+			nope: '../scripts/sm2/sm2_init.js',
 			complete: function() {
 				testModernizrAudio();
 				init();
@@ -195,7 +195,8 @@
 		
 		function testModernizrAudio() {
 			var audio = new Audio();
-			if (Modernizr.audio.mp3 == null) {
+			if (Modernizr.audio.mp3 == '') {
+				alert("no mp3 support");
 				Modernizr.load({
 					load: '../scripts/sm2/sm2_init.js',
 					complete: function () {
