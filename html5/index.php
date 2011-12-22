@@ -23,7 +23,6 @@
 		
 		require_once('../sc-api/Soundcloud.php');
 		require_once('../php-sdk/src/facebook.php');
-		require_once('../Predis-6/Predis/Client.php');
 		
 		session_start();
 
@@ -650,14 +649,16 @@
 	//     'port'   	=> '9092',
 	// 	'password' 	=> 'ee54626c1544db50f85d8aaf85de4f5f'
 	// ));;
-	$redis = new Predis\Client('redis://redistogo:ee54626c1544db50f85d8aaf85de4f5f@guppy.redistogo.com:9092/');
-	$value = $redis->get('foo');
-	// $redis = new Predis\Client('redis://guppy.redistogo.com:9092/');
-	// $redis->auth('ee54626c1544db50f85d8aaf85de4f5f');
-	// $redis->incr('counter');
-	// echo $redis->get('counter');
-	// echo "\n";
-	print_r($value);
+	require_once('predis/lib/Predis/Autoloader.php');
+	Predis\Autoloader::register();
+	$redis = new Predis\Client(array(
+	    'host'     => 'guppy.redistogo.com', 
+	    'password' => 'ee54626c1544db50f85d8aaf85de4f5f', 
+	    'port' => 9092, 
+	));
+	// $redis = new Predis\Client('redis://redistogo:ee54626c1544db50f85d8aaf85de4f5f@guppy.redistogo.com:9092/');
+	$result = $redis->get("foo");
+	echo $result;
 	
 	// $fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
 	// if (!$fp) {
