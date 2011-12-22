@@ -23,7 +23,7 @@
 	function pg_connection_string_from_database_url() {
 	  // extract(parse_url($_ENV["DATABASE_URL"]));
 	  // return "user=$user password=$pass host=$host port=$port dbname=" . substr($path, 1);
-		return "host=$host port=$port dbname=$dbname user=$dbuser password=$pass";
+		return "host=fbmusicplayer.ccbcfvmpasrm.us-east-1.rds.amazonaws.com port=3306 dbname=musicplayer user=lillywolf password=ysaura5";
 	}
 	# Here we establish the connection
 	$pg_conn = pg_connect(pg_connection_string_from_database_url());
