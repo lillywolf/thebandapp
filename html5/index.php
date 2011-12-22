@@ -640,13 +640,17 @@
 	# header('Location:' . $facebook->getLoginURL());	
 	
 	# $redis = new Predis\Client('tcp://10.0.0.1:6379');
-	// Predis\Autoloader::register();
+	Predis\Autoloader::register();
 	
-	$redis = new Predis\Client('redis://guppy.redistogo.com:9092/');
-	$redis->auth('ee54626c1544db50f85d8aaf85de4f5f');
-	$redis->incr('counter');
-	echo $redis->get('counter');
-	echo "\n";
+	// $redis = new Predis\Client('tcp://guppy.redistogo.com:9092/');
+	$redis = new Predis\Client(array(
+	    array('host' => 'guppy.redistogo.com', 'port' => 9092),
+	));
+	// $redis = new Predis\Client('redis://guppy.redistogo.com:9092/');
+	// $redis->auth('ee54626c1544db50f85d8aaf85de4f5f');
+	// $redis->incr('counter');
+	// echo $redis->get('counter');
+	// echo "\n";
 	print_r($redis);
 	
 	// $fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
