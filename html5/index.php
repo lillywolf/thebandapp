@@ -649,7 +649,7 @@
 	//     'port'   	=> '9092',
 	// 	'password' 	=> 'ee54626c1544db50f85d8aaf85de4f5f'
 	// ));;
-	require_once('predis/lib/Predis/Autoloader.php');
+	require_once('../predis/lib/Predis/Autoloader.php');
 	Predis\Autoloader::register();
 	$redis = new Predis\Client(array(
 	    'host'     => 'guppy.redistogo.com', 
