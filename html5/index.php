@@ -23,7 +23,7 @@
 		
 		require_once('../sc-api/Soundcloud.php');
 		require_once('../php-sdk/src/facebook.php');
-		require_once('../predis-0.6.5/predis-0.6.5/Predis.php');
+		require_once('../predis/lib/Predis/Autoloader.php');
 		
 		session_start();
 
@@ -644,7 +644,7 @@
 	
 	// $redis = new Predis\Client('tcp://guppy.redistogo.com:9092/');
 	$redis = new Predis\Client(array(
-	    array('host' => 'guppy.redistogo.com', 'port' => 9092),
+	    array('host' => 'guppy.redistogo.com', 'port' => 9092)
 	));
 	// $redis = new Predis\Client('redis://guppy.redistogo.com:9092/');
 	// $redis->auth('ee54626c1544db50f85d8aaf85de4f5f');
