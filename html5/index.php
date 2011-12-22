@@ -643,8 +643,12 @@
 	Predis\Autoloader::register();
 	
 	// $redis = new Predis\Client('tcp://guppy.redistogo.com:9092/');
+	// $redis = new Predis\Client(array(
+	//     array('host' => 'guppy.redistogo.com', 'port' => 9092)
+	// ));
 	$redis = new Predis\Client(array(
-	    array('host' => 'guppy.redistogo.com', 'port' => 9092)
+	    'host'   => 'guppy.redistogo.com',
+	    'port'   => 9092,
 	));
 	$value = $redis->get('foo');
 	// $redis = new Predis\Client('redis://guppy.redistogo.com:9092/');
