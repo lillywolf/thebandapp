@@ -647,7 +647,7 @@
 	$redis->incr('counter');
 	echo $redis->get('counter');
 	echo "\n";
-	// print_r($redis);
+	print_r($redis);
 	
 	// $fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
 	// if (!$fp) {
