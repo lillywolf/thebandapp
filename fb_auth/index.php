@@ -26,7 +26,7 @@
 	}
 	# Here we establish the connection
 	# $pg_conn = pg_connect(pg_connection_string_from_database_url());
-	$mysql_conn = mysql_connect($host.":".$port, $dbuser, $pass);
+	$mysql_conn = mysql_connect($host, $dbuser, $pass, false, MYSQL_CLIENT_SSL);
 	if (!$mysql_conn)
 	{
 		die("Critical Stop Error:".mysql_error);
