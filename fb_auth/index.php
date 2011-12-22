@@ -21,8 +21,9 @@
 	# This function reads your DATABASE_URL config var and returns a connection
 	# string suitable for pg_connect. Put this in your app.
 	function pg_connection_string_from_database_url() {
-	  extract(parse_url($_ENV["DATABASE_URL"]));
-	  return "user=$user password=$pass host=$host dbname=" . substr($path, 1);
+	  // extract(parse_url($_ENV["DATABASE_URL"]));
+	  // return "user=$user password=$pass host=$host port=$port dbname=" . substr($path, 1);
+		return "host=$host port=$port dbname=$dbname user=$dbuser password=$pass";
 	}
 	# Here we establish the connection
 	$pg_conn = pg_connect(pg_connection_string_from_database_url());
