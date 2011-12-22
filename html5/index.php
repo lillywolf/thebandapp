@@ -23,7 +23,7 @@
 		
 		require_once('../sc-api/Soundcloud.php');
 		require_once('../php-sdk/src/facebook.php');
-		require('../fb_auth/predis/lib/Predis/Autoloader.php');
+		require_once('../fb_auth/predis/lib/Predis/Autoloader.php');
 		
 		session_start();
 
