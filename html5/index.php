@@ -23,6 +23,7 @@
 		
 		require_once('../sc-api/Soundcloud.php');
 		require_once('../php-sdk/src/facebook.php');
+		require('/predis/lib/Predis/Autoloader.php');
 		
 		session_start();
 
@@ -638,21 +639,30 @@
 	# Use this for non-facebook canvas page (i.e. Facebook Connect)		
 	# header('Location:' . $facebook->getLoginURL());	
 	
-	$fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
-	if (!$fp) {
-		echo "$errstr ($errno)<br />\n";
-	} else {
-		$out = "GET /fb_auth/ HTTP/1.1\r\n";
-		$out .= "Host: simple-ocean-7178.herokuapp.com\r\n";
-		$out .= "Connection: Close\r\n\r\n";
-		$result = fwrite($fp, $out);
-		$ret = "";
-		while ($line = fgets($fp)) {
-			$ret .= $line;
-		}
-		print_r($ret);
-		fclose($fp);
-	}				
+	# $redis = new Predis\Client('tcp://10.0.0.1:6379');
+	Predis\Autoloader::register();
+	
+	$redis = new Predis\Client('redis://guppy.redistogo.com:9092');
+	$redis->auth('ee54626c1544db50f85d8aaf85de4f5f');
+	$redis->incr('counter');
+	echo $redis->get('counter');
+	echo "\n";
+	
+	// $fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
+	// if (!$fp) {
+	// 	echo "$errstr ($errno)<br />\n";
+	// } else {
+	// 	$out = "GET /fb_auth/ HTTP/1.1\r\n";
+	// 	$out .= "Host: simple-ocean-7178.herokuapp.com\r\n";
+	// 	$out .= "Connection: Close\r\n\r\n";
+	// 	$result = fwrite($fp, $out);
+	// 	$ret = "";
+	// 	while ($line = fgets($fp)) {
+	// 		$ret .= $line;
+	// 	}
+	// 	print_r($ret);
+	// 	fclose($fp);
+	// }				
 
 ?>
 </body>
