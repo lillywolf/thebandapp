@@ -642,7 +642,7 @@
 	# $redis = new Predis\Client('tcp://10.0.0.1:6379');
 	Predis\Autoloader::register();
 	
-	$redis = new Predis\Client('redis://redistogo:ee54626c1544db50f85d8aaf85de4f5f@guppy.redistogo.com:9092/');
+	$redis = new Predis\Client('redistogo:ee54626c1544db50f85d8aaf85de4f5f@guppy.redistogo.com:9092/');
 	// $redis->auth('ee54626c1544db50f85d8aaf85de4f5f');
 	// $redis->incr('counter');
 	// echo $redis->get('counter');
