@@ -23,8 +23,7 @@
 		
 		require_once('../sc-api/Soundcloud.php');
 		require_once('../php-sdk/src/facebook.php');
-		require_once('../predis/lib/Predis/Autoloader.php');
-		require_once('../redisent/redisent.php');
+		require_once('../predis-0.6.5/predis-0.6.5/Predis.php');
 		
 		session_start();
 
@@ -643,13 +642,12 @@
 	# $redis = new Predis\Client('tcp://10.0.0.1:6379');
 	// Predis\Autoloader::register();
 	
-	// $redis = new Predis\Client('redistogo:ee54626c1544db50f85d8aaf85de4f5f@guppy.redistogo.com:9092/');
-	// $redis->auth('ee54626c1544db50f85d8aaf85de4f5f');
-	// $redis->incr('counter');
-	// echo $redis->get('counter');
-	// echo "\n";
-	$redis = new redisent\Redis('redistogo:ee54626c1544db50f85d8aaf85de4f5f@guppy.redistogo.com:9092/');
-	print_r($redis);
+	$redis = new Predis\Client('redis://guppy.redistogo.com:9092/');
+	$redis->auth('ee54626c1544db50f85d8aaf85de4f5f');
+	$redis->incr('counter');
+	echo $redis->get('counter');
+	echo "\n";
+	// print_r($redis);
 	
 	// $fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
 	// if (!$fp) {
