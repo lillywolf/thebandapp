@@ -23,30 +23,37 @@
 	function pg_connection_string_from_database_url() {
 	  // extract(parse_url($_ENV["DATABASE_URL"]));
 	  // return "user=$user password=$pass host=$host port=$port dbname=" . substr($path, 1);
-		return "host=fbmusicplayer.ccbcfvmpasrm.us-east-1.rds.amazonaws.com port=3306 dbname=musicplayer user=lillywolf password=ysaura5";
 	}
 	# Here we establish the connection
-	$pg_conn = pg_connect(pg_connection_string_from_database_url());
-	# Get shows data
-	pg_send_query($pg_conn, "SELECT name FROM interactions");
-	$interactions_result = "";	
-	$result = true;
-	$last_result = true;
-	while ($result && $result != false) {
-		$result = pg_get_result($pg_conn);
-		error_log(print_r($result, true));
-		if (!$result || $result == $last_result || !pg_num_rows($result)) {
-		} else {
-			$last_result = $result;
-			while ($row = pg_fetch_row($result)) { 
-				error_log(print_r($row, true));
-				print_r($row);
-				# $shows_result .= $row;
-		 		# print("<span class='show'>$row[0]</span>"); 
-		 	}
-		}		
+	# $pg_conn = pg_connect(pg_connection_string_from_database_url());
+	$mysql_conn = mysql_connect($host.":".$port, $dbuser, $pass);
+	if (!$mysql_conn)
+	{
+		die("Critical Stop Error:".mysql_error);
 	}
-	error_log(print_r($interactions_result, true));
+	$selected = mysql_select_db($dbname, $mysql_conn);
+	error_log(print_r($selected));
+	
+	# Get shows data
+	// pg_send_query($pg_conn, "SELECT name FROM interactions");
+	// 	$interactions_result = "";	
+	// 	$result = true;
+	// 	$last_result = true;
+	// 	while ($result && $result != false) {
+	// 		$result = pg_get_result($pg_conn);
+	// 		error_log(print_r($result, true));
+	// 		if (!$result || $result == $last_result || !pg_num_rows($result)) {
+	// 		} else {
+	// 			$last_result = $result;
+	// 			while ($row = pg_fetch_row($result)) { 
+	// 				error_log(print_r($row, true));
+	// 				print_r($row);
+	// 				# $shows_result .= $row;
+	// 		 		# print("<span class='show'>$row[0]</span>"); 
+	// 		 	}
+	// 		}		
+	// 	}
+	// 	error_log(print_r($interactions_result, true));
 	# print "</div>";
 
 	?>
