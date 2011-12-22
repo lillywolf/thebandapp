@@ -7,10 +7,16 @@
 	#####
 	# Connect to the database
 	#####
-	$dbuser="uc3rwdprf7ijm9z";
-	$pass="pab1kv3jcunuilewgh4op7kwht";
-	$host="ec2-107-22-196-151.compute-1.amazonaws.com";
-	$dbname="dcw8wyqwdih0rv";
+	// $dbuser="uc3rwdprf7ijm9z";
+	// $pass="pab1kv3jcunuilewgh4op7kwht";
+	// $host="ec2-107-22-196-151.compute-1.amazonaws.com";
+	// $dbname="dcw8wyqwdih0rv";
+	
+	$host="fbmusicplayer.ccbcfvmpasrm.us-east-1.rds.amazonaws.com";
+	$dbname="musicplayer";
+	$port="3306";
+	$dbuser="lillywolf";
+	$pass="ysaura5";
 
 	# This function reads your DATABASE_URL config var and returns a connection
 	# string suitable for pg_connect. Put this in your app.
@@ -21,8 +27,8 @@
 	# Here we establish the connection
 	$pg_conn = pg_connect(pg_connection_string_from_database_url());
 	# Get shows data
-	pg_send_query($pg_conn, "SELECT venue FROM shows WHERE artist_id=1");
-	$shows_result = "";	
+	pg_send_query($pg_conn, "SELECT name FROM interactions");
+	$interactions_result = "";	
 	$result = true;
 	$last_result = true;
 	while ($result && $result != false) {
@@ -39,7 +45,7 @@
 		 	}
 		}		
 	}
-	error_log(print_r($shows_result, true));
+	error_log(print_r($interactions_result, true));
 	# print "</div>";
 
 	?>
