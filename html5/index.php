@@ -648,6 +648,7 @@
 	$userkey = $user_id . '_userdata';
 	// $redis->hset($userkey, );
 	$visits = $redis->hget($userkey, 'visits');
+	$alluser = $redis->hgetall($userkey);
 	if (!$visits) {
 		$visits = 0;
 	}
@@ -655,6 +656,8 @@
 	$visits = $visits+1;
 	$reply = $redis->hset($userkey, 'visits', $visits);
 	error_log('visit set output: ' . $reply);
+	error_log('user hash: ' . print_r($alluser, true));
+
 	// $result = $redis->get("foo");
 		
 	// $fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
