@@ -651,7 +651,7 @@
 	if (!$visits) {
 		$visits = 0;
 	}
-	error_log($visits);
+	error_log('reporting visits:' . $visits);
 	$visits = $visits+1;
 	// $reply = $redis->rawCommand("HSET $userkey 'visits' $visits");
 	// $result = $redis->get("foo");
