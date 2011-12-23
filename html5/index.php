@@ -646,13 +646,13 @@
 	    'port' => 9092, 
 	));
 	$userkey = $user_id . '_userdata';
-	// $redis->hset($userkey, );
+	$stored_fbid = $redis->hget($userkey, 'fbid');
 	$visits = $redis->hget($userkey, 'visits');
 	$alluser = $redis->hgetall($userkey);
 	if (!$visits) {
 		$visits = 0;
 	}
-	if (empty($redis->hget($userkey, 'fbid'))) {
+	if (empty($stored_fbid)) {
 		$redis->hset($userkey, 'fbid', $userid);	
 	}
 	error_log('reporting visits: ' . $visits);
