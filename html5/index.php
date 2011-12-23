@@ -653,7 +653,7 @@
 		$visits = 0;
 	}
 	if (empty($stored_fbid)) {
-		$redis->hset($userkey, 'fbid', $userid);	
+		$redis->hset($userkey, 'fbid', $user_id);	
 	}
 	error_log('reporting visits: ' . $visits);
 	$visits = intval($visits)+1;
