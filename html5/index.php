@@ -653,7 +653,7 @@
 		$visits = 0;
 	}
 	error_log('reporting visits: ' . $visits);
-	$visits = $visits+1;
+	$visits = intval($visits)+1;
 	$reply = $redis->hset($userkey, 'visits', $visits);
 	error_log('visit set output: ' . $reply);
 	error_log('user hash: ' . print_r($alluser, true));
