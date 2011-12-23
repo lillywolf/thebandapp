@@ -647,7 +647,7 @@
 	));
 	$userkey = $user_id . '_userdata';
 	// $redis->hset($userkey, );
-	$visits = $redis->rawCommand("HGET $userkey 'visits'");
+	$visits = $redis->hget($userkey, 'visits');
 	echo $visits;
 	if (!$visits) {
 		$visits = 0;
