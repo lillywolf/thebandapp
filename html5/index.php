@@ -648,10 +648,10 @@
 	$userkey = $user_id . '_userdata';
 	// $redis->hset($userkey, );
 	$visits = $redis->hget($userkey, 'visits');
-	echo $visits;
 	if (!$visits) {
 		$visits = 0;
 	}
+	error_log($visits);
 	$visits = $visits+1;
 	// $reply = $redis->rawCommand("HSET $userkey 'visits' $visits");
 	// $result = $redis->get("foo");
