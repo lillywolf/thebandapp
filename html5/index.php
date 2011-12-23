@@ -651,9 +651,10 @@
 	if (!$visits) {
 		$visits = 0;
 	}
-	error_log('reporting visits:' . $visits);
+	error_log('reporting visits: ' . $visits);
 	$visits = $visits+1;
-	// $reply = $redis->rawCommand("HSET $userkey 'visits' $visits");
+	$reply = $redis->hset($userkey, 'visits', $visits);
+	error_log('visit set output: ' . $reply);
 	// $result = $redis->get("foo");
 		
 	// $fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
