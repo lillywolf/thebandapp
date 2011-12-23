@@ -41,7 +41,7 @@
 		$MAX_SONGS_SHOWN = 4;	
 
 		$facebook = new Facebook($config);	
-		# $user_id = $facebook->getUser();
+		$user_id = $facebook->getUser();
 		$req = $facebook->getSignedRequest();
 		# $accessToken = $facebook->getApplicationAccessToken();
 		$pageId = $req['page']['id'];
@@ -638,17 +638,6 @@
 	# Use this for non-facebook canvas page (i.e. Facebook Connect)		
 	# header('Location:' . $facebook->getLoginURL());	
 	
-	# $redis = new Predis\Client('tcp://10.0.0.1:6379');
-	
-	// $redis = new Predis\Client('tcp://guppy.redistogo.com:9092/');
-	// $redis = new Predis\Client(array(
-	//     array('host' => 'guppy.redistogo.com', 'port' => 9092)
-	// ));
-	// $redis = new Predis\Client(array(
-	//     'host'   	=> 'guppy.redistogo.com',
-	//     'port'   	=> '9092',
-	// 	'password' 	=> 'ee54626c1544db50f85d8aaf85de4f5f'
-	// ));;
 	require_once('../predis/lib/Predis/Autoloader.php');
 	Predis\Autoloader::register();
 	$redis = new Predis\Client(array(
@@ -656,10 +645,17 @@
 	    'password' => 'ee54626c1544db50f85d8aaf85de4f5f', 
 	    'port' => 9092, 
 	));
-	// $redis = new Predis\Client('redis://redistogo:ee54626c1544db50f85d8aaf85de4f5f@guppy.redistogo.com:9092/');
-	$result = $redis->get("foo");
-	echo $result;
-	
+	$userkey = $user_id . '_userdata';
+	// $redis->hset($userkey, );
+	$visits = $redis->rawCommand("HGET $userkey 'visits'");
+	echo $visits;
+	if (!$visits) {
+		$visits = 0;
+	}
+	$visits = $visits+1;
+	// $reply = $redis->rawCommand("HSET $userkey 'visits' $visits");
+	// $result = $redis->get("foo");
+		
 	// $fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
 	// if (!$fp) {
 	// 	echo "$errstr ($errno)<br />\n";
