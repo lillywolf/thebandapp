@@ -645,6 +645,7 @@
 	    'password' => 'ee54626c1544db50f85d8aaf85de4f5f', 
 	    'port' => 9092, 
 	));
+	error_log('my user id: ' . $user_id);
 	$userkey = $user_id . '_userdata';
 	$stored_fbid = $redis->hget($userkey, 'fbid');
 	$visits = $redis->hget($userkey, 'visits');
