@@ -652,6 +652,9 @@
 	if (!$visits) {
 		$visits = 0;
 	}
+	if (empty($redis->hget($userkey, 'fbid'))) {
+		$redis->hset($userkey, 'fbid', $userid);	
+	}
 	error_log('reporting visits: ' . $visits);
 	$visits = intval($visits)+1;
 	$reply = $redis->hset($userkey, 'visits', $visits);
