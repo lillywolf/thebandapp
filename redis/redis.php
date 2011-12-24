@@ -28,7 +28,8 @@ class Redis
 	{
 		$storedFbid = $this->redis->hget($this->userKey, 'fbid');
 		# Set user data if it doesn't exist
-		if (empty($storedFbid)) {
+		if (empty($storedFbid)) 
+		{
 			$this->redis->hset($this->userKey, 'fbid', $userId);	
 		}
 	}
@@ -49,7 +50,7 @@ class Redis
 	
 	public function recordPermissions($perms)
 	{
-		$this->redis->hset($this->userKey, 'perms', $perms)
+		$this->redis->hset($this->userKey, 'perms', $perms);
 	}
 	
 	public function recordLike($liked)
