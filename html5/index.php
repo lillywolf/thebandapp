@@ -65,7 +65,41 @@
 		
 		$track_uri = $trackdata[0]['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b';
 		$playlist_id = $playlistdata[0]['id'];
+		
+		
+		################
+		# REDIS LOGIN 
+		################
+					
+		require_once('../predis/lib/Predis/Autoloader.php');
+		Predis\Autoloader::register();
+		$redis = new Predis\Client(array(
+		    'host'     => 'guppy.redistogo.com', 
+		    'password' => 'ee54626c1544db50f85d8aaf85de4f5f', 
+		    'port' => 9092, 
+		));
+		$redisHandler = new Redis($user_id, $pageId);
+		
+		$userKey = $user_id . '_userdata';
+		$stored_fbid = $redis->hget($userkey, 'fbid');
+		# Set user data if it doesn't exist
+		if (empty($stored_fbid)) {
+			$redis->hset($userkey, 'fbid', $user_id);	
+		}
+		# Set user like value
+		$redis->hset($userkey, 'liked', $liked);
+		# Set visits
+		$visits = $redis->hget($userkey, 'visits');
+		if (!$visits) {
+			$visits = 0;
+		}
+		$visits = intval($visits)+1;
+		$reply = $redis->hset($userkey, 'visits', $visits);
+		# Log result
+		$alluser = $redis->hgetall($userkey);
+		error_log('user hash: ' . print_r($alluser, true));				
 						
+		# Record time for efficiency analytics				
 		$after = microtime();	
 				
 		?>
@@ -406,6 +440,9 @@
 		
 		function downloadSong(downloadUrl) {
 			window.document.getElementById("downloader-frame").src=downloadUrl+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
+			$.get('../redis/page_interaction.php?method=download&download_url='+downloadUrl, function(data, status) {
+			      // parse
+			},'html');
 		}
 		
 		function downloadAllSongs(downloadUrlString) {
@@ -624,6 +661,7 @@
 	function getHome () {
 	  return ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?: "http") . "://" . $_SERVER['HTTP_HOST'] . "/";
 	}
+
 	
 		
 	# FOR ADMIN PANEL
@@ -637,32 +675,6 @@
 
 	# Use this for non-facebook canvas page (i.e. Facebook Connect)		
 	# header('Location:' . $facebook->getLoginURL());	
-	
-	require_once('../predis/lib/Predis/Autoloader.php');
-	Predis\Autoloader::register();
-	$redis = new Predis\Client(array(
-	    'host'     => 'guppy.redistogo.com', 
-	    'password' => 'ee54626c1544db50f85d8aaf85de4f5f', 
-	    'port' => 9092, 
-	));
-	error_log('my user id: ' . $user_id);
-	$userkey = $user_id . '_userdata';
-	$stored_fbid = $redis->hget($userkey, 'fbid');
-	$visits = $redis->hget($userkey, 'visits');
-	$alluser = $redis->hgetall($userkey);
-	if (!$visits) {
-		$visits = 0;
-	}
-	if (empty($stored_fbid)) {
-		$redis->hset($userkey, 'fbid', $user_id);	
-	}
-	error_log('reporting visits: ' . $visits);
-	$visits = intval($visits)+1;
-	$reply = $redis->hset($userkey, 'visits', $visits);
-	error_log('visit set output: ' . $reply);
-	error_log('user hash: ' . print_r($alluser, true));
-
-	// $result = $redis->get("foo");
 		
 	// $fp = fsockopen("simple-ocean-7178.herokuapp.com", 80, $errno, $errstr);
 	// if (!$fp) {
