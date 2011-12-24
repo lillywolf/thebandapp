@@ -83,10 +83,9 @@
 		));
 		$redisWrapper = new Redis($user_id, $pageId);
 		$redisWrapper->recordPermissions($perms['data'][0]);
-		$redisWrapper->recordVisits();
-		
+		$redisWrapper->recordVisits();		
 		$alluser = $redis->hgetall($userkey);
-		error_log('user hash: ' . print_r($alluser, true));				
+		// error_log('user hash: ' . print_r($alluser, true));				
 						
 		# Record time for efficiency analytics				
 		$after = microtime();	
