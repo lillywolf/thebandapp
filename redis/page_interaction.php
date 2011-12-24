@@ -5,7 +5,7 @@ require_once('util.php');
 
 $parts = explode('?', $_SERVER['REQUEST_URI']); 
 $pairs = explode('&', $parts[1]);
-$utils = new Utils();
+$utils = new Util();
 $fbId = $utils->iterateThroughAndFind($pairs, 'fbId');
 $pageId = $utils->iterateThroughAndFind($pairs, 'pageId');
 $method = $utils->iterateThroughAndFind($pairs, 'method');
