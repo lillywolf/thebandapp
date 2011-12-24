@@ -50,7 +50,17 @@ class Redis
 	
 	public function recordPermissions($perms)
 	{
-		$this->redis->hset($this->userKey, 'perms', $perms);
+		# Takes in array of key / value pairs
+		$str = '';
+		foreach ($perms as $key => $value)
+		{
+			if ($value == 1)
+			{
+				$str = $str . $key . ',';
+			}
+		}
+		error_log('permissions: ' . print_r($str, true));
+		$this->redis->hset($this->userKey, 'perms', $str);
 	}
 	
 	public function recordLike($liked)

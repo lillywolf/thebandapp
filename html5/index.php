@@ -82,8 +82,7 @@
 		    'port' => 9092, 
 		));
 		$redisWrapper = new Redis($user_id, $pageId);
-		error_log('permissions: ' . print_r($perms, true));
-		$redisWrapper->recordPermissions($perms);
+		$redisWrapper->recordPermissions($perms['data'][0]);
 		$redisWrapper->recordVisits();
 		
 		$alluser = $redis->hgetall($userkey);
