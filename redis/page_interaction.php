@@ -1,6 +1,6 @@
 <?php
 
-require_once('/redis.php');
+require_once('redis.php');
 
 $parts = explode('?', $_SERVER['REQUEST_URI']); 
 error_log('check url parts: ' . print_r($parts, true));
