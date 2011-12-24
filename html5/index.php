@@ -23,7 +23,6 @@
 		
 		require_once('../sc-api/Soundcloud.php');
 		require_once('../php-sdk/src/facebook.php');
-		require_once('../redis/redis.php');
 		
 		session_start();
 
@@ -43,6 +42,7 @@
 
 		$facebook = new Facebook($config);	
 		$user_id = $facebook->getUser();
+		$perms = $facebook->api('/me/permissions', 'GET');
 		$req = $facebook->getSignedRequest();
 		# $accessToken = $facebook->getApplicationAccessToken();
 		$pageId = $req['page']['id'];
@@ -73,30 +73,19 @@
 		################
 					
 		require_once('../predis/lib/Predis/Autoloader.php');
+		require_once('../redis/redis.php');
+		
 		Predis\Autoloader::register();
 		$redis = new Predis\Client(array(
 		    'host'     => 'guppy.redistogo.com', 
 		    'password' => 'ee54626c1544db50f85d8aaf85de4f5f', 
 		    'port' => 9092, 
 		));
-		$redisHandler = new Redis($user_id, $pageId);
+		$redisWrapper = new Redis($user_id, $pageId);
+		error_log('permissions: ' . print_r($perms, true));
+		$redisWrapper->recordPermissions($perms);
+		$redisWrapper->recordVisits();
 		
-		$userKey = $user_id . '_userdata';
-		$stored_fbid = $redis->hget($userkey, 'fbid');
-		# Set user data if it doesn't exist
-		if (empty($stored_fbid)) {
-			$redis->hset($userkey, 'fbid', $user_id);	
-		}
-		# Set user like value
-		$redis->hset($userkey, 'liked', $liked);
-		# Set visits
-		$visits = $redis->hget($userkey, 'visits');
-		if (!$visits) {
-			$visits = 0;
-		}
-		$visits = intval($visits)+1;
-		$reply = $redis->hset($userkey, 'visits', $visits);
-		# Log result
 		$alluser = $redis->hgetall($userkey);
 		error_log('user hash: ' . print_r($alluser, true));				
 						
@@ -441,6 +430,7 @@
 		
 		function downloadSong(downloadUrl) {
 			window.document.getElementById("downloader-frame").src=downloadUrl+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
+			// REDIS
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download&download_url='+downloadUrl, function(data, status) {
 			      // parse
 			},'html');
@@ -448,7 +438,11 @@
 		
 		function downloadAllSongs(downloadUrlString) {
 			var urls = downloadUrlString.split(",");
-			createDownloadElement(urls, 0, urls.length);			
+			createDownloadElement(urls, 0, urls.length);
+			// REDIS	
+			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download_all', function(data, status) {
+			      // parse
+			},'html');		
 		}
 		
 		function createDownloadElement(urls, i, limit) {
@@ -467,6 +461,10 @@
 				}
 				e.src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";				
 				window.document.getElementById("downloaders").appendChild(e);
+				// REDIS
+				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download&download_url='+urls[i], function(data, status) {
+				      // parse
+				},'html');
 			}	
 		}
 		
