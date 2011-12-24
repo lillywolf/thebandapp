@@ -41,7 +41,7 @@ class Redis
 		{
 			$downloads = array();
 		}
-		$downloads[] = $downloadUrl;
+		// $downloads[] = $downloadUrl;
 		$this->redis->hset($this->userPageKey, 'downloads', $downloads);
 		$downloads = $this->redis->hget($this->userPageKey, 'downloads');
 		error_log('user data: ' . print_r($downloads, true));
