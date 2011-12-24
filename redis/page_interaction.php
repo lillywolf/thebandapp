@@ -19,11 +19,11 @@ if (!empty($fbId) && !empty($pageId))
 
 if ($method == 'download')
 {
-	$downloadUrl = $utils->iterateThroughAndFind($pairs, 'downloadUrl');
+	$downloadUrl = $utils->iterateThroughAndFind($pairs, 'download_url');
 	if (!empty($downloadUrl))
 	{
 		error_log('record download');
-		// $redis->recordDownload($downloadUrl);		
+		$redis->recordDownload($downloadUrl);		
 	}
 }
 

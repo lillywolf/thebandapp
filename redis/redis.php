@@ -25,6 +25,8 @@ class Redis
 	public function recordDownload($downloadUrl)
 	{
 		$this->redis->hset($this->userPageKey, 'downloads', $downloadUrl);
+		$dldata = $this->redis->hget($this->userPageKey, 'downloads');
+		error_log('user data: ' . print_r($dldata, true));
 	}
 	
 	public function recordDownloadAll($urls)
