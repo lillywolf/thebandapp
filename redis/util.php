@@ -10,10 +10,12 @@ class Util
 	public function iterateThroughAndFind($pairs, $find)
 	{
 		foreach ($pairs as $pair)
-		{
-			if (isset($pair[$find]))
+		{ 
+			$parts = explode('=', $pair);
+			error_log('parts: ' . print_r($parts, true));
+			if ($parts[0] == $find))
 			{
-				return $pair[$find];
+				return $parts[1];
 			}
 		}
 		return null;
