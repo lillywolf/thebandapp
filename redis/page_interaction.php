@@ -1,16 +1,30 @@
 <?php
 
 require_once('redis.php');
+require_once('utils.php');
 
 $parts = explode('?', $_SERVER['REQUEST_URI']); 
-error_log('check url parts: ' . print_r($parts, true));
-$params = explode('&', $parts[1]);
+$pairs = explode('&', $parts[1]);
+$utils = new Utils();
+$fbId = $utils->iterateThroughAndFind($pairs, 'fbId');
+$pageId = $utils->iterateThroughAndFind($pairs, 'pageId');
+$method = $utils->iterateThroughAndFind($pairs, 'method');
 
-// $redis = new Redis($parts['fbId'], $parts['pageId']);
+error_log('parsed data: ' . $fbId . 'pageId: ' . $pageId . 'method: ' . $method);
 
-// if ($parts['method'] == 'download')
-// {
-// 	$redis->recordDownload($parts['download_url']);
-// }
+if (!empty($fbId) && !empty($pageId))
+{
+	$redis = new Redis($fbId, $pageId);	
+}
+
+if ($method == 'download')
+{
+	$downloadUrl = $utils->iterateThroughAndFind($pairs, 'downloadUrl');
+	if (!empty($downloadUrl))
+	{
+		error_log('record download');
+		// $redis->recordDownload($downloadUrl);		
+	}
+}
 
 ?>

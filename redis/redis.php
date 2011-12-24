@@ -41,6 +41,8 @@ class Redis
 		$this->redis->hset($this->userPageKey, 'liked', $liked);		
 	}
 	
+
+	
 }
 
 
