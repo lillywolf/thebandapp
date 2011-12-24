@@ -37,6 +37,10 @@ class Redis
 	public function recordDownload($downloadUrl)
 	{
 		$downloads = $this->redis->hget($this->userPageKey, 'downloads');
+		if (!is_array($downloads))
+		{
+			$downloads = array();
+		}
 		$downloads[] = $downloadUrl;
 		$this->redis->hset($this->userPageKey, 'downloads', $downloads);
 		$downloads = $this->redis->hget($this->userPageKey, 'downloads');
