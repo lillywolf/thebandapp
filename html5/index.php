@@ -441,7 +441,7 @@
 		
 		function downloadSong(downloadUrl) {
 			window.document.getElementById("downloader-frame").src=downloadUrl+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
-			$.get('../redis/page_interaction.php?method=download&download_url='+downloadUrl, function(data, status) {
+			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download&download_url='+downloadUrl, function(data, status) {
 			      // parse
 			},'html');
 		}
