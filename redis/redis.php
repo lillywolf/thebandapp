@@ -38,7 +38,7 @@ class Redis
 	{
 		$downloadsKey = $this->userPageKey . '_downloads';
 		$this->redis->sadd($downloadsKey, $downloadUrl);
-		$downloads = $this->redis->smembers($downloadsKey, 'downloads');
+		$downloads = $this->redis->smembers($downloadsKey);
 		error_log('download data: ' . print_r($downloads, true));
 	}
 	
