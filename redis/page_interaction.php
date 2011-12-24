@@ -1,7 +1,7 @@
 <?php
 
 require_once('redis.php');
-require_once('utils.php');
+require_once('util.php');
 
 $parts = explode('?', $_SERVER['REQUEST_URI']); 
 $pairs = explode('&', $parts[1]);
