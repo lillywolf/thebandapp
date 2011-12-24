@@ -76,7 +76,7 @@ class Redis
 			$visits = 0;
 		}
 		$visits = intval($visits)+1;
-		$redis->hset($this->userkey, 'visits', $visits);	
+		$this->redis->hset($this->userkey, 'visits', $visits);	
 	}
 	
 }
