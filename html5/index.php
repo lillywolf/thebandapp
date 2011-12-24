@@ -23,6 +23,7 @@
 		
 		require_once('../sc-api/Soundcloud.php');
 		require_once('../php-sdk/src/facebook.php');
+		require_once('../redis/redis.php');
 		
 		session_start();
 
