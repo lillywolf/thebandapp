@@ -38,7 +38,6 @@ if ($method == 'create_mission')
 {
 	$missionId = $utils->iterateThroughAndFind($pairs, 'mission_id');
 	$mission = $utils->getMissionData($missionId);
-	error_log('mission data register: ' . print_r($mission, true));
 	$redis->createAppMission($mission['id'], $mission['title'], $mission['description'], $mission['explanation']);
 }
 
@@ -47,7 +46,8 @@ if ($method == 'register_mission')
 	$missionId = $utils->iterateThroughAndFind($pairs, 'mission_id');
 	$missionRank = $utils->iterateThroughAndFind($pairs, 'mission_rank');
 	$mission = $utils->getMissionData($missionId);
-	$redis->registerMission($mission['mission_id'], $missionRank);
+	error_log('mission id register: ' . print_r($mission, true));
+	$redis->registerMission($mission['id'], $missionRank);
 }
 
 ?>
