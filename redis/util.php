@@ -22,7 +22,7 @@ class Util
 	
 	public function getMissionData($m_id)
 	{
-		$data = object();
+		$data = array();
 		switch ($m_id)
 		{
 			case 'like':
