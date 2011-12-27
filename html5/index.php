@@ -43,7 +43,7 @@
 		$user_id = $facebook->getUser();
 		// $perms = $facebook->api('/me/permissions', 'GET', $appAccessToken);
 		$req = $facebook->getSignedRequest();
-		print_r($req);
+		print_r($req['user']);
 		$pageId = $req['page']['id'];
 		if ($req['page']['liked']) {
 			$liked = "true";
