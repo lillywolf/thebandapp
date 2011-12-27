@@ -64,7 +64,7 @@
 		
 		foreach ($playlistdata as $playlist) {
 			if ($playlist['permalink'] == $DOWNLOAD_ALL_PLAYLIST_NAME) {
-				$download_playlist = json_decode($soundcloud->get('me/playlists/' . $playlist['id'] . '/tracks'), true);
+				$download_playlist = json_decode($soundcloud->get('me/playlists/' . $playlist['id'] . '/tracks?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b'), true);
 				print_r($download_playlist);
 			}
 		}
