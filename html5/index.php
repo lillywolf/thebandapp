@@ -62,15 +62,20 @@
 		    exit($e->getMessage());
 		}
 		
+		$download_tracks = null;
+		$download_tracks_urls = '';
+		$playlist_id = null;
 		foreach ($playlistdata as $playlist) {
 			if ($playlist['permalink'] == $DOWNLOAD_ALL_PLAYLIST_NAME) {
-				$download_playlist = json_decode($soundcloud->get('me/playlists/' . $playlist['id'] . '/tracks?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b'), true);
-				print_r($download_playlist);
+				$download_tracks = $playlist['tracks']; 
+				$playlist_id = $playlist['id'];
+				foreach($download_tracks as $track) {
+					$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
+				}
 			}
 		}
 		
 		$track_uri = $trackdata[0]['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b';
-		$playlist_id = $playlistdata[0]['id'];
 		
 		
 		########################
@@ -101,7 +106,11 @@
 		
 		<div id="page_heading_div" class="hidden"></div>
 		<div id="missions"></div>
-		<div id="notice"></div>
+		<div id="notice">
+			<div id="download_all_btn_wrapper">
+				<div id="download_all_btn" onClick="downloadAllSongs(<?php echo $download_tracks_urls ?>)"></div>
+			</div>	
+		</div>
 		
 		<div id="flash">
 			<div id="player">	
@@ -451,12 +460,13 @@
 		}
 		
 		function downloadAllSongs(downloadUrlString) {
+			alert(downloadUrlString);
 			var urls = downloadUrlString.split(",");
 			createDownloadElement(urls, 0, urls.length);
 			// REDIS	
-			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download_all', function(data, status) {
-			      // parse
-			},'html');		
+			// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download_all', function(data, status) {
+			//       // parse
+			// },'html');		
 		}
 		
 		function createDownloadElement(urls, i, limit) {
