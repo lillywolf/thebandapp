@@ -58,9 +58,15 @@
 		try {
 		    $trackdata = json_decode($soundcloud->get('me/tracks'), true);
 			$playlistdata = json_decode($soundcloud->get('me/playlists'), true);
-			error_log('playlist data: ' . print_r($playlistdata[0]));
 		} catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) {
 		    exit($e->getMessage());
+		}
+		
+		foreach ($playlistdata as $playlist) {
+			if ($playlist['permalink'] == $DOWNLOAD_ALL_PLAYLIST_NAME) {
+				$download_playlist = json_decode($soundcloud->get($playlist['id'] . '/tracks'), true);
+				print_r($download_playlist);
+			}
 		}
 		
 		$track_uri = $trackdata[0]['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b';
@@ -200,9 +206,9 @@
 		// },'html');	
 		
 		// CREATE MISSION
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=like', function(data, status) {
-		      // parse
-		},'html');			
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=like', function(data, status) {
+		//       // parse
+		// },'html');			
 		
 		function initSoundManager() {
 			alert("init sm");
