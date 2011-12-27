@@ -112,7 +112,7 @@
 		
 		# Get completed missions
 		$pageMissions = $redisWrapper->getPageMissions();
-		error_log('page missions: ' . print_r($pageMissions, true););
+		error_log('page missions: ' . print_r($pageMissions, true));
 		$completedMissions = array();
 		foreach ($pageMissions as $rank=>$pageMission) {
 			if (($pageMission == 'like' && $liked) || 
