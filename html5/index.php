@@ -123,7 +123,7 @@
 				$completedMissions[$rank] = false;
 			}
 		}	
-		error_log('completed missions: ' . print_r($completedMissions, true););	
+		error_log('completed missions: ' . print_r($completedMissions, true));	
 		$completedMissionCount = 0;
 		while ($completedMissions[$completedMissionCount] == true) {
 			$completedMissionCount++;
