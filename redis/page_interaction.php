@@ -40,7 +40,7 @@ if ($method == 'create_mission')
 	error_log('mission id: ' . $missionId);
 	$mission = $utils->getMissionData($missionId);
 	error_log('mission data: ' . print_r($mission, true));
-	// $redis->createAppMission($mission['id'], $mission['title'], $mission['description'], $mission['explanation']);
+	$redis->createAppMission($mission['id'], $mission['title'], $mission['description'], $mission['explanation']);
 }
 
 if ($method == 'register_mission')

@@ -81,6 +81,7 @@
 		$redisWrapper = new Redis($user_id, $pageId);
 		$redisWrapper->recordPermissions($perms['data'][0]);
 		$redisWrapper->recordVisits();		
+		$redisWrapper->recordLike($liked);
 		$missions = $redisWrapper->getCompletedMissionsCount();
 		$alluser = $redis->hgetall($userkey);
 		// error_log('user hash: ' . print_r($alluser, true));				
@@ -197,7 +198,7 @@
 		// },'html');	
 		
 		// CREATE MISSION
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=like', function(data, status) {
+		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=download_playlist', function(data, status) {
 		      // parse
 		},'html');			
 		
