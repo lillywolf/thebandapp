@@ -42,6 +42,8 @@
 		$appAccessToken = $facebook->getApplicationAccessToken();
 		$user_id = $facebook->getUser();
 		// $perms = $facebook->api('/me/permissions', 'GET', $appAccessToken);
+		print_r($_REQUEST);
+		print_r($_POST);
 		$req = $facebook->getSignedRequest();
 		print_r($req['user']);
 		$pageId = $req['page']['id'];
