@@ -2,8 +2,6 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="../site/index.css" />
 	<link rel="stylesheet" type="text/css" href="../style/sc-player-standard.css" />
-	<!--script type="text/javascript" src="site/swfobject.js"></script-->
-	<!--script type="text/javascript" src="site/FBJSBridge.js"></script-->
 	<script type="text/javascript" src="../scripts/spin.js"></script>	
 	<script type="text/javascript" src="../scripts/soundcloud.player.api.js"></script>
 	<script type="text/javascript" src="../scripts/sc-player.js"></script>
@@ -13,7 +11,6 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 	<script src="http://connect.soundcloud.com/sdk.js" type="text/javascript"></script>	
 	<script src="../scripts/modernizr.custom.41971.js" type="text/javascript"></script>	
-	<!--script type="text/javascript" src="site/history/history.js"></script-->
 </head>	
 <body>
 		
@@ -68,9 +65,9 @@
 		$playlist_id = $playlistdata[0]['id'];
 		
 		
-		################
+		########################
 		# REDIS LOGIN 
-		################
+		########################
 					
 		require_once('../predis/lib/Predis/Autoloader.php');
 		require_once('../redis/redis.php');
@@ -84,18 +81,18 @@
 		$redisWrapper = new Redis($user_id, $pageId);
 		$redisWrapper->recordPermissions($perms['data'][0]);
 		$redisWrapper->recordVisits();		
+		$missions = $redisWrapper->getCompletedMissions();
 		$alluser = $redis->hgetall($userkey);
 		// error_log('user hash: ' . print_r($alluser, true));				
 						
 		# Record time for efficiency analytics				
-		$after = microtime();	
+		$after = microtime();			
 				
 		?>
 		
 		<div id="page_heading_div" class="hidden"></div>
-		<div id="notice"></div>
 		<div id="missions"></div>
-		<!--iframe id="sc_iframe" width="100%" height="450" scrolling="no" frameborder="no" src="http://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F<?php echo $playlist_id ?>&amp;auto_play=false&amp;show_artwork=true&amp;color=ff7700&amp;allowscriptaccess=always"></iframe-->
+		<div id="notice"></div>
 		
 		<div id="flash">
 			<div id="player">	
@@ -193,6 +190,16 @@
 			initSoundManager();
 		}
 		init();
+		
+		// REGISTER MISSION
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_rank=1', function(data, status) {
+		//       // parse
+		// },'html');	
+		
+		// CREATE MISSION
+		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=like', function(data, status) {
+		      // parse
+		},'html');			
 		
 		function initSoundManager() {
 			alert("init sm");

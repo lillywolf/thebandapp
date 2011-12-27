@@ -24,7 +24,7 @@ if ($method == 'download')
 	}
 }
 
-if (method == 'download_all')
+if ($method == 'download_all')
 {
 	$redis->recordDownloadAll();		
 }
@@ -32,6 +32,21 @@ if (method == 'download_all')
 if ($method == 'like')
 {
 	$redis->recordLike('true');		
+}
+
+if ($method == 'create_mission')
+{
+	$missionId = $utils->iterateThroughAndFind($pairs, 'mission_id');
+	$mission = $utils->getMissionData($missionId);
+	$redis->createMission($mission['id'], $mission['title'], $mission['description'], $mission['explanation']);
+}
+
+if ($method == 'register_mission')
+{
+	$missionId = $utils->iterateThroughAndFind($pairs, 'mission_id');
+	$missionRank = $utils->iterateThroughAndFind($pairs, 'mission_rank');
+	$mission = $utils->getMissionData($missionId);
+	$redis->registerMission($mission['mission_id'], $missionRank);
 }
 
 ?>

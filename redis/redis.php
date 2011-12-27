@@ -10,6 +10,7 @@ class Redis
 	public $pageId;
 	public $userPageKey;
 	public $userKey;
+	public $pageKey;
 	
 	public function __construct($userId = null, $pageId = null)
     {
@@ -21,6 +22,7 @@ class Redis
 		$this->pageId = $pageId;
 		$this->userId = $userId;
 		$this->userKey = $this->userId . '_userdata';
+		$this->pageKey = $this->pageId . '_pagedata';
 		$this->userPageKey = $this->userId . '_' . $this->pageId . '_data';
     }
 
@@ -45,6 +47,7 @@ class Redis
 	public function recordDownloadAll()
 	{
 		$this->redis->hset($this->userPageKey, 'download_all', true);
+		$this->checkForMission('download_playlist');
 	}
 	
 	public function recordPermissions($perms)
@@ -60,11 +63,16 @@ class Redis
 		}
 		error_log('permissions: ' . print_r($str, true));
 		$this->redis->hset($this->userKey, 'perms', $str);
+		if (in_array($perms['publish_stream']))
+		{
+			$this->checkForMission('add_app');
+		}
 	}
 	
 	public function recordLike($liked)
 	{
-		$this->redis->hset($this->userPageKey, 'liked', $liked);		
+		$this->redis->hset($this->userPageKey, 'liked', $liked);
+		$this->checkForMission('like');	
 	}
 	
 	public function recordVisits()
@@ -76,6 +84,84 @@ class Redis
 		}
 		$visits = intval($visits)+1;
 		$this->redis->hset($this->userkey, 'visits', $visits);	
+	}
+	
+	public function getCompletedMissionsCount()
+	{
+		$completed = array();
+		$missions = $this->redis->smembers('missions');
+		foreach ($missions as $missionId)
+		{
+			$mission = $this->redis->hget('missions_' . $missionId);
+			$rank = $this->pageHasMission($missionId);
+			if ($rank != null && $this->isMissionComplete($missionId))
+			{
+				$completed[$rank] = $mission; 
+			}
+		}
+		for ($i = 0; $i < count($completed); $i++)
+		{
+			if (!array_key_exists($i, $completed))
+			{
+				return $i;
+			}
+		}
+		return 0;
+	}
+	
+	public function checkForMission($missionId)
+	{
+		if ($this->pageHasMission($missionId) != null)
+		{
+			$mission = $this->redis->hget('missions', 'id', $missionId);
+			$this->recordMissionComplete($mission['id']);
+		}		
+	}
+	
+	public function pageHasMission($missionId)
+	{
+		$missionsKey = $this->pageKey . '_missions';
+		$missions = $this->redis->zrangebyscore($missionsKey);
+		if (in_array($missionId, $missions))
+		{
+			return $this->redis->zscore($missionsKey, $missionId);
+		}
+		return null;		
+	}
+	
+	public function recordMissionComplete($missionId)
+	{
+		$missionsKey = $this->userPageKey . '_missions';
+		$this->redis->sadd($missionsKey, $missionId);				
+	}
+	
+	public function isMissionComplete($missionId)
+	{
+		$missionsKey = $this->userPageKey . '_missions';
+		$completed = $this->redis->smembers($missionsKey);
+		if (in_array($missionId, $completed))
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	public function registerMission($missionId, $missionRank)
+	{
+		$missionsKey = $this->pageKey . '_missions';
+		$missions = $this->redis->zrangebyscore($missionsKey);
+		$this->redis->zadd($missionId, $missionRank);
+		error_log('missions: ' . print_r($missions, true));
+	}
+	
+	public function createAppMission($id, $title, $description = null, $explanation = null)
+	{
+		$key = 'missions_' . $id;
+		$this->redis->hset($key, 'id', $id);
+		$this->redis->hset($key, 'title', $title);
+		$this->redis->hset($key, 'text', $description);
+		$this->redis->hset($key, 'explanation', $explanation);
+		$this->redis->sadd('missions', $id);
 	}
 	
 }
