@@ -36,6 +36,7 @@
 		$config['fileUpload'] = false; // optional	
 		
 		$MAX_SONGS_SHOWN = 4;	
+		$DOWNLOAD_ALL_PLAYLIST_NAME = '';
 
 		$facebook = new Facebook($config);	
 		$user_id = $facebook->getUser();
@@ -57,6 +58,7 @@
 		try {
 		    $trackdata = json_decode($soundcloud->get('me/tracks'), true);
 			$playlistdata = json_decode($soundcloud->get('me/playlists'), true);
+			error_log('playlist data: ' . print_r($playlistdata[0]));
 		} catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) {
 		    exit($e->getMessage());
 		}
@@ -198,7 +200,7 @@
 		// },'html');	
 		
 		// CREATE MISSION
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=download_playlist', function(data, status) {
+		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=like', function(data, status) {
 		      // parse
 		},'html');			
 		
