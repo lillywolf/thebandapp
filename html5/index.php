@@ -36,7 +36,7 @@
 		$config['fileUpload'] = false; // optional	
 		
 		$MAX_SONGS_SHOWN = 4;	
-		$DOWNLOAD_ALL_PLAYLIST_NAME = '';
+		$DOWNLOAD_ALL_PLAYLIST_NAME = 'lilly-and-dr-nu-mp3s';
 
 		$facebook = new Facebook($config);	
 		$user_id = $facebook->getUser();
