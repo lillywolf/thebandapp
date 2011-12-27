@@ -156,6 +156,7 @@ class Redis
 	
 	public function createAppMission($id, $title, $description = null, $explanation = null)
 	{
+		error_log('create mission');
 		$key = 'missions_' . $id;
 		$this->redis->hset($key, 'id', $id);
 		$this->redis->hset($key, 'title', $title);
@@ -163,7 +164,7 @@ class Redis
 		$this->redis->hset($key, 'explanation', $explanation);
 		$this->redis->sadd('missions', $id);
 		$missions = $this->redis->hgetall($key);
-		error_log('missions: ' . print_r($missions, true));
+		error_log('app missions: ' . print_r($missions, true));
 	}
 	
 }
