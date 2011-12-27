@@ -39,13 +39,13 @@
 		$DOWNLOAD_ALL_PLAYLIST_NAME = 'lilly-and-dr-nu-mp3s';
 
 		$facebook = new Facebook($config);	
-		$appAccessToken = $facebook->getApplicationAccessToken();
+		// $appAccessToken = $facebook->getApplicationAccessToken();
 		$user_id = $facebook->getUser();
-		// $perms = $facebook->api('/me/permissions', 'GET', $appAccessToken);
-		print_r($_REQUEST);
-		print_r($_POST);
+		$perms = null;
+		if ($user_id) {
+			$perms = $facebook->api('/me/permissions', 'GET');			
+		}
 		$req = $facebook->getSignedRequest();
-		print_r($req['user']);
 		$pageId = $req['page']['id'];
 		if ($req['page']['liked']) {
 			$liked = "true";
@@ -87,6 +87,7 @@
 					
 		require_once('../predis/lib/Predis/Autoloader.php');
 		require_once('../redis/redis.php');
+		require_once('../redis/util.php');
 		
 		Predis\Autoloader::register();
 		$redis = new Predis\Client(array(
@@ -94,13 +95,39 @@
 		    'password' => 'ee54626c1544db50f85d8aaf85de4f5f', 
 		    'port' => 9092, 
 		));
+		
 		$redisWrapper = new Redis($user_id, $pageId);
-		$redisWrapper->recordPermissions($perms['data'][0]);
-		$redisWrapper->recordVisits();		
-		$redisWrapper->recordLike($liked);
-		$missions = $redisWrapper->getCompletedMissionsCount();
-		$alluser = $redis->hgetall($userkey);
-		// error_log('user hash: ' . print_r($alluser, true));				
+		$util = new Util();
+		
+		error_log('has downloaded playlist: ' . $_COOKIE['download_playlist']);
+		
+		# Record user data if we have an id
+		if ($user_id) {
+			$redisWrapper->recordPermissions($perms['data'][0]);			
+			$redisWrapper->recordVisits();		
+			$redisWrapper->recordLike($liked);
+			$redisWrapper->recordDownloadPlaylist($_COOKIE['download_playlist']);
+			// $alluser = $redis->hgetall($userkey);
+		}
+		
+		# Get completed missions
+		$pageMissions = $redisWrapper->getPageMissions();
+		error_log('page missions: ' . print_r($pageMissions, true););
+		$completedMissions = array();
+		foreach ($pageMissions as $rank=>$pageMission) {
+			if (($pageMission == 'like' && $liked) || 
+			($pageMission == 'download_playlist' && ($util->downloadedPlaylist() || $redis->isMissionComplete('download_playlist'))) ||
+			($pageMission == 'add_app' && in_array('publish_stream', $perms))) {
+				$completedMissions[$rank] = true;
+			} else {
+				$completedMissions[$rank] = false;
+			}
+		}	
+		error_log('completed missions: ' . print_r($completedMissions, true););	
+		$completedMissionCount = 0;
+		while ($completedMissions[$completedMissionCount] == true) {
+			$completedMissionCount++;
+		}
 						
 		# Record time for efficiency analytics				
 		$after = microtime();			
@@ -456,20 +483,39 @@
 		
 		function downloadSong(downloadUrl) {
 			window.document.getElementById("downloader-frame").src=downloadUrl+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
-			// REDIS
-			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download&download_url='+downloadUrl, function(data, status) {
-			      // parse
-			},'html');
+			
+			setCookie('download_song', downloadUrl, null);
+			
+			// Record download if user id exists
+			if ('<?php echo $user_id ?>' != null) {
+				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download&download_url='+downloadUrl, function(data, status) {
+				      // parse
+				},'html');	
+			}
 		}
 		
 		function downloadAllSongs(downloadUrlString) {
 			alert(downloadUrlString);
 			var urls = downloadUrlString.split(",");
 			createDownloadElement(urls, 0, urls.length);
-			// REDIS	
-			// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download_all', function(data, status) {
-			//       // parse
-			// },'html');		
+			
+			// Set cookie
+			setCookie('download_playlist', 1, null);
+			
+			// Record download all if user id exists
+			if ('<?php echo $user_id ?>' != null) {
+				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download_all', function(data, status) {
+				      // parse
+				},'html');	
+			}	
+		}
+		
+		function setCookie(c_name, value, exdays)
+		{
+			var exdate = new Date();
+			exdate.setDate(exdate.getDate() + exdays);
+			var c_value = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toUTCString());
+			document.cookie = c_name + "=" + c_value;
 		}
 		
 		function createDownloadElement(urls, i, limit) {

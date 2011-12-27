@@ -86,6 +86,14 @@ class Redis
 		$this->redis->hset($this->userkey, 'visits', $visits);	
 	}
 	
+	public function recordDownloadPlaylist($downloaded)
+	{
+		if ($downloaded != null && $this->isMissionComplete('download_playlist') == false)
+		{
+			$this->recordMissionComplete('download_playlist');
+		}
+	}
+	
 	public function getCompletedMissionsCount()
 	{
 		$completed = array();
@@ -129,6 +137,19 @@ class Redis
 		return null;		
 	}
 	
+	public function getPageMissions()
+	{
+		$missionsKey = $this->pageKey . '_missions';
+		$missions = $this->redis->zrangebyscore($missionsKey, '-inf', '+inf');
+		$rankedMissions = array();
+		foreach ($missions as $mission)
+		{
+			$rank = $this->redis->zscore($missionsKey, $mission);
+			$rankedMissions[$rank] = $mission;
+		}
+		return $rankedMissions;
+	}
+	
 	public function recordMissionComplete($missionId)
 	{
 		$missionsKey = $this->userPageKey . '_missions';
@@ -156,7 +177,6 @@ class Redis
 	
 	public function createAppMission($id, $title, $description = null, $explanation = null)
 	{
-		error_log('create mission');
 		$key = 'missions_' . $id;
 		$this->redis->hset($key, 'id', $id);
 		$this->redis->hset($key, 'title', $title);
