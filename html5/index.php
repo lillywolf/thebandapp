@@ -81,7 +81,7 @@
 		$redisWrapper = new Redis($user_id, $pageId);
 		$redisWrapper->recordPermissions($perms['data'][0]);
 		$redisWrapper->recordVisits();		
-		$missions = $redisWrapper->getCompletedMissions();
+		$missions = $redisWrapper->getCompletedMissionsCount();
 		$alluser = $redis->hgetall($userkey);
 		// error_log('user hash: ' . print_r($alluser, true));				
 						
