@@ -240,7 +240,7 @@
 		init();
 		
 		// REGISTER MISSION
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_rank=1', function(data, status) {
+		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_playlist&mission_rank=1', function(data, status) {
 		      // parse
 		},'html');	
 		
