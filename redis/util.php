@@ -43,6 +43,7 @@ class Util
 				$data['description'] = 'Add the music player to your facebook';
 				break;
 		}
+		return $data;
 	}
 
 }
