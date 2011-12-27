@@ -64,7 +64,7 @@
 		
 		foreach ($playlistdata as $playlist) {
 			if ($playlist['permalink'] == $DOWNLOAD_ALL_PLAYLIST_NAME) {
-				$download_playlist = json_decode($soundcloud->get($playlist['id'] . '/tracks'), true);
+				$download_playlist = json_decode($soundcloud->get('me/playlists/' . $playlist['id'] . '/tracks'), true);
 				print_r($download_playlist);
 			}
 		}
