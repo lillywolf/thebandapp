@@ -171,7 +171,7 @@ class Redis
 	{
 		$missionsKey = $this->pageKey . '_missions';
 		$missions = $this->redis->zrangebyscore($missionsKey, '-inf', '+inf');
-		$this->redis->zadd($missionId, $missionRank);
+		$this->redis->zadd($missionsKey, $missionRank, $missionId);
 		error_log('missions: ' . print_r($missions, true));
 	}
 	
