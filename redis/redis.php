@@ -63,7 +63,7 @@ class Redis
 		}
 		error_log('permissions: ' . print_r($str, true));
 		$this->redis->hset($this->userKey, 'perms', $str);
-		if (in_array($perms['publish_stream']))
+		if (isset($perms['publish_stream']))
 		{
 			$this->checkForMission('add_app');
 		}
@@ -162,6 +162,8 @@ class Redis
 		$this->redis->hset($key, 'text', $description);
 		$this->redis->hset($key, 'explanation', $explanation);
 		$this->redis->sadd('missions', $id);
+		$missions = $this->redis->hgetall($key);
+		error_log('missions: ' . print_r($missions, true));
 	}
 	
 }
