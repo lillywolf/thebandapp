@@ -92,7 +92,7 @@ class Redis
 		$missions = $this->redis->smembers('missions');
 		foreach ($missions as $missionId)
 		{
-			$mission = $this->redis->hget('missions_' . $missionId);
+			$mission = $this->redis->hgetall('missions_' . $missionId);
 			$rank = $this->pageHasMission($missionId);
 			if ($rank != null && $this->isMissionComplete($missionId))
 			{
