@@ -240,9 +240,9 @@
 		init();
 		
 		// REGISTER MISSION
-		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_rank=1', function(data, status) {
-		//       // parse
-		// },'html');	
+		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_rank=1', function(data, status) {
+		      // parse
+		},'html');	
 		
 		// CREATE MISSION
 		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=like', function(data, status) {
