@@ -39,10 +39,10 @@
 		$DOWNLOAD_ALL_PLAYLIST_NAME = 'lilly-and-dr-nu-mp3s';
 
 		$facebook = new Facebook($config);	
+		$appAccessToken = $facebook->getApplicationAccessToken();
 		$user_id = $facebook->getUser();
-		$perms = $facebook->api('/me/permissions', 'GET');
+		$perms = $facebook->api('/me/permissions', 'GET', $appAccessToken);
 		$req = $facebook->getSignedRequest();
-		# $accessToken = $facebook->getApplicationAccessToken();
 		$pageId = $req['page']['id'];
 		if ($req['page']['liked']) {
 			$liked = "true";
