@@ -105,9 +105,10 @@
 			<div id="notice_bg">
 				<div id="notice_title"></div>
 				<div id="notice_text"></div>
-				<div id="download_all_btn_wrapper">
+				<div id="notice_btn_wrapper">
 					<div id="download_all_btn" onClick="downloadAllSongs()"></div>
-				</div>	
+					<div id="add_app_btn" onClick="addApp()"></div>
+				</div>		
 			</div>	
 		</div>
 		
@@ -243,21 +244,26 @@
 		function updateProgressBar() {
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
 				document.getElementById('progress_bar').src = '../images/html5/progress_bar_4_'+data.toString()+'.png';
-				getNextMission();	
+				getNextMission((data+1).toString());	
 			},'html');
 		}
 		
-		function getNextMission() {
+		function getNextMission(mission_rank) {
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=next_mission&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
 				if (data != null) {
 					var title = getPairValue(data.split('&'), 'title');
 					var text = getPairValue(data.split('&'), 'text');
-					document.getElementById('notice_title').innerHTML = title.toUpperCase();
+					document.getElementById('notice_title').innerHTML = '#' + mission_rank + ':' + title.toUpperCase();
 					document.getElementById('notice_text').innerHTML = text;
 					if (data['id'] == 'download_playlist') {
-						document.getElementById('download_all_btn_wrapper').style.display = 'block';
+						document.getElementById('download_all_btn').style.display = 'block';
 					} else {
-						document.getElementById('download_all_btn_wrapper').style.display = 'none';						
+						document.getElementById('download_all_btn').style.display = 'none';						
+					}
+					if (data['id'] == 'add_app') {
+						document.getElementById('add_app_btn').style.display = 'block';
+					} else {
+						document.getElementById('add_app_btn').style.display = 'none';						
 					}
 				}
 			},'html');			
