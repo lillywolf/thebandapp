@@ -96,7 +96,11 @@
 		?>
 		
 		<div id="page_heading_div" class="hidden"></div>
-		<div id="missions"></div>
+		<div id="missions">
+			<div id="progress_bg">
+				<img id="progress_bar" />
+			</div>	
+		</div>
 		<div id="notice">
 			<div id="download_all_btn_wrapper">
 				<div id="download_all_btn" onClick="downloadAllSongs()"></div>
@@ -234,7 +238,7 @@
 		
 		function updateProgressBar() {
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
-			      alert(data);
+				document.getElementById('progress_bar').src = '../images/html5/progress_bar_'+data.toString()+'.png';	
 			},'html');
 		}
 		

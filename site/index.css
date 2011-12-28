@@ -80,9 +80,13 @@ a.soundcloud-badge:hover {
 }
 #flash {
 	position: absolute;
-	top: 60px;
+	top: 150px;
 }
 #notice {
+	position: absolute;
+	top: 90px;
+}
+#missions {
 	position: absolute;
 	top: 0px;
 }
@@ -354,4 +358,14 @@ a.soundcloud-badge:hover {
 	-moz-border-radius: 8px;
 	margin: 8px 0 0 2px;
 	width: 506px;
+}
+#progress_bg {
+	background-image: url('../images/html5/progress_blank.png');
+	height: 89px;
+	width: 551px;	
+	float: left;
+}
+#progress_bar {
+	float: left;
+	margin: 10px 0 0 10px;
 }
