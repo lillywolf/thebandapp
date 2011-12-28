@@ -268,7 +268,7 @@ a.soundcloud-badge:hover {
 	height: 33px;
 	overflow: hidden;
 	float: right;
-	margin: 0 8px 0 0;
+	margin: 0 6px 0 0;
 }
 #download_all_btn {
 	background-image: url('../images/html5/download_all_btns.png');
@@ -383,13 +383,13 @@ a.soundcloud-badge:hover {
 #notice_bg {
 	background-image: url('../images/html5/download_all_bg.png');
 	height: 38px;
-	width: 551px;
+	width: 512px;
 	float: left;
 }
 #notice_title, #notice_text {
 	float: left;
 	font-family: Arial, Helvetica, Verdana;
-	color: #7E745A;
+	color: #5E5751;
 	font-size: 14px;
 }
 #notice_title {

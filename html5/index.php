@@ -216,7 +216,7 @@
 		// },'html');	
 		
 		// CREATE MISSION
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=download_playlist', function(data, status) {
+		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=add_app', function(data, status) {
 		      // parse
 		},'html');			
 		
@@ -265,7 +265,7 @@
 						prefix = "Last";
 					}
 					
-					document.getElementById('notice_title').innerHTML = prefix + ', ' + title.toUpperCase();
+					document.getElementById('notice_title').innerHTML = prefix + ', ' + title;
 					alert(missionId);
 					if (missionId == 'download_playlist') {
 						document.getElementById('download_all_btn').style.display = 'block';
