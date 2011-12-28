@@ -139,11 +139,13 @@ class Redis
 	public function getPageMissions()
 	{
 		$missionsKey = $this->pageKey . '_missions';
-		$missions = $this->redis->zrangebyscore($missionsKey, '-inf', '+inf');
+		$missions = $this->redis->zrange($missionsKey, 0, -1);
+		error_log('get page missions range: ' . print_r($missions, true));
 		$rankedMissions = array();
 		foreach ($missions as $mission)
 		{
 			$rank = $this->redis->zscore($missionsKey, $mission);
+			error_log('mission rank: ' . $rank);
 			$rankedMissions[$rank] = $mission;
 		}
 		return $rankedMissions;
