@@ -53,10 +53,21 @@ if ($method == 'count_missions')
 	$permissions = $utils->iterateThroughAndFind($pairs, 'perms');
 	$liked = $utils->iterateThroughAndFind($pairs, 'liked');
 	$downloadedPlaylist = $utils->iterateThroughAndFind($pairs, 'downloaded_playlist');
-	error_log('downloaded playlist: ' . print_r($downloadedPlaylist, true));
-	error_log('permissions passed: ' . print_r($permissions, true));
 	$completedMissionCount = $missionHandler->getCompletedMissionCount($permissions, $liked, $downloadedPlaylist);	
 	echo $completedMissionCount;
+}
+
+if ($method == 'next_mission')
+{
+	$missionHandler = new MissionHandler($fbid, $pageId);
+	$permissions = $utils->iterateThroughAndFind($pairs, 'perms');
+	$liked = $utils->iterateThroughAndFind($pairs, 'liked');
+	$downloadedPlaylist = $utils->iterateThroughAndFind($pairs, 'downloaded_playlist');
+	$nextMission = $missionHandler->getNextMission($permissions, $liked, $downloadedPlaylist);
+	if ($nextMission != null) 
+	{
+		echo 'title='.$nextMission['title'].'&text='.$nextMission['text'];		
+	}	
 }
 
 ?>

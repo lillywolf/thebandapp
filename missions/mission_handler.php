@@ -41,6 +41,17 @@ class MissionHandler
 		error_log('completed missions: ' . print_r($completedMissions, true));	
 		return $completedMissions;
 	}
+	
+	public function getNextMission($permissions, $liked, $downloadedPlaylist)
+	{
+		$completedMissionsCount = $this->getCompletedMissionsCount($permissions, $liked, $downloadedPlaylist);
+		$pageMissions = $this->redis->getPageMissions();
+		if (isset($pageMissions[$completedMissionsCount+1]))
+		{
+			return $pageMissions[$completedMissionsCount+1];
+		}
+		return null;
+	}
 }
 
 ?>

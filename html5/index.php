@@ -102,8 +102,12 @@
 			</div>	
 		</div>
 		<div id="notice">
-			<div id="download_all_btn_wrapper">
-				<div id="download_all_btn" onClick="downloadAllSongs()"></div>
+			<div id="notice_bg">
+				<div id="notice_title"></div>
+				<div id="notice_text"></div>
+				<div id="download_all_btn_wrapper">
+					<div id="download_all_btn" onClick="downloadAllSongs()"></div>
+				</div>	
 			</div>	
 		</div>
 		
@@ -240,6 +244,23 @@
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
 				document.getElementById('progress_bar').src = '../images/html5/progress_bar_'+data.toString()+'.png';	
 			},'html');
+			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=next_mission&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
+				if (data != null) {
+					var title = getPairValue(data.split('&'), 'title');
+					var text = getPairValue(data.split('&'), 'text');
+					document.getElementById('notice_title').innerHTML = title;
+					document.getElementById('notice_text').innerHTML = text;
+				}
+			},'html');
+		}
+		
+		function getPairValue(arr, match)
+		{
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i]).split('=')[0] == match) {
+					return arr[i].split('=')[1];
+				}
+			}
 		}
 		
 		function stopButtonPropagations() {
