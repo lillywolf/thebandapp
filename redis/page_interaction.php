@@ -67,7 +67,7 @@ if ($method == 'next_mission')
 	error_log('next mission: ' . print_r($nextMission, true));
 	if ($nextMission != null) 
 	{
-		echo 'title='.$nextMission['title'].'&text='.$nextMission['text'];		
+		echo 'title='.$nextMission['title'].'&text='.$nextMission['text'].'&id='.$nextMission['id'];		
 	}	
 }
 
