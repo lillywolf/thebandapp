@@ -52,7 +52,7 @@ if ($method == 'count_missions')
 	$missionHandler = new MissionHandler($fbid, $pageId);
 	$permissions = $utils->iterateThroughAndFind($pairs, 'perms');
 	$liked = $utils->iterateThroughAndFind($pairs, 'liked');
-	$downloadedPlaylist = $utils->iterateThroughAndFind($pairs, 'downloadedPlaylist');
+	$downloadedPlaylist = $utils->iterateThroughAndFind($pairs, 'downloaded_playlist');
 	error_log('downloaded playlist: ' . print_r($downloadedPlaylist, true));
 	error_log('permissions passed: ' . print_r($permissions, true));
 	$completedMissionCount = $missionHandler->getCompletedMissionCount($permissions, $liked, $downloadedPlaylist);	
