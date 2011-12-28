@@ -84,11 +84,11 @@ a.soundcloud-badge:hover {
 }
 #notice {
 	position: absolute;
-	top: 50px;
+	top: 0px;
 }
 #missions {
 	position: absolute;
-	top: 0px;
+	top: 50px;
 }
 #audio {
 	width: 400px;
@@ -369,7 +369,7 @@ a.soundcloud-badge:hover {
 	width: 506px;
 }
 #progress_bg {
-	background-image: url('../images/html5/progress_bar_blank_4_numbers.png');
+	background-image: url('../images/html5/progress_bar_4_blank.png');
 	height: 89px;
 	width: 551px;	
 	float: left;
