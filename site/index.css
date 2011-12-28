@@ -85,10 +85,12 @@ a.soundcloud-badge:hover {
 #notice {
 	position: absolute;
 	top: 0px;
+	left: 3px;
 }
 #missions {
 	position: absolute;
 	top: 28px;
+	left: 3px;
 }
 #audio {
 	width: 400px;
@@ -265,7 +267,7 @@ a.soundcloud-badge:hover {
 	width: 122px;
 	height: 35px;
 	overflow: hidden;
-	float: left;
+	float: right;
 }
 #download_all_btn {
 	background-image: url('../images/html5/download_all_btns.png');
