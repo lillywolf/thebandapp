@@ -121,8 +121,7 @@ class Redis
 	{
 		if ($this->pageHasMission($missionId) != null)
 		{
-			$mission = $this->redis->hget('missions', 'id', $missionId);
-			$this->recordMissionComplete($mission['id']);
+			$this->recordMissionComplete($missionId);
 		}		
 	}
 	
@@ -172,7 +171,7 @@ class Redis
 		$missionsKey = $this->pageKey . '_missions';
 		$missions = $this->redis->zrangebyscore($missionsKey, '-inf', '+inf');
 		$this->redis->zadd($missionsKey, $missionRank, $missionId);
-		error_log('missions: ' . print_r($missions, true));
+		error_log('registered missions: ' . print_r($missions, true));
 	}
 	
 	public function createAppMission($id, $title, $description = null, $explanation = null)
@@ -184,7 +183,6 @@ class Redis
 		$this->redis->hset($key, 'explanation', $explanation);
 		$this->redis->sadd('missions', $id);
 		$missions = $this->redis->hgetall($key);
-		error_log('app missions: ' . print_r($missions, true));
 	}
 	
 }
