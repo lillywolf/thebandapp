@@ -20,6 +20,7 @@
 		
 		require_once('../sc-api/Soundcloud.php');
 		require_once('../php-sdk/src/facebook.php');
+		require_once('../redis/redis.php');
 		
 		session_start();
 
@@ -49,10 +50,8 @@
 		$pageId = $req['page']['id'];
 		if ($req['page']['liked']) {
 			$liked = "true";
-		 	$downloads_enabled = "true";
 		} else {
 		 	$liked = "false";
-		 	$downloads_enabled = "false";
 		}
 		
 		$soundcloud = new Services_Soundcloud('738091d6d02582ddd19de7109b79e47b', 'b8f231ac6dc380b6efb2a8a88cd6d9fe', 'http://simple-ocean-7178.herokuapp.com/auth/');
@@ -77,34 +76,17 @@
 				}
 			}
 		}
+							
+		$downloadedPlaylist = $_COOKIE['download_playlist'];
+		error_log('has downloaded playlist: ' . $downloadedPlaylist);
 		
-		$track_uri = $trackdata[0]['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b';
-		
-		
-		########################
-		# REDIS LOGIN 
-		########################
-					
-		// require_once('../predis/lib/Predis/Autoloader.php');
-		require_once('../redis/redis.php');
-		
-		// Predis\Autoloader::register();
-		// $redis = new Predis\Client(array(
-		//     'host'     => 'guppy.redistogo.com', 
-		//     'password' => 'ee54626c1544db50f85d8aaf85de4f5f', 
-		//     'port' => 9092, 
-		// ));
-		
-		$redisWrapper = new Redis($user_id, $pageId);
-		
-		error_log('has downloaded playlist: ' . $_COOKIE['download_playlist']);
-		
+		$redisWrapper = new Redis($user_id, $pageId);	
 		# Record user data if we have an id
 		if ($user_id) {
 			$redisWrapper->recordPermissions($perms['data'][0]);			
 			$redisWrapper->recordVisits();		
 			$redisWrapper->recordLike($liked);
-			$redisWrapper->recordDownloadPlaylist($_COOKIE['download_playlist']);
+			$redisWrapper->recordDownloadPlaylist($downloadedPlaylist);
 			// $alluser = $redis->hgetall($userkey);
 		}
 							
@@ -251,7 +233,7 @@
 		}
 		
 		function updateProgressBar() {
-			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>', function(data, status) {
+			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
 			      alert(data);
 			},'html');
 		}

@@ -20,17 +20,6 @@ class Util
 		return null;
 	}
 	
-	public function downloadedPlaylist()
-	{
-		if (isset($_COOKIE['download_playlist']))
-		{
-			error_log('cookie found');
-			return true;
-		}
-		error_log('no cookie found');
-		return false;
-	}
-	
 	public function getMissionData($m_id)
 	{
 		$data = array();
