@@ -117,7 +117,7 @@
 		foreach ($pageMissions as $rank=>$pageMission) {
 			if (($pageMission == 'like' && $liked) || 
 			($pageMission == 'download_playlist' && ($util->downloadedPlaylist() || $redisWrapper->isMissionComplete('download_playlist'))) ||
-			($pageMission == 'add_app' && in_array('publish_stream', $perms))) {
+			($pageMission == 'add_app' && in_array('publish_stream', explode(',', $perms)))) {
 				$completedMissions[$rank] = true;
 			} else {
 				$completedMissions[$rank] = false;
