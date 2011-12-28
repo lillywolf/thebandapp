@@ -253,14 +253,15 @@
 				if (data != null) {
 					var title = getPairValue(data.split('&'), 'title');
 					var text = getPairValue(data.split('&'), 'text');
+					var missionId = getPairValue(data.split('&'), 'id');
 					document.getElementById('notice_title').innerHTML = '#' + mission_rank + ':' + title.toUpperCase();
 					document.getElementById('notice_text').innerHTML = text;
-					if (data['id'] == 'download_playlist') {
+					if (missionId == 'download_playlist') {
 						document.getElementById('download_all_btn').style.display = 'block';
 					} else {
 						document.getElementById('download_all_btn').style.display = 'none';						
 					}
-					if (data['id'] == 'add_app') {
+					if (missionId == 'add_app') {
 						document.getElementById('add_app_btn').style.display = 'block';
 					} else {
 						document.getElementById('add_app_btn').style.display = 'none';						
