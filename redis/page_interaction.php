@@ -10,10 +10,10 @@ $fbId = $utils->iterateThroughAndFind($pairs, 'fbId');
 $pageId = $utils->iterateThroughAndFind($pairs, 'pageId');
 $method = $utils->iterateThroughAndFind($pairs, 'method');
 
-if (!empty($fbId) && !empty($pageId))
-{
+// if (!empty($fbId) && !empty($pageId))
+// {
 	$redis = new Redis($fbId, $pageId);	
-}
+// }
 
 if ($method == 'download')
 {
