@@ -49,7 +49,8 @@ class MissionHandler
 		error_log('page missions: ' . print_r($pageMissions, true));	
 		if (isset($pageMissions[$completedMissionCount+1]))
 		{
-			return $pageMissions[$completedMissionCount+1];
+			$appMission = $this->redis->getAppMission($pageMissions[$completedMissionCount+1]);
+			return $appMission;
 		}
 		return null;
 	}

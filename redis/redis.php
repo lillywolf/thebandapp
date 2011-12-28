@@ -100,7 +100,7 @@ class Redis
 		$missions = $this->redis->smembers('missions');
 		foreach ($missions as $missionId)
 		{
-			$mission = $this->redis->hgetall('missions_' . $missionId);
+			$mission = $this->getAppMission($missionId);
 			$rank = $this->pageHasMission($missionId);
 			if ($rank != null && $this->isMissionComplete($missionId))
 			{
@@ -164,6 +164,13 @@ class Redis
 			return true;
 		}
 		return false;
+	}
+	
+	public function getAppMission($missionId)
+	{
+		$key = 'missions_' . $id;
+		$mission = $this->redis->hgetall($key);
+		return $mission;
 	}
 	
 	public function registerMission($missionId, $missionRank)
