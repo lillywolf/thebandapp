@@ -170,6 +170,7 @@ class Redis
 	{
 		$key = 'missions_' . $id;
 		$mission = $this->redis->hgetall($key);
+		error_log('requested mission: ' . print_r($mission, true));
 		return $mission;
 	}
 	
@@ -189,8 +190,8 @@ class Redis
 		$this->redis->hset($key, 'text', $description);
 		$this->redis->hset($key, 'explanation', $explanation);
 		$this->redis->sadd('missions', $id);
-		$missions = $this->redis->smembers('missions');
-		error_log('created missions: ' . print_r($missions, true));
+		$mission = $this->redis->hgetall($key);
+		error_log('created missions: ' . print_r($mission, true));
 	}
 	
 }
