@@ -128,6 +128,7 @@
 		while ($completedMissions[$completedMissionCount+1] == true) {
 			$completedMissionCount++;
 		}
+		error_log('completed mission count: ' . print_r($completedMissionCount, true));	
 						
 		# Record time for efficiency analytics				
 		$after = microtime();			
@@ -503,11 +504,11 @@
 			setCookie('download_playlist', 1, null);
 			
 			// Record download all if user id exists
-			if ('<?php echo $user_id ?>' != null) {
-				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download_all', function(data, status) {
-				      // parse
-				},'html');	
-			}	
+			// if ('<?php echo $user_id ?>' != null) {
+			// 	$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download_all', function(data, status) {
+			// 	      // parse
+			// 	},'html');	
+			// }	
 		}
 		
 		function setCookie(c_name, value, exdays)
