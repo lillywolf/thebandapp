@@ -250,11 +250,15 @@
 		function getNextMission() {
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=next_mission&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
 				if (data != null) {
-					alert(data);
 					var title = getPairValue(data.split('&'), 'title');
 					var text = getPairValue(data.split('&'), 'text');
-					document.getElementById('notice_title').innerHTML = title;
+					document.getElementById('notice_title').innerHTML = title.toUpperCase();
 					document.getElementById('notice_text').innerHTML = text;
+					if (data['id'] == 'download_playlist') {
+						document.getElementById('download_all_btn_wrapper').style.display = 'block';
+					} else {
+						document.getElementById('download_all_btn_wrapper').style.display = 'none';						
+					}
 				}
 			},'html');			
 		}
