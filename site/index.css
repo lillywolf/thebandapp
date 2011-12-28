@@ -88,7 +88,7 @@ a.soundcloud-badge:hover {
 }
 #missions {
 	position: absolute;
-	top: 50px;
+	top: 28px;
 }
 #audio {
 	width: 400px;
@@ -369,7 +369,7 @@ a.soundcloud-badge:hover {
 	width: 506px;
 }
 #progress_bg {
-	background-image: url('../images/html5/progress_bar_4_blank.png');
+	background-image: url('../images/html5/progress_bar_empty.png');
 	height: 89px;
 	width: 551px;	
 	float: left;
@@ -386,7 +386,7 @@ a.soundcloud-badge:hover {
 #notice_title, #notice_text {
 	float: left;
 	font-family: Arial, Helvetica, Verdana;
-	color: #A39378;
+	color: #7E745A;
 	font-size: 14px;
 }
 #notice_title {
