@@ -244,7 +244,7 @@
 		function updateProgressBar() {
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
 				document.getElementById('progress_bar').src = '../images/html5/progress_bar_4_'+data.toString()+'.png';
-				getNextMission((data+1).toString());	
+				getNextMission((parseInt(data)+1).toString());	
 			},'html');
 		}
 		
@@ -254,8 +254,8 @@
 					var title = getPairValue(data.split('&'), 'title');
 					var text = getPairValue(data.split('&'), 'text');
 					var missionId = getPairValue(data.split('&'), 'id');
-					document.getElementById('notice_title').innerHTML = '#' + mission_rank + ':' + title.toUpperCase();
-					document.getElementById('notice_text').innerHTML = text;
+					document.getElementById('notice_title').innerHTML = '#' + mission_rank + ': ' + title.toUpperCase();
+					// document.getElementById('notice_text').innerHTML = text;
 					alert(missionId);
 					if (missionId == 'download_playlist') {
 						document.getElementById('download_all_btn').style.display = 'block';
