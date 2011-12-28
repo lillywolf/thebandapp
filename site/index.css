@@ -80,6 +80,10 @@ a.soundcloud-badge:hover {
 }
 #flash {
 	position: absolute;
+	top: 60px;
+}
+#notice {
+	position: absolute;
 	top: 0px;
 }
 #audio {
