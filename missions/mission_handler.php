@@ -27,11 +27,11 @@ class MissionHandler
 	
 	public function getCompletedMissions($permissions)
 	{
-		$pageMissions = $redis->getPageMissions();
+		$pageMissions = $this->redis->getPageMissions();
 		$completedMissions = array();
 		foreach ($pageMissions as $rank=>$pageMission) {
 			if (($pageMission == 'like' && $liked) || 
-			($pageMission == 'download_playlist' && ($util->downloadedPlaylist() || $redis->isMissionComplete('download_playlist'))) ||
+			($pageMission == 'download_playlist' && ($this->util->downloadedPlaylist() || $this->redis->isMissionComplete('download_playlist'))) ||
 			($pageMission == 'add_app' && isset($permissions) && in_array('publish_stream', explode(',', $permissions)))) {
 				$completedMissions[$rank] = true;
 			} else {
