@@ -27,19 +27,19 @@ class Util
 		{
 			case 'like':
 				$data['id'] = 'like';
-				$data['title'] = 'Like This Page';
+				$data['title'] = 'like us by clicking the button above';
 				$data['description'] = 'Click the like button above';
 				$data['explanation'] = 'Have users click your page\'s \'like\' button';
 				break;
 			case 'download_playlist':
 				$data['id'] = 'download_playlist';
-				$data['title'] = 'Download Our Music';
+				$data['title'] = 'download the free songs';
 				$data['description'] = 'Download tracks for free';
 				$data['explanation'] = 'Have users download a playlist you\'ve defined';
 				break;
 			case 'add_app':
 				$data['id'] = 'add_app';
-				$data['title'] = 'Add the App';
+				$data['title'] = 'add the music player app';
 				$data['description'] = 'Add the music player to your facebook';
 				break;
 		}
