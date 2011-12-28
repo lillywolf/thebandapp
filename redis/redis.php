@@ -182,7 +182,8 @@ class Redis
 		$this->redis->hset($key, 'text', $description);
 		$this->redis->hset($key, 'explanation', $explanation);
 		$this->redis->sadd('missions', $id);
-		$missions = $this->redis->hgetall($key);
+		$missions = $this->redis->smembers('missions');
+		error_log('created missions: ' . print_r($missions, true));
 	}
 	
 }
