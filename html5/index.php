@@ -139,7 +139,7 @@
 		<div id="missions"></div>
 		<div id="notice">
 			<div id="download_all_btn_wrapper">
-				<div id="download_all_btn" onClick="downloadAllSongs(<?php echo $download_tracks_urls ?>)"></div>
+				<div id="download_all_btn" onClick="downloadAllSongs()"></div>
 			</div>	
 		</div>
 		
@@ -495,7 +495,8 @@
 			}
 		}
 		
-		function downloadAllSongs(downloadUrlString) {
+		function downloadAllSongs() {
+			var downloadUrlString = '<?php echo $download_tracks_urls; ?>';
 			alert(downloadUrlString);
 			var urls = downloadUrlString.split(",");
 			createDownloadElement(urls, 0, urls.length);
