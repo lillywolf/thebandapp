@@ -46,6 +46,7 @@ class MissionHandler
 	{
 		$completedMissionsCount = $this->getCompletedMissionsCount($permissions, $liked, $downloadedPlaylist);
 		$pageMissions = $this->redis->getPageMissions();
+		error_log('page missions: ' . print_r($pageMissions, true));	
 		if (isset($pageMissions[$completedMissionsCount+1]))
 		{
 			return $pageMissions[$completedMissionsCount+1];

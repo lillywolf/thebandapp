@@ -64,6 +64,7 @@ if ($method == 'next_mission')
 	$liked = $utils->iterateThroughAndFind($pairs, 'liked');
 	$downloadedPlaylist = $utils->iterateThroughAndFind($pairs, 'downloaded_playlist');
 	$nextMission = $missionHandler->getNextMission($permissions, $liked, $downloadedPlaylist);
+	error_log('next mission: ' . print_r($nextMission, true));
 	if ($nextMission != null) 
 	{
 		echo 'title='.$nextMission['title'].'&text='.$nextMission['text'];		

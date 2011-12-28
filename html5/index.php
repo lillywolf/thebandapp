@@ -246,6 +246,7 @@
 			},'html');
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=next_mission&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
 				if (data != null) {
+					alert(data);
 					var title = getPairValue(data.split('&'), 'title');
 					var text = getPairValue(data.split('&'), 'text');
 					document.getElementById('notice_title').innerHTML = title;
@@ -261,6 +262,7 @@
 					return arr[i].split('=')[1];
 				}
 			}
+			return '';
 		}
 		
 		function stopButtonPropagations() {
