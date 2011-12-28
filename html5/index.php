@@ -247,27 +247,27 @@
 			},'html');
 		}
 		
-		// function getNextMission() {
-		// 	$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=next_mission&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
-		// 		if (data != null) {
-		// 			alert(data);
-		// 			var title = getPairValue(data.split('&'), 'title');
-		// 			var text = getPairValue(data.split('&'), 'text');
-		// 			document.getElementById('notice_title').innerHTML = title;
-		// 			document.getElementById('notice_text').innerHTML = text;
-		// 		}
-		// 	},'html');			
-		// }
+		function getNextMission() {
+			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=next_mission&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
+				if (data != null) {
+					alert(data);
+					var title = getPairValue(data.split('&'), 'title');
+					var text = getPairValue(data.split('&'), 'text');
+					document.getElementById('notice_title').innerHTML = title;
+					document.getElementById('notice_text').innerHTML = text;
+				}
+			},'html');			
+		}
 		
-		// function getPairValue(arr, match)
-		// {
-		// 	for (var i = 0; i < arr.length; i++) {
-		// 		if (arr[i]).split('=')[0] == match) {
-		// 			return arr[i].split('=')[1];
-		// 		}
-		// 	}
-		// 	return '';
-		// }
+		function getPairValue(arr, match)
+		{
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i].split('=')[0] == match) {
+					return arr[i].split('=')[1];
+				}
+			}
+			return '';
+		}
 		
 		function stopButtonPropagations() {
 			$('.download_song').bind('click', function(event) {
