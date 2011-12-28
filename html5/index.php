@@ -256,6 +256,7 @@
 					var missionId = getPairValue(data.split('&'), 'id');
 					document.getElementById('notice_title').innerHTML = '#' + mission_rank + ':' + title.toUpperCase();
 					document.getElementById('notice_text').innerHTML = text;
+					alert(missionId);
 					if (missionId == 'download_playlist') {
 						document.getElementById('download_all_btn').style.display = 'block';
 					} else {
