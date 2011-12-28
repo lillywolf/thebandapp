@@ -53,6 +53,7 @@ if ($method == 'count_missions')
 	$permissions = $utils->iterateThroughAndFind($pairs, 'perms');
 	$liked = $utils->iterateThroughAndFind($pairs, 'liked');
 	$downloadedPlaylist = $utils->iterateThroughAndFind($pairs, 'downloadedPlaylist');
+	error_log('downloaded playlist: ' . print_r($downloadedPlaylist, true));
 	error_log('permissions passed: ' . print_r($permissions, true));
 	$completedMissionCount = $missionHandler->getCompletedMissionCount($permissions, $liked, $downloadedPlaylist);	
 	echo $completedMissionCount;
