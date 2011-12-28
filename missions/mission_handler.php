@@ -16,7 +16,7 @@ class MissionHandler
 	
 	public function getCompletedMissionCount($permissions, $liked)
 	{
-		$completedMissions = $this->getCompletedMissions($permissions);
+		$completedMissions = $this->getCompletedMissions($permissions, $liked);
 		$completedMissionCount = 0;
 		while ($completedMissions[$completedMissionCount+1] == true) {
 			$completedMissionCount++;
