@@ -85,19 +85,17 @@
 		# REDIS LOGIN 
 		########################
 					
-		require_once('../predis/lib/Predis/Autoloader.php');
+		// require_once('../predis/lib/Predis/Autoloader.php');
 		require_once('../redis/redis.php');
-		require_once('../redis/util.php');
 		
-		Predis\Autoloader::register();
-		$redis = new Predis\Client(array(
-		    'host'     => 'guppy.redistogo.com', 
-		    'password' => 'ee54626c1544db50f85d8aaf85de4f5f', 
-		    'port' => 9092, 
-		));
+		// Predis\Autoloader::register();
+		// $redis = new Predis\Client(array(
+		//     'host'     => 'guppy.redistogo.com', 
+		//     'password' => 'ee54626c1544db50f85d8aaf85de4f5f', 
+		//     'port' => 9092, 
+		// ));
 		
 		$redisWrapper = new Redis($user_id, $pageId);
-		$util = new Util();
 		
 		error_log('has downloaded playlist: ' . $_COOKIE['download_playlist']);
 		
@@ -109,27 +107,7 @@
 			$redisWrapper->recordDownloadPlaylist($_COOKIE['download_playlist']);
 			// $alluser = $redis->hgetall($userkey);
 		}
-		
-		# Get completed missions
-		$pageMissions = $redisWrapper->getPageMissions();
-		error_log('page missions: ' . print_r($pageMissions, true));
-		$completedMissions = array();
-		foreach ($pageMissions as $rank=>$pageMission) {
-			if (($pageMission == 'like' && $liked) || 
-			($pageMission == 'download_playlist' && ($util->downloadedPlaylist() || $redisWrapper->isMissionComplete('download_playlist'))) ||
-			($pageMission == 'add_app' && in_array('publish_stream', explode(',', $perms)))) {
-				$completedMissions[$rank] = true;
-			} else {
-				$completedMissions[$rank] = false;
-			}
-		}	
-		error_log('completed missions: ' . print_r($completedMissions, true));	
-		$completedMissionCount = 0;
-		while ($completedMissions[$completedMissionCount+1] == true) {
-			$completedMissionCount++;
-		}
-		error_log('completed mission count: ' . print_r($completedMissionCount, true));	
-						
+							
 		# Record time for efficiency analytics				
 		$after = microtime();			
 				
@@ -238,6 +216,7 @@
 			mp3Support = false;
 			initSoundManager();
 		}
+		
 		init();
 		
 		// REGISTER MISSION
@@ -267,7 +246,15 @@
 		function init() {
 			initializeJS();
 			updateDisplayedSongs();
-			stopButtonPropagations();			
+			stopButtonPropagations();
+			updateProgressBar();			
+		}
+		
+		function updateProgressBar() {
+			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>', 
+			function(data, status) {
+			      alert(data);
+			},'html');
 		}
 		
 		function stopButtonPropagations() {

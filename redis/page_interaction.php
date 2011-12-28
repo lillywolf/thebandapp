@@ -2,6 +2,7 @@
 
 require_once('redis.php');
 require_once('util.php');
+require_once('../missions/mission_handler.php');
 
 $parts = explode('?', $_SERVER['REQUEST_URI']); 
 $pairs = explode('&', $parts[1]);
@@ -10,10 +11,7 @@ $fbId = $utils->iterateThroughAndFind($pairs, 'fbId');
 $pageId = $utils->iterateThroughAndFind($pairs, 'pageId');
 $method = $utils->iterateThroughAndFind($pairs, 'method');
 
-// if (!empty($fbId) && !empty($pageId))
-// {
-	$redis = new Redis($fbId, $pageId);	
-// }
+$redis = new Redis($fbId, $pageId);	
 
 if ($method == 'download')
 {
@@ -46,8 +44,16 @@ if ($method == 'register_mission')
 	$missionId = $utils->iterateThroughAndFind($pairs, 'mission_id');
 	$missionRank = $utils->iterateThroughAndFind($pairs, 'mission_rank');
 	$mission = $utils->getMissionData($missionId);
-	error_log('mission id register: ' . print_r($mission, true));
 	$redis->registerMission($mission['id'], $missionRank);
+}
+
+if ($method == 'count_missions')
+{
+	$missionHandler = new MissionHandler($fbid, $pageId);
+	$permissions = $utils->iterateThroughAndFind($pairs, 'perms');
+	error_log('permissions passed: ' . print_r($permissions, true));
+	$completedMissionCount = $missionHandler->getCompletedMissionCount($permissions);	
+	return $completedMissionCount;
 }
 
 ?>
