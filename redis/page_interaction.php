@@ -51,9 +51,10 @@ if ($method == 'count_missions')
 {
 	$missionHandler = new MissionHandler($fbid, $pageId);
 	$permissions = $utils->iterateThroughAndFind($pairs, 'perms');
+	$liked = $utils->iterateThroughAndFind($pairs, 'liked');
 	error_log('permissions passed: ' . print_r($permissions, true));
-	$completedMissionCount = $missionHandler->getCompletedMissionCount($permissions);	
-	return $completedMissionCount;
+	$completedMissionCount = $missionHandler->getCompletedMissionCount($permissions, $liked);	
+	echo $completedMissionCount;
 }
 
 ?>

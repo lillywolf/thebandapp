@@ -14,7 +14,7 @@ class MissionHandler
 		$this->util = new Util();
 	}
 	
-	public function getCompletedMissionCount($permissions)
+	public function getCompletedMissionCount($permissions, $liked)
 	{
 		$completedMissions = $this->getCompletedMissions($permissions);
 		$completedMissionCount = 0;
@@ -25,7 +25,7 @@ class MissionHandler
 		return $completedMissionCount;		
 	}
 	
-	public function getCompletedMissions($permissions)
+	public function getCompletedMissions($permissions, $liked)
 	{
 		$pageMissions = $this->redis->getPageMissions();
 		$completedMissions = array();

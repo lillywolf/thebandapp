@@ -251,8 +251,7 @@
 		}
 		
 		function updateProgressBar() {
-			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>', 
-			function(data, status) {
+			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>', function(data, status) {
 			      alert(data);
 			},'html');
 		}
