@@ -21,7 +21,7 @@ class MissionHandler
 		while ($completedMissions[$completedMissionCount+1] == true) {
 			$completedMissionCount++;
 		}
-		error_log('completed mission count: ' . print_r($completedMissionCount, true));
+		// error_log('completed mission count: ' . print_r($completedMissionCount, true));
 		return $completedMissionCount;		
 	}
 	
@@ -38,7 +38,7 @@ class MissionHandler
 				$completedMissions[$rank] = false;
 			}
 		}	
-		error_log('completed missions: ' . print_r($completedMissions, true));	
+		// error_log('completed missions: ' . print_r($completedMissions, true));	
 		return $completedMissions;
 	}
 	
@@ -46,10 +46,11 @@ class MissionHandler
 	{
 		$completedMissionCount = $this->getCompletedMissionCount($permissions, $liked, $downloadedPlaylist);
 		$pageMissions = $this->redis->getPageMissions();
-		error_log('page missions: ' . print_r($pageMissions, true));	
 		if (isset($pageMissions[$completedMissionCount+1]))
 		{
+			error_log('next mission: ' . print_r($pageMissions[$completedMissionCount+1], true));	
 			$appMission = $this->redis->getAppMission($pageMissions[$completedMissionCount+1]);
+			error_log('app mission: ' . print_r($appMission, true));	
 			return $appMission;
 		}
 		return null;

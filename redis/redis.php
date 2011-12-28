@@ -170,7 +170,7 @@ class Redis
 	
 	public function getAppMission($missionId)
 	{
-		$key = 'missions_' . $id;
+		$key = 'missions_' . $missionId;
 		$mission = $this->redis->hgetall($key);
 		error_log('requested mission: ' . print_r($mission, true));
 		return $mission;
