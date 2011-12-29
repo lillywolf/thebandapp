@@ -245,7 +245,7 @@
 						soundManager.useFlashBlock = false; // optionally, enable when you're ready to dive in
 						soundManager.debugMode = false;
 						soundManager.onready(function() {
-							alert('sm ready');
+							// alert('sm ready');
 						});			
 			// 		}
 			// 	}
