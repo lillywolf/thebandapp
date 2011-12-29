@@ -153,7 +153,7 @@
 										<div id="download_btn" onClick="downloadCurrentSong()"></div>
 									</div>
 									<div id="buy_btn_wrapper">	
-										<div id="buy_btn"></div>
+										<div id="buy_btn" onClick="buyCurrentSong()"></div>
 									</div>	
 									<div id="top_like"></div>
 									<div id="top_tweet"></div>
@@ -163,7 +163,7 @@
 					</div>	
 					<div id="songlist">
 						<?php $i = 1; foreach ($trackdata as $track) {
-							echo '<div class="song" id="song_' . $i . '" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . ', \'' . $track['permalink_url'] . '\', \'' . $track['artwork_url'] . '\', \'' . $track['download_url'] . '\', \'' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b\');">
+							echo '<div class="song" id="song_' . $i . '" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . ', \'' . $track['permalink_url'] . '\', \'' . $track['artwork_url'] . '\', \'' . $track['download_url'] . '\', \'' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b\', \'' . $track['purchase_url'] . '\');">
 							<audio class="hidden_audio" id="audio_' . $i . '"><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b"></source></audio>
 							<div class="song_title">' . $track['title'] . '</div>
 							<div class="song_stats">
@@ -172,7 +172,7 @@
 							</div>
 							<div class="song_btns">
 								<div id="download_btn_wrapper"><div class="download_song" id="download_btn" onClick="downloadSong(\'' . $track['download_url'] . '\')"></div></div>
-								<div id="buy_btn_wrapper"><div id="buy_btn"></div></div>
+								<div id="buy_btn_wrapper"><div id="buy_btn" onClick="buySong(\'' . $track['purchase_url'] . '\')"></div></div>
 							</div>	
 							<!--button onClick="document.getElementById(\'audio_' . $i . '\').pause()">Pause</button--></div>';
 							$i++;
@@ -424,18 +424,23 @@
 			downloadSong(currentSongData.downloadUrl);
 		}
 		
-		function populatePlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl) {
-			updatePlayerData(title, trackIndex, url, picUrl, downloadUrl, streamUrl);
+		function buyCurrentSong() {
+			buySong(currentSongData.purchaseUrl);
+		}
+		
+		function populatePlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl, purchaseUrl) {
+			updatePlayerData(title, trackIndex, url, picUrl, downloadUrl, streamUrl, purchaseUrl);
 			startPlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl);
 		}
 		
-		function updatePlayerData(title, trackIndex, url, picUrl, downloadUrl, streamUrl) {
+		function updatePlayerData(title, trackIndex, url, picUrl, downloadUrl, streamUrl, purchaseUrl) {
 			currentSongData = {
 				title: title,
 				url: url,
 				downloadUrl: downloadUrl,
 				picUrl: picUrl, 
 				streamUrl: streamUrl,
+				purchaseUrl: purchaseUrl,
 			};
 			currentTrackIndex = trackIndex;
 			smSongId = 'sm_'+trackIndex.toString();
