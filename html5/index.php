@@ -329,10 +329,8 @@
 		 
 		function addAudioListeners(idStr) {
 			audio = $('#'+idStr).get(0);
-			alert(audio);
 			audio.currentTime = 0;
 		 	if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
-				alert('audio buffered');
 		 		$(audio).bind('timeupdate', function() {
 		 			var rem = parseInt(audio.currentTime, 10),
 		 				pos = (audio.currentTime / audio.duration) * 100,
@@ -344,7 +342,6 @@
 		}
 		
 		function swapAudio(url, trackIndex) {
-			alert('swap audio');
 			var idStr = 'audio_'+trackIndex.toString();
 			var topAudio = document.getElementById(idStr);
  			currentAudioElement = topAudio;
@@ -352,7 +349,6 @@
 				addAudioListeners(idStr);
 				topAudio.play();
 			} else {
-				alert('cannot play');
 				if (smSongId != null && soundManager.getSoundById(smSongId) != null) {
 					soundManager.destroySound(smSongId);					
 				}
@@ -409,7 +405,6 @@
 		
 		function populatePlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl) {
 			updatePlayerData(title, trackIndex, url, picUrl, downloadUrl, streamUrl);
-			alert('player updated');
 			startPlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl);
 		}
 		
@@ -433,7 +428,6 @@
 				if (mp3Support) {
 					currentAudioElement.pause();					
 				} else if (smSongId) {
-					alert('pause with sm');
 					soundManager.pause(smSongId);
 				}
 			}
@@ -465,6 +459,7 @@
 		
 		function doPlay() {
 			var elem = document.getElementById('audio_'+currentTrackIndex.toString());
+			alert(elem);
 			if (mp3Support) {
 				elem.play();				
 			} else {
