@@ -240,7 +240,7 @@
 			};
 			initializeJS();
 			updateDisplayedSongs();
-			populatePlayer(currentSongData['title'], 0, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl']);
+			populatePlayer(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl']);
 			alert('player populated');
 			stopButtonPropagations();
 			updateProgressBar();			
@@ -326,6 +326,7 @@
 		}
 		
 		function swapAudio(url, trackIndex) {
+			alert('swapping...');
 			var idStr = 'audio_'+trackIndex.toString();
 			var topAudio = document.getElementById(idStr);
  			currentAudioElement = topAudio;
@@ -410,12 +411,9 @@
 					soundManager.pause(smSongId);
 				}
 			}
-			alert('populating...');
 			currentTrackIndex = trackIndex;
-			alert(currentTrackIndex);
 			document.getElementById('top_title').innerHTML = title;
 			showPause();
-			alert('still populating...');
 			swapAudio(streamUrl, trackIndex);
 			alert('audio swapped');
 			updateButtons(url);
