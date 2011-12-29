@@ -287,9 +287,10 @@ a.soundcloud-badge:hover {
 	height: 71px;
 	float: left;
 	display: none;
+	margin: -4px 0 0 0;
 }
 #add_app_btn:hover {
-	margin: -33px 0 0 0;
+	margin: -37px 0 0 0;
 }
 #download_btn_wrapper {
 	width: 86px;
