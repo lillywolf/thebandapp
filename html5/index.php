@@ -239,9 +239,7 @@
 				picUrl: '<?php echo $trackdata[0]["artwork_url"] ?>'
 			};
 			initializeJS();
-			alert('js initialized');
 			updateDisplayedSongs();
-			alert('displayed songs updated');
 			populatePlayer(currentSongData['title'], 0, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl']);
 			alert('player populated');
 			stopButtonPropagations();
@@ -412,11 +410,16 @@
 					soundManager.pause(smSongId);
 				}
 			}
+			alert('populating...');
 			currentTrackIndex = trackIndex;
+			alert(currentTrackIndex);
 			document.getElementById('top_title').innerHTML = title;
 			showPause();
+			alert('still populating...');
 			swapAudio(streamUrl, trackIndex);
+			alert('audio swapped');
 			updateButtons(url);
+			alert('buttons updated');
 			updatePic(picUrl);
 		}
 		
