@@ -205,6 +205,13 @@
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
 		
+		var testAudio = document.createElement('audio');
+		if (testAudio.canPlayType && testAudio.canPlayType('audio/mpeg') != 'no') {
+			mp3Supprt = true;
+		} else {
+			mp3Support = false;
+		}
+		
 		// SC.initialize({
 		// 	client_id: '738091d6d02582ddd19de7109b79e47b',
 		// 	redirect_uri: 'http://simple-ocean-7178.herokuapp.com/auth/',
@@ -338,7 +345,7 @@
 		function swapAudio(url, trackIndex) {
 			var topAudio = document.getElementById(idStr);
  			currentAudioElement = topAudio;
-			if (topAudio.canPlayType && topAudio.canPlayType('audio/mpeg')) {
+			if (mp3Support) {
 				addAudioListeners(idStr);
 				topAudio.play();
 			} else {
@@ -419,7 +426,7 @@
 		function startPlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl) {
 			isPlaying = true;
 			if (currentAudioElement != null) {
-				if (currentAudioElement.canPlayType && currentAudioElement.canPlayType('audio/mpeg')) {
+				if (mp3Support) {
 					currentAudioElement.pause();					
 				} else {
 					soundManager.pause(smSongId);
@@ -453,7 +460,7 @@
 		
 		function doPlay() {
 			var elem = document.getElementById('audio_'+currentTrackIndex.toString());
-			if (elem.canPlayType && elem.canPlayType('audio/mpeg')) {
+			if (mp3Support) {
 				elem.play();				
 			} else {
 				soundManager.resume(smSongId, currentSongData.streamUrl);
@@ -464,7 +471,7 @@
 		
 		function doPause() {
 			var elem = document.getElementById('audio_'+currentTrackIndex.toString());
-			if (elem.canPlayType && elem.canPlayType('audio/mpeg')) {
+			if (mp3Support) {
 				elem.pause();				
 			} else {
 				soundManager.pause(smSongId);
