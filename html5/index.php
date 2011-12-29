@@ -432,6 +432,7 @@
 		}
 		
 		function populatePlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl, purchaseUrl) {
+			alert(purchaseUrl);
 			updatePlayerData(title, trackIndex, url, picUrl, downloadUrl, streamUrl, purchaseUrl);
 			startPlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl);
 		}
