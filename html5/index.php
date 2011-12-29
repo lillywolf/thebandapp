@@ -204,6 +204,7 @@
 				load: 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js',
 				complete: function() {
 					setGlobals();
+					alert('set globals');
 					if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
 						alert('no mp3 support');
 						mp3Support = false;
