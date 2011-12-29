@@ -206,11 +206,12 @@
 		topPlayer = $('#top_player');
 		
 		var testAudio = document.createElement('audio');
-		alert(testAudio.canPlayType('audio/mpeg'));
 		if (testAudio.canPlayType && testAudio.canPlayType('audio/mpeg') != 'no' && testAudio.canPlayType('audio/mpeg') != '') {
-			mp3Supprt = true;
+			mp3Support = true;
+			alert('mp3 support');
 		} else {
 			mp3Support = false;
+			alert('no mp3 support');
 		}
 		
 		// SC.initialize({
