@@ -199,15 +199,11 @@
 		var mp3Support = true;
 		var smSongId;
 		
-		var timeleft;
-		var topPlayer;
-		
 		Modernizr.load([
 			{
 				load: 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js',
 				complete: function() {
-					timeleft = $('#top_timer');
-					topPlayer = $('#top_player');
+					setGlobals();
 					if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
 						alert('no mp3 support');
 						mp3Support = false;
@@ -216,7 +212,12 @@
 					init();					
 				}
 			}
-		]);			
+		]);	
+		
+		function setGlobals() {
+			timeleft = $('#top_timer');
+			topPlayer = $('#top_player');
+		}		
 		
 		function initSoundManager() {
 			alert("init sm");
