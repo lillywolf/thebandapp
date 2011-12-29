@@ -342,6 +342,7 @@
 				addAudioListeners(idStr);
 				topAudio.play();
 			} else {
+				alert('cannot play');
 				if (smSongId != null && soundManager.getSoundById(smSongId) != null) {
 					soundManager.destroySound(smSongId);					
 				}
