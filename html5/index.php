@@ -11,7 +11,7 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 	<script src="http://connect.soundcloud.com/sdk.js" type="text/javascript"></script>	
 	<script src="../scripts/modernizr.custom.41971.js" type="text/javascript"></script>
-	<script type="text/javascript" src="../scripts/sm2/soundmanager2.js"></script>
+	<!--script type="text/javascript" src="../scripts/sm2/soundmanager2.js"></script-->
 </head>	
 <body>
 		
@@ -211,13 +211,20 @@
 		});					
 		
 		function initSoundManager() {
-			alert('attempt to load sm');
-			soundManager.url = '../scripts/sm2/swf/';
-			soundManager.flashVersion = 9; // optional: shiny features (default = 8)
-			soundManager.useFlashBlock = false; // optionally, enable when you're ready to dive in
-			soundManager.onready(function() {
-				alert("soundmanager ready");
-			});
+			Modernizr.load([
+				{
+					load: '../scripts/sm2/soundmanager2.js',
+					complete: function() {
+						alert('attempt to load sm');
+						soundManager.url = '../scripts/sm2/swf/';
+						soundManager.flashVersion = 9; // optional: shiny features (default = 8)
+						soundManager.useFlashBlock = false; // optionally, enable when you're ready to dive in
+						soundManager.onready(function() {
+							alert("soundmanager ready");
+						});			
+					}
+				}
+			]);
 		}
 		
 		// Initialize stuff
