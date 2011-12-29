@@ -89,7 +89,7 @@ a.soundcloud-badge:hover {
 }
 #missions {
 	position: absolute;
-	top: 28px;
+	top: 37px;
 	left: 3px;
 }
 #audio {
@@ -268,7 +268,7 @@ a.soundcloud-badge:hover {
 	height: 33px;
 	overflow: hidden;
 	float: left;
-	margin: 10px 6px 0 0;
+	margin: 8px 6px 0 0;
 }
 #download_all_btn {
 	background-image: url('../images/html5/download_all_btns_pink.png');
@@ -382,6 +382,7 @@ a.soundcloud-badge:hover {
 }
 #notice_bg {
 	background-image: url('../images/html5/notice_bar_blank.png');
+	background-repeat: no-repeat;
 	height: 53px;
 	width: 512px;
 	float: left;
@@ -390,10 +391,10 @@ a.soundcloud-badge:hover {
 	float: left;
 	font-family: Arial, Helvetica, Verdana;
 	color: #5E5751;
-	font-size: 13px;
+	font-size: 14px;
 }
 #notice_title {
-	font-weight: bold;
+	font-weight: normal;
 	margin: 20px 5px 0 15px;
 }
 #notice_text {
