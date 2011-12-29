@@ -250,13 +250,11 @@
 			initializeJS();
 			updateDisplayedSongs();
 			updatePlayerData(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl']);
-			alert('player populated');
 			stopButtonPropagations();
 			updateProgressBar();			
 		}
 		
 		function updateProgressBar() {
-			alert('update progress bar');
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
 				document.getElementById('progress_bar').src = '../images/html5/progress_bar_green_4_'+data.toString()+'.png';
 				getNextMission((parseInt(data)+1).toString());	
@@ -264,25 +262,23 @@
 		}
 		
 		function getNextMission(mission_rank) {
-			alert('get next mission');
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=next_mission&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
 				if (data != null) {
 					var title = getPairValue(data.split('&'), 'title');
 					var text = getPairValue(data.split('&'), 'text');
 					var missionId = getPairValue(data.split('&'), 'id');
-					alert(missionId);
 					var prefix = '';
 					if (mission_rank == 1) {
-						prefix = "First, ";
+						prefix = "";
 					} else if (mission_rank == 2) {
-						prefix = "Next, ";
+						prefix = "";
 					} else if (mission_rank == 3) {
 						prefix = "";
 					} else if (mission_rank == 4) {
-						prefix = "Last, ";
+						prefix = "";
 					}
 					
-					document.getElementById('notice_title').innerHTML = prefix + title + ':';
+					document.getElementById('notice_title').innerHTML = prefix + title.charAt(0).toUpperCase() + title.slice(1) + ':';
 					if (missionId == 'download_playlist') {
 						document.getElementById('download_all_btn').style.display = 'block';
 					} else {
@@ -415,9 +411,7 @@
 			};
 			currentTrackIndex = trackIndex;
 			document.getElementById('top_title').innerHTML = title;
-			alert('audio swapped');
 			updateButtons(url);
-			alert('buttons updated');
 			updatePic(picUrl);			
 		}
 		
@@ -541,7 +535,6 @@
 		
 		function downloadAllSongs() {
 			var downloadUrlString = '<?php echo $download_tracks_urls; ?>';
-			alert(downloadUrlString);
 			var urls = downloadUrlString.split(",");
 			createDownloadElement(urls, 0, urls.length);
 			
