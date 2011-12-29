@@ -267,23 +267,23 @@ a.soundcloud-badge:hover {
 	width: 200px;
 	height: 33px;
 	overflow: hidden;
-	float: right;
+	float: left;
 	margin: 0 6px 0 0;
 }
 #download_all_btn {
-	background-image: url('../images/html5/download_all_btns.png');
+	background-image: url('../images/html5/download_all_btns_pink.png');
 	width: 122px;
 	height: 66px;
-	float: right;
+	float: left;
 }
 #download_all_btn:hover {
 	margin: -32px 0 0 0;
 }
 #add_app_btn {
-	background-image: url('../images/html5/add_app_btns.png');
+	background-image: url('../images/html5/add_app_btns_pink.png');
 	width: 85;
 	height: 71px;
-	float: right;
+	float: left;
 }
 #add_app_btn:hover {
 	margin: -32px 0 0 0;
@@ -393,7 +393,7 @@ a.soundcloud-badge:hover {
 	font-size: 14px;
 }
 #notice_title {
-	font-weight: bold;
+	font-weight: normal;
 	margin: 11px 5px 0 15px;
 }
 #notice_text {
