@@ -463,6 +463,8 @@
 			if (mp3Support) {
 				elem.play();				
 			} else {
+				alert('resume sm');
+				alert(soundManager.position);
 				soundManager.resume(smSongId, currentSongData.streamUrl);
 			}
 			isPlaying = true;
