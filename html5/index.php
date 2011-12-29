@@ -199,9 +199,11 @@
 		var soundManager;
 		var mp3Support = true;
 		var smSongId;
+		var liked = '<?php echo $liked ?>';
+		var fbPageUrl = '<?php echo $fbPageUrl ?>';
+		
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
-		var loaded = false;
 		
 		// SC.initialize({
 		// 	client_id: '738091d6d02582ddd19de7109b79e47b',
@@ -255,14 +257,14 @@
 		}
 		
 		function updateProgressBar() {
-			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
+			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>&liked='+liked+'&downloaded_playlist='+getCookie('download_playlist'), function(data, status) {
 				document.getElementById('progress_bar').src = '../images/html5/progress_bar_green_4_'+(parseInt(data)+1).toString()+'.png';
 				getNextMission((parseInt(data)+2).toString());	
 			},'html');
 		}
 		
 		function getNextMission(mission_rank) {
-			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=next_mission&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
+			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=next_mission&perms=<?php echo $perms ?>&liked='+liked+'&downloaded_playlist='+getCookie('download_playlist'), function(data, status) {
 				if (data != null) {
 					var title = getPairValue(data.split('&'), 'title');
 					var text = getPairValue(data.split('&'), 'text');
@@ -481,8 +483,6 @@
 			}
 		}	
 		
-		fbPageUrl = '<?php echo $fbPageUrl; ?>';
-
 		var MAX_POSTS = 5;
 		var spinner;
 		// preload();
@@ -540,6 +540,9 @@
 			
 			// Set cookie
 			setCookie('download_playlist', 1, null);
+			alert(getCookie('download_playlist'));		
+			
+			updateProgressBar();	
 			
 			// Record download all if user id exists
 			// if ('<?php echo $user_id ?>' != null) {
@@ -555,6 +558,21 @@
 			exdate.setDate(exdate.getDate() + exdays);
 			var c_value = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toUTCString());
 			document.cookie = c_name + "=" + c_value;
+		}
+		
+		function getCookie(c_name)
+		{
+			var i, x, y, ARRcookies = document.cookie.split(";");
+			for (i=0; i<ARRcookies.length; i++)
+			{
+		  		x = ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+		  		y = ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+		  		x = x.replace(/^\s+|\s+$/g,"");
+		  		if (x == c_name)
+		    	{
+		    		return unescape(y);
+		    	}
+		  	}
 		}
 		
 		function createDownloadElement(urls, i, limit) {
@@ -672,7 +690,9 @@
 				FB.Canvas.setAutoGrow();
 				FB.Event.subscribe('edge.create', function(response) {
 					if (response.indexOf(fbPageUrl) != -1) {
-				 		window.location.reload();					
+				 		// window.location.reload();
+						liked = true;
+						updateProgressBar();
 					}
 				});	
 			};
