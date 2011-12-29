@@ -417,6 +417,7 @@
 				streamUrl: streamUrl,
 			};
 			currentTrackIndex = trackIndex;
+			smSongId = 'sm_'+trackIndex.toString();
 			document.getElementById('top_title').innerHTML = title;
 			updateButtons(url);
 			updatePic(picUrl);			
@@ -459,7 +460,6 @@
 		
 		function doPlay() {
 			var elem = document.getElementById('audio_'+currentTrackIndex.toString());
-			alert(elem);
 			if (mp3Support) {
 				elem.play();				
 			} else {
