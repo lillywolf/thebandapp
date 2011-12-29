@@ -80,7 +80,7 @@ a.soundcloud-badge:hover {
 }
 #flash {
 	position: absolute;
-	top: 90px;
+	top: 100px;
 }
 #notice {
 	position: absolute;
@@ -89,7 +89,7 @@ a.soundcloud-badge:hover {
 }
 #missions {
 	position: absolute;
-	top: 17px;
+	top: 15px;
 	left: 3px;
 }
 #audio {
@@ -276,10 +276,10 @@ a.soundcloud-badge:hover {
 	height: 75px;
 	float: left;
 	display: none;
-	margin: -4px 0 0 -2px;
+	margin: -5px 0 0 -2px;
 }
 #download_all_btn:hover {
-	margin: -38px 0 0 -2px;
+	margin: -39px 0 0 -2px;
 }
 #add_app_btn {
 	background-image: url('../images/html5/add_app_btns_pink.png');
