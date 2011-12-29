@@ -31,6 +31,7 @@
 		$fbPageUrl = "facebook.com/lillywolfanddrnu?sk=app_107796503671";
 		$scAccessCode = "302883";
 		$scConsumerKey = "738091d6d02582ddd19de7109b79e47b";
+		$req_perms = 'publish_stream, publish_actions';
 	
 		$config = array();
 		$config['appId'] = $appId;
@@ -43,6 +44,7 @@
 		$facebook = new Facebook($config);	
 		// $appAccessToken = $facebook->getApplicationAccessToken();
 		$user_id = $facebook->getUser();
+		$loginUrl = $facebook->getLoginUrl(array('req_perms' => $req_perms));
 		$perms = null;
 		if ($user_id) {
 			$perms = $facebook->api('/me/permissions', 'GET');			
@@ -315,6 +317,10 @@
 				}
 			}
 			return '';
+		}
+		
+		function addApp() {
+			window.open('<?php echo $loginUrl ?>');
 		}
 		
 		function stopButtonPropagations() {
