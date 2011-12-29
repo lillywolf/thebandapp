@@ -249,7 +249,7 @@
 			};
 			initializeJS();
 			updateDisplayedSongs();
-			populatePlayer(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl']);
+			updatePlayerData(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl']);
 			alert('player populated');
 			stopButtonPropagations();
 			updateProgressBar();			
@@ -321,11 +321,11 @@
 		}
 		 
 		function addAudioListeners(idStr) {
-			alert('idstr ' + idStr);
 			audio = $('#'+idStr).get(0);
 			alert(audio);
 			audio.currentTime = 0;
 		 	if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
+				alert('audio buffered');
 		 		$(audio).bind('timeupdate', function() {
 		 			var rem = parseInt(audio.currentTime, 10),
 		 				pos = (audio.currentTime / audio.duration) * 100,
@@ -401,7 +401,11 @@
 		}
 		
 		function populatePlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl) {
-			isPlaying = true;
+			updatePlayerData(title, trackIndex, url, picUrl, downloadUrl, streamUrl);
+			startPlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl);
+		}
+		
+		function updatePlayerData(title, trackIndex, url, picUrl, downloadUrl, streamUrl) {
 			currentSongData = {
 				title: title,
 				url: url,
@@ -409,6 +413,16 @@
 				picUrl: picUrl, 
 				streamUrl: streamUrl,
 			};
+			currentTrackIndex = trackIndex;
+			document.getElementById('top_title').innerHTML = title;
+			alert('audio swapped');
+			updateButtons(url);
+			alert('buttons updated');
+			updatePic(picUrl);			
+		}
+		
+		function startPlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl) {
+			isPlaying = true;
 			if (currentAudioElement != null) {
 				if (mp3Support) {
 					currentAudioElement.pause();					
@@ -416,14 +430,8 @@
 					soundManager.pause(smSongId);
 				}
 			}
-			currentTrackIndex = trackIndex;
-			document.getElementById('top_title').innerHTML = title;
 			showPause();
-			swapAudio(streamUrl, trackIndex);
-			alert('audio swapped');
-			updateButtons(url);
-			alert('buttons updated');
-			updatePic(picUrl);
+			swapAudio(streamUrl, trackIndex);			
 		}
 		
 		function updatePic(pic_url) {
