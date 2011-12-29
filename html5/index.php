@@ -206,6 +206,7 @@
 		topPlayer = $('#top_player');
 		
 		var testAudio = document.createElement('audio');
+		alert(testAudio.canPlayType('audio/mpeg'));
 		if (testAudio.canPlayType && testAudio.canPlayType('audio/mpeg') != 'no') {
 			mp3Supprt = true;
 		} else {
