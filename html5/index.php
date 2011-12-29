@@ -334,6 +334,7 @@
 			alert('swapping...');
 			var idStr = 'audio_'+trackIndex.toString();
 			var topAudio = document.getElementById(idStr);
+			alert(topAudio);
  			currentAudioElement = topAudio;
 			if (mp3Support) {
 				addAudioListeners(idStr);
