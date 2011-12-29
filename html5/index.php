@@ -53,9 +53,8 @@
 		// $appAccessToken = $facebook->getApplicationAccessToken();
 		$user_id = $facebook->getUser();
 		$loginUrl = $facebook->getLoginUrl(array(
-			'next' => $home, 
-			'req_perms' => $req_perms,
-			'cancel_url' => $home
+			'redirect_uri' => $home, 
+			'scope' => $req_perms			
 			));
 		$perms = null;
 		if ($user_id) {
