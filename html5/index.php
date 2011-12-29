@@ -272,11 +272,12 @@
 				downloadUrl: '<?php echo $trackdata[0]["download_url"] ?>',
 				url: '<?php echo $trackdata[0]["permalink_url"] ?>',
 				title: '<?php echo $trackdata[0]["title"] ?>',
-				picUrl: '<?php echo $trackdata[0]["artwork_url"] ?>'
+				picUrl: '<?php echo $trackdata[0]["artwork_url"] ?>',
+				purchaseUrl: '<?php echo $trackdata[0]["purchase_url"] ?>'
 			};
 			initializeJS();
 			updateDisplayedSongs();
-			updatePlayerData(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl']);
+			updatePlayerData(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl'], currentSongData['purchaseUrl']);
 			stopButtonPropagations();
 			updateProgressBar();			
 		}
@@ -432,12 +433,12 @@
 		}
 		
 		function populatePlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl, purchaseUrl) {
-			alert(purchaseUrl);
 			updatePlayerData(title, trackIndex, url, picUrl, downloadUrl, streamUrl, purchaseUrl);
 			startPlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl);
 		}
 		
 		function updatePlayerData(title, trackIndex, url, picUrl, downloadUrl, streamUrl, purchaseUrl) {
+			alert(purchaseUrl);
 			currentSongData = {
 				title: title,
 				url: url,
