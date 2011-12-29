@@ -201,6 +201,15 @@
 		var smSongId;
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
+		var loaded = false;
+		
+		window.onload = function() {
+			if (loaded) {
+				alert('window load');
+				init();
+			}
+			loaded = true;
+		};
 		
 		SC.initialize({
 			client_id: '738091d6d02582ddd19de7109b79e47b',
@@ -214,11 +223,12 @@
 				mp3Support = false;
 				initSoundManager();
 			}
-		});	
-		
-		$(document).load(function() {
-			init();
-		});			
+			if (loaded) {
+				alert('jquery load');
+				init();
+			}
+			loaded = true;
+		});		
 		
 		function initSoundManager() {
 			Modernizr.load([
