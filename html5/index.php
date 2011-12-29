@@ -202,11 +202,11 @@
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
 		var currentSongData = {
-			streamUrl: '<?php echo $trackdata[0]["stream_url"] . "?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" ?>',
-			downloadUrl: '<?php echo $trackdata[0]["download_url"] ?>',
-			url: '<?php echo $trackdata[0]["permalink_url"] ?>',
-			title: '<?php echo $trackdata[0]["title"] ?>',
-			picUrl: '<?php echo $trackdata[0]["artwork_url"] ?>'
+			streamUrl: '<?php echo $trackdata[0]["stream_url"] . "?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" ?>'
+			// downloadUrl: '<?php echo $trackdata[0]["download_url"] ?>',
+			// url: '<?php echo $trackdata[0]["permalink_url"] ?>',
+			// title: '<?php echo $trackdata[0]["title"] ?>',
+			// picUrl: '<?php echo $trackdata[0]["artwork_url"] ?>'
 		};
 		alert(currentSongData.toSource());
 		
