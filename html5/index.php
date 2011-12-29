@@ -207,6 +207,7 @@
 			{
 				load: 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js',
 				complete: function() {
+					alert('loaded jquery');
 					timeleft = $('#top_timer');
 					topPlayer = $('#top_player');
 					if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
