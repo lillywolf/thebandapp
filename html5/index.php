@@ -256,8 +256,8 @@
 		
 		function updateProgressBar() {
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
-				document.getElementById('progress_bar').src = '../images/html5/progress_bar_green_4_'+data.toString()+'.png';
-				getNextMission((parseInt(data)+1).toString());	
+				document.getElementById('progress_bar').src = '../images/html5/progress_bar_green_4_'+(parseInt(data)+1).toString()+'.png';
+				getNextMission((parseInt(data)+2).toString());	
 			},'html');
 		}
 		
