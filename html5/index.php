@@ -337,14 +337,14 @@
 		function swapAudio(url, trackIndex) {
 			var idStr = 'audio_'+trackIndex.toString();
 			var topAudio = document.getElementById(idStr);
-			alert(topAudio);
  			currentAudioElement = topAudio;
 			if (mp3Support) {
 				alert('mp3 support');
 				addAudioListeners(idStr);
-				topAudio.play();				
+				alert('add audio listeners for ' + idStr);
+				topAudio.play();
+				alert('play audio');				
 			} else {
-				alert('no mp3 support');
 				if (smSongId != null && soundManager.getSoundById(smSongId) != null) {
 					soundManager.destroySound(smSongId);					
 				}
