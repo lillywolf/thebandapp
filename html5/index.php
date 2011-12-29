@@ -78,11 +78,10 @@
 		}
 							
 		$downloadedPlaylist = $_COOKIE['download_playlist'];
-		error_log('has downloaded playlist: ' . $downloadedPlaylist);
 		
-		$redisWrapper = new Redis($user_id, $pageId);	
 		# Record user data if we have an id
 		if ($user_id) {
+			$redisWrapper = new Redis($user_id, $pageId);	
 			$redisWrapper->recordPermissions($perms['data'][0]);			
 			$redisWrapper->recordVisits();		
 			$redisWrapper->recordLike($liked);
@@ -200,17 +199,17 @@
 		var mp3Support = true;
 		var smSongId;
 		
-		timeleft = '';
-		topPlayer = '';
+		var timeleft;
+		var topPlayer;
 		
 		Modernizr.load([
 			{
 				load: 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js',
 				complete: function() {
-					alert('loaded jquery');
 					timeleft = $('#top_timer');
 					topPlayer = $('#top_player');
 					if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
+						alert('no mp3 support');
 						mp3Support = false;
 						initSoundManager();
 					}
