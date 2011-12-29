@@ -211,6 +211,7 @@
 		
 		function initSoundManager() {
 			$.getScript("../scripts/sm2/soundmanager2.js", function(){
+				alert('got sm script');
 				soundManager.url = '../scripts/sm2/swf/';
 				soundManager.flashVersion = 9; // optional: shiny features (default = 8)
 				soundManager.useFlashBlock = false; // optionally, enable when you're ready to dive in
@@ -400,7 +401,6 @@
 					soundManager.pause(smSongId);
 				}
 			}
-			alert('populate player');
 			currentTrackIndex = trackIndex;
 			document.getElementById('top_title').innerHTML = title;
 			showPause();
