@@ -172,7 +172,7 @@
 							</div>
 							<div class="song_btns">
 								<div id="download_btn_wrapper"><div class="download_song" id="download_btn" onClick="downloadSong(\'' . $track['download_url'] . '\')"></div></div>
-								<div id="buy_btn_wrapper"><div id="buy_btn" onClick="buySong(\'' . $track['purchase_url'] . '\')"></div></div>
+								<div id="buy_btn_wrapper"><div class="buy_song" id="buy_btn" onClick="buySong(\'' . $track['purchase_url'] . '\')"></div></div>
 							</div>	
 							<!--button onClick="document.getElementById(\'audio_' . $i . '\').pause()">Pause</button--></div>';
 							$i++;
