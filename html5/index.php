@@ -203,7 +203,6 @@
 		
 		$(document).ready(function() {
 			if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
-				alert('no mp3 support');
 				mp3Support = false;
 				initSoundManager();
 			}
@@ -211,14 +210,12 @@
 		});					
 		
 		function initSoundManager() {
-			alert("init sm");
 			$.getScript("../scripts/sm2/soundmanager2.js", function(){
 				soundManager.url = '../scripts/sm2/swf/';
 				soundManager.flashVersion = 9; // optional: shiny features (default = 8)
 				soundManager.useFlashBlock = false; // optionally, enable when you're ready to dive in
 				soundManager.onready(function() {
 					alert("soundmanager ready");
-			  		// Ready to use; soundManager.createSound() etc. can now be called.
 				});
 			});			
 		}
@@ -226,6 +223,7 @@
 		// Initialize stuff
 		function init() {
 			
+			// Set up first song
 			currentSongData = {
 				streamUrl: '<?php echo $trackdata[0]["stream_url"] . "?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" ?>',
 				downloadUrl: '<?php echo $trackdata[0]["download_url"] ?>',
@@ -256,17 +254,16 @@
 					var missionId = getPairValue(data.split('&'), 'id');
 					var prefix = '';
 					if (mission_rank == 1) {
-						prefix = "First";
+						prefix = "First, ";
 					} else if (mission_rank == 2) {
-						prefix = "Next";
+						prefix = "Next, ";
 					} else if (mission_rank == 3) {
-						prefix = "Now";
+						prefix = "";
 					} else if (mission_rank == 4) {
-						prefix = "Last";
+						prefix = "Last, ";
 					}
 					
-					document.getElementById('notice_title').innerHTML = prefix + ', ' + title + ':';
-					alert(missionId);
+					document.getElementById('notice_title').innerHTML = prefix + title + ':';
 					if (missionId == 'download_playlist') {
 						document.getElementById('download_all_btn').style.display = 'block';
 					} else {
