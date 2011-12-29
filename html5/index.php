@@ -203,7 +203,6 @@
 		topPlayer = $('#top_player');
 		
 		$(document).ready(function() {
-			alert('doc ready');
 			if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
 				mp3Support = false;
 				initSoundManager();
@@ -261,6 +260,7 @@
 					var title = getPairValue(data.split('&'), 'title');
 					var text = getPairValue(data.split('&'), 'text');
 					var missionId = getPairValue(data.split('&'), 'id');
+					alert(missionId);
 					var prefix = '';
 					if (mission_rank == 1) {
 						prefix = "First, ";
@@ -283,6 +283,7 @@
 					} else {
 						document.getElementById('add_app_btn').style.display = 'none';						
 					}
+					alert('updated missions');
 				}
 			},'html');			
 		}
