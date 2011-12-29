@@ -251,7 +251,7 @@
 			updateDisplayedSongs();
 			updatePlayerData(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl']);
 			stopButtonPropagations();
-			updateProgressBar();			
+			// updateProgressBar();			
 		}
 		
 		function updateProgressBar() {
