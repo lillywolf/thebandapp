@@ -202,18 +202,23 @@
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
 		
+		SC.initialize({
+			client_id: '738091d6d02582ddd19de7109b79e47b',
+			redirect_uri: 'http://simple-ocean-7178.herokuapp.com/auth/',
+		});
+		
+		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
+		
 		$(document).ready(function() {
 			if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
 				mp3Support = false;
 				initSoundManager();
 			}
-			init();
 		});	
 		
 		$(document).load(function() {
 			init();
-		});
-						
+		});			
 		
 		function initSoundManager() {
 			Modernizr.load([
@@ -331,15 +336,16 @@
 		}
 		
 		function swapAudio(url, trackIndex) {
-			alert('swapping...');
 			var idStr = 'audio_'+trackIndex.toString();
 			var topAudio = document.getElementById(idStr);
 			alert(topAudio);
  			currentAudioElement = topAudio;
 			if (mp3Support) {
+				alert('mp3 support');
 				addAudioListeners(idStr);
 				topAudio.play();				
 			} else {
+				alert('no mp3 support');
 				if (smSongId != null && soundManager.getSoundById(smSongId) != null) {
 					soundManager.destroySound(smSongId);					
 				}
@@ -347,13 +353,6 @@
 				soundManager.play(smSongId, url);
 			}
 		}
-			
-		SC.initialize({
-			client_id: '738091d6d02582ddd19de7109b79e47b',
-			redirect_uri: 'http://simple-ocean-7178.herokuapp.com/auth/',
-		});
-		
-		SC.accessToken = '1-12872-7625335-e561f85b896d9158';
 		
 		function scrollSongsDown() {
 			var songs = getElementsByClass('song', 'songlist');
