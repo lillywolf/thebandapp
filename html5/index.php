@@ -345,6 +345,7 @@
 		
 		function swapAudio(url, trackIndex) {
 			alert('swap audio');
+			var idStr = 'audio_'+trackIndex.toString();
 			var topAudio = document.getElementById(idStr);
  			currentAudioElement = topAudio;
 			if (mp3Support) {
