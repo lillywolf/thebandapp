@@ -332,7 +332,6 @@
 		}
 		
 		function addApp() {
-			alert('<?php echo $loginUrl ?>');
 			window.open('<?php echo $loginUrl ?>');
 		}
 		
@@ -438,7 +437,6 @@
 		}
 		
 		function updatePlayerData(title, trackIndex, url, picUrl, downloadUrl, streamUrl, purchaseUrl) {
-			alert(purchaseUrl);
 			currentSongData = {
 				title: title,
 				url: url,
