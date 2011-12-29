@@ -2,7 +2,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="../site/index.css" />
 	<link rel="stylesheet" type="text/css" href="../style/sc-player-standard.css" />
-	<script type="text/javascript" src="../scripts/spin.js"></script>	
+	<!--script type="text/javascript" src="../scripts/spin.js"></script-->	
 	<script type="text/javascript" src="../scripts/soundcloud.player.api.js"></script>
 	<script type="text/javascript" src="../scripts/sc-player.js"></script>
 	<script src="http://connect.soundcloud.com/sdk.js" type="text/javascript"></script>	
@@ -212,12 +212,12 @@
 		// 
 		// SC.accessToken = '1-12872-7625335-e561f85b896d9158';
 		
-		$(document).ready(function() {
-			if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
-				mp3Support = false;
-				initSoundManager();
-			}
-		});	
+		// $(document).ready(function() {
+		// 	if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
+		// 		mp3Support = false;
+		// 		initSoundManager();
+		// 	}
+		// });	
 		
 		init();	
 		
@@ -253,7 +253,7 @@
 			updateDisplayedSongs();
 			updatePlayerData(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl']);
 			stopButtonPropagations();
-			updateProgressBar();			
+			// updateProgressBar();			
 		}
 		
 		function updateProgressBar() {
