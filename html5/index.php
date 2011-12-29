@@ -24,6 +24,13 @@
 		require_once('../redis/redis.php');
 		
 		session_start();
+		
+		/**
+		 * @return the home URL for this site
+		 */
+		function getHome () {
+		  return ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?: "http") . "://" . $_SERVER['HTTP_HOST'] . "/";
+		}
 
 		$appId = '107796503671';
 		$appSecret = '10cc0163136a373aa6192f6ceafda96e';
@@ -31,7 +38,8 @@
 		$fbPageUrl = "facebook.com/lillywolfanddrnu?sk=app_107796503671";
 		$scAccessCode = "302883";
 		$scConsumerKey = "738091d6d02582ddd19de7109b79e47b";
-		$req_perms = 'publish_stream, publish_actions';
+		$scope = 'email,publish_stream,publish_actions';
+		$home = getHome();
 	
 		$config = array();
 		$config['appId'] = $appId;
@@ -44,7 +52,11 @@
 		$facebook = new Facebook($config);	
 		// $appAccessToken = $facebook->getApplicationAccessToken();
 		$user_id = $facebook->getUser();
-		$loginUrl = $facebook->getLoginUrl(array('req_perms' => $req_perms));
+		$loginUrl = $facebook->getLoginUrl(array(
+			'next' => $home, 
+			'req_perms' => $req_perms,
+			'cancel_url' => $home
+			));
 		$perms = null;
 		if ($user_id) {
 			$perms = $facebook->api('/me/permissions', 'GET');			
@@ -320,6 +332,7 @@
 		}
 		
 		function addApp() {
+			alert('<?php echo $loginUrl ?>');
 			window.open('<?php echo $loginUrl ?>');
 		}
 		
@@ -813,13 +826,6 @@
 	</script>
 	
 <?php
-	
-	/**
-	 * @return the home URL for this site
-	 */
-	function getHome () {
-	  return ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?: "http") . "://" . $_SERVER['HTTP_HOST'] . "/";
-	}
 
 	
 		
