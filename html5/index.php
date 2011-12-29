@@ -7,8 +7,8 @@
 	<script type="text/javascript" src="../scripts/sc-player.js"></script>
 	<!--script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script-->	
 	<!--script type="text/javascript" src="scripts/prototype.js"></script-->
-	<!--script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script-->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 	<script src="http://connect.soundcloud.com/sdk.js" type="text/javascript"></script>	
 	<script src="../scripts/modernizr.custom.41971.js" type="text/javascript"></script>	
 </head>	
@@ -198,27 +198,17 @@
 		var soundManager;
 		var mp3Support = true;
 		var smSongId;
+		timeleft = $('#top_timer');
+		topPlayer = $('#top_player');
 		
-		Modernizr.load([
-			{
-				load: 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js',
-				complete: function() {
-					setGlobals();
-					alert('set globals');
-					if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
-						alert('no mp3 support');
-						mp3Support = false;
-						initSoundManager();
-					}
-					init();					
-				}
+		$(document).ready(function() {
+			if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
+				alert('no mp3 support');
+				mp3Support = false;
+				initSoundManager();
 			}
-		]);	
-		
-		function setGlobals() {
-			timeleft = $('#top_timer');
-			topPlayer = $('#top_player');
-		}		
+			init();
+		});					
 		
 		function initSoundManager() {
 			alert("init sm");
