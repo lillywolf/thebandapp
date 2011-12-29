@@ -54,7 +54,7 @@
 		$user_id = $facebook->getUser();
 		$loginUrl = $facebook->getLoginUrl(array(
 			'redirect_uri' => $home, 
-			'scope' => $req_perms			
+			'scope' => $scope			
 			));
 		$perms = null;
 		if ($user_id) {
