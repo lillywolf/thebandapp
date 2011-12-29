@@ -7,8 +7,8 @@
 	<script type="text/javascript" src="../scripts/sc-player.js"></script>
 	<!--script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script-->	
 	<!--script type="text/javascript" src="scripts/prototype.js"></script-->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+	<!--script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script-->
 	<script src="http://connect.soundcloud.com/sdk.js" type="text/javascript"></script>	
 	<script src="../scripts/modernizr.custom.41971.js" type="text/javascript"></script>	
 </head>	
@@ -195,37 +195,28 @@
 		var currentTrackIndex = 1;
 		var currentScrollIndex = 1;
 		var currentAudioElement;
+		var currentSongData;
 		var soundManager;
 		var mp3Support = true;
 		var smSongId;
 		
-		timeleft = $('#top_timer');
-		topPlayer = $('#top_player');
-		var currentSongData = {
-			streamUrl: '<?php echo $trackdata[0]["stream_url"] . "?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" ?>',
-			downloadUrl: '<?php echo $trackdata[0]["download_url"] ?>',
-			url: '<?php echo $trackdata[0]["permalink_url"] ?>',
-			title: '<?php echo $trackdata[0]["title"] ?>',
-			picUrl: '<?php echo $trackdata[0]["artwork_url"] ?>'
-		};
-		alert(currentSongData.toSource());
+		timeleft = '';
+		topPlayer = '';
 		
-		if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
-			mp3Support = false;
-			initSoundManager();
-		}
-		
-		init();
-		
-		// REGISTER MISSION
-		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=add_app&mission_rank=3', function(data, status) {
-		//       // parse
-		// },'html');	
-		
-		// CREATE MISSION
-		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=add_app', function(data, status) {
-		//       // parse
-		// },'html');			
+		Modernizr.load([
+			{
+				load: 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js',
+				complete: function() {
+					timeleft = $('#top_timer');
+					topPlayer = $('#top_player');
+					if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
+						mp3Support = false;
+						initSoundManager();
+					}
+					init();					
+				}
+			}
+		]);			
 		
 		function initSoundManager() {
 			alert("init sm");
@@ -242,6 +233,15 @@
 		
 		// Initialize stuff
 		function init() {
+			
+			currentSongData = {
+				streamUrl: '<?php echo $trackdata[0]["stream_url"] . "?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" ?>',
+				downloadUrl: '<?php echo $trackdata[0]["download_url"] ?>',
+				url: '<?php echo $trackdata[0]["permalink_url"] ?>',
+				title: '<?php echo $trackdata[0]["title"] ?>',
+				picUrl: '<?php echo $trackdata[0]["artwork_url"] ?>'
+			};
+						
 			initializeJS();
 			updateDisplayedSongs();
 			populatePlayer(currentSongData['title'], 0, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl']);
@@ -754,6 +754,16 @@
 				}						
 			});							
 		}
+		
+		// REGISTER MISSION
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=add_app&mission_rank=3', function(data, status) {
+		//       // parse
+		// },'html');	
+		
+		// CREATE MISSION
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=add_app', function(data, status) {
+		//       // parse
+		// },'html');
 	
 	</script>
 	
