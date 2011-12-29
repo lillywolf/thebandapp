@@ -215,13 +215,13 @@
 				{
 					load: '../scripts/sm2/soundmanager2.js',
 					complete: function() {
-						alert('attempt to load sm');
-						soundManager.url = '../scripts/sm2/swf/';
-						soundManager.flashVersion = 9; // optional: shiny features (default = 8)
-						soundManager.useFlashBlock = false; // optionally, enable when you're ready to dive in
-						soundManager.onready(function() {
-							alert("soundmanager ready");
-						});			
+						// alert('attempt to load sm');
+						// soundManager.url = '../scripts/sm2/swf/';
+						// soundManager.flashVersion = 9; // optional: shiny features (default = 8)
+						// soundManager.useFlashBlock = false; // optionally, enable when you're ready to dive in
+						// soundManager.onready(function() {
+						// 	alert("soundmanager ready");
+						// });			
 					}
 				}
 			]);
