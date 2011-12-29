@@ -8,9 +8,9 @@
 	<script src="http://connect.soundcloud.com/sdk.js" type="text/javascript"></script>	
 	<!--script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script-->	
 	<!--script type="text/javascript" src="scripts/prototype.js"></script-->
+	<script src="../scripts/modernizr.custom.41971.js" type="text/javascript"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-	<script src="../scripts/modernizr.custom.41971.js" type="text/javascript"></script>
 	<!--script type="text/javascript" src="../scripts/sm2/soundmanager2.js"></script-->
 </head>	
 <body>
@@ -203,6 +203,7 @@
 		topPlayer = $('#top_player');
 		
 		$(document).ready(function() {
+			alert('doc ready');
 			if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
 				mp3Support = false;
 				initSoundManager();
@@ -230,6 +231,7 @@
 		// Initialize stuff
 		function init() {
 			
+			alert('init');
 			// Set up first song
 			currentSongData = {
 				streamUrl: '<?php echo $trackdata[0]["stream_url"] . "?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" ?>',
