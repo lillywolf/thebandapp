@@ -97,6 +97,9 @@
 		
 		<div id="page_heading_div" class="hidden"></div>
 		<div id="missions">
+			<div id="progress_label">
+				MISSION PROGRESS:
+			</div>	
 			<div id="progress_bg">
 				<img id="progress_bar" />
 			</div>	
@@ -267,7 +270,7 @@
 		
 		function updateProgressBar() {
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>&liked='+liked+'&downloaded_playlist='+getCookie('download_playlist'), function(data, status) {
-				document.getElementById('progress_bar').src = '../images/html5/progress_bar_green_4_'+(parseInt(data)+1).toString()+'.png';
+				document.getElementById('progress_bar').src = '../images/html5/progress_bar_4_'+(parseInt(data)+1).toString()+'_green.png';
 				getNextMission((parseInt(data)+2).toString());	
 			},'html');
 		}
@@ -549,8 +552,7 @@
 			createDownloadElement(urls, 0, urls.length);
 			
 			// Set cookie
-			setCookie('download_playlist', 1, null);
-			alert(getCookie('download_playlist'));		
+			setCookie('download_playlist', 1, 365);
 			
 			updateProgressBar();	
 			

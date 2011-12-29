@@ -375,14 +375,22 @@ a.soundcloud-badge:hover {
 	margin: 8px 0 0 2px;
 	width: 506px;
 }
-#progress_bg {
-	/* background-image: url('../images/html5/progress_bar_empty.png'); */
-	height: 89px;
-	width: 551px;	
+#progress_label {
+	font-family: Arial, Helvetica, Verdana;
+	color: color: #5E5751;
 	float: left;
+	font-size: 12px;
+}
+#progress_bg {
+	background-image: url('../images/html5/progress_bar_blank_segmented.png');
+	height: 89px;
+	width: 360px;	
+	float: left;
+	margin: 0 0 0 140px;
 }
 #progress_bar {
 	float: left;
+	margin: 0 0 0 140px;
 }
 #notice_bg {
 	background-image: url('../images/html5/notice_bar_blank.png');
