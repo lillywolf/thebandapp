@@ -207,7 +207,7 @@
 		
 		var testAudio = document.createElement('audio');
 		alert(testAudio.canPlayType('audio/mpeg'));
-		if (testAudio.canPlayType && testAudio.canPlayType('audio/mpeg') != 'no') {
+		if (testAudio.canPlayType && testAudio.canPlayType('audio/mpeg') != 'no' && testAudio.canPlayType('audio/mpeg') != '') {
 			mp3Supprt = true;
 		} else {
 			mp3Support = false;
