@@ -230,7 +230,6 @@
 		// Initialize stuff
 		function init() {
 			
-			alert('init');
 			// Set up first song
 			currentSongData = {
 				streamUrl: '<?php echo $trackdata[0]["stream_url"] . "?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" ?>',
@@ -239,15 +238,18 @@
 				title: '<?php echo $trackdata[0]["title"] ?>',
 				picUrl: '<?php echo $trackdata[0]["artwork_url"] ?>'
 			};
-						
 			initializeJS();
+			alert('js initialized');
 			updateDisplayedSongs();
+			alert('displayed songs updated');
 			populatePlayer(currentSongData['title'], 0, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl']);
+			alert('player populated');
 			stopButtonPropagations();
 			updateProgressBar();			
 		}
 		
 		function updateProgressBar() {
+			alert('update progress bar');
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
 				document.getElementById('progress_bar').src = '../images/html5/progress_bar_green_4_'+data.toString()+'.png';
 				getNextMission((parseInt(data)+1).toString());	
@@ -255,6 +257,7 @@
 		}
 		
 		function getNextMission(mission_rank) {
+			alert('get next mission');
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=next_mission&perms=<?php echo $perms ?>&liked=<?php echo $liked ?>&downloaded_playlist=<?php echo $downloadedPlaylist ?>', function(data, status) {
 				if (data != null) {
 					var title = getPairValue(data.split('&'), 'title');
@@ -283,7 +286,6 @@
 					} else {
 						document.getElementById('add_app_btn').style.display = 'none';						
 					}
-					alert('updated missions');
 				}
 			},'html');			
 		}
