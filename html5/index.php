@@ -231,8 +231,8 @@
 						soundManager.url = '../scripts/sm2/swf/';
 						soundManager.flashVersion = 9; // optional: shiny features (default = 8)
 						soundManager.useFlashBlock = false; // optionally, enable when you're ready to dive in
+						soundManager.debugMode = false;
 						soundManager.onready(function() {
-							alert("soundmanager ready");
 						});			
 			// 		}
 			// 	}
@@ -336,14 +336,11 @@
 		}
 		
 		function swapAudio(url, trackIndex) {
-			var idStr = 'audio_'+trackIndex.toString();
 			var topAudio = document.getElementById(idStr);
  			currentAudioElement = topAudio;
 			if (mp3Support) {
 				addAudioListeners(idStr);
-				alert('add audio listeners for ' + idStr);
 				topAudio.play();
-				alert('play audio');				
 			} else {
 				if (smSongId != null && soundManager.getSoundById(smSongId) != null) {
 					soundManager.destroySound(smSongId);					
