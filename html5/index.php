@@ -339,6 +339,9 @@
 			$('.download_song').bind('click', function(event) {
 				event.stopPropagation();	
 			});
+			$('.buy_song').bind('click', function(event) {
+				event.stopPropagation();	
+			});
 		}
 		
 		function listenForHovers() {
@@ -634,7 +637,8 @@
 		}
 		
 		function buySong(buyUrl) {
-			alert(buyUrl);
+			// alert(buyUrl);
+			window.open(buyUrl);
 		}
 		
 		function songChanged(songUrl, likeBtnY) {
