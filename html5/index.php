@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" class="no-js">
 <head>
 	<link rel="stylesheet" type="text/css" href="../site/index.css" />
-	<link rel="stylesheet" type="text/css" href="../style/sc-player-standard.css" />
+	<!--link rel="stylesheet" type="text/css" href="../style/sc-player-standard.css" /-->
 	<!--script type="text/javascript" src="../scripts/spin.js"></script-->	
 	<script type="text/javascript" src="../scripts/soundcloud.player.api.js"></script>
 	<script type="text/javascript" src="../scripts/sc-player.js"></script>
