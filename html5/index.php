@@ -321,7 +321,9 @@
 		}
 		 
 		function addAudioListeners(idStr) {
+			alert('idstr ' + idStr);
 			audio = $('#'+idStr).get(0);
+			alert(audio);
 			audio.currentTime = 0;
 		 	if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
 		 		$(audio).bind('timeupdate', function() {
@@ -339,7 +341,6 @@
 			var topAudio = document.getElementById(idStr);
  			currentAudioElement = topAudio;
 			if (mp3Support) {
-				alert('mp3 support');
 				addAudioListeners(idStr);
 				alert('add audio listeners for ' + idStr);
 				topAudio.play();
