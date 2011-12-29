@@ -208,10 +208,8 @@
 		var testAudio = document.createElement('audio');
 		if (testAudio.canPlayType && testAudio.canPlayType('audio/mpeg') != 'no' && testAudio.canPlayType('audio/mpeg') != '') {
 			mp3Support = true;
-			alert('mp3 support');
 		} else {
 			mp3Support = false;
-			alert('no mp3 support');
 		}
 		
 		// SC.initialize({
@@ -242,6 +240,7 @@
 						soundManager.useFlashBlock = false; // optionally, enable when you're ready to dive in
 						soundManager.debugMode = false;
 						soundManager.onready(function() {
+							alert('sm ready');
 						});			
 			// 		}
 			// 	}
@@ -345,6 +344,7 @@
 		}
 		
 		function swapAudio(url, trackIndex) {
+			alert('swap audio');
 			var topAudio = document.getElementById(idStr);
  			currentAudioElement = topAudio;
 			if (mp3Support) {
@@ -408,6 +408,7 @@
 		
 		function populatePlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl) {
 			updatePlayerData(title, trackIndex, url, picUrl, downloadUrl, streamUrl);
+			alert('player updated');
 			startPlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl);
 		}
 		
@@ -430,7 +431,8 @@
 			if (currentAudioElement != null) {
 				if (mp3Support) {
 					currentAudioElement.pause();					
-				} else {
+				} else if (smSongId) {
+					alert('pause with sm');
 					soundManager.pause(smSongId);
 				}
 			}
