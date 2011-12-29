@@ -208,6 +208,7 @@
 			title: '<?php echo $trackdata[0]["title"] ?>',
 			picUrl: '<?php echo $trackdata[0]["artwork_url"] ?>'
 		};
+		alert(currentSongData.toSource());
 		
 		if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
 			mp3Support = false;
@@ -243,7 +244,7 @@
 		function init() {
 			initializeJS();
 			updateDisplayedSongs();
-			populatePlayer(currentSongData['title'], 0, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl']);
+			// populatePlayer(currentSongData['title'], 0, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl']);
 			stopButtonPropagations();
 			updateProgressBar();			
 		}
