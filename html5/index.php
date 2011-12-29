@@ -338,7 +338,7 @@
 		function swapAudio(url, trackIndex) {
 			var topAudio = document.getElementById(idStr);
  			currentAudioElement = topAudio;
-			if (mp3Support) {
+			if (topAudio.canPlayType && topAudio.canPlayType('audio/mpeg')) {
 				addAudioListeners(idStr);
 				topAudio.play();
 			} else {
@@ -418,7 +418,7 @@
 		function startPlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl) {
 			isPlaying = true;
 			if (currentAudioElement != null) {
-				if (mp3Support) {
+				if (currentAudioElement.canPlayType && currentAudioElement.canPlayType('audio/mpeg')) {
 					currentAudioElement.pause();					
 				} else {
 					soundManager.pause(smSongId);
@@ -451,8 +451,9 @@
 		}
 		
 		function doPlay() {
-			if (mp3Support) {
-				document.getElementById('audio_'+currentTrackIndex.toString()).play();				
+			var elem = document.getElementById('audio_'+currentTrackIndex.toString());
+			if (elem.canPlayType && elem.canPlayType('audio/mpeg')) {
+				elem.play();				
 			} else {
 				soundManager.resume(smSongId, currentSongData.streamUrl);
 			}
@@ -461,8 +462,9 @@
 		}
 		
 		function doPause() {
-			if (mp3Support) {
-				document.getElementById('audio_'+currentTrackIndex.toString()).pause();				
+			var elem = document.getElementById('audio_'+currentTrackIndex.toString());
+			if (elem.canPlayType && elem.canPlayType('audio/mpeg')) {
+				elem.pause();				
 			} else {
 				soundManager.pause(smSongId);
 			}
