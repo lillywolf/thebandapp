@@ -308,7 +308,7 @@
 		}
 		
 		function addApp() {
-			window.open('<?php echo $loginUrl ?>');
+			window.location = '<?php echo $loginUrl ?>';
 		}
 		
 		function stopButtonPropagations() {
