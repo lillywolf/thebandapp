@@ -270,12 +270,22 @@
 		}
 		
 		$('#progress_bar').mouseover(function(e) {
-			var distanceY = e.pageX - this.offsetLeft;
-			var segment = parseInt($('#progress_bg').width())/totalMissions;
-			var goalNumber = Math.ceil(parseInt(distanceY)/segment); 
-			var ttText = toolTipGoal(goalNumber);
-			document.getElementById('progress_tip').innerHTML = ttText;
-			document.getElementById('progress_tip').style.marginLeft = this.offsetLeft + segment * goalNumber;
+			var goalNumber;
+			$('#progress_bar').mousemove(function(e) {
+				var distanceY = e.pageX - this.offsetLeft;
+				var segment = parseInt($('#progress_bg').width())/totalMissions;
+				var newGoal = Math.ceil(parseInt(distanceY)/segment);
+				if (newGoal != goalNumber) {
+					goalNumber = newGoal;
+					var ttText = toolTipGoal(goalNumber);
+					document.getElementById('progress_tip').innerHTML = ttText;
+					document.getElementById('progress_tip').style.marginLeft = this.offsetLeft + (segment-1) * goalNumber;
+				}	
+			});
+		});
+		
+		$('#progress_bar').mouseleave(function(e) {
+			$('#progress_bar').unbind('mousemove');
 		});
 		
 		function toolTipGoal(goalNumber) {
