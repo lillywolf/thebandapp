@@ -57,6 +57,7 @@ if ($method == 'create_mission')
 {
 	$missionId = $utils->iterateThroughAndFind($pairs, 'mission_id');
 	$mission = $utils->getMissionData($missionId);
+	error_log('create this mission data: ' . print_r($mission, true));
 	$redis->createAppMission($mission['id'], $mission['title'], $mission['description'], $mission['explanation']);
 }
 
