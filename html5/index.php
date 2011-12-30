@@ -38,7 +38,7 @@
 		$fbPageUrl = "facebook.com/lillywolfanddrnu?sk=app_107796503671";
 		$scAccessCode = "302883";
 		$scConsumerKey = "738091d6d02582ddd19de7109b79e47b";
-		$scope = 'email,publish_stream,publish_actions,sms';
+		$scope = 'email,publish_stream,publish_actions,create_event';
 		$home = 'http://www.facebook.com/' . 'lillywolfanddrnu' . '?sk=app_' . '107796503671';
 		$perms = null;
 	
