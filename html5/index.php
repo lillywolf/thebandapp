@@ -269,11 +269,11 @@
 		
 		$('#progress_bar').mouseover(function(e) {
 			var distanceY = e.pageX - this.offsetLeft;
-			alert(distanceY);
-			alert($('#progress_bar').width());
-			var segment = parseInt($('#progress_bar').width())/totalMissions;
+			var segment = parseInt($('#progress_bg').width())/totalMissions;
 			alert(segment);
-			toolTipGoal((distanceY/segment).ceil());
+			var goalNumber = Math.ceil(parseInt(distanceY)/segment); 
+			alert(goalNumber);
+			toolTipGoal(goalNumber);
 		});
 		
 		function toolTipGoal(goalNumber) {
