@@ -274,7 +274,7 @@
 				completedMissions = parseInt(completedMissions)+1;
 				
 				// Update display components
-				if (completedMissions >= totalMissions+1) {
+				if (completedMissions >= totalMissions) {
 					document.getElementById('notice').style.display = 'none';
 					document.getElementById('progress_bg').style.display = 'none';
 					document.getElementById('progress_label').innerHTML = 'PROGRESS COMPLETE!';
