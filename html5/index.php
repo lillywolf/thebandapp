@@ -296,7 +296,7 @@
 					var text = getPairValue(data.split('&'), 'text');
 					var missionId = getPairValue(data.split('&'), 'id');
 					
-					document.getElementById('notice_title').innerHTML = 'Promo #' + mission_rank.toString() + ':' + title.charAt(0).toUpperCase() + title.slice(1) + ':';
+					document.getElementById('notice_title').innerHTML = 'Promo #' + mission_rank.toString() + ': ' + title.charAt(0).toUpperCase() + title.slice(1);
 					if (missionId == 'download_playlist') {
 						document.getElementById('download_all_btn').style.display = 'block';
 					} else {
