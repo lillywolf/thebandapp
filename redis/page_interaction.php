@@ -32,7 +32,7 @@ if ($method == 'like')
 	$redis->recordLike('true');		
 }
 
-if ($method == 'update_mission')
+if ($method == 'update_missions')
 {
 	error_log('update mission');
 	$missionHandler = new MissionHandler($fbid, $pageId);
