@@ -27,7 +27,7 @@ class Util
 		{
 			case 'like':
 				$data['id'] = 'like';
-				$data['title'] = 'click the Like button above to follow us';
+				$data['title'] = 'click the \'Like\' button (above) to follow us on Facebook';
 				$data['description'] = 'Click the like button above';
 				$data['explanation'] = 'Have users click your page\'s \'like\' button';
 				break;
