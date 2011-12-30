@@ -38,7 +38,7 @@
 		$fbPageUrl = "facebook.com/lillywolfanddrnu?sk=app_107796503671";
 		$scAccessCode = "302883";
 		$scConsumerKey = "738091d6d02582ddd19de7109b79e47b";
-		$scope = 'email,publish_stream,publish_actions,create_event';
+		$scope = 'email,publish_stream,publish_actions';
 		$home = 'http://www.facebook.com/' . 'lillywolfanddrnu' . '?sk=app_' . '107796503671';
 		$perms = null;
 	
@@ -266,7 +266,7 @@
 		}
 
 		function updateProgressBar() {
-			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=update_missions&added_app=<?php echo '' ?>&liked='+liked+'&downloaded_playlist='+downloadedPlaylist, function(data, status) {
+			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=update_missions&added_app=<?php echo $user_id ?>&liked='+liked+'&downloaded_playlist='+downloadedPlaylist, function(data, status) {
 				var title = getPairValue(data.split('&'), 'title');
 				var text = getPairValue(data.split('&'), 'text');
 				var missionId = getPairValue(data.split('&'), 'id');
