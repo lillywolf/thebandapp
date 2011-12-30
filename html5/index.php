@@ -275,16 +275,15 @@
 			var goalNumber = Math.ceil(parseInt(distanceY)/segment); 
 			var ttText = toolTipGoal(goalNumber);
 			document.getElementById('progress_tip').innerHTML = ttText;
-			document.getElementById('progress_tip').y = this.offsetLeft + segment * goalNumber;
+			document.getElementById('progress_tip').style.marginLeft = this.offsetLeft + segment * goalNumber;
 		});
 		
 		function toolTipGoal(goalNumber) {
-			// Decrement by 1, because of visit page goal
-			goalNumber = goalNumber - 1;
 			if (parseInt(goalNumber) in goals) {
 				var ttText = getGoalToolTipText(goals[goalNumber]);
-			} else if (goalNumber == 0) {
-				var ttText = getGoalToolTipText(0);
+			} else if (goalNumber == 1) {
+				// Currently 1 is a special case
+				var ttText = getGoalToolTipText(1);
 			}
 			return ttText;
 		}
@@ -296,7 +295,7 @@
 				return '#' + goal.rank.toString() + ': LIKED PAGE';
 			} else if (goal && goal.id == 'add_app') {
 				return '#' + goal.rank.toString() + ': ADDED APP';
-			} else if (goal == 0) {
+			} else if (goal == 1) {
 				return '#1: VISITED PAGE';				
 			}
 		}
@@ -306,7 +305,7 @@
 				var listings = data.split(',');
 				for (var i = 0; i < listings.length; i++) {
 					var missionId = getPairValue(listings[i].split('&'), 'id');
-					var missionRank = parseInt(getPairValue(listings[i].split('&'), 'rank'));
+					var missionRank = parseInt(getPairValue(listings[i].split('&'), 'rank')) + 1;
 					goals[missionRank] = {
 						id: missionId,
 						rank: missionRank

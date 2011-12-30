@@ -399,6 +399,7 @@ a.soundcloud-badge:hover {
 	color: #5E5751;
 	float: left;
 	font-size: 11px;
+	margin: -18px 0 0 0;
 }
 #notice_bg {
 	background-image: url('../images/html5/notice_bar_blank.png');
