@@ -300,11 +300,12 @@
 		
 		function setPageGoals() {
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=get_page_missions', function(data, status) {
-				alert(data.toSource());
 				var listings = data.explode(',');
 				for (var i = 0; i < listings.length; i++) {
+					alert(listings[i].toSource());
 					var missionId = getPairValue(listings[i].split('&'), 'id');
 					var missionRank = parseInt(getPairValue(listings[i].split('&'), 'rank'));
+					alert(missionRank);
 					goals[missionRank] = {
 						id: missionId,
 						rank: missionRank
