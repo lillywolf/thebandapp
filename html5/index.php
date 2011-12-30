@@ -213,7 +213,7 @@
 		var soundManager;
 		var mp3Support = true;
 		var smSongId;
-		var goals;
+		var goals = new Array();
 		
 		var liked = '<?php echo $liked ?>';
 		var fbPageUrl = '<?php echo $fbPageUrl ?>';
@@ -310,6 +310,7 @@
 						id: missionId,
 						rank: missionRank
 					};
+					alert(goals.toSource());
 				}
 				alert(goals.toSource());
 			});				
