@@ -337,8 +337,9 @@
 				// Update display components
 				if (completedMissions >= totalMissions) {
 					document.getElementById('notice').style.display = 'none';
-					document.getElementById('missions').style.display = 'none';
-					document.getElementById('flash').style.top = '5';
+					document.getElementById('missions').style.top = '0';
+					document.getElementById('missions').style.display = 'block';
+					document.getElementById('flash').style.top = '40';
 					// document.getElementById('progress_bg').style.display = 'none';
 					// document.getElementById('progress_label').innerHTML = 'PROGRESS COMPLETE!';
 				} else {
