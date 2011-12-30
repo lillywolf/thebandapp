@@ -340,7 +340,7 @@
 					document.getElementById('missions').style.top = '0';
 					document.getElementById('missions').style.display = 'block';
 					document.getElementById('flash').style.top = '40';
-					// document.getElementById('progress_bg').style.display = 'none';
+					document.getElementById('progress_bg').style.display = 'block';
 					// document.getElementById('progress_label').innerHTML = 'PROGRESS COMPLETE!';
 				} else {
 					document.getElementById('progress_bar').src = '../images/html5/progress_bar_4_'+completedMissions.toString()+'_green.png';				
