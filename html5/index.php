@@ -264,6 +264,7 @@
 			};
 			initializeJS();
 			updateDisplayedSongs();
+			listenForHovers();
 			updatePlayerData(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl'], currentSongData['purchaseUrl']);
 			stopButtonPropagations();
 			updateProgressBar();	
@@ -394,7 +395,7 @@
 				alert(elem);
 				var titleElem = $(elem.id).find('.song_title');
 				alert(titleElem);
-				elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
+				// elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
 				var titleOffsetTop = parseInt(titleElem.offset().top) - parseInt($('#player').offset().top);
 				alert(titleOffsetTop);
 				var titleOffsetLeft = titleElem.offset().left + titleElem.width() + 10;
