@@ -112,6 +112,8 @@
 			<div id="progress_bg">
 				<img id="progress_bar" onMouseOver="progressBarHover()"/>
 			</div>	
+			<div id="progress_tip">
+			</div>	
 		</div>
 		<div id="notice">
 			<div id="notice_bg">
@@ -271,19 +273,20 @@
 			var distanceY = e.pageX - this.offsetLeft;
 			var segment = parseInt($('#progress_bg').width())/totalMissions;
 			var goalNumber = Math.ceil(parseInt(distanceY)/segment); 
-			toolTipGoal(goalNumber);
+			var ttText = toolTipGoal(goalNumber);
+			document.getElementById('progress_tip').innerHTML = ttText;
+			document.getElementById('progress_tip').y = this.offsetLeft + segment * goalNumber;
 		});
 		
 		function toolTipGoal(goalNumber) {
 			// Decrement by 1, because of visit page goal
-			alert(goalNumber);
 			goalNumber = goalNumber - 1;
 			if (parseInt(goalNumber) in goals) {
 				var ttText = getGoalToolTipText(goals[goalNumber]);
 			} else if (goalNumber == 0) {
 				var ttText = getGoalToolTipText(0);
 			}
-			alert(ttText);
+			return ttText;
 		}
 		
 		function getGoalToolTipText(goal) {

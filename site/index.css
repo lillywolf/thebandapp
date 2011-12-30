@@ -394,6 +394,12 @@ a.soundcloud-badge:hover {
 	float: left;
 	margin: 0 0 0 0;
 }
+#progress_tip {
+	font-family: Arial, Helvetica, Verdana;
+	color: #5E5751;
+	float: left;
+	font-size: 11px;
+}
 #notice_bg {
 	background-image: url('../images/html5/notice_bar_blank.png');
 	background-repeat: no-repeat;
