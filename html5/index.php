@@ -184,7 +184,7 @@
 					</div>	
 				</div>	
 			</div>
-			<img id="banner_pic" src="../images/banners/lillywolf_drnu_notext_512.jpg" />				
+			<img id="banner_pic" src="../images/banners/lillynu_poster_520x520.png" />				
 		</div>	
 		<div id="spinner"></div>
 		<span id="tweet"></span>
