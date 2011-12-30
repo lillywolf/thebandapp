@@ -111,7 +111,7 @@
 		<div id="page_heading_div" class="hidden"></div>
 		<div id="missions">
 			<div id="progress_label">
-				MISSION PROGRESS:
+				PROMOS COMPLETE:
 			</div>	
 			<div id="progress_bg">
 				<img id="progress_bar" />
@@ -295,18 +295,8 @@
 					var title = getPairValue(data.split('&'), 'title');
 					var text = getPairValue(data.split('&'), 'text');
 					var missionId = getPairValue(data.split('&'), 'id');
-					var prefix = '';
-					if (mission_rank == 1) {
-						prefix = "";
-					} else if (mission_rank == 2) {
-						prefix = "";
-					} else if (mission_rank == 3) {
-						prefix = "";
-					} else if (mission_rank == 4) {
-						prefix = "";
-					}
 					
-					document.getElementById('notice_title').innerHTML = prefix + title.charAt(0).toUpperCase() + title.slice(1) + ':';
+					document.getElementById('notice_title').innerHTML = 'Promo #' + mission_rank.toString() + ':' + title.charAt(0).toUpperCase() + title.slice(1) + ':';
 					if (missionId == 'download_playlist') {
 						document.getElementById('download_all_btn').style.display = 'block';
 					} else {
