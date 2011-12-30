@@ -215,7 +215,7 @@
 		
 		var liked = '<?php echo $liked ?>';
 		var fbPageUrl = '<?php echo $fbPageUrl ?>';
-		var playlistDownloaded = getCookie('download_playlist');
+		var downloadedPlaylist = getCookie('download_playlist');
 		
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
