@@ -201,6 +201,10 @@
 		<img src="../images/html5/song_bg_hover2.png" style="display: none" />
 		
 	<script type="text/javascript">
+	
+		if (top.location.href != 'http://www.facebook.com/lillywolfanddrnu?sk=app_107796503671') {
+			top.location.href = 'http://www.facebook.com/lillywolfanddrnu?sk=app_107796503671';
+		}
 		
 		var MAX_TRACKS = 4;
 		var MAX_POSTS = 5;
@@ -796,9 +800,9 @@
 		// },'html');	
 		
 		// CREATE MISSION
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=like', function(data, status) {
-		      // parse
-		},'html');
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=like', function(data, status) {
+		//       // parse
+		// },'html');
 	
 	</script>
 	
