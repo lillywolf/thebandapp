@@ -388,6 +388,7 @@ a.soundcloud-badge:hover {
 	width: 362px;	
 	float: left;
 	margin: 0 0 0 10px;
+	overflow: hidden;
 }
 #progress_bar {
 	float: left;
