@@ -29,7 +29,7 @@ class MissionHandler
 		$pageMissions = $this->redis->getPageMissions();
 		$completedMissions = array();
 		foreach ($pageMissions as $rank=>$pageMission) {
-			if (($pageMission == 'like' && $liked) || 
+			if (($pageMission == 'like' && $liked == 'true') || 
 			($pageMission == 'download_playlist' && (intval($downloadedPlaylist) == 1 || $this->redis->isMissionComplete('download_playlist'))) ||
 			($pageMission == 'add_app' && !empty($added_app))) {
 				$completedMissions[$rank] = true;
