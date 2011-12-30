@@ -34,30 +34,32 @@ if ($method == 'like')
 
 if ($method == 'update_missions')
 {
-	error_log('update mission');
 	$missionHandler = new MissionHandler($fbid, $pageId);
 	$addedApp = $utils->iterateThroughAndFind($pairs, 'added_app');
 	$liked = $utils->iterateThroughAndFind($pairs, 'liked');
 	$downloadedPlaylist = $utils->iterateThroughAndFind($pairs, 'downloaded_playlist');
-	error_log('found pairs');
 	$completedMissionCount = $missionHandler->getCompletedMissionCount($addedApp, $liked, $downloadedPlaylist);	
-	error_log('completed mission count: ' . $completedMissionCount);	
-	
 	echo 'completed_mission_count='.$completedMissionCount;
-	$nextMission = $missionHandler->getNextMission($addedApp, $liked, $downloadedPlaylist);
-	error_log('next mission: ' . print_r($nextMission, true));	
-	
+	$nextMission = $missionHandler->getNextMission($addedApp, $liked, $downloadedPlaylist);	
 	if ($nextMission != null) 
 	{
 		echo '&title='.$nextMission['title'].'&text='.$nextMission['text'].'&id='.$nextMission['id'];		
 	}	
 }
 
+if ($method == 'get_page_missions')
+{
+	$missions = $redis->getPageMissions();
+	foreach ($missions as $key=>$missionId)
+	{
+		echo 'id='.$missionId.'&rank='.$key.',';
+	}
+}
+
 if ($method == 'create_mission')
 {
 	$missionId = $utils->iterateThroughAndFind($pairs, 'mission_id');
 	$mission = $utils->getMissionData($missionId);
-	error_log('create this mission data: ' . print_r($mission, true));
 	$redis->createAppMission($mission['id'], $mission['title'], $mission['description'], $mission['explanation']);
 }
 

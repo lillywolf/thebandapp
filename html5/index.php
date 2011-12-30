@@ -213,6 +213,7 @@
 		var soundManager;
 		var mp3Support = true;
 		var smSongId;
+		var goals;
 		
 		var liked = '<?php echo $liked ?>';
 		var fbPageUrl = '<?php echo $fbPageUrl ?>';
@@ -262,12 +263,55 @@
 			updateDisplayedSongs();
 			updatePlayerData(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl'], currentSongData['purchaseUrl']);
 			stopButtonPropagations();
-			updateProgressBar();			
+			updateProgressBar();	
+			setPageGoals();		
 		}
 		
 		$('#progress_bar').mouseover(function(e) {
-			alert(e.pageX);
+			var distanceY = e.pageX - this.offsetLeft;
+			var segment = e.width/totalMissions;
+			alert(distanceY);
+			alert(segment);
+			toolTipGoal((distanceY/segment).ceil());
 		});
+		
+		function toolTipGoal(goalNumber) {
+			// Decrement by 1, because of visit page goal
+			goalNumber = goalNumber - 1;
+			if (parseInt(goalNumber) in goals) {
+				var ttText = getGoalToolTipText(goals[goalNumber]);
+			} else if (goalNumber == 0) {
+				var ttText = getGoalToolTipText(null);
+			}
+			alert(ttText);
+		}
+		
+		function getGoalToolTipText(goal) {
+			if (goal && goal.id == 'download_playlist') {
+				return '#' + goal.rank.toString() + ': DOWNLOADED SONGS';
+			} else if (goal && goal.id == 'like') {
+				return '#' + goal.rank.toString() + ': LIKED PAGE';
+			} else if (goal && goal.id == 'add_app') {
+				return '#' + goal.rank.toString() + ': ADDED APP';
+			} else if (goal == null) {
+				return '#' + goal.rank.toString() + ': VISITED PAGE';				
+			}
+		}
+		
+		function setPageGoals() {
+			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=get_page_missions', function(data, status) {
+				var listings = data.explode(',');
+				for (var i = 0; i < listings.length; i++) {
+					var missionId = getPairValue(listings[i].split('&'), 'id');
+					var missionRank = parseInt(getPairValue(listings[i].split('&'), 'rank'));
+					goals[missionRank] = {
+						id: missionId,
+						rank: missionRank
+					};
+				}
+				alert(goals.toSource());
+			});				
+		}
 
 		function updateProgressBar() {
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=update_missions&added_app=<?php echo $user_id ?>&liked='+liked+'&downloaded_playlist='+downloadedPlaylist, function(data, status) {
@@ -296,7 +340,12 @@
 						document.getElementById('add_app_btn').style.display = 'block';
 					} else {
 						document.getElementById('add_app_btn').style.display = 'none';						
-					}	
+					}
+					if (missionId == 'like') {
+						document.getElementById('notice_btn_wrapper').style.display = 'none';
+					} else {
+						document.getElementById('notice_btn_wrapper').style.display = 'block';
+					}
 				}
 			},'html');
 		}
