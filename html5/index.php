@@ -265,7 +265,9 @@
 		}
 
 		function updateProgressBar() {
+			alert('update prog bar');
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=update_missions&added_app=<?php echo $user_id ?>&liked='+liked+'&downloaded_playlist='+downloadedPlaylist, function(data, status) {
+				alert('got prog bar data');
 				var title = getPairValue(data.split('&'), 'title');
 				var text = getPairValue(data.split('&'), 'text');
 				var missionId = getPairValue(data.split('&'), 'id');
