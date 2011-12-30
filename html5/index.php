@@ -270,9 +270,7 @@
 		$('#progress_bar').mouseover(function(e) {
 			var distanceY = e.pageX - this.offsetLeft;
 			var segment = parseInt($('#progress_bg').width())/totalMissions;
-			alert(segment);
 			var goalNumber = Math.ceil(parseInt(distanceY)/segment); 
-			alert(goalNumber);
 			toolTipGoal(goalNumber);
 		});
 		
@@ -283,7 +281,7 @@
 			if (parseInt(goalNumber) in goals) {
 				var ttText = getGoalToolTipText(goals[goalNumber]);
 			} else if (goalNumber == 0) {
-				var ttText = getGoalToolTipText(null);
+				var ttText = getGoalToolTipText(0);
 			}
 			alert(ttText);
 		}
@@ -295,8 +293,8 @@
 				return '#' + goal.rank.toString() + ': LIKED PAGE';
 			} else if (goal && goal.id == 'add_app') {
 				return '#' + goal.rank.toString() + ': ADDED APP';
-			} else if (goal == null) {
-				return '#' + goal.rank.toString() + ': VISITED PAGE';				
+			} else if (goal == 0) {
+				return '#1: VISITED PAGE';				
 			}
 		}
 		
