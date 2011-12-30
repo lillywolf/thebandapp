@@ -269,7 +269,7 @@
 		
 		$('#progress_bar').mouseover(function(e) {
 			var distanceY = e.pageX - this.offsetLeft;
-			var segment = e.width/totalMissions;
+			var segment = e.width()/totalMissions;
 			alert(distanceY);
 			alert(segment);
 			toolTipGoal((distanceY/segment).ceil());
@@ -277,6 +277,7 @@
 		
 		function toolTipGoal(goalNumber) {
 			// Decrement by 1, because of visit page goal
+			alert(goalNumber);
 			goalNumber = goalNumber - 1;
 			if (parseInt(goalNumber) in goals) {
 				var ttText = getGoalToolTipText(goals[goalNumber]);
@@ -302,15 +303,12 @@
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=get_page_missions', function(data, status) {
 				var listings = data.split(',');
 				for (var i = 0; i < listings.length; i++) {
-					alert(listings[i].toSource());
 					var missionId = getPairValue(listings[i].split('&'), 'id');
 					var missionRank = parseInt(getPairValue(listings[i].split('&'), 'rank'));
-					alert(missionRank);
 					goals[missionRank] = {
 						id: missionId,
 						rank: missionRank
 					};
-					alert(goals.toSource());
 				}
 				alert(goals.toSource());
 			});				
