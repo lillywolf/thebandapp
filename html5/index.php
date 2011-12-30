@@ -391,11 +391,11 @@
 		function listenForHovers() {
 			$('.song').hover('', function(event) {
 				var elem = event.delegateTarget;
-				alert(elem.id);
+				alert(elem);
 				var titleElem = $(elem.id).find('.song_title');
 				alert(titleElem);
 				elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
-				var titleOffsetTop = titleElem.offset().top - $('#player').offset().top;
+				var titleOffsetTop = parseInt(titleElem.offset().top) - parseInt($('#player').offset().top);
 				alert(titleOffsetTop);
 				var titleOffsetLeft = titleElem.offset().left + titleElem.width() + 10;
 				$('#song_play_btn_over').css('left', titleOffsetLeft);
