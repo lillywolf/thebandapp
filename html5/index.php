@@ -275,9 +275,10 @@
 				var distanceY = e.pageX - this.offsetLeft;
 				var segment = parseInt($('#progress_bg').width())/totalMissions;
 				var newGoal = Math.ceil(parseInt(distanceY)/segment);
-				if (newGoal != goalNumber) {
+				if (newGoal != goalNumber && newGoal <= completedMissions) {
 					goalNumber = newGoal;
 					var ttText = toolTipGoal(goalNumber);
+					document.getElementById('progress_tip').style.display = 'block';
 					document.getElementById('progress_tip').innerHTML = ttText;
 					document.getElementById('progress_tip').style.marginLeft = this.offsetLeft + segment * (goalNumber-1);
 				}	
@@ -322,7 +323,6 @@
 						rank: missionRank
 					};
 				}
-				alert(goals.toSource());
 			});				
 		}
 
