@@ -275,7 +275,7 @@
 				var distanceY = e.pageX - this.offsetLeft;
 				var segment = parseInt($('#progress_bg').width())/totalMissions;
 				var newGoal = Math.ceil(parseInt(distanceY)/segment);
-				if (newGoal != goalNumber && newGoal <= completedMissions) {
+				if (newGoal != goalNumber) {
 					goalNumber = newGoal;
 					var ttText = toolTipGoal(goalNumber);
 					document.getElementById('progress_tip').style.display = 'block';
