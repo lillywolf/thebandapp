@@ -277,7 +277,7 @@
 				if (completedMissions >= totalMissions) {
 					document.getElementById('notice').style.display = 'none';
 					document.getElementById('missions').style.display = 'none';
-					document.getElementById('flash').style.top = '20';
+					document.getElementById('flash').style.top = '5';
 					// document.getElementById('progress_bg').style.display = 'none';
 					// document.getElementById('progress_label').innerHTML = 'PROGRESS COMPLETE!';
 				} else {
