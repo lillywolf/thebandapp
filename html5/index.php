@@ -391,8 +391,9 @@
 		function listenForHovers() {
 			$('.song').hover('', function(event) {
 				var elem = event.delegateTarget;
-				var titleElem = elem.find('.song_title');
-				alert(titleElem.innerHTML);
+				alert(elem.id);
+				var titleElem = $(elem.id).find('.song_title');
+				alert(titleElem);
 				elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
 				var titleOffsetTop = titleElem.offset().top - $('#player').offset().top;
 				alert(titleOffsetTop);
