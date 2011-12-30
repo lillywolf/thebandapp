@@ -204,6 +204,7 @@
 		
 		var MAX_TRACKS = 4;
 		var MAX_POSTS = 5;
+		var totalMissions = 4;
 		var isPlaying = false;
 		var currentTrackIndex = 1;
 		var currentScrollIndex = 1;
@@ -265,9 +266,7 @@
 		}
 
 		function updateProgressBar() {
-			alert('update prog bar');
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=update_missions&added_app=<?php echo $user_id ?>&liked='+liked+'&downloaded_playlist='+downloadedPlaylist, function(data, status) {
-				alert('got prog bar data');
 				var title = getPairValue(data.split('&'), 'title');
 				var text = getPairValue(data.split('&'), 'text');
 				var missionId = getPairValue(data.split('&'), 'id');
@@ -275,17 +274,23 @@
 				completedMissions = parseInt(completedMissions)+1;
 				
 				// Update display components
-				document.getElementById('progress_bar').src = '../images/html5/progress_bar_4_'+completedMissions.toString()+'_green.png';				
-				document.getElementById('notice_title').innerHTML = 'Promo #' + (completedMissions+1).toString() + ': ' + title.charAt(0).toUpperCase() + title.slice(1);
-				if (missionId == 'download_playlist') {
-					document.getElementById('download_all_btn').style.display = 'block';
+				if (completedMissions >= totalMissions+1) {
+					document.getElementById('notice').style.display = 'none';
+					document.getElementById('progress_bg').style.display = 'none';
+					document.getElementById('progress_label').innerHTML = 'PROGRESS COMPLETE!';
 				} else {
-					document.getElementById('download_all_btn').style.display = 'none';						
-				}
-				if (missionId == 'add_app') {
-					document.getElementById('add_app_btn').style.display = 'block';
-				} else {
-					document.getElementById('add_app_btn').style.display = 'none';						
+					document.getElementById('progress_bar').src = '../images/html5/progress_bar_4_'+completedMissions.toString()+'_green.png';				
+					document.getElementById('notice_title').innerHTML = 'Promo #' + (completedMissions+1).toString() + ': ' + title.charAt(0).toUpperCase() + title.slice(1);
+					if (missionId == 'download_playlist') {
+						document.getElementById('download_all_btn').style.display = 'block';
+					} else {
+						document.getElementById('download_all_btn').style.display = 'none';						
+					}
+					if (missionId == 'add_app') {
+						document.getElementById('add_app_btn').style.display = 'block';
+					} else {
+						document.getElementById('add_app_btn').style.display = 'none';						
+					}	
 				}
 			},'html');
 		}
