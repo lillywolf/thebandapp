@@ -125,6 +125,7 @@
 				</div>		
 			</div>	
 		</div>
+		<div id="song_play_btn_over"><img src="../images/html5/play_btn_small.png" /></div>
 		
 		<div id="flash">
 			<div id="player">	
@@ -390,7 +391,15 @@
 		function listenForHovers() {
 			$('.song').hover('', function(event) {
 				var elem = event.delegateTarget;
+				var titleElem = elem.find('.song_title');
+				alert(titleElem.innerHTML);
 				elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
+				var titleOffsetTop = titleElem.offset().top - $('#player').offset().top;
+				alert(titleOffsetTop);
+				var titleOffsetLeft = titleElem.offset().left + titleElem.width() + 10;
+				$('#song_play_btn_over').css('left', titleOffsetLeft);
+				$('#song_play_btn_over').css('top', titleOffsetTop);
+				$('#song_play_btn_over').css('display', 'block');
 			});
 		}
 		 
