@@ -33,7 +33,7 @@ class Util
 				break;
 			case 'download_playlist':
 				$data['id'] = 'download_playlist';
-				$data['title'] = 'download the free songs';
+				$data['title'] = 'download our free music!';
 				$data['description'] = 'Download tracks for free';
 				$data['explanation'] = 'Have users download a playlist you\'ve defined';
 				break;
