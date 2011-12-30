@@ -215,6 +215,7 @@
 		var smSongId;
 		
 		var liked = '<?php echo $liked ?>';
+		alert(liked);
 		var fbPageUrl = '<?php echo $fbPageUrl ?>';
 		var downloadedPlaylist = getCookie('download_playlist');
 		
