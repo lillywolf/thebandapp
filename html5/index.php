@@ -333,17 +333,17 @@
 				var missionId = getPairValue(data.split('&'), 'id');
 				var completedMissions = getPairValue(data.split('&'), 'completed_mission_count');
 				completedMissions = parseInt(completedMissions)+1;
+				document.getElementById('progress_bar').src = '../images/html5/progress_bar_4_'+completedMissions.toString()+'_green.png';				
 				
 				// Update display components
 				if (completedMissions >= totalMissions) {
 					document.getElementById('notice').style.display = 'none';
-					document.getElementById('missions').style.top = '0';
+					document.getElementById('missions').style.top = '-45px';
 					document.getElementById('missions').style.display = 'block';
-					document.getElementById('flash').style.top = '40';
+					document.getElementById('flash').style.top = '40px';
 					document.getElementById('progress_bg').style.display = 'block';
 					// document.getElementById('progress_label').innerHTML = 'PROGRESS COMPLETE!';
 				} else {
-					document.getElementById('progress_bar').src = '../images/html5/progress_bar_4_'+completedMissions.toString()+'_green.png';				
 					document.getElementById('notice_title').innerHTML = 'Goal #' + (completedMissions+1).toString() + ': ' + title.charAt(0).toUpperCase() + title.slice(1);
 					if (missionId == 'download_playlist') {
 						document.getElementById('download_all_btn').style.display = 'block';
