@@ -817,9 +817,9 @@
 		// },'html');	
 		
 		// CREATE MISSION
-		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=add_app', function(data, status) {
-		//       // parse
-		// },'html');
+		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=download_playlist', function(data, status) {
+		      // parse
+		},'html');
 	
 	</script>
 	
