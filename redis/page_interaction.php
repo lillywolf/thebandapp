@@ -34,17 +34,23 @@ if ($method == 'like')
 
 if ($method == 'update_mission')
 {
+	error_log('update mission');
 	$missionHandler = new MissionHandler($fbid, $pageId);
-	$added_app = $utils->iterateThroughAndFind($pairs, 'added_app');
+	$addedApp = $utils->iterateThroughAndFind($pairs, 'added_app');
 	$liked = $utils->iterateThroughAndFind($pairs, 'liked');
 	$downloadedPlaylist = $utils->iterateThroughAndFind($pairs, 'downloaded_playlist');
-	$completedMissionCount = $missionHandler->getCompletedMissionCount($added_app, $liked, $downloadedPlaylist);	
+	error_log('found pairs');
+	$completedMissionCount = $missionHandler->getCompletedMissionCount($addedApp, $liked, $downloadedPlaylist);	
+	error_log('completed mission count: ' . $completedMissionCount);	
+	
 	echo 'completed_mission_count='.$completedMissionCount;
-	$nextMission = $missionHandler->getNextMission($added_app, $liked, $downloadedPlaylist);
+	$nextMission = $missionHandler->getNextMission($addedApp, $liked, $downloadedPlaylist);
+	error_log('next mission: ' . print_r($nextMission, true));	
+	
 	if ($nextMission != null) 
 	{
 		echo '&title='.$nextMission['title'].'&text='.$nextMission['text'].'&id='.$nextMission['id'];		
-	}		
+	}	
 }
 
 if ($method == 'create_mission')
