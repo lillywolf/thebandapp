@@ -276,8 +276,10 @@
 				// Update display components
 				if (completedMissions >= totalMissions) {
 					document.getElementById('notice').style.display = 'none';
-					document.getElementById('progress_bg').style.display = 'none';
-					document.getElementById('progress_label').innerHTML = 'PROGRESS COMPLETE!';
+					document.getElementById('missions').style.display = 'none';
+					document.getElementById('flash').style.top = '20';
+					// document.getElementById('progress_bg').style.display = 'none';
+					// document.getElementById('progress_label').innerHTML = 'PROGRESS COMPLETE!';
 				} else {
 					document.getElementById('progress_bar').src = '../images/html5/progress_bar_4_'+completedMissions.toString()+'_green.png';				
 					document.getElementById('notice_title').innerHTML = 'Promo #' + (completedMissions+1).toString() + ': ' + title.charAt(0).toUpperCase() + title.slice(1);
