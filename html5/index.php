@@ -279,13 +279,14 @@
 					goalNumber = newGoal;
 					var ttText = toolTipGoal(goalNumber);
 					document.getElementById('progress_tip').innerHTML = ttText;
-					document.getElementById('progress_tip').style.marginLeft = this.offsetLeft + (segment-1) * goalNumber;
+					document.getElementById('progress_tip').style.marginLeft = this.offsetLeft + segment * (goalNumber-1);
 				}	
 			});
 		});
 		
 		$('#progress_bar').mouseleave(function(e) {
 			$('#progress_bar').unbind('mousemove');
+			document.getElementById('progress_tip').style.display = 'none';
 		});
 		
 		function toolTipGoal(goalNumber) {
