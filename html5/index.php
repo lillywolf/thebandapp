@@ -40,6 +40,7 @@
 		$scConsumerKey = "738091d6d02582ddd19de7109b79e47b";
 		$scope = 'email,publish_stream,publish_actions,sms';
 		$home = 'http://www.facebook.com/' . 'lillywolfanddrnu' . '?sk=app_' . '107796503671';
+		$perms = null;
 	
 		$config = array();
 		$config['appId'] = $appId;
@@ -56,10 +57,6 @@
 			'redirect_uri' => $home, 
 			'scope' => $scope			
 			));
-		$perms = null;
-		if ($user_id) {
-			$perms = $facebook->api('/me/permissions', 'GET');			
-		}
 		$req = $facebook->getSignedRequest();
 		$pageId = $req['page']['id'];
 		if ($req['page']['liked']) {
@@ -90,17 +87,16 @@
 				}
 			}
 		}
-							
-		$downloadedPlaylist = $_COOKIE['download_playlist'];
-		
-		# Record user data if we have an id
+									
+		# Record data for users who've added the app
 		if ($user_id) {
+			$perms = $facebook->api('/me/permissions', 'GET');			
 			$redisWrapper = new Redis($user_id, $pageId);	
-			$redisWrapper->recordPermissions($perms['data'][0]);			
+			$redisWrapper->recordPermissions($perms['data'][0]);
+			$redisWrapper->recordAppAdded();			
 			$redisWrapper->recordVisits();		
 			$redisWrapper->recordLike($liked);
-			$redisWrapper->recordDownloadPlaylist($downloadedPlaylist);
-			// $alluser = $redis->hgetall($userkey);
+			$redisWrapper->recordDownloadPlaylist($_COOKIE['download_playlist']);
 		}
 							
 		# Record time for efficiency analytics				
@@ -207,6 +203,7 @@
 	<script type="text/javascript">
 		
 		var MAX_TRACKS = 4;
+		var MAX_POSTS = 5;
 		var isPlaying = false;
 		var currentTrackIndex = 1;
 		var currentScrollIndex = 1;
@@ -215,8 +212,10 @@
 		var soundManager;
 		var mp3Support = true;
 		var smSongId;
+		
 		var liked = '<?php echo $liked ?>';
 		var fbPageUrl = '<?php echo $fbPageUrl ?>';
+		var playlistDownloaded = getCookie('download_playlist');
 		
 		timeleft = $('#top_timer');
 		topPlayer = $('#top_player');
@@ -233,39 +232,22 @@
 		// 	redirect_uri: 'http://simple-ocean-7178.herokuapp.com/auth/',
 		// });
 		// 
-		// SC.accessToken = '1-12872-7625335-e561f85b896d9158';
-		
-		// $(document).ready(function() {
-		// 	if (Modernizr.audio == '' || Modernizr.audio.mp3 == '') {
-		// 		mp3Support = false;
-		// 		initSoundManager();
-		// 	}
-		// });	
+		// SC.accessToken = '1-12872-7625335-e561f85b896d9158';	
 		
 		init();	
 		initSoundManager();
 		
 		function initSoundManager() {
-			// Modernizr.load([
-			// 	{
-			// 		load: '../scripts/sm2/soundmanager2.js',
-			// 		complete: function() {
-			// 			alert('attempt to load sm');
-						soundManager.url = '../scripts/sm2/swf/';
-						soundManager.flashVersion = 9; // optional: shiny features (default = 8)
-						soundManager.useFlashBlock = false; // optionally, enable when you're ready to dive in
-						soundManager.debugMode = false;
-						soundManager.onready(function() {
-							// alert('sm ready');
-						});			
-			// 		}
-			// 	}
-			// ]);
+			soundManager.url = '../scripts/sm2/swf/';
+			soundManager.flashVersion = 9; // optional: shiny features (default = 8)
+			soundManager.useFlashBlock = false; // optionally, enable when you're ready to dive in
+			soundManager.debugMode = false;
+			soundManager.onready(function() {
+				// alert('sm ready');
+			});			
 		}
 		
-		// Initialize stuff
-		function init() {
-			
+		function init() {			
 			// Set up first song
 			currentSongData = {
 				streamUrl: '<?php echo $trackdata[0]["stream_url"] . "?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" ?>',
@@ -281,34 +263,29 @@
 			stopButtonPropagations();
 			updateProgressBar();			
 		}
-		
+
 		function updateProgressBar() {
-			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=count_missions&perms=<?php echo $perms ?>&liked='+liked+'&downloaded_playlist='+getCookie('download_playlist'), function(data, status) {
-				document.getElementById('progress_bar').src = '../images/html5/progress_bar_4_'+(parseInt(data)+1).toString()+'_green.png';
-				getNextMission((parseInt(data)+2).toString());	
-			},'html');
-		}
-		
-		function getNextMission(mission_rank) {
-			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=next_mission&perms=<?php echo $perms ?>&liked='+liked+'&downloaded_playlist='+getCookie('download_playlist'), function(data, status) {
-				if (data != null) {
-					var title = getPairValue(data.split('&'), 'title');
-					var text = getPairValue(data.split('&'), 'text');
-					var missionId = getPairValue(data.split('&'), 'id');
-					
-					document.getElementById('notice_title').innerHTML = 'Promo #' + mission_rank.toString() + ': ' + title.charAt(0).toUpperCase() + title.slice(1);
-					if (missionId == 'download_playlist') {
-						document.getElementById('download_all_btn').style.display = 'block';
-					} else {
-						document.getElementById('download_all_btn').style.display = 'none';						
-					}
-					if (missionId == 'add_app') {
-						document.getElementById('add_app_btn').style.display = 'block';
-					} else {
-						document.getElementById('add_app_btn').style.display = 'none';						
-					}
+			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=update_missions&added_app=<?php (isset($user_id)) ? echo \'1\' : echo \'0\' ?>&liked='+liked+'&downloaded_playlist='+downloadedPlaylist, function(data, status) {
+				var title = getPairValue(data.split('&'), 'title');
+				var text = getPairValue(data.split('&'), 'text');
+				var missionId = getPairValue(data.split('&'), 'id');
+				var completedMissions = getPairValue(data.split('&'), 'completed_mission_count');
+				completedMissions = parseInt(completedMissions)+1;
+				
+				// Update display components
+				document.getElementById('progress_bar').src = '../images/html5/progress_bar_4_'+completedMissions.toString()+'_green.png';				
+				document.getElementById('notice_title').innerHTML = 'Promo #' + (completedMissions+1).toString() + ': ' + title.charAt(0).toUpperCase() + title.slice(1);
+				if (missionId == 'download_playlist') {
+					document.getElementById('download_all_btn').style.display = 'block';
+				} else {
+					document.getElementById('download_all_btn').style.display = 'none';						
 				}
-			},'html');			
+				if (missionId == 'add_app') {
+					document.getElementById('add_app_btn').style.display = 'block';
+				} else {
+					document.getElementById('add_app_btn').style.display = 'none';						
+				}
+			},'html');
 		}
 		
 		function getPairValue(arr, match)
@@ -512,37 +489,30 @@
 			}
 		}	
 		
-		var MAX_POSTS = 5;
-		var spinner;
-		// preload();
-		
-		window.onload = function() {
-		}
+		// var spinner;
 
-		function preload() {
-			var opts = {
-			  lines: 10, // The number of lines to draw
-			  length: 12, // The length of each line
-			  width: 7, // The line thickness
-			  radius: 16, // The radius of the inner circle
-			  color: '#00E1FA', // #rgb or #rrggbb
-			  speed: 1, // Rounds per second
-			  trail: 60, // Afterglow percentage
-			  shadow: false // Whether to render a shadow
-			};
-			var target = window.document.getElementById('spinner');
-			spinner = new Spinner(opts).spin(target);
-			target.appendChild(spinner.el);						
-		}
-		
-		function stopPreload() {
-			spinner.stop();
-			window.document.getElementById('spinner').style.margin = "0px";			
-			window.document.getElementById('spinner').style.visibility = "hidden";
-			shiftElements();
-			// addTwitterFollowButton();
-			// initializeJS();
-		}
+		// function preload() {
+		// 	var opts = {
+		// 	  lines: 10, // The number of lines to draw
+		// 	  length: 12, // The length of each line
+		// 	  width: 7, // The line thickness
+		// 	  radius: 16, // The radius of the inner circle
+		// 	  color: '#00E1FA', // #rgb or #rrggbb
+		// 	  speed: 1, // Rounds per second
+		// 	  trail: 60, // Afterglow percentage
+		// 	  shadow: false // Whether to render a shadow
+		// 	};
+		// 	var target = window.document.getElementById('spinner');
+		// 	spinner = new Spinner(opts).spin(target);
+		// 	target.appendChild(spinner.el);						
+		// }
+		// 
+		// function stopPreload() {
+		// 	spinner.stop();
+		// 	window.document.getElementById('spinner').style.margin = "0px";			
+		// 	window.document.getElementById('spinner').style.visibility = "hidden";
+		// 	shiftElements();
+		// }
 		
 		function shiftElements() {
 			var offY = window.document.getElementById("flash").offsetHeight;
@@ -552,14 +522,14 @@
 		function downloadSong(downloadUrl) {
 			window.document.getElementById("downloader-frame").src=downloadUrl+"?consumer_key=738091d6d02582ddd19de7109b79e47b";
 			
-			setCookie('download_song', downloadUrl, null);
+			setCookie('download_song', downloadUrl, 365);
 			
 			// Record download if user id exists
-			if ('<?php echo $user_id ?>' != null) {
-				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download&download_url='+downloadUrl, function(data, status) {
-				      // parse
-				},'html');	
-			}
+			// if ('<?php echo $user_id ?>' != null) {
+			// 	$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download&download_url='+downloadUrl, function(data, status) {
+			// 	      // parse
+			// 	},'html');	
+			// }
 		}
 		
 		function downloadAllSongs() {
@@ -569,7 +539,8 @@
 			
 			// Set cookie
 			setCookie('download_playlist', 1, 365);
-			
+			downloadedPlaylist = getCookie('download_playlist');
+
 			updateProgressBar();	
 			
 			// Record download all if user id exists
@@ -619,15 +590,14 @@
 				}
 				e.src = urls[i]+"?consumer_key=738091d6d02582ddd19de7109b79e47b";				
 				window.document.getElementById("downloaders").appendChild(e);
-				// REDIS
-				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download&download_url='+urls[i], function(data, status) {
-				      // parse
-				},'html');
+
+				// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=download&download_url='+urls[i], function(data, status) {
+				//       // parse
+				// },'html');
 			}	
 		}
 		
 		function buySong(buyUrl) {
-			// alert(buyUrl);
 			window.open(buyUrl);
 		}
 		

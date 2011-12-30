@@ -61,12 +61,12 @@ class Redis
 				$str = $str . $key . ',';
 			}
 		}
-		error_log('permissions: ' . print_r($str, true));
 		$this->redis->hset($this->userKey, 'perms', $str);
-		if (isset($perms['publish_stream']))
-		{
-			$this->checkForMission('add_app');
-		}
+	}
+	
+	public function recordAppAdded()
+	{
+		$this->checkForMission('add_app');
 	}
 	
 	public function recordLike($liked)

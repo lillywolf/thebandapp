@@ -14,25 +14,24 @@ class MissionHandler
 		$this->util = new Util();
 	}
 	
-	public function getCompletedMissionCount($permissions, $liked, $downloadedPlaylist)
+	public function getCompletedMissionCount($added_app, $liked, $downloadedPlaylist)
 	{
-		$completedMissions = $this->getCompletedMissions($permissions, $liked, $downloadedPlaylist);
+		$completedMissions = $this->getCompletedMissions($added_app, $liked, $downloadedPlaylist);
 		$completedMissionCount = 0;
 		while ($completedMissions[$completedMissionCount+1] == true) {
 			$completedMissionCount++;
 		}
-		// error_log('completed mission count: ' . print_r($completedMissionCount, true));
 		return $completedMissionCount;		
 	}
 	
-	public function getCompletedMissions($permissions, $liked, $downloadedPlaylist)
+	public function getCompletedMissions($added_app, $liked, $downloadedPlaylist)
 	{
 		$pageMissions = $this->redis->getPageMissions();
 		$completedMissions = array();
 		foreach ($pageMissions as $rank=>$pageMission) {
 			if (($pageMission == 'like' && $liked) || 
 			($pageMission == 'download_playlist' && (intval($downloadedPlaylist) == 1 || $this->redis->isMissionComplete('download_playlist'))) ||
-			($pageMission == 'add_app' && isset($permissions) && in_array('publish_stream', explode(',', $permissions)))) {
+			($pageMission == 'add_app' && !empty($added_app))) {
 				$completedMissions[$rank] = true;
 			} else {
 				$completedMissions[$rank] = false;

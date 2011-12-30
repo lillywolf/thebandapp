@@ -32,6 +32,21 @@ if ($method == 'like')
 	$redis->recordLike('true');		
 }
 
+if ($method == 'update_mission')
+{
+	$missionHandler = new MissionHandler($fbid, $pageId);
+	$added_app = $utils->iterateThroughAndFind($pairs, 'added_app');
+	$liked = $utils->iterateThroughAndFind($pairs, 'liked');
+	$downloadedPlaylist = $utils->iterateThroughAndFind($pairs, 'downloaded_playlist');
+	$completedMissionCount = $missionHandler->getCompletedMissionCount($added_app, $liked, $downloadedPlaylist);	
+	echo 'completed_mission_count='.$completedMissionCount;
+	$nextMission = $missionHandler->getNextMission($added_app, $liked, $downloadedPlaylist);
+	if ($nextMission != null) 
+	{
+		echo '&title='.$nextMission['title'].'&text='.$nextMission['text'].'&id='.$nextMission['id'];		
+	}		
+}
+
 if ($method == 'create_mission')
 {
 	$missionId = $utils->iterateThroughAndFind($pairs, 'mission_id');
@@ -64,7 +79,6 @@ if ($method == 'next_mission')
 	$liked = $utils->iterateThroughAndFind($pairs, 'liked');
 	$downloadedPlaylist = $utils->iterateThroughAndFind($pairs, 'downloaded_playlist');
 	$nextMission = $missionHandler->getNextMission($permissions, $liked, $downloadedPlaylist);
-	error_log('next mission: ' . print_r($nextMission, true));
 	if ($nextMission != null) 
 	{
 		echo 'title='.$nextMission['title'].'&text='.$nextMission['text'].'&id='.$nextMission['id'];		
