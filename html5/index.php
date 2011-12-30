@@ -107,10 +107,10 @@
 		<div id="page_heading_div" class="hidden"></div>
 		<div id="missions">
 			<div id="progress_label">
-				PROMOS COMPLETE:
+				GOALS COMPLETE:
 			</div>	
 			<div id="progress_bg">
-				<img id="progress_bar" />
+				<img id="progress_bar" onMouseOver="progressBarHover()"/>
 			</div>	
 		</div>
 		<div id="notice">
@@ -264,6 +264,10 @@
 			stopButtonPropagations();
 			updateProgressBar();			
 		}
+		
+		$('#progress_bar').mouseover(function(e) {
+			alert(e.pageX);
+		});
 
 		function updateProgressBar() {
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=update_missions&added_app=<?php echo $user_id ?>&liked='+liked+'&downloaded_playlist='+downloadedPlaylist, function(data, status) {
@@ -282,7 +286,7 @@
 					// document.getElementById('progress_label').innerHTML = 'PROGRESS COMPLETE!';
 				} else {
 					document.getElementById('progress_bar').src = '../images/html5/progress_bar_4_'+completedMissions.toString()+'_green.png';				
-					document.getElementById('notice_title').innerHTML = 'Promo #' + (completedMissions+1).toString() + ': ' + title.charAt(0).toUpperCase() + title.slice(1);
+					document.getElementById('notice_title').innerHTML = 'Goal #' + (completedMissions+1).toString() + ': ' + title.charAt(0).toUpperCase() + title.slice(1);
 					if (missionId == 'download_playlist') {
 						document.getElementById('download_all_btn').style.display = 'block';
 					} else {
