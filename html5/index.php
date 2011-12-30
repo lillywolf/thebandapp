@@ -201,10 +201,6 @@
 		<img src="../images/html5/song_bg_hover2.png" style="display: none" />
 		
 	<script type="text/javascript">
-	
-		if (top.location.href != 'http://www.facebook.com/lillywolfanddrnu?sk=app_107796503671') {
-			top.location.href = 'http://www.facebook.com/lillywolfanddrnu?sk=app_107796503671';
-		}
 		
 		var MAX_TRACKS = 4;
 		var MAX_POSTS = 5;
