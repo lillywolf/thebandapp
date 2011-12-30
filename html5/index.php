@@ -269,7 +269,8 @@
 		
 		$('#progress_bar').mouseover(function(e) {
 			var distanceY = e.pageX - this.offsetLeft;
-			var segment = e.width()/totalMissions;
+			alert(e.width());
+			var segment = parseInt(e.width())/totalMissions;
 			alert(distanceY);
 			alert(segment);
 			toolTipGoal((distanceY/segment).ceil());
