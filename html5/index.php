@@ -400,7 +400,8 @@
 				var titleElem = $(str)[0];
 				// elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
 				var titleOffsetTop = parseInt(titleElem.offsetTop) - parseInt(document.getElementById('player').offsetTop);
-				var titleOffsetLeft = parseInt(titleElem.offsetLeft) + parseInt(titleElem.getWidth) + 10;
+				alert(titleOffsetTop);
+				var titleOffsetLeft = parseInt(titleElem.offsetLeft) + parseInt(titleElem.style.width) + 10;
 				alert(titleOffsetLeft);
 				document.getElementById('song_play_btn_over').style.left = titleOffsetLeft;
 				document.getElementById('song_play_btn_over').style.top = titleOffsetTop;
