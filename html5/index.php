@@ -398,11 +398,13 @@
 				var elem = event.delegateTarget;
 				var str = '#'+elem.id.toString() + ' .song_title';
 				var titleElem = $(str)[0];
+				var titleIdStr = '#' + titleElem.id.toString();
+				alert(titleIdStr);
 				// elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
 				var titleOffsetTop = parseInt(titleElem.offsetTop) - parseInt(document.getElementById('player').offsetTop);
 				alert(titleOffsetTop);
-				var titleOffsetLeft = parseInt(titleElem.offsetLeft) + parseInt(titleElem.style.width) + 10;
-				alert(titleOffsetLeft);
+				var titleOffsetLeft = parseInt(titleElem.offsetLeft) + parseInt($(titleIdStr).width()) + 10;
+				alert($(titleIdStr).width());
 				document.getElementById('song_play_btn_over').style.left = titleOffsetLeft;
 				document.getElementById('song_play_btn_over').style.top = titleOffsetTop;
 				document.getElementById('song_play_btn_over').style.display = 'block';
