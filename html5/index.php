@@ -400,10 +400,10 @@
 				var titleElem = $(str)[0];
 				// elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
 				var titleOffsetTop = parseInt(titleElem.offsetTop) - parseInt(document.getElementById('player').offsetTop);
-				var titleOffsetLeft = titleElem.offset().left + titleElem.width() + 10;
+				var titleOffsetLeft = parseInt(titleElem.offsetLeft) + parseInt(titleElem.width()) + 10;
 				alert(titleOffsetLeft);
-				// document.getElementById('song_play_btn_over').style.left = titleOffsetLeft;
-				// document.getElementById('song_play_btn_over').style.top = titleOffsetTop;
+				document.getElementById('song_play_btn_over').style.left = titleOffsetLeft;
+				document.getElementById('song_play_btn_over').style.top = titleOffsetTop;
 				document.getElementById('song_play_btn_over').style.display = 'block';
 			});
 		}
