@@ -164,7 +164,7 @@
 						<?php $i = 1; foreach ($trackdata as $track) {
 							echo '<div class="song" id="song_' . $i . '" onClick="populatePlayer(\'' . $track['title'] . '\', ' . $i . ', \'' . $track['permalink_url'] . '\', \'' . $track['artwork_url'] . '\', \'' . $track['download_url'] . '\', \'' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b\', \'' . $track['purchase_url'] . '\');">
 							<audio class="hidden_audio" id="audio_' . $i . '"><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b"></source></audio>
-							<div class="song_title">' . $track['title'] . '</div>
+							<div class="song_title" id="song_title_' . $i . '">' . $track['title'] . '</div>
 							<div class="song_stats">
 								<div class="stat_num_plays">' . $track['playback_count'] . '</div>
 								<div class="stat_text_plays">plays</div>
@@ -393,9 +393,9 @@
 			$('.song').mouseover('', function(event) {
 				var elem = event.delegateTarget;
 				alert(elem.id);
-				var titleElem = elem.find('.song_title');
+				var titleElem = $(elem.id).find('.song_title');
 				alert(titleElem);
-				alert(titleElem.innerHTML);
+				alert(titleElem.id);
 				// elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
 				alert(titleElem.offsetTop);
 				var titleOffsetTop = titleElem.offsetTop - document.getElementById('player').offsetTop;
