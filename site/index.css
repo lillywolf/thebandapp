@@ -430,4 +430,5 @@ a.soundcloud-badge:hover {
 #song_play_btn_over {
 	position: absolute;
 	display: none;
+	z-index: 5;
 }
