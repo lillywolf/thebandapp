@@ -399,7 +399,7 @@
 				var titleOffsetLeft = titleElem.offset().left + titleElem.width() + 10;
 				alert(titleOffsetLeft);
 				document.getElementById('song_play_btn_over').style.left = titleOffsetLeft;
-				document.getElementById('song_play_btn_over').style.top titleOffsetTop;
+				document.getElementById('song_play_btn_over').style.top = titleOffsetTop;
 				document.getElementById('song_play_btn_over').style.display = 'block';
 			});
 		}
