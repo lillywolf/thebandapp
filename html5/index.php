@@ -49,6 +49,7 @@
 		
 		$MAX_SONGS_SHOWN = 4;	
 		$DOWNLOAD_ALL_PLAYLIST_NAME = 'lilly-and-dr-nu-mp3s';
+		$PLAYLIST_NAME = 'lilly-and-dr-nu-mp3s';
 
 		$facebook = new Facebook($config);	
 		// $appAccessToken = $facebook->getApplicationAccessToken();
@@ -69,7 +70,7 @@
 		$soundcloud->setAccessToken('1-12872-7625335-e561f85b896d9158');
 		
 		try {
-		    $trackdata = json_decode($soundcloud->get('me/tracks'), true);
+		    # $trackdata = json_decode($soundcloud->get('me/tracks'), true);
 			$playlistdata = json_decode($soundcloud->get('me/playlists'), true);
 		} catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) {
 		    exit($e->getMessage());
@@ -85,6 +86,9 @@
 				foreach($download_tracks as $track) {
 					$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
 				}
+			}
+			if ($playlist['permalink'] == $PLAYLIST_NAME) {
+				$trackdata = $playlist['tracks']; 
 			}
 		}
 									
