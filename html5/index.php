@@ -394,10 +394,9 @@
 				var elem = event.delegateTarget;
 				var str = '#'+elem.id.toString() + ' .song_title';
 				var titleElem = $(str)[0];
-				alert(titleElem.id);
 				// elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
-				alert(titleElem.offsetTop);
-				var titleOffsetTop = titleElem.offsetTop - document.getElementById('player').offsetTop;
+				alert(document.getElementById('player'));
+				var titleOffsetTop = parseInt(titleElem.offsetTop) - parseInt(document.getElementById('player').offsetTop);
 				alert(titleOffsetTop);
 				var titleOffsetLeft = titleElem.offset().left + titleElem.width() + 10;
 				$('#song_play_btn_over').css('left', titleOffsetLeft);
