@@ -393,7 +393,7 @@
 			$('.song').mouseover('', function(event) {
 				var elem = event.delegateTarget;
 				alert(elem.id);
-				var titleElem = $(elem.id).find('.song_title');
+				var titleElem = $('#'+elem.id '.song_title');
 				alert(titleElem.toSource());
 				alert(titleElem[0].id);
 				// elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
