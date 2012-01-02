@@ -403,7 +403,7 @@
 				// elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
 				var titleOffsetTop = parseInt(titleElem.offsetTop) - parseInt(document.getElementById('player').offsetTop) - 10;
 				// var titleOffsetLeft = parseInt(titleElem.offsetLeft) + parseInt($(titleIdStr).width()) - 50;
-				var titleOffsetLeft = parseInt(titleElem.offsetLeft) - 25;
+				var titleOffsetLeft = parseInt(titleElem.offsetLeft) - 30;
 				document.getElementById('song_play_btn_over').style.left = titleOffsetLeft;
 				document.getElementById('song_play_btn_over').style.top = titleOffsetTop;
 				document.getElementById('song_play_btn_over').style.display = 'block';
