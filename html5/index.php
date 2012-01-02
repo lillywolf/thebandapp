@@ -129,7 +129,7 @@
 				</div>		
 			</div>	
 		</div>
-		<div id="song_play_btn_over"><img src="../images/html5/play_btn_small.png" /></div>
+		<div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div>
 		
 		<div id="flash">
 			<div id="player">	
@@ -391,7 +391,9 @@
 			$('.buy_song').bind('click', function(event) {
 				event.stopPropagation();	
 			});		
-			$('#song_play_btn_over').unbind('mouseover mousemove mouseleave');
+			$('#song_play_btn_over').bind('hover', function(event) {
+				event.stopPropagation();	
+			});
 		}
 		
 		function listenForHovers() {
@@ -402,8 +404,8 @@
 				var titleIdStr = '#' + titleElem.id.toString();
 				// elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
 				var titleOffsetTop = parseInt(titleElem.offsetTop) - parseInt(document.getElementById('player').offsetTop) - 10;
-				var titleOffsetLeft = parseInt(titleElem.offsetLeft) + parseInt($(titleIdStr).width()) - 50;
-				// var titleOffsetLeft = parseInt(titleElem.offsetLeft) - 20;
+				// var titleOffsetLeft = parseInt(titleElem.offsetLeft) + parseInt($(titleIdStr).width()) - 50;
+				var titleOffsetLeft = parseInt(titleElem.offsetLeft) - 15;
 				document.getElementById('song_play_btn_over').style.left = titleOffsetLeft;
 				document.getElementById('song_play_btn_over').style.top = titleOffsetTop;
 				document.getElementById('song_play_btn_over').style.display = 'block';
