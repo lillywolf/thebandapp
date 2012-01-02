@@ -391,6 +391,7 @@
 			$('.buy_song').bind('click', function(event) {
 				event.stopPropagation();	
 			});
+			$('#song_play_btn_over').unbind('mouseover');
 		}
 		
 		function listenForHovers() {
