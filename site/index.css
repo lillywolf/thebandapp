@@ -401,6 +401,13 @@ a.soundcloud-badge:hover {
 	font-size: 10px;
 	margin: -22px 0 0 0;
 }
+.play_prompt {
+	font-family: Arial, Helvetica, Verdana;
+	color: #5E5751;
+	float: left;
+	font-size: 10px;
+	clear: both;
+}
 #notice_bg {
 	background-image: url('../images/html5/notice_bar_blank.png');
 	background-repeat: no-repeat;
@@ -431,5 +438,4 @@ a.soundcloud-badge:hover {
 	position: absolute;
 	display: none;
 	z-index: 5;
-	margin: 50px 0 20px 0;
 }
