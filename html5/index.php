@@ -170,7 +170,7 @@
 							<audio class="hidden_audio" id="audio_' . $i . '"><source src="' . $track['stream_url'] . '?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b"></source></audio>
 							<div class="song_listing">
 								<div class="song_title" id="song_title_' . $i . '">' . $track['title'] . '</div>
-								<div class="play_prompt" id="play_prompt_' . $i . '">(PLAY)</div>
+								<div class="play_prompt" id="play_prompt_' . $i . '">PLAY</div>
 							</div>	
 							<div class="song_stats">
 								<div class="stat_num_plays">' . $track['playback_count'] . '</div>
