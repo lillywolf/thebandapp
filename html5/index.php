@@ -132,8 +132,8 @@
 				<div id="notice_title"></div>
 				<div id="notice_text"></div>
 				<div id="notice_btn_wrapper">
-					<div id="download_all_btn" onClick="downloadPlaylist(lilly-and-dr-nu-mp3s, true)"></div>
-					<div id="download_instrumentals_btn" onClick="downloadPlaylist(play-loud-instrumentals)"></div>
+					<div id="download_all_btn" onClick="downloadPlaylist('lilly-and-dr-nu-mp3s', true)"></div>
+					<div id="download_instrumentals_btn" onClick="downloadPlaylist('play-loud-instrumentals')"></div>
 					<div id="add_app_btn" onClick="addApp()"></div>
 				</div>		
 			</div>	
@@ -650,11 +650,11 @@
 		
 		function downloadPlaylist(playlistName, setCookie) {
 			alert('download');
-			// alert(playlists.toSource());
-			// var downloadUrlString = playlists[playlistName];
-			// alert(downloadUrlString);
-			// var urls = downloadUrlString.split(",");
-			// createDownloadElement(urls, 0, urls.length);
+			alert(playlists.toSource());
+			var downloadUrlString = playlists[playlistName];
+			alert(downloadUrlString);
+			var urls = downloadUrlString.split(",");
+			createDownloadElement(urls, 0, urls.length);
 			
 			// Set cookie
 			if (setCookie) {
