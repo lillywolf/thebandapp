@@ -659,9 +659,12 @@
 				setCookie('download_playlist', 1, 365);
 				downloadedPlaylist = getCookie('download_playlist');	
 			} else if (playlistName == REWARD_PLAYLIST) {
+				alert('match');
 				downloadUrlString = '<?php echo $playlists["play-loud-instrumentals"] ?>';
 			}
+			alert(downloadUrlString);
 			var urls = downloadUrlString.split(",");
+			alert(urls.toSource());
 			createDownloadElement(urls, 0, urls.length);
 			updateProgressBar();
 			
