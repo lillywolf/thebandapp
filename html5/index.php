@@ -648,19 +648,18 @@
 			// }
 		}
 		
-		function downloadPlaylist(playlistName, setCookie) {
+		function downloadPlaylist(playlistName, createCookie) {
 			var downloadUrlString;
 			if (playlistName == 'lilly-and-dr-nu-mp3s') {
 				downloadUrlString = '<?php echo $playlists["lilly-and-dr-nu-mp3s"] ?>';
 			} else if (playlistName == 'play-loud-instrumentals') {
 				downloadUrlString = '<?php echo $playlists["play-loud-instrumentals"] ?>';
 			}
-			alert(downloadUrlString);
 			var urls = downloadUrlString.split(",");
 			createDownloadElement(urls, 0, urls.length);
 			
 			// Set cookie
-			if (setCookie) {
+			if (createCookie) {
 				setCookie('download_playlist', 1, 365);
 				downloadedPlaylist = getCookie('download_playlist');	
 				updateProgressBar();	
