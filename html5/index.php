@@ -664,7 +664,7 @@
 			alert(downloadUrlString);
 			var urls = downloadUrlString.split(",");
 			createDownloadElement(urls, 0, urls.length);
-			updateProgressBar();
+			// updateProgressBar();
 			
 			// Record download all if user id exists
 			// if ('<?php echo $user_id ?>' != null) {
