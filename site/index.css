@@ -150,7 +150,7 @@ a.soundcloud-badge:hover {
 }
 .song:hover {
 	/* background-color: rgba(43, 240, 236, 0.5); */
-	background-image: url('../images/html5/song_bg_hover2.png');	
+	background-image: url('../images/html5/song_bg_hover_2.png');	
 	cursor: pointer;
 }
 .song_title {
