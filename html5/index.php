@@ -384,7 +384,7 @@
 		}
 		
 		function addApp() {
-			window.location = '<?php echo $loginUrl ?>';
+			window.open('<?php echo $loginUrl ?>');
 		}
 		
 		function stopButtonPropagations() {
@@ -790,7 +790,6 @@
 				FB.Event.subscribe('edge.create', function(response) {
 					if (response.indexOf(fbPageUrl) != -1) {
 				 		// window.location.reload();
-						alert('detected like');
 						liked = true;
 						updateProgressBar();
 					}
