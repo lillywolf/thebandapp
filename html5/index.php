@@ -649,9 +649,12 @@
 		}
 		
 		function downloadPlaylist(playlistName, setCookie) {
-			alert('download');
-			alert(playlists.toSource());
-			var downloadUrlString = playlists[playlistName];
+			var downloadUrlString;
+			if (playlistName == 'lilly-and-dr-nu-mp3s') {
+				downloadUrlString = '<php echo $playlists["lilly-and-dr-nu-mp3s"] ?>';
+			} else if (playlistName == 'play-loud-instrumentals') {
+				downloadUrlString = '<php echo $playlists["play-loud-instrumentals"] ?>';
+			}
 			alert(downloadUrlString);
 			var urls = downloadUrlString.split(",");
 			createDownloadElement(urls, 0, urls.length);
