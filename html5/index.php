@@ -49,6 +49,7 @@
 		
 		$MAX_SONGS_SHOWN = 4;	
 		$DOWNLOAD_ALL_PLAYLIST_NAME = 'lilly-and-dr-nu-mp3s';
+		$DOWNLOAD_PLAYLIST = 'lilly-and-dr-nu-mp3s';
 		$PLAYLIST_NAME = 'lilly-and-dr-nu-mp3s';
 
 		$facebook = new Facebook($config);	
@@ -223,6 +224,9 @@
 		
 		var MAX_TRACKS = 4;
 		var MAX_POSTS = 5;
+		var DOWNLOAD_PLAYLIST = 'lilly-and-dr-nu-mp3s';
+		var REWARD_PLAYLIST = 'play-loud-instrumentals';
+		
 		var totalMissions = 4;
 		var isPlaying = false;
 		var currentTrackIndex = 1;
@@ -648,22 +652,18 @@
 			// }
 		}
 		
-		function downloadPlaylist(playlistName, createCookie) {
+		function downloadPlaylist(playlistName) {
 			var downloadUrlString;
-			if (playlistName == 'lilly-and-dr-nu-mp3s') {
-				downloadUrlString = '<?php echo $playlists["lilly-and-dr-nu-mp3s"] ?>';
-			} else if (playlistName == 'play-loud-instrumentals') {
+			if (playlistName == DOWNLOAD_PLAYLIST) {
+				downloadUrlString = '<?php echo $playlists[$DOWNLOAD_PLAYLIST] ?>';
+				setCookie('download_playlist', 1, 365);
+				downloadedPlaylist = getCookie('download_playlist');	
+			} else if (playlistName == REWARD_PLAYLIST) {
 				downloadUrlString = '<?php echo $playlists["play-loud-instrumentals"] ?>';
 			}
 			var urls = downloadUrlString.split(",");
 			createDownloadElement(urls, 0, urls.length);
-			
-			// Set cookie
-			if (createCookie) {
-				setCookie('download_playlist', 1, 365);
-				downloadedPlaylist = getCookie('download_playlist');	
-				updateProgressBar();	
-			}
+			updateProgressBar();
 			
 			// Record download all if user id exists
 			// if ('<?php echo $user_id ?>' != null) {
