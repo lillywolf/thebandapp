@@ -572,8 +572,12 @@
 			if (mp3Support) {
 				elem.play();				
 			} else {
-				alert(soundManager.position);
-				soundManager.resume(smSongId, currentSongData.streamUrl);
+				// alert(soundManager.position);
+				if (soundManager.position) {
+					soundManager.resume(smSongId, currentSongData.streamUrl);
+				} else {
+					soundManager.play(smSongId, currentSongData.streamUrl);
+				}	
 			}
 			isPlaying = true;
 			showPause();
@@ -645,6 +649,7 @@
 		}
 		
 		function downloadPlaylist(playlistName) {
+			alert('download');
 			alert(playlists.toSource());
 			var downloadUrlString = playlists[playlistName];
 			alert(downloadUrlString);
