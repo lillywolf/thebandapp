@@ -159,6 +159,8 @@ a.soundcloud-badge:hover {
 	text-align: left;
 	line-height: 20px;
 	float: left;
+	margin: 0 0 0 12px;
+	width: 180px;
 }
 .song_stats {
 	float: left;
@@ -404,8 +406,10 @@ a.soundcloud-badge:hover {
 	color: #5E5751;
 	float: left;
 	font-size: 9px;
-	clear: both;
 	display: none;
+	width: 50px;
+	margin: 0 0 0 12px;
+	line-height: 20px;
 }
 #notice_bg {
 	background-image: url('../images/html5/notice_bar_blank.png');
@@ -437,9 +441,4 @@ a.soundcloud-badge:hover {
 	position: absolute;
 	display: none;
 	z-index: 5;
-}
-.song_listing {
-	float: left;
-	margin: 0 0 0 12px;
-	width: 230px;
 }
