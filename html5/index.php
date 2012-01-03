@@ -79,14 +79,20 @@
 		$download_tracks = null;
 		$download_tracks_urls = '';
 		$playlist_id = null;
+		$playlists = null;
 		foreach ($playlistdata as $playlist) {
-			if ($playlist['permalink'] == $DOWNLOAD_ALL_PLAYLIST_NAME) {
-				$download_tracks = $playlist['tracks']; 
-				$playlist_id = $playlist['id'];
-				foreach($download_tracks as $track) {
-					$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
-				}
+			$download_tracks = $playlist['tracks']; 
+			foreach($download_tracks as $track) {
+				$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
 			}
+			$playlists[$playlist['permalink']] = $download_tracks_urls;
+			// if ($playlist['permalink'] == $DOWNLOAD_ALL_PLAYLIST_NAME) {
+			// 	$download_tracks = $playlist['tracks']; 
+			// 	$playlist_id = $playlist['id'];
+			// 	foreach($download_tracks as $track) {
+			// 		$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
+			// 	}
+			// }
 			if ($playlist['permalink'] == $PLAYLIST_NAME) {
 				$trackdata = $playlist['tracks']; 
 			}
@@ -124,7 +130,8 @@
 				<div id="notice_title"></div>
 				<div id="notice_text"></div>
 				<div id="notice_btn_wrapper">
-					<div id="download_all_btn" onClick="downloadAllSongs()"></div>
+					<div id="download_all_btn" onClick="downloadPlaylist(lilly-and-dr-nu-mp3s)"></div>
+					<div id="download_instrumentals_btn" onClick="downloadPlaylist(play-loud-instrumentals)"></div>
 					<div id="add_app_btn" onClick="addApp()"></div>
 				</div>		
 			</div>	
@@ -346,13 +353,16 @@
 				
 				// Update display components
 				if (completedMissions >= totalMissions) {
-					document.getElementById('notice').style.display = 'none';
-					document.getElementById('missions').style.top = '-45px';
+					// document.getElementById('notice').style.display = 'none';
+					document.getElementById('notice_title').innerHTML = 'Goals complete! You can grab the instrumental tracks: ';
+					// document.getElementById('missions').style.top = '-45px';
 					document.getElementById('missions').style.display = 'block';
-					document.getElementById('flash').style.top = '40px';
+					// document.getElementById('flash').style.top = '40px';
 					document.getElementById('progress_bg').style.display = 'block';
+					document.getElementById('download_instrumentals_btn').style.display = 'block';
 					// document.getElementById('progress_label').innerHTML = 'PROGRESS COMPLETE!';
 				} else {
+					document.getElementById('download_instrumentals_btn').style.display = 'none';
 					document.getElementById('notice_title').innerHTML = 'Goal #' + (completedMissions+1).toString() + ': ' + title.charAt(0).toUpperCase() + title.slice(1);
 					if (missionId == 'download_playlist') {
 						document.getElementById('download_all_btn').style.display = 'block';
@@ -632,8 +642,9 @@
 			// }
 		}
 		
-		function downloadAllSongs() {
-			var downloadUrlString = '<?php echo $download_tracks_urls; ?>';
+		function downloadPlaylist(playlistName) {
+			var downloadUrlString = '<?php echo $playlists['+playlistName+'] ?>';
+			alert(downloadUrlString);
 			var urls = downloadUrlString.split(",");
 			createDownloadElement(urls, 0, urls.length);
 			
