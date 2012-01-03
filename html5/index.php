@@ -76,6 +76,7 @@
 		    exit($e->getMessage());
 		}
 		
+		echo '<script> var playlists = new Array(); </script>';
 		$download_tracks = null;
 		$download_tracks_urls = '';
 		$playlist_id = null;
@@ -86,6 +87,7 @@
 				$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
 			}
 			$playlists[$playlist['permalink']] = $download_tracks_urls;
+			echo '<script> playlists["'.$playlist['permalink_url'].'"] = '.$download_tracks_urls.'; </script>';
 			// if ($playlist['permalink'] == $DOWNLOAD_ALL_PLAYLIST_NAME) {
 			// 	$download_tracks = $playlist['tracks']; 
 			// 	$playlist_id = $playlist['id'];
@@ -354,7 +356,7 @@
 				// Update display components
 				if (completedMissions >= totalMissions) {
 					// document.getElementById('notice').style.display = 'none';
-					document.getElementById('notice_title').innerHTML = 'Goals complete! You can grab the instrumental tracks: ';
+					document.getElementById('notice_title').innerHTML = 'Goals complete! Grab the instrumental tracks: ';
 					// document.getElementById('missions').style.top = '-45px';
 					document.getElementById('missions').style.display = 'block';
 					// document.getElementById('flash').style.top = '40px';
@@ -643,7 +645,8 @@
 		}
 		
 		function downloadPlaylist(playlistName) {
-			var downloadUrlString = '<?php echo $playlists['+playlistName+'] ?>';
+			alert(playlists.toSource());
+			var downloadUrlString = playlists[playlistName];
 			alert(downloadUrlString);
 			var urls = downloadUrlString.split(",");
 			createDownloadElement(urls, 0, urls.length);
