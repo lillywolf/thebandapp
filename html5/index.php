@@ -699,7 +699,7 @@
 		
 		function createDownloadElement(urls, i, limit) {
 			for (i = 0; i < limit; i++) {
-				if (urls[i] != null && urls[i] != ",") {
+				if (urls[i] != null && urls[i] != "," && urls[i] != "") {
 					var e = window.document.createElement("iframe");
 					e.id = "download-frame-" + i.toString();
 					e.style.visibility = "hidden";
