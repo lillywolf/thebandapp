@@ -655,7 +655,7 @@
 		function downloadPlaylist(playlistName) {
 			var downloadUrlString;
 			if (playlistName == DOWNLOAD_PLAYLIST) {
-				downloadUrlString = '<?php echo $playlists[$DOWNLOAD_PLAYLIST] ?>';
+				downloadUrlString = '<?php echo $playlists["lilly-and-dr-nu-mp3s"] ?>';
 				setCookie('download_playlist', 1, 365);
 				downloadedPlaylist = getCookie('download_playlist');	
 			} else if (playlistName == REWARD_PLAYLIST) {
@@ -707,6 +707,7 @@
 					e.style.border = "0";
 					e.onreadystatechange = function() {
 						if (e.readyState == "interactive") {
+							alert('interactive');
 							window.setTimeout("createDownloadElement()", 100);
 						} else {
 							window.document.getElementById("downloaders").removeChild(e);
