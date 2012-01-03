@@ -41,6 +41,7 @@ if ($method == 'update_missions')
 	$completedMissionCount = $missionHandler->getCompletedMissionCount($addedApp, $liked, $downloadedPlaylist);	
 	echo 'completed_mission_count='.$completedMissionCount;
 	$nextMission = $missionHandler->getNextMission($addedApp, $liked, $downloadedPlaylist);	
+	error_log('next mission: ' . print_r($nextMission, true));
 	if ($nextMission != null) 
 	{
 		echo '&title='.$nextMission['title'].'&text='.$nextMission['text'].'&id='.$nextMission['id'];		
