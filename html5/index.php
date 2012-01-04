@@ -404,10 +404,22 @@
 		}
 		
 		function stopButtonPropagations() {
-			$('.download_song').bind('click hover', function(event) {
+			$('.download_song').bind('click', function(event) {
 				event.stopPropagation();	
 			});
-			$('.buy_song').bind('click hover', function(event) {
+			$('.download_song').bind('mouseover', function(event) {
+				event.stopPropagation();	
+			});
+			$('.download_song').bind('hover', function(event) {
+				event.stopPropagation();	
+			});
+			$('.buy_song').bind('click', function(event) {
+				event.stopPropagation();	
+			});
+			$('.buy_song').bind('mouseover', function(event) {
+				event.stopPropagation();	
+			});
+			$('.buy_song').bind('hover', function(event) {
 				event.stopPropagation();	
 			});	
 			$('#song_play_btn_over').off();
