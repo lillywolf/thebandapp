@@ -35,11 +35,11 @@
 		$appId = '107796503671';
 		$appSecret = '10cc0163136a373aa6192f6ceafda96e';
 		$appUrl = 'http://apps.facebook.com/thebandapp';	
-		$fbPageUrl = "facebook.com/lillywolfanddrnu?sk=app_107796503671";
+		$fbPageUrl = "facebook.com/lillywolfmusic?sk=app_107796503671";
 		$scAccessCode = "302883";
 		$scConsumerKey = "738091d6d02582ddd19de7109b79e47b";
 		$scope = 'email,publish_stream,publish_actions';
-		$home = 'http://www.facebook.com/' . 'lillywolfanddrnu' . '?sk=app_' . '107796503671';
+		$home = 'http://www.facebook.com/' . 'lillywolfmusic' . '?sk=app_' . '107796503671';
 		$perms = null;
 	
 		$config = array();
@@ -924,9 +924,17 @@
 		}
 		
 		// REGISTER MISSION
-		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=add_app&mission_rank=3', function(data, status) {
-		//       // parse
-		// },'html');	
+		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_playlist&mission_rank=1', function(data, status) {
+		      // parse
+		},'html');	
+		
+		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=like&mission_rank=2', function(data, status) {
+		      // parse
+		},'html');
+		
+		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=add_app&mission_rank=3', function(data, status) {
+		      // parse
+		},'html');
 		
 		// CREATE MISSION
 		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=like', function(data, status) {
