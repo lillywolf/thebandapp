@@ -457,7 +457,6 @@
 				addAudioListeners(idStr);
 				topAudio.play();
 			} else {
-				alert(smSongId);
 				if (smSongId != null && soundManager.getSoundById(smSongId) != null) {
 					alert('kill song');
 					soundManager.destroySound(smSongId);					
@@ -518,6 +517,7 @@
 		}
 		
 		function populatePlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl, purchaseUrl) {
+			pauseCurrent();
 			updatePlayerData(title, trackIndex, url, picUrl, downloadUrl, streamUrl, purchaseUrl);
 			startPlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl);
 		}
@@ -538,15 +538,19 @@
 			updatePic(picUrl);			
 		}
 		
-		function startPlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl) {
-			isPlaying = true;
+		function pauseCurrent() {
 			if (currentAudioElement != null) {
 				if (mp3Support) {
 					currentAudioElement.pause();					
-				} else if (smSongId) {
+				} else if (smSongId != null) {
+					alert('pause ' + smSongId);
 					soundManager.pause(smSongId);
 				}
 			}
+		}
+		
+		function startPlayer(title, trackIndex, url, picUrl, downloadUrl, streamUrl) {
+			isPlaying = true;
 			showPause();
 			swapAudio(streamUrl, trackIndex);			
 		}
