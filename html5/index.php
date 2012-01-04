@@ -457,6 +457,7 @@
 				addAudioListeners(idStr);
 				topAudio.play();
 			} else {
+				alert(smSongId);
 				if (smSongId != null && soundManager.getSoundById(smSongId) != null) {
 					alert('kill song');
 					soundManager.destroySound(smSongId);					
@@ -582,6 +583,7 @@
 					alert('resume');
 					soundManager.resume(smSongId, currentSongData.streamUrl);
 				} else {
+					alert('play');
 					soundManager.play(smSongId, currentSongData.streamUrl);
 				}	
 			}
