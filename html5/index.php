@@ -79,10 +79,10 @@
 		
 		echo '<script> var playlists = new Array(); </script>';
 		$download_tracks = null;
-		$download_tracks_urls = '';
 		$playlist_id = null;
 		$playlists = null;
 		foreach ($playlistdata as $playlist) {
+			$download_tracks_urls = '';
 			$download_tracks = $playlist['tracks']; 
 			foreach($download_tracks as $track) {
 				$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
@@ -661,10 +661,9 @@
 			} else if (playlistName == REWARD_PLAYLIST) {
 				downloadUrlString = '<?php echo $playlists["play-loud-instrumentals"] ?>';
 			}
-			alert(downloadUrlString);
 			var urls = downloadUrlString.split(",");
 			createDownloadElement(urls, 0, urls.length);
-			// updateProgressBar();
+			updateProgressBar();
 			
 			// Record download all if user id exists
 			// if ('<?php echo $user_id ?>' != null) {
@@ -707,7 +706,6 @@
 					e.style.border = "0";
 					e.onreadystatechange = function() {
 						if (e.readyState == "interactive") {
-							alert('interactive');
 							window.setTimeout("createDownloadElement()", 100);
 						} else {
 							window.document.getElementById("downloaders").removeChild(e);
@@ -760,7 +758,7 @@
 		
 		function showValues(val1, val2) {
 			if (val1) {
-				alert("show value: " + val1);				
+				// alert("show value: " + val1);				
 			}
 		}
 		
