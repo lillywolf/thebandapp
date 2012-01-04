@@ -578,7 +578,8 @@
 				elem.play();				
 			} else {
 				// alert(soundManager.position);
-				if (soundManager.position != 0 && soundManager.position != null) {
+				if (parseInt(soundManager.position) > 0) {
+					alert('resume');
 					soundManager.resume(smSongId, currentSongData.streamUrl);
 				} else {
 					soundManager.play(smSongId, currentSongData.streamUrl);
