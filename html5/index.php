@@ -458,7 +458,6 @@
 				topAudio.play();
 			} else {
 				if (smSongId != null && soundManager.getSoundById(smSongId) != null) {
-					alert('kill song');
 					soundManager.destroySound(smSongId);					
 				}
 				smSongId = 'sm_'+trackIndex.toString();
@@ -543,7 +542,6 @@
 				if (mp3Support) {
 					currentAudioElement.pause();					
 				} else if (smSongId != null) {
-					alert('pause ' + smSongId);
 					soundManager.pause(smSongId);
 				}
 			}
@@ -584,10 +582,8 @@
 			} else {
 				// alert(soundManager.position);
 				if (parseInt(soundManager.position) > 0) {
-					alert('resume');
 					soundManager.resume(smSongId, currentSongData.streamUrl);
 				} else {
-					alert('play');
 					soundManager.play(smSongId, currentSongData.streamUrl);
 				}	
 			}
