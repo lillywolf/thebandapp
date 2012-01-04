@@ -360,7 +360,7 @@
 				// Update display components
 				if (completedMissions >= totalMissions) {
 					// document.getElementById('notice').style.display = 'none';
-					document.getElementById('notice_title').innerHTML = 'Goals complete! Grab the instrumental tracks: ';
+					document.getElementById('notice_title').innerHTML = 'Get the instrumental tracks: ';
 					// document.getElementById('missions').style.top = '-45px';
 					document.getElementById('missions').style.display = 'block';
 					// document.getElementById('flash').style.top = '40px';
