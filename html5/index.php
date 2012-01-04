@@ -404,10 +404,10 @@
 		}
 		
 		function stopButtonPropagations() {
-			$('.download_song').bind('click mouseover', function(event) {
+			$('.download_song').bind('click hover', function(event) {
 				event.stopPropagation();	
 			});
-			$('.buy_song').bind('click mouseover', function(event) {
+			$('.buy_song').bind('click hover', function(event) {
 				event.stopPropagation();	
 			});	
 			$('#song_play_btn_over').off();
