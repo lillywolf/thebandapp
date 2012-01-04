@@ -408,6 +408,7 @@
 				event.stopPropagation();	
 			});
 			$('.download_song').bind('mouseover', function(event) {
+				$('.play_prompt').css('display', 'none');
 				event.stopPropagation();	
 			});
 			$('.download_song').bind('hover', function(event) {
@@ -417,6 +418,7 @@
 				event.stopPropagation();	
 			});
 			$('.buy_song').bind('mouseover', function(event) {
+				$('.play_prompt').css('display', 'none');
 				event.stopPropagation();	
 			});
 			$('.buy_song').bind('hover', function(event) {
