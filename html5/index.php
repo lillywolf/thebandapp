@@ -458,6 +458,7 @@
 				topAudio.play();
 			} else {
 				if (smSongId != null && soundManager.getSoundById(smSongId) != null) {
+					alert('kill song');
 					soundManager.destroySound(smSongId);					
 				}
 				smSongId = 'sm_'+trackIndex.toString();
@@ -577,7 +578,7 @@
 				elem.play();				
 			} else {
 				// alert(soundManager.position);
-				if (soundManager.position) {
+				if (soundManager.position != 0 && soundManager.position != null) {
 					soundManager.resume(smSongId, currentSongData.streamUrl);
 				} else {
 					soundManager.play(smSongId, currentSongData.streamUrl);
