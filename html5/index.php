@@ -327,7 +327,6 @@
 		}
 		
 		function getGoalToolTipText(goal) {
-			alert(goals.toSource());
 			if (goal && goal.id.indexOf('download_song') != -1) {
 				return '#' + goal.rank.toString() + ': DOWNLOADED SONG';
 			} else if (goal && goal.id == 'like') {
@@ -342,7 +341,7 @@
 				var listings = data.split(',');
 				for (var i = 0; i < listings.length; i++) {
 					var missionId = getPairValue(listings[i].split('&'), 'id');
-					var missionRank = parseInt(getPairValue(listings[i].split('&'), 'rank')) + 1;
+					var missionRank = parseInt(getPairValue(listings[i].split('&'), 'rank'));
 					if (missionId != "" && missionId != null) {
 						goals[missionRank] = {
 							id: missionId,
