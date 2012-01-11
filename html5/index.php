@@ -396,7 +396,7 @@
 			var missionId = currentMission['id'];
 			
 			if (missionId == 'like') {
-				title = 'Click "Like" above to follow us on Facebook';
+				title = 'Click "Like" above to follow us on Facebook & get free downloads!';
 			} else if (missionId.indexOf('download_song_') != -1) {
 				var parts = missionId.split('download_song_');
 				missionSongId = parts[1];
