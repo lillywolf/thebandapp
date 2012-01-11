@@ -190,6 +190,16 @@ class Redis
 		error_log('registered missions: ' . print_r($missions, true));
 	}
 	
+	public function unregisterMission($missionId, $missionRank, $missionType)
+	{
+		$missionsKey = $this->pageKey . '_missions';
+		$missions = $this->redis->zrangebyscore($missionsKey, '-inf', '+inf');
+		$this->redis->zrem($missionsKey, $missionId);
+		$missionTypeKey = $missionsKey . '_' . $missionId;
+		$this->redis->del($missionTypeKey);
+		error_log('registered missions: ' . print_r($missions, true));
+	}
+	
 	public function createAppMission($id, $title, $description = null, $explanation = null)
 	{
 		$key = 'missions_' . $id;

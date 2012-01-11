@@ -78,6 +78,18 @@ if ($method == 'register_mission')
 	$redis->registerMission($missionId, $missionRank, $mission['id']);
 }
 
+if ($method == 'unregister_mission')
+{
+	$missionId = $utils->iterateThroughAndFind($pairs, 'mission_id');
+	$tag = $utils->iterateThroughAndFind($pairs, 'mission_tag');
+	
+	if (isset($tag)) 
+	{
+		$missionId = $missionId . '_' . $tag;
+	}
+	$redis->unregisterMission($missionId, $missionRank);
+}
+
 if ($method == 'count_missions')
 {
 	$missionHandler = new MissionHandler($fbid, $pageId);
