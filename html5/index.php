@@ -141,6 +141,7 @@
 			</div>	
 		</div>
 		<div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div>
+		<div id="big_like"></div>
 		
 		<div id="flash">
 			<div id="player">	
@@ -659,6 +660,10 @@
 			$('#top_like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('top_like'));
+			}
+			$('#big_like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" width="450" action="like" font="arial" colorscheme="light" send="true" />');
+			if (typeof FB !== 'undefined') {
+			    FB.XFBML.parse(document.getElementById('big_like'));
 			}
 		}	
 		
