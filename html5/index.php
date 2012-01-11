@@ -377,14 +377,13 @@
 						goals[rank]['complete'] = 1;
 					}
 				} else if (goalId == 'add_app') {
-					alert('added app?');
 					if (addedApp != null) {
 						indexedGoals[i]['complete'] = 1;
 						goals[rank]['complete'] = 1;
 					}
 				}
 			}
-			for (var i = 1; i <= indexedGoals.length; i++) {
+			for (var i = 0; i <= indexedGoals.length; i++) {
 				if (goals[i] && goals[i]['complete'] == 0) {
 					currentMission = goals[i];
 					break;
@@ -958,25 +957,25 @@
 		}
 		
 		// REGISTER MISSION		
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_song&mission_rank=2&mission_tag=25756679', function(data, status) {
-		      // parse
-		},'html');
-		
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=like&mission_rank=1', function(data, status) {
-		      // parse
-		},'html');
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_song&mission_rank=2&mission_tag=25756679', function(data, status) {
+		//       // parse
+		// },'html');
 		// 
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_song&mission_rank=3&mission_tag=24351743', function(data, status) {
-		      // parse
-		},'html');
-		
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=add_app&mission_rank=4', function(data, status) {
-		      // parse
-		},'html');
-		
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=unregister_mission&mission_id=download_playlist', function(data, status) {
-		      // parse
-		},'html');
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=like&mission_rank=1', function(data, status) {
+		//       // parse
+		// },'html');
+		// // 
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_song&mission_rank=3&mission_tag=24351743', function(data, status) {
+		//       // parse
+		// },'html');
+		// 
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=add_app&mission_rank=4', function(data, status) {
+		//       // parse
+		// },'html');
+		// 
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=unregister_mission&mission_id=download_playlist', function(data, status) {
+		//       // parse
+		// },'html');
 		
 		// CREATE MISSION
 		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=download_song', function(data, status) {
