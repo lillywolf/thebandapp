@@ -100,11 +100,11 @@ class Redis
 		$missions = $this->redis->smembers('missions');
 		foreach ($missions as $missionId)
 		{
-			$mission = $this->getAppMission($missionId);
+			# $mission = $this->getAppMission($missionId);
 			$rank = $this->pageHasMission($missionId);
 			if ($rank != null && $this->isMissionComplete($missionId))
 			{
-				$completed[$rank] = $mission; 
+				$completed[$rank] = $this->getAppMission($this->getMissionType($missionId)); 
 			}
 		}
 		for ($i = 0; $i < count($completed); $i++)
@@ -174,11 +174,19 @@ class Redis
 		return $mission;
 	}
 	
-	public function registerMission($missionId, $missionRank)
+	public function getMissionType($missionId)
+	{
+		$missionTypeKey = $this->pageKey . '_missions_' . $missionId;
+		return $this->redis->hget($missionTypeKey, 'type');
+	}
+	
+	public function registerMission($missionId, $missionRank, $missionType)
 	{
 		$missionsKey = $this->pageKey . '_missions';
 		$missions = $this->redis->zrangebyscore($missionsKey, '-inf', '+inf');
 		$this->redis->zadd($missionsKey, $missionRank, $missionId);
+		$missionTypeKey = $missionsKey . '_' . $missionId;
+		$this->redis->hset($missionTypeKey, 'type', $missionType);
 		error_log('registered missions: ' . print_r($missions, true));
 	}
 	

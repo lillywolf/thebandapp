@@ -38,7 +38,7 @@ class Util
 				$data['explanation'] = 'Have users download a playlist you\'ve defined';
 				break;
 			case 'download_song':
-				$data['id'] = 'download_song_'.strval($tag);
+				$data['id'] = 'download_song';
 				$data['title'] = 'download';
 				$data['description'] = 'Download this track for free';
 				$data['explanation'] = 'Have users download a song you\'ve defined';

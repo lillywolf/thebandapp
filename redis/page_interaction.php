@@ -61,7 +61,7 @@ if ($method == 'create_mission')
 {
 	$missionId = $utils->iterateThroughAndFind($pairs, 'mission_id');
 	$mission = $utils->getMissionData($missionId);
-	$redis->createAppMission($mission['id'], $mission['title'], $mission['description'], $mission['explanation']);
+	$redis->createAppMission($mission['id'], $mission['title'], $mission['description'], $mission['explanation'], $mission['tag']);
 }
 
 if ($method == 'register_mission')
@@ -69,8 +69,13 @@ if ($method == 'register_mission')
 	$missionId = $utils->iterateThroughAndFind($pairs, 'mission_id');
 	$missionRank = $utils->iterateThroughAndFind($pairs, 'mission_rank');
 	$tag = $utils->iterateThroughAndFind($pairs, 'mission_tag');
-	$mission = $utils->getMissionData($missionId, $tag);
-	$redis->registerMission($mission['id'], $missionRank);
+	$mission = $utils->getMissionData($missionId);
+	
+	if (isset($tag)) 
+	{
+		$missionId = $missionId . '_' . $tag;
+	}
+	$redis->registerMission($missionId, $missionRank, $mission['id']);
 }
 
 if ($method == 'count_missions')

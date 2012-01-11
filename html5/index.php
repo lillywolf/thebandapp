@@ -292,7 +292,7 @@
 			updatePlayerData(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl'], currentSongData['purchaseUrl']);
 			stopButtonPropagations();
 			updateProgressBar();	
-			setPageGoals();		
+			// setPageGoals();		
 		}
 		
 		$('#progress_bar').mouseover(function(e) {
@@ -341,6 +341,7 @@
 		function setPageGoals() {
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=get_page_missions', function(data, status) {
 				var listings = data.split(',');
+				var indexedGoals = new Array();
 				for (var i = 0; i < listings.length; i++) {
 					var missionId = getPairValue(listings[i].split('&'), 'id');
 					var missionRank = parseInt(getPairValue(listings[i].split('&'), 'rank')) + 1;
@@ -348,58 +349,64 @@
 						id: missionId,
 						rank: missionRank
 					};
+					indexedGoals.push(goals[missionRank]);
 				}
-			});				
+			});
+			return indexedGoals;		
 		}
 
 		function updateProgressBar() {
-			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=update_missions&added_app=<?php echo $user_id ?>&liked='+liked+'&downloaded_playlist='+downloadedPlaylist, function(data, status) {
-				var title = getPairValue(data.split('&'), 'title');
-				var text = getPairValue(data.split('&'), 'text');
-				var missionId = getPairValue(data.split('&'), 'id');
-				var completedMissions = getPairValue(data.split('&'), 'completed_mission_count');
-				completedMissions = parseInt(completedMissions)+1;
-				document.getElementById('progress_bar').src = '../images/html5/progress_bar_4_'+completedMissions.toString()+'_green.png';				
-				
-				// Update display components
-				if (completedMissions >= totalMissions) {
-					// document.getElementById('notice').style.display = 'none';
-					document.getElementById('notice_title').innerHTML = 'Get the instrumental tracks: ';
-					// document.getElementById('missions').style.top = '-45px';
-					document.getElementById('missions').style.display = 'block';
-					// document.getElementById('flash').style.top = '40px';
-					document.getElementById('progress_bg').style.display = 'block';
-					document.getElementById('download_instrumentals_btn').style.display = 'block';
-					// document.getElementById('progress_label').innerHTML = 'PROGRESS COMPLETE!';
-				} else {
-					document.getElementById('download_instrumentals_btn').style.display = 'none';
-					document.getElementById('notice_title').innerHTML = 'Goal #' + (completedMissions+1).toString() + ': ' + title.charAt(0).toUpperCase() + title.slice(1);
-					if (missionId == 'download_playlist') {
-						document.getElementById('download_all_btn').style.display = 'block';
-					} else {
-						document.getElementById('download_all_btn').style.display = 'none';						
-					}
-					if (missionId == 'add_app') {
-						document.getElementById('add_app_btn').style.display = 'block';
-					} else {
-						document.getElementById('add_app_btn').style.display = 'none';						
-					}
-					if (missionId == 'like') {
-						document.getElementById('notice_btn_wrapper').style.display = 'none';
-					} else {
-						document.getElementById('notice_btn_wrapper').style.display = 'block';
-					}
-					if (title.indexOf('download_song_') != -1) {
-						var soundcloudId = title.split('download_song_')[1];
-						missionSongIndex = getTrackById(soundcloudId);
-						document.getElementById('notice_title').innerHTML = title.charAt(0).toUpperCase() + title.slice(1) + ' ' + document.getElementById('song_title_'+missionSongIndex.toString()).innerHTML + ':';
-						document.getElementById('download_song_btn').style.display = 'block';
-					} else {
-						document.getElementById('download_song_btn').style.display = 'none';		
+			var indexedGoals = setPageGoals();
+			alert(indexedGoals.toSource());
+			var highestMissionRank = 0;
+			currentMission = goals[1];
+			var currentMission;
+			for (var i = 0; i < indexedGoals.length; i++) {
+				var goalId = indexedGoals[i]['id'];
+				var rank = indexedGoals[i]['rank'];
+				indexedGoals[i]['complete'] = 0;
+				if (goalId == 'like') {
+					if (liked) {
+						indexedGoals[i]['complete'] = 1;
+						goals[rank]['complete'] = 1;						
+					} 
+				} else if (goalId.indexOf('download_song_') != -1) {
+					indexedGoals[i]['complete'] = 0;
+				} else if (goalId == 'add_app') {
+					if ('<?php echo $user_id ?>' != null) {
+						indexedGoals[i]['complete'] = 1;
+						goals[rank]['complete'] = 1;
 					}
 				}
-			},'html');
-		}
+			}
+			for (var i = 0; i < indexedGoals.length; i++) {
+				if (goals[i]['complete'] == 0) {
+					currentMission = goals[i];
+				}
+			}
+			alert(currentMission.toSource());
+			
+			var title;
+			var buttonId;
+			var missionId = currentMission['id'];
+			
+			if (missionId == 'like') {
+				title = 'Click "Like" above to follow us on Facebook';
+			} else if (missionId.indexOf('download_song_') != -1) {
+				var soundcloudId = missionId.split('download_song_')[1];
+				missionSongIndex = getTrackById(soundcloudId);				
+				title = 'Download ' + document.getElementById('song_title_'+missionSongIndex.toString()+':');
+				buttonId = 'download_song_btn';
+			} else if (missionId == 'add_app') {
+				title = 'Add the music player app: ';
+				buttonId = 'add_app_btn';
+			}
+			document.getElementById('notice_title').innerHTML = title;
+			document.getElementById('download_all_btn').style.display = 'none';						
+			document.getElementById('download_song_btn').style.display = 'none';						
+			document.getElementById('add_app_btn').style.display = 'none';						
+			document.getElementById(buttonId).style.display = 'block';
+		}				
 		
 		function getTrackById(sc_id) {
 			var ids = getElementsByClass('song_sc_id', 'songlist');
@@ -943,20 +950,20 @@
 		}
 		
 		// REGISTER MISSION		
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_song&mission_rank=1&mission_tag=25756679', function(data, status) {
-		      // parse
-		},'html');
-		
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=like&mission_rank=2', function(data, status) {
-		      // parse
-		},'html');
-		
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_song&mission_rank=3&mission_tag=24351743', function(data, status) {
-		      // parse
-		},'html');
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_song&mission_rank=1&mission_tag=25756679', function(data, status) {
+		//       // parse
+		// },'html');
+		// 
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=like&mission_rank=2', function(data, status) {
+		//       // parse
+		// },'html');
+		// 
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_song&mission_rank=3&mission_tag=24351743', function(data, status) {
+		//       // parse
+		// },'html');
 		
 		// CREATE MISSION
-		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=like', function(data, status) {
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=download_song', function(data, status) {
 		//       // parse
 		// },'html');
 	
