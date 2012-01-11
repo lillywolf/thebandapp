@@ -141,10 +141,10 @@
 			</div>	
 		</div>
 		<div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div>
-		<div id="big_like">
+		<span id="big_like">
 			<span id="like_song_text"></span>
 			<span id="big_like_btn"></span>
-		</div>
+		</span>
 		
 		<div id="flash">
 			<div id="player">	

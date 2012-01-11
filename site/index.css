@@ -83,6 +83,7 @@ a.soundcloud-badge:hover {
 	position: absolute;
 	top: 107px;
 	left: 3px;
+	height: 28px;
 }
 #notice {
 	position: absolute;
@@ -486,8 +487,8 @@ a.soundcloud-badge:hover {
 	float: left;
 	max-width: 155px;
 	/* margin: 6px 10px 0 0; */
+	margin: 0 10px 0 0;
 	vertical-align: middle;
-	height: 30px;
 }
 #big_like_btn {
 	float: left;
