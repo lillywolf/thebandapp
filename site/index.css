@@ -16,9 +16,6 @@ body {
 	position: absolute;
 	z-index: 5;
 }
-#big_like {
-	position: absolute;
-}
 #spinner {
 	margin: 150px 0;
 }
@@ -80,7 +77,7 @@ a.soundcloud-badge:hover {
 }
 #flash {
 	position: absolute;
-	top: 125px;
+	top: 132px;
 }
 #big_like {
 	position: absolute;
@@ -480,4 +477,14 @@ a.soundcloud-badge:hover {
 }
 #download_song_btn {
 	display: none;
+}
+#like_song_text {
+	font-family: Arial;
+	color: #5E5751;
+	font-size: 11px;	
+	float: left;
+	max-width: 200px;
+}
+#big_like_btn {
+	float: left;
 }

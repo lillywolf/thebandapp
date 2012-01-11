@@ -141,7 +141,10 @@
 			</div>	
 		</div>
 		<div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div>
-		<div id="big_like"></div>
+		<div id="big_like">
+			<div id="like_song_text"></div>
+			<div id="big_like_btn"></div>
+		</div>
 		
 		<div id="flash">
 			<div id="player">	
@@ -583,6 +586,7 @@
 			currentTrackIndex = trackIndex;
 			smSongId = 'sm_'+trackIndex.toString();
 			document.getElementById('top_title').innerHTML = title;
+			document.getElementById('like_song_text').innerHTML = 'Like ' + title + ':';
 			updateButtons(url);
 			updatePic(picUrl);			
 		}
@@ -663,7 +667,7 @@
 			}
 			$('#big_like').html('<fb:like href="' + url + '" show_faces="false" width="450" action="like" font="arial" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
-			    FB.XFBML.parse(document.getElementById('big_like'));
+			    FB.XFBML.parse(document.getElementById('big_like_btn'));
 			}
 		}	
 		
