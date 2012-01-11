@@ -586,7 +586,7 @@
 			currentTrackIndex = trackIndex;
 			smSongId = 'sm_'+trackIndex.toString();
 			document.getElementById('top_title').innerHTML = title;
-			document.getElementById('like_song_text').innerHTML = 'Like ' + title + ':';
+			document.getElementById('like_song_text').innerHTML = 'LIKE ' + title.toUpperCase() + ':';
 			updateButtons(url);
 			updatePic(picUrl);			
 		}
@@ -665,7 +665,7 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('top_like'));
 			}
-			$('#big_like_btn').html('<fb:like href="' + url + '" show_faces="false" width="450" action="like" font="arial" colorscheme="light" send="true" />');
+			$('#big_like_btn').html('<fb:like href="' + url + '" show_faces="false" width="350" action="like" font="arial" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('big_like_btn'));
 			}
