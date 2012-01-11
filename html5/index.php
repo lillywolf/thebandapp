@@ -191,7 +191,7 @@
 								<div id="download_btn_wrapper"><div class="download_song" id="download_btn" onClick="downloadSong(\'' . $track['download_url'] . '\')"></div></div>
 								<div id="buy_btn_wrapper"><div class="buy_song" id="buy_btn" onClick="buySong(\'' . $track['purchase_url'] . '\')"></div></div>
 							</div>
-							<div class="song_sc_id" id="id_' . $i . '">' . $track['id'] . '</div>	
+							<div class="song_sc_id" id="sc_id_' . $i . '">' . $track['id'] . '</div>	
 							<div class="song_download_url" id="download_url_' . $i . '">' . $track['download_url'] . '</div>	
 							<!--button onClick="document.getElementById(\'audio_' . $i . '\').pause()">Pause</button--></div>';
 							$i++;
@@ -385,7 +385,7 @@
 					break;
 				}
 			}
-			alert(currentMission.toSource());
+			// alert(currentMission.toSource());
 			
 			var title;
 			var buttonId;
@@ -394,7 +394,9 @@
 			if (missionId == 'like') {
 				title = 'Click "Like" above to follow us on Facebook';
 			} else if (missionId.indexOf('download_song_') != -1) {
-				var soundcloudId = missionId.split('download_song_')[1];
+				var parts = missionId.split('download_song_');
+				alert(parts.toSource());
+				var soundcloudId = parts[1];
 				missionSongIndex = getTrackById(soundcloudId);				
 				title = 'Download ' + document.getElementById('song_title_'+missionSongIndex.toString()+':');
 				buttonId = 'download_song_btn';
@@ -410,9 +412,11 @@
 		}				
 		
 		function getTrackById(sc_id) {
+			alert(sc_id);
 			var ids = getElementsByClass('song_sc_id', 'songlist');
 			for (var i = 1; i <= ids.length; i++) {
-				var elem = document.getElementById('id_'+i.toString());
+				var elem = document.getElementById('sc_id_'+i.toString());
+				alert(elem.innerHTML);
 				if (elem.innerHTML.toString() == sc_id.toString()) {
 					return i;
 				} 
