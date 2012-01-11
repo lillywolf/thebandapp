@@ -661,7 +661,7 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('top_like'));
 			}
-			$('#big_like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" width="450" action="like" font="arial" colorscheme="light" send="true" />');
+			$('#big_like').html('<fb:like href="' + url + '" show_faces="false" width="450" action="like" font="arial" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('big_like'));
 			}
