@@ -68,7 +68,8 @@ if ($method == 'register_mission')
 {
 	$missionId = $utils->iterateThroughAndFind($pairs, 'mission_id');
 	$missionRank = $utils->iterateThroughAndFind($pairs, 'mission_rank');
-	$mission = $utils->getMissionData($missionId);
+	$tag = $utils->iterateThroughAndFind($pairs, 'mission_tag');
+	$mission = $utils->getMissionData($missionId, $tag);
 	$redis->registerMission($mission['id'], $missionRank);
 }
 

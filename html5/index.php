@@ -134,6 +134,7 @@
 				<div id="notice_text"></div>
 				<div id="notice_btn_wrapper">
 					<div id="download_all_btn" onClick="downloadPlaylist('lilly-and-dr-nu-mp3s', true)"></div>
+					<div id="download_song_btn" onClick="downloadMissionSong()"></div>
 					<div id="download_instrumentals_btn" onClick="downloadPlaylist('play-loud-instrumentals')"></div>
 					<div id="add_app_btn" onClick="addApp()"></div>
 				</div>		
@@ -189,7 +190,9 @@
 							<div class="song_btns">
 								<div id="download_btn_wrapper"><div class="download_song" id="download_btn" onClick="downloadSong(\'' . $track['download_url'] . '\')"></div></div>
 								<div id="buy_btn_wrapper"><div class="buy_song" id="buy_btn" onClick="buySong(\'' . $track['purchase_url'] . '\')"></div></div>
-							</div>	
+							</div>
+							<div class="song_sc_id" id="id_' . $i . '">' . $track['id'] . '</div>	
+							<div class="song_download_url" id="download_url_' . $i . '">' . $track['download_url'] . '</div>	
 							<!--button onClick="document.getElementById(\'audio_' . $i . '\').pause()">Pause</button--></div>';
 							$i++;
 						} ?>
@@ -228,6 +231,7 @@
 		var REWARD_PLAYLIST = 'play-loud-instrumentals';
 		
 		var totalMissions = 4;
+		var missionSongIndex;
 		var isPlaying = false;
 		var currentTrackIndex = 1;
 		var currentScrollIndex = 1;
@@ -385,10 +389,28 @@
 					} else {
 						document.getElementById('notice_btn_wrapper').style.display = 'block';
 					}
+					if (title.indexOf('download_song_') != -1) {
+						var soundcloudId = title.split('download_song_')[1];
+						missionSongIndex = getTrackById(soundcloudId);
+						document.getElementById('notice_title').innerHTML = title.charAt(0).toUpperCase() + title.slice(1) + ' ' + document.getElementById('song_title_'+missionSongIndex.toString()).innerHTML + ':';
+						document.getElementById('download_song_btn').style.display = 'block';
+					} else {
+						document.getElementById('download_song_btn').style.display = 'none';		
+					}
 				}
 			},'html');
 		}
 		
+		function getTrackById(sc_id) {
+			var ids = getElementsByClass('song_sc_id', 'songlist');
+			for (var i = 1; i <= ids.length; i++) {
+				var elem = document.getElementById('id_'+i.toString());
+				if (elem.innerHTML.toString() == sc_id.toString()) {
+					return i;
+				} 
+			}
+		}
+				
 		function getPairValue(arr, match)
 		{
 			for (var i = 0; i < arr.length; i++) {
@@ -434,14 +456,6 @@
 				var playPrompt = $(str)[0];
 				var playPromptStr = '#' + playPrompt.id.toString();
 				$(playPromptStr).css('display', 'block');
-				// elem.style.backgroundImage = "url('../images/html5/song_bg_hover.png')";
-				// var titleOffsetTop = parseInt(titleElem.offsetTop) - parseInt(document.getElementById('player').offsetTop) - 9;
-				// var titleOffsetLeft = parseInt(titleElem.offsetLeft) + parseInt($(titleIdStr).width()) - 50;
-				// var titleOffsetLeft = parseInt(titleElem.offsetLeft) - 35;
-				// document.getElementById('song_play_btn_over').style.left = titleOffsetLeft;
-				// document.getElementById('song_play_btn_over').style.top = titleOffsetTop;
-				// document.getElementById('song_play_btn_over').style.display = 'block';
-				// document.getElementById('').style.display = 'block';
 			});
 		}
 		
@@ -519,6 +533,11 @@
 		        }
 		    }
 			return matches;
+		}
+		
+		function downloadMissionSong() {
+			var downloadUrl = document.getElementById('download_url_'+missionSongIndex.toString()).innerHTML;
+			downloadSong(downloadUrl);
 		}
 		
 		function downloadCurrentSong() {
@@ -924,13 +943,13 @@
 		}
 		
 		// REGISTER MISSION		
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_playlist&mission_rank=2', function(data, status) {
-		      // parse
-		},'html');
-		
-		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=like&mission_rank=1', function(data, status) {
-		      // parse
-		},'html');
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_song&mission_rank=1&mission_tag=', function(data, status) {
+		//       // parse
+		// },'html');
+		// 
+		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=like&mission_rank=2', function(data, status) {
+		//       // parse
+		// },'html');
 		
 		// CREATE MISSION
 		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=like', function(data, status) {

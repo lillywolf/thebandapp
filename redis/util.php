@@ -20,7 +20,7 @@ class Util
 		return null;
 	}
 	
-	public function getMissionData($m_id)
+	public function getMissionData($m_id, $tag = null)
 	{
 		$data = array();
 		switch ($m_id)
@@ -37,6 +37,12 @@ class Util
 				$data['description'] = 'Download tracks for free';
 				$data['explanation'] = 'Have users download a playlist you\'ve defined';
 				break;
+			case 'download_song':
+				$data['id'] = 'download_song_'.strval($tag);
+				$data['title'] = 'download';
+				$data['description'] = 'Download this track for free';
+				$data['explanation'] = 'Have users download a song you\'ve defined';
+				break;				
 			case 'add_app':
 				$data['id'] = 'add_app';
 				$data['title'] = 'add the music player app';

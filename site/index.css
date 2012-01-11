@@ -280,6 +280,17 @@ a.soundcloud-badge:hover {
 #download_all_btn:hover {
 	margin: -39px 0 0 -2px;
 }
+#download_song_btn {
+	background-image: url('../images/html5/download_btns_pink.png');
+	width: 99px;
+	height: 88px;
+	float: left;
+	display: none;
+	margin: -5px 0 0 -2px;
+}
+#download_song_btn:hover {
+	margin: -39px 0 0 -2px;	
+}
 #download_instrumentals_btn {
 	background-image: url('../images/html5/download_instrumentals_btns.png');
 	width: 158px;
@@ -456,4 +467,13 @@ a.soundcloud-badge:hover {
 	float: left;
 	width: 230px;
 	margin: 10px 0 0 12px;
+}
+.song_download_url {
+	display: none;
+}
+.song_sc_id {
+	display: none;
+}
+#download_song_btn {
+	display: none;
 }
