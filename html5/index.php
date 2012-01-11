@@ -368,7 +368,6 @@
 				indexedGoals[i]['complete'] = 0;
 				if (goalId == 'like') {
 					if (liked) {
-						alert('liked!');
 						indexedGoals[i]['complete'] = 1;
 						goals[rank]['complete'] = 1;	
 						alert('recorded like');					
@@ -385,8 +384,9 @@
 					}
 				}
 			}
-			for (var i = 0; i < indexedGoals.length; i++) {
-				if (goals[i]['complete'] == 0) {
+			for (var i = 1; i <= indexedGoals.length; i++) {
+				if (goals[i] && goals[i]['complete'] == 0) {
+					alert(goals[i].toSource());
 					currentMission = goals[i];
 				}
 			}
