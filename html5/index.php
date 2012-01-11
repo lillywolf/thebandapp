@@ -395,10 +395,10 @@
 				title = 'Click "Like" above to follow us on Facebook';
 			} else if (missionId.indexOf('download_song_') != -1) {
 				var parts = missionId.split('download_song_');
-				alert(parts.toSource());
 				var soundcloudId = parts[1];
-				missionSongIndex = getTrackById(soundcloudId);				
-				title = 'Download ' + document.getElementById('song_title_'+missionSongIndex.toString()+':');
+				missionSongIndex = getTrackById(soundcloudId);	
+				alert(missionSongIndex);			
+				title = 'Download ' + document.getElementById('song_title_'+missionSongIndex.toString()).innerHTML + ':';
 				buttonId = 'download_song_btn';
 			} else if (missionId == 'add_app') {
 				title = 'Add the music player app: ';
@@ -412,7 +412,6 @@
 		}				
 		
 		function getTrackById(sc_id) {
-			alert(sc_id);
 			var ids = getElementsByClass('song_sc_id', 'songlist');
 			for (var i = 1; i <= ids.length; i++) {
 				var elem = document.getElementById('sc_id_'+i.toString());
