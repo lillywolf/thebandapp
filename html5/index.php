@@ -303,7 +303,7 @@
 			$('#progress_bar').mousemove(function(e) {
 				var distanceY = e.pageX - this.offsetLeft;
 				var segment = parseInt($('#progress_bg').width())/totalMissions;
-				var newGoal = Math.ceil(parseInt(distanceY)/segment);
+				var newGoal = Math.floor(parseInt(distanceY)/segment);
 				if (newGoal != goalNumber) {
 					goalNumber = newGoal;
 					var ttText = toolTipGoal(goalNumber);
@@ -322,22 +322,17 @@
 		function toolTipGoal(goalNumber) {
 			if (parseInt(goalNumber) in goals) {
 				var ttText = getGoalToolTipText(goals[goalNumber]);
-			} else if (goalNumber == 1) {
-				// Currently 1 is a special case
-				var ttText = getGoalToolTipText(1);
-			}
+			} 
 			return ttText;
 		}
 		
 		function getGoalToolTipText(goal) {
-			if (goal && goal.id == 'download_playlist') {
-				return '#' + goal.rank.toString() + ': DOWNLOADED SONGS';
+			if (goal && goal.id.indexOf('download_song') != -1) {
+				return '#' + goal.rank.toString() + ': DOWNLOADED SONG';
 			} else if (goal && goal.id == 'like') {
 				return '#' + goal.rank.toString() + ': LIKED PAGE';
 			} else if (goal && goal.id == 'add_app') {
 				return '#' + goal.rank.toString() + ': ADDED APP';
-			} else if (goal == 1) {
-				return '#1: VISITED PAGE';				
 			}
 		}
 		
@@ -416,8 +411,8 @@
 			document.getElementById('add_app_btn').style.display = 'none';						
 			document.getElementById(buttonId).style.display = 'block';
 			
-			if (goalIndex > 0) {
-				document.getElementById('progress_bar').src = '../images/html5/progress_bar_'+indexedGoals.length.toString()+'_'+goalIndex.toString()+'_green.png';				
+			if (goalIndex > 1) {
+				document.getElementById('progress_bar').src = '../images/html5/progress_bar_'+indexedGoals.length.toString()+'_'+(goalIndex-1).toString()+'_green.png';				
 			}
 		}				
 		
