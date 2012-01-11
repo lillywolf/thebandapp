@@ -142,8 +142,8 @@
 		</div>
 		<div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div>
 		<div id="big_like">
-			<div id="like_song_text"></div>
-			<div id="big_like_btn"></div>
+			<span id="like_song_text"></span>
+			<span id="big_like_btn"></span>
 		</div>
 		
 		<div id="flash">

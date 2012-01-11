@@ -484,8 +484,10 @@ a.soundcloud-badge:hover {
 	color: #5E5751;
 	font-size: 11px;	
 	float: left;
-	max-width: 200px;
-	margin: 6px 10px 0 0;
+	max-width: 155px;
+	/* margin: 6px 10px 0 0; */
+	vertical-align: middle;
+	height: 30px;
 }
 #big_like_btn {
 	float: left;
