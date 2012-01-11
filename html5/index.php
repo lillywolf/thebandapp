@@ -958,17 +958,17 @@
 		}
 		
 		// REGISTER MISSION		
-		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_song&mission_rank=1&mission_tag=25756679', function(data, status) {
-		//       // parse
-		// },'html');
+		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_song&mission_rank=2&mission_tag=25756679', function(data, status) {
+		      // parse
+		},'html');
+		
+		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=like&mission_rank=1', function(data, status) {
+		      // parse
+		},'html');
 		// 
-		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=like&mission_rank=2', function(data, status) {
-		//       // parse
-		// },'html');
-		// 
-		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_song&mission_rank=3&mission_tag=24351743', function(data, status) {
-		//       // parse
-		// },'html');
+		$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=register_mission&mission_id=download_song&mission_rank=3&mission_tag=24351743', function(data, status) {
+		      // parse
+		},'html');
 		
 		// CREATE MISSION
 		// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=create_mission&mission_id=download_song', function(data, status) {
