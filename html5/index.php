@@ -303,7 +303,7 @@
 			$('#progress_bar').mousemove(function(e) {
 				var distanceY = e.pageX - this.offsetLeft;
 				var segment = parseInt($('#progress_bg').width())/totalMissions;
-				var newGoal = Math.floor(parseInt(distanceY)/segment);
+				var newGoal = Math.ceil(parseInt(distanceY)/segment);
 				if (newGoal != goalNumber) {
 					goalNumber = newGoal;
 					var ttText = toolTipGoal(goalNumber);
@@ -327,6 +327,7 @@
 		}
 		
 		function getGoalToolTipText(goal) {
+			alert(goals.toSource());
 			if (goal && goal.id.indexOf('download_song') != -1) {
 				return '#' + goal.rank.toString() + ': DOWNLOADED SONG';
 			} else if (goal && goal.id == 'like') {
