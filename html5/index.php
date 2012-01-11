@@ -292,8 +292,8 @@
 			listenForHovers();
 			updatePlayerData(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl'], currentSongData['purchaseUrl']);
 			stopButtonPropagations();
-			updateProgressBar();	
-			// setPageGoals();		
+			// updateProgressBar();	
+			setPageGoals();		
 		}
 		
 		$('#progress_bar').mouseover(function(e) {
@@ -352,11 +352,11 @@
 					};
 					indexedGoals.push(goals[missionRank]);
 				}
+				updateProgressBar();
 			});
 		}
 
 		function updateProgressBar() {
-			setPageGoals();
 			alert(indexedGoals.toSource());
 			var highestMissionRank = 0;
 			currentMission = goals[1];
