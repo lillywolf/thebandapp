@@ -81,7 +81,8 @@ a.soundcloud-badge:hover {
 }
 #big_like {
 	position: absolute;
-	top: 100px;
+	top: 105px;
+	left: 3px;
 }
 #notice {
 	position: absolute;
@@ -272,7 +273,7 @@ a.soundcloud-badge:hover {
 }
 #download_all_btn {
 	background-image: url('../images/html5/download_all_btns_pink.png');
-	width: 132px;
+	width: 137px;
 	height: 75px;
 	float: left;
 	display: none;
@@ -484,6 +485,7 @@ a.soundcloud-badge:hover {
 	font-size: 11px;	
 	float: left;
 	max-width: 200px;
+	margin: 6px 10px 0 0;
 }
 #big_like_btn {
 	float: left;
