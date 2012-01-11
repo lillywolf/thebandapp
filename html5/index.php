@@ -244,6 +244,7 @@
 		var indexedGoals = new Array();
 		
 		var liked = '<?php echo $liked ?>';
+		var addedApp = '<?php echo $user_id ?>';
 		var fbPageUrl = '<?php echo $fbPageUrl ?>';
 		var downloadedPlaylist = getCookie('download_playlist');
 		
@@ -342,7 +343,6 @@
 		function setPageGoals() {
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=get_page_missions', function(data, status) {
 				var listings = data.split(',');
-				alert(listings.toSource());
 				for (var i = 0; i < listings.length; i++) {
 					var missionId = getPairValue(listings[i].split('&'), 'id');
 					var missionRank = parseInt(getPairValue(listings[i].split('&'), 'rank')) + 1;
@@ -364,18 +364,24 @@
 			for (var i = 0; i < indexedGoals.length; i++) {
 				var goalId = indexedGoals[i]['id'];
 				var rank = indexedGoals[i]['rank'];
+				alert(goalId);
 				indexedGoals[i]['complete'] = 0;
 				if (goalId == 'like') {
 					if (liked) {
+						alert('liked!');
 						indexedGoals[i]['complete'] = 1;
-						goals[rank]['complete'] = 1;						
+						goals[rank]['complete'] = 1;	
+						alert('recorded like');					
 					} 
 				} else if (goalId.indexOf('download_song_') != -1) {
 					indexedGoals[i]['complete'] = 0;
+					alert('song downloaded?');
 				} else if (goalId == 'add_app') {
-					if ('<?php echo $user_id ?>' != null) {
+					alert('added app?');
+					if (addedApp != null) {
 						indexedGoals[i]['complete'] = 1;
 						goals[rank]['complete'] = 1;
+						alert('app add recorded');
 					}
 				}
 			}
