@@ -232,6 +232,7 @@
 		
 		var totalMissions = 4;
 		var missionSongIndex;
+		var missionSongId;
 		var isPlaying = false;
 		var currentTrackIndex = 1;
 		var currentScrollIndex = 1;
@@ -370,7 +371,11 @@
 						goals[rank]['complete'] = 1;	
 					} 
 				} else if (goalId.indexOf('download_song_') != -1) {
-					indexedGoals[i]['complete'] = 0;
+					var checkSongId = goalId.split('download_song_')[1];
+					if (getCookie('download_song_'+checkSongId)) {
+						indexedGoals[i]['complete'] = 1;
+						goals[rank]['complete'] = 1;
+					}
 				} else if (goalId == 'add_app') {
 					alert('added app?');
 					if (addedApp != null) {
@@ -395,9 +400,8 @@
 				title = 'Click "Like" above to follow us on Facebook';
 			} else if (missionId.indexOf('download_song_') != -1) {
 				var parts = missionId.split('download_song_');
-				var soundcloudId = parts[1];
-				missionSongIndex = getTrackById(soundcloudId);	
-				alert(missionSongIndex);			
+				missionSongId = parts[1];
+				missionSongIndex = getTrackById(missionSongId);	
 				title = 'Download ' + document.getElementById('song_title_'+missionSongIndex.toString()).innerHTML + ':';
 				buttonId = 'download_song_btn';
 			} else if (missionId == 'add_app') {
@@ -415,7 +419,6 @@
 			var ids = getElementsByClass('song_sc_id', 'songlist');
 			for (var i = 1; i <= ids.length; i++) {
 				var elem = document.getElementById('sc_id_'+i.toString());
-				alert(elem.innerHTML);
 				if (elem.innerHTML.toString() == sc_id.toString()) {
 					return i;
 				} 
@@ -548,6 +551,7 @@
 		
 		function downloadMissionSong() {
 			var downloadUrl = document.getElementById('download_url_'+missionSongIndex.toString()).innerHTML;
+			setCookie('download_song_'+missionSongId, 1, 365);
 			downloadSong(downloadUrl);
 		}
 		
