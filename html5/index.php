@@ -241,6 +241,7 @@
 		var mp3Support = true;
 		var smSongId;
 		var goals = new Array();
+		var indexedGoals = new Array();
 		
 		var liked = '<?php echo $liked ?>';
 		var fbPageUrl = '<?php echo $fbPageUrl ?>';
@@ -342,7 +343,6 @@
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=get_page_missions', function(data, status) {
 				var listings = data.split(',');
 				alert(listings.toSource());
-				var indexedGoals = new Array();
 				for (var i = 0; i < listings.length; i++) {
 					var missionId = getPairValue(listings[i].split('&'), 'id');
 					var missionRank = parseInt(getPairValue(listings[i].split('&'), 'rank')) + 1;
@@ -353,39 +353,38 @@
 					indexedGoals.push(goals[missionRank]);
 				}
 			});
-			return indexedGoals;		
 		}
 
 		function updateProgressBar() {
-			var indexedGoals = setPageGoals();
+			setPageGoals();
 			alert(indexedGoals.toSource());
-			// var highestMissionRank = 0;
-			// currentMission = goals[1];
-			// var currentMission;
-			// for (var i = 0; i < indexedGoals.length; i++) {
-			// 	var goalId = indexedGoals[i]['id'];
-			// 	var rank = indexedGoals[i]['rank'];
-			// 	indexedGoals[i]['complete'] = 0;
-			// 	if (goalId == 'like') {
-			// 		if (liked) {
-			// 			indexedGoals[i]['complete'] = 1;
-			// 			goals[rank]['complete'] = 1;						
-			// 		} 
-			// 	} else if (goalId.indexOf('download_song_') != -1) {
-			// 		indexedGoals[i]['complete'] = 0;
-			// 	} else if (goalId == 'add_app') {
-			// 		if ('<?php echo $user_id ?>' != null) {
-			// 			indexedGoals[i]['complete'] = 1;
-			// 			goals[rank]['complete'] = 1;
-			// 		}
-			// 	}
-			// }
-			// for (var i = 0; i < indexedGoals.length; i++) {
-			// 	if (goals[i]['complete'] == 0) {
-			// 		currentMission = goals[i];
-			// 	}
-			// }
-			// alert(currentMission.toSource());
+			var highestMissionRank = 0;
+			currentMission = goals[1];
+			var currentMission;
+			for (var i = 0; i < indexedGoals.length; i++) {
+				var goalId = indexedGoals[i]['id'];
+				var rank = indexedGoals[i]['rank'];
+				indexedGoals[i]['complete'] = 0;
+				if (goalId == 'like') {
+					if (liked) {
+						indexedGoals[i]['complete'] = 1;
+						goals[rank]['complete'] = 1;						
+					} 
+				} else if (goalId.indexOf('download_song_') != -1) {
+					indexedGoals[i]['complete'] = 0;
+				} else if (goalId == 'add_app') {
+					if ('<?php echo $user_id ?>' != null) {
+						indexedGoals[i]['complete'] = 1;
+						goals[rank]['complete'] = 1;
+					}
+				}
+			}
+			for (var i = 0; i < indexedGoals.length; i++) {
+				if (goals[i]['complete'] == 0) {
+					currentMission = goals[i];
+				}
+			}
+			alert(currentMission.toSource());
 			
 			// var title;
 			// var buttonId;
