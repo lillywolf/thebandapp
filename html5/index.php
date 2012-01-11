@@ -347,11 +347,13 @@
 				for (var i = 0; i < listings.length; i++) {
 					var missionId = getPairValue(listings[i].split('&'), 'id');
 					var missionRank = parseInt(getPairValue(listings[i].split('&'), 'rank')) + 1;
-					goals[missionRank] = {
-						id: missionId,
-						rank: missionRank
-					};
-					indexedGoals.push(goals[missionRank]);
+					if (missionId != "" && missionId != null) {
+						goals[missionRank] = {
+							id: missionId,
+							rank: missionRank
+						};
+						indexedGoals.push(goals[missionRank]);	
+					}
 				}
 				updateProgressBar();
 			});
