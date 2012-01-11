@@ -385,6 +385,7 @@
 			}
 			for (var i = 0; i <= indexedGoals.length; i++) {
 				if (goals[i] && goals[i]['complete'] == 0) {
+					var goalIndex = i;
 					currentMission = goals[i];
 					break;
 				}
@@ -401,7 +402,7 @@
 				var parts = missionId.split('download_song_');
 				missionSongId = parts[1];
 				missionSongIndex = getTrackById(missionSongId);	
-				title = 'Download ' + document.getElementById('song_title_'+missionSongIndex.toString()).innerHTML + ':';
+				title = 'Download ' + document.getElementById('song_title_'+missionSongIndex.toString()).innerHTML + ', free!';
 				buttonId = 'download_song_btn';
 			} else if (missionId == 'add_app') {
 				title = 'Add the music player app: ';
@@ -412,6 +413,10 @@
 			document.getElementById('download_song_btn').style.display = 'none';						
 			document.getElementById('add_app_btn').style.display = 'none';						
 			document.getElementById(buttonId).style.display = 'block';
+			
+			if (goalIndex > 0) {
+				document.getElementById('progress_bar').src = '../images/html5/progress_bar_'+indexedGoals.length.toString()+'_'+goalIndex.toString()+'_green.png';				
+			}
 		}				
 		
 		function getTrackById(sc_id) {
