@@ -366,8 +366,7 @@
 				var rank = indexedGoals[i]['rank'];
 				indexedGoals[i]['complete'] = 0;
 				if (goalId == 'like') {
-					if (liked) {
-						alert('liked');
+					if (liked == 'true') {
 						indexedGoals[i]['complete'] = 1;
 						goals[rank]['complete'] = 1;	
 					} 
@@ -385,7 +384,6 @@
 				}
 			}
 			for (var i = 0; i <= indexedGoals.length; i++) {
-				alert(goals[i].toSource());
 				if (goals[i] && goals[i]['complete'] == 0) {
 					currentMission = goals[i];
 					break;
