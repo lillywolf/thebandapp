@@ -118,7 +118,7 @@
 		?>
 		
 		<div id="page_heading_div" class="hidden"></div>
-		<div id="missions">
+		<!--div id="missions">
 			<div id="progress_label">
 				GOALS COMPLETE:
 			</div>	
@@ -127,7 +127,7 @@
 			</div>	
 			<div id="progress_tip">
 			</div>	
-		</div>
+		</div-->
 		<div id="notice">
 			<div id="notice_bg">
 				<div id="notice_title"></div>
@@ -141,6 +141,7 @@
 			</div>	
 		</div>
 		<div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div>
+		<img class="banner_pic" id="like_banner" src="../images/banners/like_lillywolf_512px.jpg" />				
 		<span id="big_like">
 			<span id="like_song_text"></span>
 			<span id="big_like_btn"></span>
@@ -211,7 +212,7 @@
 					</div>	
 				</div>	
 			</div>
-			<img id="banner_pic" src="../images/banners/lillynu_poster_520x520.png" />				
+			<img class="banner_pic" src="../images/banners/lillynu_poster_520x520.png" />				
 		</div>	
 		<div id="spinner"></div>
 		<span id="tweet"></span>
