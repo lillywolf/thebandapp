@@ -405,7 +405,7 @@
 			if (missionId == 'like') {
 				title = 'Click "Like" above to follow us on Facebook & get free downloads!';
 				document.getElementById('notice').style.display = 'none';
-				document.getElementById('flash').style.top = 400;
+				document.getElementById('flash').style.top = 405;
 				document.getElementById('big_like').style.top = 370;
 				document.getElementById('like_banner').style.display = 'block';
 			} else if (missionId.indexOf('download_song_') != -1) {

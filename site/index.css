@@ -494,3 +494,6 @@ a.soundcloud-badge:hover {
 #big_like_btn {
 	float: left;
 }
+#like_banner {
+	margin-top: 0px;
+}
