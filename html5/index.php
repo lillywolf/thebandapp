@@ -397,9 +397,15 @@
 			var title;
 			var buttonId;
 			var missionId = currentMission['id'];
+			document.getElementById('notice').style.display = 'block';
+			document.getElementById('flash').style.top = 139;
+			document.getElementById('big_like').style.top = 107;
 			
 			if (missionId == 'like') {
 				title = 'Click "Like" above to follow us on Facebook & get free downloads!';
+				document.getElementById('notice').style.display = 'none';
+				document.getElementById('flash').style.top = 400;
+				document.getElementById('big_like').style.top = 370;
 			} else if (missionId.indexOf('download_song_') != -1) {
 				var parts = missionId.split('download_song_');
 				missionSongId = parts[1];
