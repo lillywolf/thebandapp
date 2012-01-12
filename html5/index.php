@@ -400,14 +400,14 @@
 			document.getElementById('notice').style.display = 'block';
 			document.getElementById('flash').style.top = 139;
 			document.getElementById('big_like').style.top = 107;
-			document.getElementById('banner_like').style.display = 'none';
+			document.getElementById('like_banner').style.display = 'none';
 			
 			if (missionId == 'like') {
 				title = 'Click "Like" above to follow us on Facebook & get free downloads!';
 				document.getElementById('notice').style.display = 'none';
 				document.getElementById('flash').style.top = 400;
 				document.getElementById('big_like').style.top = 370;
-				document.getElementById('banner_like').style.display = 'block';
+				document.getElementById('like_banner').style.display = 'block';
 			} else if (missionId.indexOf('download_song_') != -1) {
 				var parts = missionId.split('download_song_');
 				missionSongId = parts[1];
