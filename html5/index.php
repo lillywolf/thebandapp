@@ -398,8 +398,8 @@
 			var buttonId;
 			var missionId = currentMission['id'];
 			document.getElementById('notice').style.display = 'block';
-			document.getElementById('flash').style.top = 139;
-			document.getElementById('big_like').style.top = 107;
+			document.getElementById('flash').style.top = 105;
+			document.getElementById('big_like').style.top = 73;
 			document.getElementById('like_banner').style.display = 'none';
 			
 			if (missionId == 'like') {
