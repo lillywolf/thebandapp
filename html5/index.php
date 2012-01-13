@@ -429,6 +429,8 @@
 			} else if (missionId.indexOf('download_song_') != -1) {
 				document.getElementById('notice').style.display = 'none';
 				document.getElementById('like_song_banner').style.display = 'block';
+				document.getElementById('flash').style.top = 140;
+				document.getElementById('big_like').style.top = 103;
 				var parts = missionId.split('download_song_');
 				missionSongId = parts[1];
 				missionSongIndex = getTrackById(missionSongId);	
