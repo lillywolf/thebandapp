@@ -304,43 +304,43 @@
 			setPageGoals();		
 		}
 		
-		$('#progress_bar').mouseover(function(e) {
-			var goalNumber;
-			$('#progress_bar').mousemove(function(e) {
-				var distanceY = e.pageX - this.offsetLeft;
-				var segment = parseInt($('#progress_bg').width())/totalMissions;
-				var newGoal = Math.ceil(parseInt(distanceY)/segment);
-				if (newGoal != goalNumber) {
-					goalNumber = newGoal;
-					var ttText = toolTipGoal(goalNumber);
-					document.getElementById('progress_tip').style.display = 'block';
-					document.getElementById('progress_tip').innerHTML = ttText;
-					document.getElementById('progress_tip').style.marginLeft = this.offsetLeft + segment * (goalNumber-1);
-				}	
-			});
-		});
+		// $('#progress_bar').mouseover(function(e) {
+		// 	var goalNumber;
+		// 	$('#progress_bar').mousemove(function(e) {
+		// 		var distanceY = e.pageX - this.offsetLeft;
+		// 		var segment = parseInt($('#progress_bg').width())/totalMissions;
+		// 		var newGoal = Math.ceil(parseInt(distanceY)/segment);
+		// 		if (newGoal != goalNumber) {
+		// 			goalNumber = newGoal;
+		// 			var ttText = toolTipGoal(goalNumber);
+		// 			document.getElementById('progress_tip').style.display = 'block';
+		// 			document.getElementById('progress_tip').innerHTML = ttText;
+		// 			document.getElementById('progress_tip').style.marginLeft = this.offsetLeft + segment * (goalNumber-1);
+		// 		}	
+		// 	});
+		// });
+		// 
+		// $('#progress_bar').mouseleave(function(e) {
+		// 	$('#progress_bar').unbind('mousemove');
+		// 	document.getElementById('progress_tip').style.display = 'none';
+		// });
 		
-		$('#progress_bar').mouseleave(function(e) {
-			$('#progress_bar').unbind('mousemove');
-			document.getElementById('progress_tip').style.display = 'none';
-		});
-		
-		function toolTipGoal(goalNumber) {
-			if (parseInt(goalNumber) in goals) {
-				var ttText = getGoalToolTipText(goals[goalNumber]);
-			} 
-			return ttText;
-		}
-		
-		function getGoalToolTipText(goal) {
-			if (goal && goal.id.indexOf('download_song') != -1) {
-				return '#' + goal.rank.toString() + ': DOWNLOADED SONG';
-			} else if (goal && goal.id == 'like') {
-				return '#' + goal.rank.toString() + ': LIKED PAGE';
-			} else if (goal && goal.id == 'add_app') {
-				return '#' + goal.rank.toString() + ': ADDED APP';
-			}
-		}
+		// function toolTipGoal(goalNumber) {
+		// 	if (parseInt(goalNumber) in goals) {
+		// 		var ttText = getGoalToolTipText(goals[goalNumber]);
+		// 	} 
+		// 	return ttText;
+		// }
+		// 
+		// function getGoalToolTipText(goal) {
+		// 	if (goal && goal.id.indexOf('download_song') != -1) {
+		// 		return '#' + goal.rank.toString() + ': DOWNLOADED SONG';
+		// 	} else if (goal && goal.id == 'like') {
+		// 		return '#' + goal.rank.toString() + ': LIKED PAGE';
+		// 	} else if (goal && goal.id == 'add_app') {
+		// 		return '#' + goal.rank.toString() + ': ADDED APP';
+		// 	}
+		// }
 		
 		function setPageGoals() {
 			// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=get_page_missions', function(data, status) {
@@ -360,7 +360,6 @@
 			// });
 			
 			updateProgressBar();
-			alert('updated prog bar');
 		}
 
 		function updateProgressBar() {
