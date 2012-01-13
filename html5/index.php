@@ -12,21 +12,6 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="../scripts/sm2/soundmanager2.js"></script>
-	
-	<script type="text/javascript">
-
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-28280449-1']);
-	  _gaq.push(['_setDomainName', 'herokuapp.com']);
-	  _gaq.push(['_trackPageview']);
-
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-
-	</script>
 </head>	
 <body>
 		
@@ -92,7 +77,7 @@
 		    exit($e->getMessage());
 		}
 		
-		echo '<script> var playlists = new Array(); </script>';
+		// echo '<script> var playlists = new Array(); </script>';
 		$download_tracks = null;
 		$playlist_id = null;
 		$playlists = null;
@@ -103,14 +88,7 @@
 				$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
 			}
 			$playlists[$playlist['permalink']] = $download_tracks_urls;
-			echo '<script> playlists["'.$playlist['permalink'].'"] = '.$download_tracks_urls.'; </script>';
-			// if ($playlist['permalink'] == $DOWNLOAD_ALL_PLAYLIST_NAME) {
-			// 	$download_tracks = $playlist['tracks']; 
-			// 	$playlist_id = $playlist['id'];
-			// 	foreach($download_tracks as $track) {
-			// 		$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
-			// 	}
-			// }
+			// echo '<script> playlists["'.$playlist['permalink'].'"] = '.$download_tracks_urls.'; </script>';
 			if ($playlist['permalink'] == $PLAYLIST_NAME) {
 				$trackdata = $playlist['tracks']; 
 			}
@@ -121,15 +99,15 @@
 		$redisWrapper->getLogs('clicks');
 									
 		# Record data for users who've added the app
-		if ($user_id) {
-			$perms = $facebook->api('/me/permissions', 'GET');			
+		// if ($user_id) {
+		// 	$perms = $facebook->api('/me/permissions', 'GET');			
 			// $redisWrapper = new Redis($user_id, $pageId);	
-			$redisWrapper->recordPermissions($perms['data'][0]);
-			$redisWrapper->recordAppAdded();			
-			$redisWrapper->recordVisits();		
-			$redisWrapper->recordLike($liked);
-			$redisWrapper->recordDownloadPlaylist($_COOKIE['download_playlist']);
-		}
+		// 	$redisWrapper->recordPermissions($perms['data'][0]);
+		// 	$redisWrapper->recordAppAdded();			
+		// 	$redisWrapper->recordVisits();		
+		// 	$redisWrapper->recordLike($liked);
+		// 	$redisWrapper->recordDownloadPlaylist($_COOKIE['download_playlist']);
+		// }
 							
 		# Record time for efficiency analytics				
 		$after = microtime();			
@@ -323,7 +301,6 @@
 			listenForHovers();
 			updatePlayerData(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl'], currentSongData['purchaseUrl']);
 			stopButtonPropagations();
-			// updateProgressBar();	
 			setPageGoals();		
 		}
 		
@@ -366,56 +343,59 @@
 		}
 		
 		function setPageGoals() {
-			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=get_page_missions', function(data, status) {
-				var listings = data.split(',');
-				for (var i = 0; i < listings.length; i++) {
-					var missionId = getPairValue(listings[i].split('&'), 'id');
-					var missionRank = parseInt(getPairValue(listings[i].split('&'), 'rank'));
-					if (missionId != "" && missionId != null) {
-						goals[missionRank] = {
-							id: missionId,
-							rank: missionRank
-						};
-						indexedGoals.push(goals[missionRank]);	
-					}
-				}
-				updateProgressBar();
-			});
+			// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=get_page_missions', function(data, status) {
+			// 	var listings = data.split(',');
+			// 	for (var i = 0; i < listings.length; i++) {
+			// 		var missionId = getPairValue(listings[i].split('&'), 'id');
+			// 		var missionRank = parseInt(getPairValue(listings[i].split('&'), 'rank'));
+			// 		if (missionId != "" && missionId != null) {
+			// 			goals[missionRank] = {
+			// 				id: missionId,
+			// 				rank: missionRank
+			// 			};
+			// 			indexedGoals.push(goals[missionRank]);	
+			// 		}
+			// 	}
+			// 	updateProgressBar();
+			// });
+			
+			updateProgressBar();
 		}
 
 		function updateProgressBar() {
-			var highestMissionRank = 0;
-			currentMission = goals[1];
-			var currentMission;
-			for (var i = 0; i < indexedGoals.length; i++) {
-				var goalId = indexedGoals[i]['id'];
-				var rank = indexedGoals[i]['rank'];
-				indexedGoals[i]['complete'] = 0;
-				if (goalId == 'like') {
-					if (liked == 'true') {
-						indexedGoals[i]['complete'] = 1;
-						goals[rank]['complete'] = 1;	
-					} 
-				} else if (goalId.indexOf('download_song_') != -1) {
-					var checkSongId = goalId.split('download_song_')[1];
-					if (getCookie('download_song_'+checkSongId)) {
-						indexedGoals[i]['complete'] = 1;
-						goals[rank]['complete'] = 1;
-					}
-				} else if (goalId == 'add_app') {
-					if (addedApp != null) {
-						indexedGoals[i]['complete'] = 1;
-						goals[rank]['complete'] = 1;
-					}
-				}
-			}
-			for (var i = 0; i <= indexedGoals.length; i++) {
-				if (goals[i] && goals[i]['complete'] == 0) {
-					var goalIndex = i;
-					currentMission = goals[i];
-					break;
-				}
-			}
+			// var highestMissionRank = 0;
+			// currentMission = goals[1];
+			// var currentMission;
+			// for (var i = 0; i < indexedGoals.length; i++) {
+			// 	var goalId = indexedGoals[i]['id'];
+			// 	var rank = indexedGoals[i]['rank'];
+			// 	indexedGoals[i]['complete'] = 0;
+			// 	if (goalId == 'like') {
+			// 		if (liked == 'true') {
+			// 			indexedGoals[i]['complete'] = 1;
+			// 			goals[rank]['complete'] = 1;	
+			// 		} 
+			// 	} else if (goalId.indexOf('download_song_') != -1) {
+			// 		var checkSongId = goalId.split('download_song_')[1];
+			// 		if (getCookie('download_song_'+checkSongId)) {
+			// 			indexedGoals[i]['complete'] = 1;
+			// 			goals[rank]['complete'] = 1;
+			// 		}
+			// 	} else if (goalId == 'add_app') {
+			// 		if (addedApp != null) {
+			// 			indexedGoals[i]['complete'] = 1;
+			// 			goals[rank]['complete'] = 1;
+			// 		}
+			// 	}
+			// }
+			// for (var i = 0; i <= indexedGoals.length; i++) {
+			// 	if (goals[i] && goals[i]['complete'] == 0) {
+			// 		var goalIndex = i;
+			// 		currentMission = goals[i];
+			// 		break;
+			// 	}
+			// }
+			
 			// alert(currentMission.toSource());
 			
 			var title;
@@ -426,13 +406,15 @@
 			document.getElementById('big_like').style.top = 73;
 			document.getElementById('like_banner').style.display = 'none';
 			
-			if (missionId == 'like') {
+			// if (missionId == 'like') {
+			if (liked == "false") {
 				title = 'Click "Like" above to follow us on Facebook & get free downloads!';
 				document.getElementById('notice').style.display = 'none';
 				document.getElementById('flash').style.top = 405;
 				document.getElementById('big_like').style.top = 370;
 				document.getElementById('like_banner').style.display = 'block';
-			} else if (missionId.indexOf('download_song_') != -1) {
+			// } else if (missionId.indexOf('download_song_') != -1) {
+			} else {
 				document.getElementById('notice').style.display = 'none';
 				document.getElementById('like_song_banner').style.display = 'block';
 				document.getElementById('flash').style.top = 140;
@@ -442,19 +424,20 @@
 				missionSongIndex = getTrackById(missionSongId);	
 				title = 'Download ' + document.getElementById('song_title_'+missionSongIndex.toString()).innerHTML + ', free!';
 				buttonId = 'download_song_btn';
-			} else if (missionId == 'add_app') {
-				title = 'Add the music player app: ';
-				buttonId = 'add_app_btn';
-			}
+			} 
+			// else if (missionId == 'add_app') {
+			// 	title = 'Add the music player app: ';
+			// 	buttonId = 'add_app_btn';
+			// }
 			document.getElementById('notice_title').innerHTML = title;
 			document.getElementById('download_all_btn').style.display = 'none';						
 			document.getElementById('download_song_btn').style.display = 'none';						
 			document.getElementById('add_app_btn').style.display = 'none';						
 			document.getElementById(buttonId).style.display = 'block';
 			
-			if (goalIndex > 1) {
-				document.getElementById('progress_bar').src = '../images/html5/progress_bar_'+indexedGoals.length.toString()+'_'+(goalIndex-1).toString()+'_green.png';				
-			}
+			// if (goalIndex > 1) {
+			// 	document.getElementById('progress_bar').src = '../images/html5/progress_bar_'+indexedGoals.length.toString()+'_'+(goalIndex-1).toString()+'_green.png';				
+			// }
 		}				
 		
 		function getTrackById(sc_id) {
@@ -913,13 +896,13 @@
 			  	// Additional initialization code here
 				// FB.Canvas.setSize({ width: 520, height: 1200 });
 				FB.Canvas.setAutoGrow();
-				FB.Event.subscribe('edge.create', function(response) {
-					if (response.indexOf(fbPageUrl) != -1) {
-				 		// window.location.reload();
-						liked = true;
-						updateProgressBar();
-					}
-				});	
+				// FB.Event.subscribe('edge.create', function(response) {
+				// 	if (response.indexOf(fbPageUrl) != -1) {
+				//  		// window.location.reload();
+				// 		liked = true;
+				// 		updateProgressBar();
+				// 	}
+				// });	
 			};
 			
 			// loadWall();	
