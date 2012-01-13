@@ -399,9 +399,9 @@
 			
 			// alert(currentMission.toSource());
 			
-			var title;
-			var buttonId;
-			var missionId = currentMission['id'];
+			// var title;
+			// var buttonId;
+			// var missionId = currentMission['id'];
 			document.getElementById('notice').style.display = 'block';
 			document.getElementById('flash').style.top = 105;
 			document.getElementById('big_like').style.top = 73;
@@ -434,7 +434,7 @@
 			document.getElementById('download_all_btn').style.display = 'none';						
 			document.getElementById('download_song_btn').style.display = 'none';						
 			document.getElementById('add_app_btn').style.display = 'none';						
-			document.getElementById(buttonId).style.display = 'block';
+			// document.getElementById(buttonId).style.display = 'block';
 			
 			// if (goalIndex > 1) {
 			// 	document.getElementById('progress_bar').src = '../images/html5/progress_bar_'+indexedGoals.length.toString()+'_'+(goalIndex-1).toString()+'_green.png';				
