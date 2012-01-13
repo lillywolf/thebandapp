@@ -95,8 +95,8 @@
 		}
 		
 		$redisWrapper = new Redis($user_id, $pageId);	
-		$redisWrapper->getLogs('pageviews');
-		$redisWrapper->getLogs('clicks');
+		// $redisWrapper->getLogs('pageviews');
+		// $redisWrapper->getLogs('clicks');
 									
 		# Record data for users who've added the app
 		// if ($user_id) {
@@ -408,6 +408,8 @@
 			
 			// if (missionId == 'like') {
 			if (liked == "false") {
+				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_pageview&pageUrl=unliked', function(data, status) { });
+				
 				title = 'Click "Like" above to follow us on Facebook & get free downloads!';
 				document.getElementById('notice').style.display = 'none';
 				document.getElementById('flash').style.top = 405;
@@ -415,6 +417,8 @@
 				document.getElementById('like_banner').style.display = 'block';
 			// } else if (missionId.indexOf('download_song_') != -1) {
 			} else {
+				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_pageview&pageUrl=liked', function(data, status) { });
+				
 				document.getElementById('notice').style.display = 'none';
 				document.getElementById('like_song_banner').style.display = 'block';
 				document.getElementById('flash').style.top = 140;
