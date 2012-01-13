@@ -155,6 +155,9 @@
 				</div>		
 			</div>	
 		</div>
+		<div id="like_song_banner">
+			<img id="like_song_prompt" src="../images/html5/like_song_prompt.png">
+		</div>	
 		<div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div>
 		<img class="banner_pic" id="like_banner" src="../images/banners/like_lillywolf_512px.jpg" />				
 		<span id="big_like">
@@ -424,6 +427,8 @@
 				document.getElementById('big_like').style.top = 370;
 				document.getElementById('like_banner').style.display = 'block';
 			} else if (missionId.indexOf('download_song_') != -1) {
+				document.getElementById('notice').style.display = 'none';
+				document.getElementById('like_song_banner').style.display = 'block';
 				var parts = missionId.split('download_song_');
 				missionSongId = parts[1];
 				missionSongIndex = getTrackById(missionSongId);	

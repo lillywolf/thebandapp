@@ -497,3 +497,12 @@ a.soundcloud-badge:hover {
 #like_banner {
 	margin-top: 0px;
 }
+#like_song_banner {
+	position: absolute;
+	z-index: 0;
+	top: 0;
+}
+#like_song_prompt {
+	float: left;
+	margin: 50px 0 0 80px;
+}
