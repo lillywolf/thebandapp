@@ -501,8 +501,9 @@ a.soundcloud-badge:hover {
 	position: absolute;
 	z-index: 0;
 	top: 0;
+	background-image: url('../images/html5/share_lillywolf_banner.png');
 }
 #like_song_prompt {
 	float: left;
-	margin: 50px 0 0 80px;
+	margin: 10px 0 0 80px;
 }
