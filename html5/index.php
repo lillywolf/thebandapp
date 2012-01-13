@@ -632,7 +632,6 @@
 			if (currentAudioElement != null) {
 				if (mp3Support) {
 					currentAudioElement.pause();	
-					alert('paused');				
 				} else if (smSongId != null) {
 					soundManager.pause(smSongId);
 				}
