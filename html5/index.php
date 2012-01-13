@@ -666,7 +666,7 @@
 		
 		function doPlay() {
 			// Log plays
-			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_click&clickType='+currentSongData.title, function(data, status) {}
+			// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_click&clickType='+currentSongData.title, function(data, status) {}
 			// Play song
 			var elem = document.getElementById('audio_'+currentTrackIndex.toString());
 			if (mp3Support) {

@@ -123,6 +123,7 @@ if ($method == 'log_pageview')
 if ($method == 'log_click')
 {
 	$clickType = $utils->iterateThroughAndFind($pairs, 'clickType');
+	error_log('logging click');
 	$redis->logClick($clickType, 1);
 }
 
