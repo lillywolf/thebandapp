@@ -116,14 +116,14 @@
 			}
 		}
 		
-		// $redisWrapper = new Redis($user_id, $pageId);	
-		// $redisWrapper->getLogs('pageviews');
-		// $redisWrapper->getLogs('clicks');
+		$redisWrapper = new Redis($user_id, $pageId);	
+		$redisWrapper->getLogs('pageviews');
+		$redisWrapper->getLogs('clicks');
 									
 		# Record data for users who've added the app
 		if ($user_id) {
 			$perms = $facebook->api('/me/permissions', 'GET');			
-			$redisWrapper = new Redis($user_id, $pageId);	
+			// $redisWrapper = new Redis($user_id, $pageId);	
 			$redisWrapper->recordPermissions($perms['data'][0]);
 			$redisWrapper->recordAppAdded();			
 			$redisWrapper->recordVisits();		
@@ -431,10 +431,6 @@
 				document.getElementById('big_like').style.top = 370;
 				document.getElementById('like_banner').style.display = 'block';
 			} else if (missionId.indexOf('download_song_') != -1) {
-				alert('log attempt');
-				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_pageview&pageUrl=downloadSong', function(data, status) {
-				}
-				alert('log complete');
 				document.getElementById('notice').style.display = 'none';
 				document.getElementById('like_song_banner').style.display = 'block';
 				document.getElementById('flash').style.top = 140;
