@@ -316,6 +316,8 @@
 				picUrl: '<?php echo $trackdata[0]["artwork_url"] ?>',
 				purchaseUrl: '<?php echo $trackdata[0]["purchase_url"] ?>'
 			};
+			currentAudioElement = document.getElementById('audio_1');
+			
 			initializeJS();
 			updateDisplayedSongs();
 			listenForHovers();
@@ -629,7 +631,8 @@
 		function pauseCurrent() {
 			if (currentAudioElement != null) {
 				if (mp3Support) {
-					currentAudioElement.pause();					
+					currentAudioElement.pause();	
+					alert('paused');				
 				} else if (smSongId != null) {
 					soundManager.pause(smSongId);
 				}
@@ -667,7 +670,6 @@
 		function doPlay() {
 			// Log plays
 			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_click&clickType='+currentSongData.title, function(data, status) {
-				alert('click logged');
 			});
 			// Play song
 			var elem = document.getElementById('audio_'+currentTrackIndex.toString());
