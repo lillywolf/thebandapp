@@ -215,7 +215,9 @@ class Redis
 	public function logPageView($pageUrl, $toAdd)
 	{
 		$this->redis->sadd('pageviews', 'log_pageview_' . $pageUrl);
+		error_log('added pageviews to set');
 		$this->redis->incrby('log_pageview_' . $pageUrl, $toAdd);
+		error_log('incremented pageviews');
 	}
 	
 	public function logClick($clickType, $toAdd)

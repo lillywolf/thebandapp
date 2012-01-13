@@ -433,6 +433,7 @@
 			} else if (missionId.indexOf('download_song_') != -1) {
 				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_pageview&pageUrl=downloadSong', function(data, status) {
 				}
+				alert('log complete');
 				document.getElementById('notice').style.display = 'none';
 				document.getElementById('like_song_banner').style.display = 'block';
 				document.getElementById('flash').style.top = 140;

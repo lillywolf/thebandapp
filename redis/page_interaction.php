@@ -116,6 +116,7 @@ if ($method == 'next_mission')
 if ($method == 'log_pageview')
 {
 	$pageUrl = $utils->iterateThroughAndFind($pairs, 'pageUrl');
+	error_log('logging pageview');
 	$redis->logPageView($pageUrl, 1);
 }
 
