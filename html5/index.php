@@ -116,14 +116,14 @@
 			}
 		}
 		
-		// $redisWrapper = new Redis($user_id, $pageId);	
-		// $redisWrapper->getLogs('pageviews');
-		// $redisWrapper->getLogs('clicks');
+		$redisWrapper = new Redis($user_id, $pageId);	
+		$redisWrapper->getLogs('pageviews');
+		$redisWrapper->getLogs('clicks');
 									
 		# Record data for users who've added the app
 		if ($user_id) {
 			$perms = $facebook->api('/me/permissions', 'GET');			
-			$redisWrapper = new Redis($user_id, $pageId);	
+			// $redisWrapper = new Redis($user_id, $pageId);	
 			$redisWrapper->recordPermissions($perms['data'][0]);
 			$redisWrapper->recordAppAdded();			
 			$redisWrapper->recordVisits();		
