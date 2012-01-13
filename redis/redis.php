@@ -212,6 +212,30 @@ class Redis
 		error_log('created missions: ' . print_r($mission, true));
 	}
 	
+	public function logPageView($pageUrl, $toAdd)
+	{
+		$this->redis->sadd('pageviews', 'log_pageview_' . $pageUrl);
+		$this->redis->incrby('log_pageview_' . $pageUrl, $toAdd);
+	}
+	
+	public function logClick($clickType, $toAdd)
+	{
+		$this->redis->sadd('clicks', 'log_click_' . $clickType);
+		$this->redis->incrby('log_click_' . $clickType, $toAdd);
+	}
+	
+	public function getLogs($logType)
+	{
+		$result;
+		$logKeys = $this->redis->smembers($logType);
+		foreach ($logKeys as $logKey)
+		{
+			$result[$logKey] = $this->redis->get($logKey);
+		}
+		error_log('logging for ' . $logType . ': ' . print_r($result, true));
+		return $result;
+	}
+	
 }
 
 

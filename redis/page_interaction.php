@@ -113,4 +113,16 @@ if ($method == 'next_mission')
 	}	
 }
 
+if ($method == 'log_pageview')
+{
+	$pageUrl = $utils->iterateThroughAndFind($pairs, 'pageUrl');
+	$redis->logPageView($pageUrl, 1);
+}
+
+if ($method == 'log_click')
+{
+	$clickType = $utils->iterateThroughAndFind($pairs, 'clickType');
+	$redis->logClick($clickType, 1);
+}
+
 ?>
