@@ -430,7 +430,7 @@
 			// 	title = 'Add the music player app: ';
 			// 	buttonId = 'add_app_btn';
 			// }
-			document.getElementById('notice_title').innerHTML = title;
+			// document.getElementById('notice_title').innerHTML = title;
 			document.getElementById('download_all_btn').style.display = 'none';						
 			document.getElementById('download_song_btn').style.display = 'none';						
 			document.getElementById('add_app_btn').style.display = 'none';						
