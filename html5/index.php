@@ -77,7 +77,7 @@
 		    exit($e->getMessage());
 		}
 		
-		// echo '<script> var playlists = new Array(); </script>';
+		echo '<script> var playlists = new Array(); </script>';
 		$download_tracks = null;
 		$playlist_id = null;
 		$playlists = null;
@@ -88,7 +88,7 @@
 				$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
 			}
 			$playlists[$playlist['permalink']] = $download_tracks_urls;
-			// echo '<script> playlists["'.$playlist['permalink'].'"] = '.$download_tracks_urls.'; </script>';
+			echo '<script> playlists["'.$playlist['permalink'].'"] = '.$download_tracks_urls.'; </script>';
 			if ($playlist['permalink'] == $PLAYLIST_NAME) {
 				$trackdata = $playlist['tracks']; 
 			}
@@ -360,6 +360,7 @@
 			// });
 			
 			updateProgressBar();
+			alert('updated prog bar');
 		}
 
 		function updateProgressBar() {
@@ -419,11 +420,11 @@
 				document.getElementById('like_song_banner').style.display = 'block';
 				document.getElementById('flash').style.top = 140;
 				document.getElementById('big_like').style.top = 103;
-				var parts = missionId.split('download_song_');
-				missionSongId = parts[1];
-				missionSongIndex = getTrackById(missionSongId);	
-				title = 'Download ' + document.getElementById('song_title_'+missionSongIndex.toString()).innerHTML + ', free!';
-				buttonId = 'download_song_btn';
+				// var parts = missionId.split('download_song_');
+				// missionSongId = parts[1];
+				// missionSongIndex = getTrackById(missionSongId);	
+				// title = 'Download ' + document.getElementById('song_title_'+missionSongIndex.toString()).innerHTML + ', free!';
+				// buttonId = 'download_song_btn';
 			} 
 			// else if (missionId == 'add_app') {
 			// 	title = 'Add the music player app: ';
