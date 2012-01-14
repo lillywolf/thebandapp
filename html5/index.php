@@ -133,7 +133,7 @@
 			</div>	
 		</div-->
 		<div id="like_song_banner">
-			<img id="like_song_prompt" src="../images/html5/like_song_prompt.png">
+			<img id="like_song_prompt" src="../images/html5/like_song_prompt2.png">
 		</div>	
 		<!--div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div-->
 		<img class="banner_pic" id="like_banner" src="../images/banners/like_lillywolf_512px.jpg" />				
@@ -405,7 +405,7 @@
 			if (liked == "false") {
 				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_pageview&pageUrl=unliked', function(data, status) { });
 				
-				title = 'Click "Like" above to follow us on Facebook & get free downloads!';
+				// title = 'Click "Like" above to follow us on Facebook & get free downloads!';
 				// // document.getElementById('notice').style.display = 'none';
 				
 				// document.getElementById('flash').style.top = 405;
