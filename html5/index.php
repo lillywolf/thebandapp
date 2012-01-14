@@ -439,10 +439,14 @@
 				}
 				
 				// document.getElementById('notice').style.display = 'none';
-				document.getElementById('like_page_banner').style.display = 'none';
+				// document.getElementById('like_page_banner').style.display = 'none';
 				document.getElementById('listen_banner').style.display = 'block';				
-				document.getElementById('flash').style.top = 258;
-				document.getElementById('big_like').style.top = 211;
+				// document.getElementById('flash').style.top = 258;
+				// document.getElementById('big_like').style.top = 211;
+				document.getElementById('like_page_banner').style.top = 258;
+				document.getElementById('flash').style.top = 498;
+				document.getElementById('big_like').style.top = 468;
+				
 				// var parts = missionId.split('download_song_');
 				// missionSongId = parts[1];
 				// missionSongIndex = getTrackById(missionSongId);	
