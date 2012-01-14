@@ -526,7 +526,7 @@ a.soundcloud-badge:hover {
 #listen_banner {
 	position: absolute;
 	z-index: 0;
-	top: -4px;
+	top: 0px;
 	height: 210px;
 	width: 514px;
 	left: 0px;
