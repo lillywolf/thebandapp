@@ -427,9 +427,12 @@
 				// document.getElementById('like_banner').style.display = 'block';
 				
 				document.getElementById('like_page_banner').style.display = 'block';
-				document.getElementById('listen_banner').style.display = 'none';				
-				document.getElementById('flash').style.top = 129;
-				document.getElementById('big_like').style.top = 90;
+				// document.getElementById('listen_banner').style.display = 'none';				
+				// document.getElementById('flash').style.top = 129;
+				// document.getElementById('big_like').style.top = 90;
+				document.getElementById('listen_banner').style.top = 129;
+				document.getElementById('flash').style.top = 369;
+				document.getElementById('big_like').style.top = 339;
 			// } else if (missionId.indexOf('download_song_') != -1) {
 			} else {
 				if (fbUserId != '202357') {
@@ -439,13 +442,10 @@
 				}
 				
 				// document.getElementById('notice').style.display = 'none';
-				// document.getElementById('like_page_banner').style.display = 'none';
+				document.getElementById('like_page_banner').style.display = 'none';
 				document.getElementById('listen_banner').style.display = 'block';				
-				// document.getElementById('flash').style.top = 258;
-				// document.getElementById('big_like').style.top = 211;
-				document.getElementById('like_page_banner').style.top = 258;
-				document.getElementById('flash').style.top = 498;
-				document.getElementById('big_like').style.top = 468;
+				document.getElementById('flash').style.top = 258;
+				document.getElementById('big_like').style.top = 211;
 				
 				// var parts = missionId.split('download_song_');
 				// missionSongId = parts[1];
