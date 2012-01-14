@@ -527,10 +527,9 @@ a.soundcloud-badge:hover {
 	position: absolute;
 	z-index: 0;
 	top: -4px;
-	background-image: url('../images/html5/share_lillywolf_banner.png');
 	height: 210px;
 	width: 521px;
-	left: -8px;
+	left: 2px;
 	overflow: hidden;
 }
 #listen_img:hover {
