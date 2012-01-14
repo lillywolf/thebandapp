@@ -77,22 +77,22 @@
 		    exit($e->getMessage());
 		}
 		
-		// echo '<script> var playlists = new Array(); </script>';
-		// $download_tracks = null;
-		// $playlist_id = null;
-		// $playlists = null;
-		// foreach ($playlistdata as $playlist) {
-		// 	$download_tracks_urls = '';
-		// 	$download_tracks = $playlist['tracks']; 
-		// 	foreach($download_tracks as $track) {
-		// 		$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
-		// 	}
-		// 	$playlists[$playlist['permalink']] = $download_tracks_urls;
-		// 	echo '<script> playlists["'.$playlist['permalink'].'"] = '.$download_tracks_urls.'; </script>';
-		// 	if ($playlist['permalink'] == $PLAYLIST_NAME) {
-		// 		$trackdata = $playlist['tracks']; 
-		// 	}
-		// }
+		echo '<script> var playlists = new Array(); </script>';
+		$download_tracks = null;
+		$playlist_id = null;
+		$playlists = null;
+		foreach ($playlistdata as $playlist) {
+			$download_tracks_urls = '';
+			$download_tracks = $playlist['tracks']; 
+			foreach($download_tracks as $track) {
+				$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
+			}
+			$playlists[$playlist['permalink']] = $download_tracks_urls;
+			echo '<script> playlists["'.$playlist['permalink'].'"] = '.$download_tracks_urls.'; </script>';
+			if ($playlist['permalink'] == $PLAYLIST_NAME) {
+				$trackdata = $playlist['tracks']; 
+			}
+		}
 		
 		$redisWrapper = new Redis($user_id, $pageId);	
 		// $redisWrapper->getLogs('pageviews');
