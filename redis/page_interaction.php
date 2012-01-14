@@ -127,4 +127,9 @@ if ($method == 'log_click')
 	error_log('log click complete');
 }
 
+if ($method == 'pageview_logs')
+{
+	$redis->getLogs('pageviews');
+}
+
 ?>

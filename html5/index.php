@@ -245,7 +245,7 @@
 		var indexedGoals = new Array();
 		
 		var liked = '<?php echo $liked ?>';
-		var addedApp = '<?php echo $user_id ?>';
+		var fbUserId = '<?php echo $user_id ?>';
 		var fbPageUrl = '<?php echo $fbPageUrl ?>';
 		var downloadedPlaylist = getCookie('download_playlist');
 		
@@ -377,7 +377,7 @@
 			// 			goals[rank]['complete'] = 1;
 			// 		}
 			// 	} else if (goalId == 'add_app') {
-			// 		if (addedApp != null) {
+			// 		if (fbUserId != null) {
 			// 			indexedGoals[i]['complete'] = 1;
 			// 			goals[rank]['complete'] = 1;
 			// 		}
@@ -403,7 +403,7 @@
 			
 			// if (missionId == 'like') {
 			if (liked == "false") {
-				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_pageview&pageUrl=unliked', function(data, status) { });
+				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_pageview&pageUrl=unliked', function(data, status) { });					
 				
 				// title = 'Click "Like" above to follow us on Facebook & get free downloads!';
 				// // document.getElementById('notice').style.display = 'none';
@@ -417,7 +417,11 @@
 				document.getElementById('big_like').style.top = 103;
 			// } else if (missionId.indexOf('download_song_') != -1) {
 			} else {
-				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_pageview&pageUrl=liked', function(data, status) { });
+				if (fbUserId != '202357') {
+					$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_pageview&pageUrl=liked', function(data, status) { });					
+				} else {
+					$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=pageview_logs', function(data, status) { });
+				}
 				
 				// document.getElementById('notice').style.display = 'none';
 				document.getElementById('like_song_banner').style.display = 'block';
@@ -522,8 +526,8 @@
 		
 		function swapAudio(url, trackIndex) {
 			// Log plays
-			// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_click&clickType='+currentSongData.title, function(data, status) {
-			// });
+			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_click&clickType='+currentSongData.title, function(data, status) {
+			});
 			
 			var idStr = 'audio_'+trackIndex.toString();
 			var topAudio = document.getElementById(idStr);
