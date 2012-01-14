@@ -223,6 +223,7 @@ class Redis
 	{
 		$this->redis->sadd('clicks', 'log_click_' . $clickType);
 		$this->redis->incrby('log_click_' . $clickType, $toAdd);
+		$this->getLogs('clicks');
 	}
 	
 	public function getLogs($logType)
