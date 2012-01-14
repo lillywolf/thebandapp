@@ -77,22 +77,22 @@
 		    exit($e->getMessage());
 		}
 		
-		echo '<script> var playlists = new Array(); </script>';
-		$download_tracks = null;
-		$playlist_id = null;
-		$playlists = null;
-		foreach ($playlistdata as $playlist) {
-			$download_tracks_urls = '';
-			$download_tracks = $playlist['tracks']; 
-			foreach($download_tracks as $track) {
-				$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
-			}
-			$playlists[$playlist['permalink']] = $download_tracks_urls;
-			echo '<script> playlists["'.$playlist['permalink'].'"] = '.$download_tracks_urls.'; </script>';
-			if ($playlist['permalink'] == $PLAYLIST_NAME) {
-				$trackdata = $playlist['tracks']; 
-			}
-		}
+		// echo '<script> var playlists = new Array(); </script>';
+		// $download_tracks = null;
+		// $playlist_id = null;
+		// $playlists = null;
+		// foreach ($playlistdata as $playlist) {
+		// 	$download_tracks_urls = '';
+		// 	$download_tracks = $playlist['tracks']; 
+		// 	foreach($download_tracks as $track) {
+		// 		$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
+		// 	}
+		// 	$playlists[$playlist['permalink']] = $download_tracks_urls;
+		// 	echo '<script> playlists["'.$playlist['permalink'].'"] = '.$download_tracks_urls.'; </script>';
+		// 	if ($playlist['permalink'] == $PLAYLIST_NAME) {
+		// 		$trackdata = $playlist['tracks']; 
+		// 	}
+		// }
 		
 		$redisWrapper = new Redis($user_id, $pageId);	
 		// $redisWrapper->getLogs('pageviews');
@@ -129,18 +129,18 @@
 			<div id="notice_bg">
 				<div id="notice_title"></div>
 				<div id="notice_text"></div>
-				<div id="notice_btn_wrapper">
+				<!--div id="notice_btn_wrapper">
 					<div id="download_all_btn" onClick="downloadPlaylist('lilly-and-dr-nu-mp3s', true)"></div>
 					<div id="download_song_btn" onClick="downloadMissionSong()"></div>
 					<div id="download_instrumentals_btn" onClick="downloadPlaylist('play-loud-instrumentals')"></div>
 					<div id="add_app_btn" onClick="addApp()"></div>
-				</div>		
+				</div-->		
 			</div>	
 		</div>
 		<div id="like_song_banner">
 			<img id="like_song_prompt" src="../images/html5/like_song_prompt.png">
 		</div>	
-		<div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div>
+		<!--div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div-->
 		<img class="banner_pic" id="like_banner" src="../images/banners/like_lillywolf_512px.jpg" />				
 		<span id="big_like">
 			<span id="like_song_text"></span>
@@ -212,7 +212,7 @@
 					</div>	
 				</div>	
 			</div>
-			<img class="banner_pic" src="../images/banners/lillynu_poster_520x520.png" />				
+			<!--img class="banner_pic" src="../images/banners/lillynu_poster_520x520.png" /-->				
 		</div>	
 		<div id="spinner"></div>
 		<span id="tweet"></span>
@@ -273,6 +273,7 @@
 		
 		init();	
 		initSoundManager();
+		playButtonClick();
 		
 		function initSoundManager() {
 			soundManager.url = '../scripts/sm2/swf/';
@@ -280,7 +281,6 @@
 			soundManager.useFlashBlock = false; // optionally, enable when you're ready to dive in
 			soundManager.debugMode = false;
 			soundManager.onready(function() {
-				// alert('sm ready');
 			});			
 		}
 		
@@ -401,7 +401,7 @@
 			// var title;
 			// var buttonId;
 			// var missionId = currentMission['id'];
-			document.getElementById('notice').style.display = 'block';
+			// document.getElementById('notice').style.display = 'block';
 			document.getElementById('flash').style.top = 105;
 			document.getElementById('big_like').style.top = 73;
 			document.getElementById('like_banner').style.display = 'none';
@@ -411,7 +411,7 @@
 				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_pageview&pageUrl=unliked', function(data, status) { });
 				
 				title = 'Click "Like" above to follow us on Facebook & get free downloads!';
-				document.getElementById('notice').style.display = 'none';
+				// document.getElementById('notice').style.display = 'none';
 				document.getElementById('flash').style.top = 405;
 				document.getElementById('big_like').style.top = 370;
 				document.getElementById('like_banner').style.display = 'block';
@@ -419,7 +419,7 @@
 			} else {
 				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_pageview&pageUrl=liked', function(data, status) { });
 				
-				document.getElementById('notice').style.display = 'none';
+				// document.getElementById('notice').style.display = 'none';
 				document.getElementById('like_song_banner').style.display = 'block';
 				document.getElementById('flash').style.top = 140;
 				document.getElementById('big_like').style.top = 103;
@@ -434,9 +434,9 @@
 			// 	buttonId = 'add_app_btn';
 			// }
 			// document.getElementById('notice_title').innerHTML = title;
-			document.getElementById('download_all_btn').style.display = 'none';						
-			document.getElementById('download_song_btn').style.display = 'none';						
-			document.getElementById('add_app_btn').style.display = 'none';						
+			// document.getElementById('download_all_btn').style.display = 'none';						
+			// document.getElementById('download_song_btn').style.display = 'none';						
+			// document.getElementById('add_app_btn').style.display = 'none';						
 			// document.getElementById(buttonId).style.display = 'block';
 			
 			// if (goalIndex > 1) {
