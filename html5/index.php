@@ -136,7 +136,7 @@
 			<img id="like_song_prompt" src="../images/html5/like_song_prompt2.png">
 		</div>	
 		<!--div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div-->
-		<img class="banner_pic" id="like_banner" src="../images/banners/like_lillywolf_512px.jpg" />				
+		<!--img class="banner_pic" id="like_banner" src="../images/banners/like_lillywolf_512px.jpg" /-->				
 		<span id="big_like">
 			<span id="like_song_text"></span>
 			<span id="big_like_btn"></span>
@@ -221,7 +221,7 @@
 			<!--a href="http://soundcloud.com/lillywolf/follow" class="soundcloud-badge"><span id="soundcloud-badge-inner">http://soundcloud.com/lillywolf</span></a-->			
     		<div id="fb-root"></div>
 		</div>
-		<img src="../images/html5/song_bg_hover2.png" style="display: none" />
+		<!--img src="../images/html5/song_bg_hover2.png" style="display: none" /-->
 		
 	<script type="text/javascript">
 		
@@ -397,9 +397,10 @@
 			// var buttonId;
 			// var missionId = currentMission['id'];
 			// document.getElementById('notice').style.display = 'block';
-			document.getElementById('flash').style.top = 105;
-			document.getElementById('big_like').style.top = 73;
-			document.getElementById('like_banner').style.display = 'none';
+			
+			// document.getElementById('flash').style.top = 105;
+			// document.getElementById('big_like').style.top = 73;
+			// document.getElementById('like_banner').style.display = 'none';
 			
 			// if (missionId == 'like') {
 			if (liked == "false") {
