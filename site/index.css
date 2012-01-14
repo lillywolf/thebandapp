@@ -528,8 +528,8 @@ a.soundcloud-badge:hover {
 	z-index: 0;
 	top: -4px;
 	height: 210px;
-	width: 521px;
-	left: 2px;
+	width: 514px;
+	left: 0px;
 	overflow: hidden;
 }
 #listen_img:hover {
