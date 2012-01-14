@@ -1,14 +1,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" class="no-js">
 <head>
 	<link rel="stylesheet" type="text/css" href="../site/index.css" />
-	<!--link rel="stylesheet" type="text/css" href="../style/sc-player-standard.css" /-->
-	<!--script type="text/javascript" src="../scripts/spin.js"></script-->	
 	<script type="text/javascript" src="../scripts/soundcloud.player.api.js"></script>
 	<script type="text/javascript" src="../scripts/sc-player.js"></script>
 	<script src="http://connect.soundcloud.com/sdk.js" type="text/javascript"></script>	
-	<!--script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script-->	
-	<!--script type="text/javascript" src="scripts/prototype.js"></script-->
-	<!--script src="../scripts/modernizr.custom.41971.js" type="text/javascript"></script-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="../scripts/sm2/soundmanager2.js"></script>
@@ -273,7 +268,7 @@
 		
 		init();	
 		initSoundManager();
-		playButtonClick();
+		// playButtonClick();
 		
 		function initSoundManager() {
 			soundManager.url = '../scripts/sm2/swf/';
