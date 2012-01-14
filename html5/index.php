@@ -132,9 +132,15 @@
 				</div>		
 			</div>	
 		</div-->
-		<div id="like_song_banner">
-			<img id="like_song_prompt" src="../images/html5/like_song_prompt2.png">
+		<!--div id="like_song_banner">
+			<img id="like_song_prompt" src="../images/html5/like_song_prompt.png">
+		</div-->
+		<div id="like_page_banner">
+			<img id="like_page_prompt" src="../images/html5/like_page_prompt.png">
 		</div>	
+		<div id="listen_banner">
+			<img id="listen_img" src="../images/html5/listen_banner.jpg" onClick="playFirstTrack()">
+		</div>
 		<!--div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div-->
 		<!--img class="banner_pic" id="like_banner" src="../images/banners/like_lillywolf_512px.jpg" /-->				
 		<span id="big_like">
@@ -280,7 +286,16 @@
 		}
 		
 		function init() {			
-			// Set up first song
+			setToFirstTrack();
+			initializeJS();
+			updateDisplayedSongs();
+			listenForHovers();
+			updatePlayerData(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl'], currentSongData['purchaseUrl']);
+			stopButtonPropagations();
+			setPageGoals();		
+		}
+		
+		function setToFirstTrack() {
 			currentSongData = {
 				streamUrl: '<?php echo $trackdata[0]["stream_url"] . "?secret_token=1-12872-7625335-94e91695a1ea1e98&client_id=738091d6d02582ddd19de7109b79e47b" ?>',
 				downloadUrl: '<?php echo $trackdata[0]["download_url"] ?>',
@@ -290,13 +305,11 @@
 				purchaseUrl: '<?php echo $trackdata[0]["purchase_url"] ?>'
 			};
 			currentAudioElement = document.getElementById('audio_1');
-			
-			initializeJS();
-			updateDisplayedSongs();
-			listenForHovers();
-			updatePlayerData(currentSongData['title'], 1, currentSongData['url'], currentSongData['picUrl'], currentSongData['downloadUrl'], currentSongData['streamUrl'], currentSongData['purchaseUrl']);
-			stopButtonPropagations();
-			setPageGoals();		
+		}
+		
+		function playFirstTrack() {
+			setToFirstTrack();
+			playButtonClick();
 		}
 		
 		// $('#progress_bar').mouseover(function(e) {
@@ -413,7 +426,8 @@
 				// document.getElementById('big_like').style.top = 370;
 				// document.getElementById('like_banner').style.display = 'block';
 				
-				document.getElementById('like_song_banner').style.display = 'block';
+				document.getElementById('like_page_banner').style.display = 'block';
+				document.getElementById('listen_banner').style.display = 'none';				
 				document.getElementById('flash').style.top = 140;
 				document.getElementById('big_like').style.top = 103;
 			// } else if (missionId.indexOf('download_song_') != -1) {
@@ -425,7 +439,8 @@
 				}
 				
 				// document.getElementById('notice').style.display = 'none';
-				document.getElementById('like_song_banner').style.display = 'block';
+				document.getElementById('like_page_banner').style.display = 'none';
+				document.getElementById('listen_banner').style.display = 'block';				
 				document.getElementById('flash').style.top = 140;
 				document.getElementById('big_like').style.top = 103;
 				// var parts = missionId.split('download_song_');
