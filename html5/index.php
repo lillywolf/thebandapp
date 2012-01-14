@@ -406,10 +406,15 @@
 				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_pageview&pageUrl=unliked', function(data, status) { });
 				
 				title = 'Click "Like" above to follow us on Facebook & get free downloads!';
-				// document.getElementById('notice').style.display = 'none';
-				document.getElementById('flash').style.top = 405;
-				document.getElementById('big_like').style.top = 370;
-				document.getElementById('like_banner').style.display = 'block';
+				// // document.getElementById('notice').style.display = 'none';
+				
+				// document.getElementById('flash').style.top = 405;
+				// document.getElementById('big_like').style.top = 370;
+				// document.getElementById('like_banner').style.display = 'block';
+				
+				document.getElementById('like_song_banner').style.display = 'block';
+				document.getElementById('flash').style.top = 140;
+				document.getElementById('big_like').style.top = 103;
 			// } else if (missionId.indexOf('download_song_') != -1) {
 			} else {
 				$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_pageview&pageUrl=liked', function(data, status) { });
