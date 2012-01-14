@@ -522,8 +522,8 @@
 		
 		function swapAudio(url, trackIndex) {
 			// Log plays
-			$.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_click&clickType='+currentSongData.title, function(data, status) {
-			});
+			// $.get('../redis/page_interaction.php?fbId=<?php echo $user_id ?>&pageId=<?php echo $pageId ?>&method=log_click&clickType='+currentSongData.title, function(data, status) {
+			// });
 			
 			var idStr = 'audio_'+trackIndex.toString();
 			var topAudio = document.getElementById(idStr);
