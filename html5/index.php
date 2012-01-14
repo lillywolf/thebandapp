@@ -125,18 +125,18 @@
 			<div id="progress_tip">
 			</div>	
 		</div-->
-		<div id="notice">
+		<!--div id="notice">
 			<div id="notice_bg">
 				<div id="notice_title"></div>
 				<div id="notice_text"></div>
-				<!--div id="notice_btn_wrapper">
+				<div id="notice_btn_wrapper">
 					<div id="download_all_btn" onClick="downloadPlaylist('lilly-and-dr-nu-mp3s', true)"></div>
 					<div id="download_song_btn" onClick="downloadMissionSong()"></div>
 					<div id="download_instrumentals_btn" onClick="downloadPlaylist('play-loud-instrumentals')"></div>
 					<div id="add_app_btn" onClick="addApp()"></div>
-				</div-->		
+				</div>		
 			</div>	
-		</div>
+		</div-->
 		<div id="like_song_banner">
 			<img id="like_song_prompt" src="../images/html5/like_song_prompt.png">
 		</div>	
