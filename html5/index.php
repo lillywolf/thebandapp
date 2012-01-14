@@ -428,8 +428,8 @@
 				
 				document.getElementById('like_page_banner').style.display = 'block';
 				document.getElementById('listen_banner').style.display = 'none';				
-				document.getElementById('flash').style.top = 140;
-				document.getElementById('big_like').style.top = 103;
+				document.getElementById('flash').style.top = 129;
+				document.getElementById('big_like').style.top = 90;
 			// } else if (missionId.indexOf('download_song_') != -1) {
 			} else {
 				if (fbUserId != '202357') {
