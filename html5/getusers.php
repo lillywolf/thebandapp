@@ -31,7 +31,7 @@
 	}
 	
 	print_r($userdata);
-	$sendto = ['10822550', '10822550'];
+	$sendto = new array('10822550', '10822550');
 	
 	// 10822550
 	// Love Too Serious - 25756679
