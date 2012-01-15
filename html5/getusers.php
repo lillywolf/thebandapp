@@ -8,8 +8,8 @@
 	
 	try 
 	{
-		$usersdata = json_decode($soundcloud->get('users?q=new+york&offset=1000'), true);
-		// $usersdata = json_decode($soundcloud->get('me/followings'), true);
+		// $usersdata = json_decode($soundcloud->get('users?q=new+york&offset=1000'), true);
+		$usersdata = json_decode($soundcloud->get('users?q=small+gizzy'), true);
 	} 
 	catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) 
 	{
@@ -30,7 +30,7 @@
 		// $i++;
 	}
 	
-	print_r($users);
+	print_r($userdata);
 	
 	// Love Too Serious - 25756679
 	// Disaster - 25822353
