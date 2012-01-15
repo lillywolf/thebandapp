@@ -9,7 +9,7 @@
 	try 
 	{
 		// $usersdata = json_decode($soundcloud->get('users?q=new+york&offset=1000'), true);
-		$usersdata = json_decode($soundcloud->get('users?q=deliciousgizzy'), true);
+		$usersdata = json_decode($soundcloud->get('users?q=small+gizzy'), true);
 	} 
 	catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) 
 	{
@@ -31,13 +31,17 @@
 	}
 	
 	print_r($userdata);
+	$sendto = ['10822550', '10822550'];
 	
 	// 10822550
 	// Love Too Serious - 25756679
 	// Disaster - 25822353
-	// $result = $soundcloud->post('tracks/25756679/shared-to/users', array(
-	// 		"users[][id]" => "10822550"
-	// 	));
-	// print_r($result);
+	foreach ($sendto as $sendid)
+	{
+		// $result = $soundcloud->post('tracks/25756679/shared-to/users', array(
+		// 		"users[][id]" => "10822550"
+		// 	));
+		// print_r($result);	
+	}
 
 ?>
