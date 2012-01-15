@@ -15,14 +15,16 @@
 	    exit($e->getMessage());
 	}
 	
-	$i = 0;
+	$users = array();
+	
 	foreach ($usersdata as $userdata) 
 	{
-		if ($i < 10)
-		{
-			print_r($userdata);
-		}
-		$i++;
+		$users[]['id'] = $userdata['id'];
 	}
+	
+	print_r($users);
+	
+	// Love Too Serious
+	// $soundcloud->post('tracks/25756679/shared-to/users', array(), $users);
 
 ?>
