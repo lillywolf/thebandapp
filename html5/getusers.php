@@ -17,24 +17,24 @@
 	}
 	
 	$users = array();
+	$strusers = array();
 	
 	foreach ($usersdata as $userdata) 
 	{
 		$users[]['id'] = $userdata['id'];
+		$strusers[]['users[][id]'] => $userdata['id'];
 	}
 	
-	print_r($users);
+	print_r($strusers);
 	// $sendto = array('10822550', '10822550');
 	
 	// 10822550
 	// Love Too Serious - 25756679
 	// Disaster - 25822353
-	foreach ($sendto as $sendid)
-	{
+
 		// $result = $soundcloud->post('tracks/25756679/shared-to/users', array(
 		// 		"users[][id]" => "10822550"
 		// 	));
 		// print_r($result);	
-	}
 
 ?>
