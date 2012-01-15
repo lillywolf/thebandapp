@@ -22,10 +22,14 @@
 	foreach ($usersdata as $userdata) 
 	{
 		$users[]['id'] = $userdata['id'];
-		$strusers[] = array('users[][id]' => $userdata['id']);
+		
+		$result = $soundcloud->post('tracks/27221565/shared-to/users', array(
+			"users[][id]" => $userdata['id']
+		));
+		// $strusers[] = array('users[][id]' => $userdata['id']);
 	}
 	
-	print_r($strusers);
+	// print_r($strusers);
 	// $sendto = array('10822550', '10822550');
 	
 	// 10822550
