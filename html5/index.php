@@ -16,7 +16,7 @@
 		
 		require_once('../sc-api/Soundcloud.php');
 		require_once('../php-sdk/src/facebook.php');
-		require_once('../redis/redis.php');
+		// require_once('../redis/redis.php');
 		
 		session_start();
 		
@@ -89,7 +89,7 @@
 			}
 		}
 		
-		$redisWrapper = new Redis($user_id, $pageId);	
+		// $redisWrapper = new Redis($user_id, $pageId);	
 		// $redisWrapper->getLogs('pageviews');
 		// $redisWrapper->getLogs('clicks');
 									
@@ -136,7 +136,7 @@
 			<img id="like_song_prompt" src="../images/html5/like_song_prompt.png">
 		</div-->
 		<div id="like_page_banner">
-			<img id="like_page_prompt" src="../images/html5/like_page_prompt.png">
+			<!--img id="like_page_prompt" src="../images/html5/like_page_prompt.png"-->
 		</div>	
 		<div id="listen_banner">
 			<img id="listen_img" src="../images/html5/listen_banner.jpg" onClick="playFirstTrack()">
@@ -426,6 +426,10 @@
 				// document.getElementById('big_like').style.top = 370;
 				// document.getElementById('like_banner').style.display = 'block';
 				
+				var e = window.document.createElement('img');
+				e.src = '../images/html5/like_page_prompt.png';
+				e.id = 'like_page_prompt';
+				document.getElementById('like_page_banner').appendChild(e);
 				document.getElementById('like_page_banner').style.display = 'block';
 				// document.getElementById('listen_banner').style.display = 'none';				
 				// document.getElementById('flash').style.top = 129;
