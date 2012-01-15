@@ -25,9 +25,9 @@
 	print_r($users);
 	
 	// Love Too Serious
-	$result = json_decode($soundcloud->post('tracks/25756679/shared-to/users', array(
+	$result = $soundcloud->post('tracks/25756679/shared-to/users', array(
 			"users[][id]" => "10822550"
-		)));
+		));
 	print_r($result);
 
 ?>
