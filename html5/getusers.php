@@ -8,7 +8,7 @@
 	
 	try 
 	{
-		$usersdata = json_decode($soundcloud->get('users?q=smallgizzy&limit=100'), true);
+		$usersdata = json_decode($soundcloud->get('users?q=brooklyn'), true);
 	} 
 	catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) 
 	{
@@ -22,13 +22,13 @@
 		$users[]['id'] = $userdata['id'];
 	}
 	
-	print_r($users);
+	print_r(count($users));
 	
 	// Love Too Serious - 25756679
 	// Disaster - 25822353
-	$result = $soundcloud->post('tracks/25822353/shared-to/users', array(
-			"users[][id]" => "10822550"
-		));
-	print_r($result);
+	// $result = $soundcloud->post('tracks/25756679/shared-to/users', array(
+	// 		"users[][id]" => "10822550"
+	// 	));
+	// print_r($result);
 
 ?>
