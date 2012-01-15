@@ -22,7 +22,7 @@
 	foreach ($usersdata as $userdata) 
 	{
 		$users[]['id'] = $userdata['id'];
-		$strusers[]['users[][id]'] => $userdata['id'];
+		$strusers[]['users[][id]'] = $userdata['id'];
 	}
 	
 	print_r($strusers);
