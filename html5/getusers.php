@@ -21,7 +21,7 @@
 	foreach ($usersdata as $userdata) 
 	{
 		$users[]['id'] = $userdata['id'];
-		if ($i < 50)
+		if ($i < 5)
 		{
 			$following = json_decode($soundcloud->get('users/'.$userdata['id'].'/following'), true);
 			print_r(count($following));
