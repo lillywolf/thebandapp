@@ -24,8 +24,9 @@
 	
 	print_r($users);
 	
-	// Love Too Serious
-	$result = $soundcloud->post('tracks/25756679/shared-to/users', array(
+	// Love Too Serious - 25756679
+	// Disaster - 25822353
+	$result = $soundcloud->post('tracks/25822353/shared-to/users', array(
 			"users[][id]" => "10822550"
 		));
 	print_r($result);
