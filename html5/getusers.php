@@ -9,7 +9,7 @@
 	try 
 	{
 		// $usersdata = json_decode($soundcloud->get('users?q=new+york&offset=1000'), true);
-		$usersdata = json_decode($soundcloud->get('users?q=gizzy&offset=25'), true);
+		$usersdata = json_decode($soundcloud->get('users?q=gizzy'), true);
 	} 
 	catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) 
 	{
@@ -23,7 +23,7 @@
 		$users[]['id'] = $userdata['id'];
 	}
 	
-	print_r($userdata);
+	print_r($users);
 	// $sendto = array('10822550', '10822550');
 	
 	// 10822550
