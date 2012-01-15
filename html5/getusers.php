@@ -9,6 +9,7 @@
 	try 
 	{
 		$usersdata = json_decode($soundcloud->get('users?q=coney+island'), true);
+		// $usersdata = json_decode($soundcloud->get('me/followings'), true);
 	} 
 	catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) 
 	{
@@ -23,7 +24,7 @@
 		$users[]['id'] = $userdata['id'];
 		if ($i < 5)
 		{
-			$following = json_decode($soundcloud->get('users/'.$userdata['id'].'/following'), true);
+			$following = json_decode($soundcloud->get('users/'.$userdata['id'].'/followings'), true);
 			print_r(count($following));
 		}
 		$i++;
