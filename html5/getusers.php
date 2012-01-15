@@ -15,17 +15,17 @@
 	    exit($e->getMessage());
 	}
 	
-	$options = array();
-	$options[USERS] = array();
+	$users = array();
 	
 	foreach ($usersdata as $userdata) 
 	{
-		$options[USERS][]['id'] = $userdata['id'];
+		$users[]['id'] = $userdata['id'];
 	}
 	
-	print_r($options);
+	print_r($users);
 	
 	// Love Too Serious
-	$soundcloud->post('tracks/25756679/shared-to/users', array(), $options);
+	$result = json_decode($soundcloud->post('tracks/25756679/shared-to/users', $users, true);
+	print_r($result);
 
 ?>
