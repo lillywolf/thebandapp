@@ -8,7 +8,7 @@
 	
 	try 
 	{
-		$usersdata = json_decode($soundcloud->get('users?q=coney+island'), true);
+		$usersdata = json_decode($soundcloud->get('users?q=new+york&offset=50'), true);
 		// $usersdata = json_decode($soundcloud->get('me/followings'), true);
 	} 
 	catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) 
@@ -22,15 +22,15 @@
 	foreach ($usersdata as $userdata) 
 	{
 		$users[]['id'] = $userdata['id'];
-		if ($i < 50)
-		{
-			$following = json_decode($soundcloud->get('users/'.$userdata['id'].'/followings'), true);
-			print_r(count($following) . ', ');
-		}
-		$i++;
+		// if ($i < 0)
+		// {
+		// 	$following = json_decode($soundcloud->get('users/'.$userdata['id'].'/followings'), true);
+		// 	print_r(count($following) . ', ');
+		// }
+		// $i++;
 	}
 	
-	print_r(count($users));
+	print_r($users);
 	
 	// Love Too Serious - 25756679
 	// Disaster - 25822353
