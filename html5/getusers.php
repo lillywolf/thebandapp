@@ -8,7 +8,7 @@
 	
 	try 
 	{
-		$usersdata = json_decode($soundcloud->get('users?q=brooklyn'), true);
+		$usersdata = json_decode($soundcloud->get('users?q=coney+island'), true);
 	} 
 	catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) 
 	{
