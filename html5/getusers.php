@@ -25,6 +25,6 @@
 	print_r($users);
 	
 	// Love Too Serious
-	// $soundcloud->post('tracks/25756679/shared-to/users', array(), $users);
+	$soundcloud->post('tracks/25756679/shared-to/users', array(), $users);
 
 ?>
