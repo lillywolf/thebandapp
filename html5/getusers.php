@@ -24,7 +24,7 @@
 	{
 		$users[]['id'] = $userdata['id'];
 		
-		$result = $soundcloud->post('sets/1155045/shared-to/users', array(
+		$result = $soundcloud->post('playlists/1155045/shared-to/users', array(
 			"users[][id]" => $userdata['id']
 		));
 	}
