@@ -77,6 +77,7 @@
 		$playlist_id = null;
 		$playlists = null;
 		foreach ($playlistdata as $playlist) {
+			error_log('attempt');
 			error_log('playlist id: ' . $playlist['id']);
 			$download_tracks_urls = '';
 			$download_tracks = $playlist['tracks']; 
