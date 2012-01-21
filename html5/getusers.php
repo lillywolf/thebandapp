@@ -24,7 +24,7 @@
 	{
 		$users[]['id'] = $userdata['id'];
 		
-		$result = $soundcloud->post('playlists/1155045/shared-to/users', array(
+		$result = $soundcloud->post('playlists/1526982/shared-to/users', array(
 			"users[][id]" => $userdata['id']
 		));
 	}
@@ -35,7 +35,7 @@
 	// 10822550
 	// Love Too Serious - 25756679
 	// Disaster - 25822353
-	// Play Loud Private - 1155045
+	// Play Loud Private - 1526982
 
 		// $result = $soundcloud->post('tracks/25756679/shared-to/users', array(
 		// 		"users[][id]" => "10822550"
