@@ -535,7 +535,7 @@ a.soundcloud-badge:hover {
 	width: 514px;
 	left: 0px;
 	overflow: hidden;
-	font: Quicksand, Arial;
+	font-family: Quicksand, Arial;
 }
 #listen_img {
 	z-index: 1;
@@ -559,6 +559,7 @@ a.soundcloud-badge:hover {
 }
 #banner_song_like_text {
 	display: none;
+	position: absolute;
 }
 #like_text_caption {
 	font-size: 30px;
