@@ -143,7 +143,7 @@
 			<div id="banner_song_like"></div>
 			<div id="banner_song_like_text">
 				<div id="like_text_caption">like this song?</div>
-				<div id="like_text_thankyou">THANKS FOR YOUR SUPPORT!</div>
+				<div id="like_text_thankyou">thanks for your support!</div>
 			</div>
 		</div>
 		<!--div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div-->
@@ -319,13 +319,13 @@
 		}
 		
 		function swapBanner() {
-			$('#listen_img').fadeOut(1000, 'linear');
+			$('#listen_img').fadeOut(1500, 'linear');
 			var e = window.document.createElement('img');
 			e.src = '../images/banners/like_song_light.jpg';
 			e.id = 'like_img';
 			document.getElementById('listen_banner').appendChild(e);
 			$('#like_img').hide();		
-			$('#like_img').fadeIn(1000, 'linear');
+			$('#like_img').fadeIn(1500, 'linear');
 			$('#banner_song_like_text').css('display', 'block');
 			$('#banner_song_like').html('<fb:like href="' + currentSongData.url + '" layout="box_count" show_faces="false" action="like" font="arial" colorscheme="light" send="false" />');
 			if (typeof FB !== 'undefined') {
