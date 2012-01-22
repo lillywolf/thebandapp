@@ -532,19 +532,23 @@ a.soundcloud-badge:hover {
 	left: 0px;
 	overflow: hidden;
 }
-#listen_img:hover {
-	position: absolute;
-	cursor: pointer;
+#listen_img {
 	z-index: 1;
+	position: absolute;
+}
+#listen_img:hover {
+	cursor: pointer;
+}
+#like_img {
+	position: absolute;
+	z-index: 0;	
 }
 #like_img:hover {
-	position: absolute;
 	cursor: pointer;	
-	z-index: 0;
 }
 #banner_song_like {
 	position: absolute;
-	left: 100px;
+	left: 70px;
 	top: 100px;
 	z-index: 2;
 }
