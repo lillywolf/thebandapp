@@ -317,12 +317,12 @@
 		function swapBanner() {
 			$('#listen_img').fadeOut(550, 'linear');
 			var e = window.document.createElement('img');
-			e.src = '../images/banners/like_song.jpg';
+			e.src = '../images/banners/like_song_light.jpg';
 			e.id = 'like_img';
-			document.getElementById('listen_banner').appendChild(e);
+			e.appendTo('#listen_banner').hide();
 			// $('#like_img').css('opacity', '0');			
 			$('#like_img').fadeIn(550, 'linear');
-			$('#banner_song_like').html('<fb:like href="' + currentSongData.url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="true" />');
+			$('#banner_song_like').html('<fb:like href="' + currentSongData.url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="false" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('banner_song_like'));
 			}					
