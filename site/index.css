@@ -548,7 +548,7 @@ a.soundcloud-badge:hover {
 }
 #banner_song_like {
 	position: absolute;
-	left: 70px;
-	top: 100px;
+	left: 100px;
+	top: 80px;
 	z-index: 2;
 }
