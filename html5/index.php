@@ -322,7 +322,7 @@
 			document.getElementById('listen_banner').appendChild(e);
 			$('#like_img').hide();		
 			$('#like_img').fadeIn(550, 'linear');
-			$('#banner_song_like').html('<fb:like href="' + currentSongData.url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="true" />');
+			$('#banner_song_like').html('<fb:like href="' + currentSongData.url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="false" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('banner_song_like'));
 			}					
