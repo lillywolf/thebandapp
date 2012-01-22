@@ -749,10 +749,13 @@
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('big_like_btn'));
 			}
-			$('#banner_song_like').html('<fb:like href="' + url + '" layout="box_count" show_faces="false" action="like" font="arial" colorscheme="light" send="false" />');
-			if (typeof FB !== 'undefined') {
-			    FB.XFBML.parse(document.getElementById('banner_song_like'));
-			}			
+			if ($('#banner_song_like').css('display') == 'block')
+			{
+				$('#banner_song_like').html('<fb:like href="' + url + '" layout="box_count" show_faces="false" action="like" font="arial" colorscheme="light" send="false" />');
+				if (typeof FB !== 'undefined') {
+				    FB.XFBML.parse(document.getElementById('banner_song_like'));
+				}	
+			}		
 		}	
 		
 		// var spinner;
