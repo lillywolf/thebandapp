@@ -77,8 +77,6 @@
 		$playlist_id = null;
 		$playlists = null;
 		foreach ($playlistdata as $playlist) {
-			error_log('attempt');
-			error_log('playlist id: ' . $playlist['id']);
 			$download_tracks_urls = '';
 			$download_tracks = $playlist['tracks']; 
 			foreach($download_tracks as $track) {
@@ -142,6 +140,7 @@
 		</div>	
 		<div id="listen_banner">
 			<img id="listen_img" src="../images/html5/listen_banner.jpg" onClick="playFirstTrack()">
+			<div id="banner_song_like"></div>
 		</div>
 		<!--div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div-->
 		<!--img class="banner_pic" id="like_banner" src="../images/banners/like_lillywolf_512px.jpg" /-->				
@@ -310,8 +309,23 @@
 		}
 		
 		function playFirstTrack() {
+			swapBanner();
 			setToFirstTrack();
 			playButtonClick();
+		}
+		
+		function swapBanner() {
+			$('#listen_img').fadeOut();
+			var e = window.document.createElement('img');
+			e.src = '../images/banners/like_song.jpg';
+			e.id = 'like_img';
+			e.css('alpha', '0');
+			document.getElementById('listen_banner').appendChild(e);
+			$('#like_img').fadeIn();	
+			$('#banner_song_like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="true" />');
+			if (typeof FB !== 'undefined') {
+			    FB.XFBML.parse(document.getElementById('banner_song_like'));
+			}					
 		}
 		
 		// $('#progress_bar').mouseover(function(e) {
