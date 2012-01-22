@@ -1,3 +1,7 @@
+@font-face {
+    font-family: Quicksand;
+ 	src: url('http://simple-ocean-7178.herokuapp.com/images/fonts/Quicksand_Book.otf');
+}
 body {
 	margin: 0px !important;
 	overflow-y: hidden;
@@ -531,6 +535,7 @@ a.soundcloud-badge:hover {
 	width: 514px;
 	left: 0px;
 	overflow: hidden;
+	font: Quicksand, Arial;
 }
 #listen_img {
 	z-index: 1;
@@ -551,4 +556,15 @@ a.soundcloud-badge:hover {
 	left: 100px;
 	top: 80px;
 	z-index: 2;
+}
+#banner_song_like_text {
+	display: none;
+}
+#like_text_caption {
+	font-size: 30px;
+	margin: 20px 20px 0 0;
+}
+#like_text_thankyou {
+	font-size: 16px;
+	margin: 120px 20px 0 0;
 }

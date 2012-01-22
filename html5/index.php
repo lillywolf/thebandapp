@@ -141,6 +141,10 @@
 		<div id="listen_banner">
 			<img id="listen_img" src="../images/html5/listen_banner.jpg" onClick="playFirstTrack()">
 			<div id="banner_song_like"></div>
+			<div id="banner_song_like_text">
+				<div id="like_text_caption">like this song?</div>
+				<div id="like_text_thankyou">THANKS FOR YOUR SUPPORT!</div>
+			</div>
 		</div>
 		<!--div id="song_play_btn_over"><img src="../images/html5/play_btn_tiny.png" /></div-->
 		<!--img class="banner_pic" id="like_banner" src="../images/banners/like_lillywolf_512px.jpg" /-->				
