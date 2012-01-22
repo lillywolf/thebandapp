@@ -319,11 +319,9 @@
 			var e = window.document.createElement('img');
 			e.src = '../images/banners/like_song.jpg';
 			e.id = 'like_img';
-			alert('element created');
-			e.css('alpha', '0');
-			alert('alpha set');
 			document.getElementById('listen_banner').appendChild(e);
-			$('#like_img').fadeIn();	
+			$('#like_img').fadeIn();
+			alert('fade in');	
 			$('#banner_song_like').html('<fb:like href="' + url + '" layout="button_count" show_faces="false" action="like" font="arial" colorscheme="light" send="true" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('banner_song_like'));
