@@ -560,12 +560,13 @@ a.soundcloud-badge:hover {
 #banner_song_like_text {
 	display: none;
 	position: absolute;
+	z-index: 3;
 }
 #like_text_caption {
 	font-size: 30px;
-	margin: 20px 20px 0 0;
+	margin: 30px 0px 0 20px;
 }
 #like_text_thankyou {
-	font-size: 16px;
-	margin: 120px 20px 0 0;
+	font-size: 14px;
+	margin: 106px 0px 0 20px;
 }
