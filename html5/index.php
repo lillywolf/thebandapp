@@ -317,7 +317,7 @@
 		function swapBanner() {
 			$('#listen_img').fadeOut(550, 'linear');
 			var e = window.document.createElement('img');
-			e.src = '../images/banners/like_song.jpg';
+			e.src = '../images/banners/like_song_light.jpg';
 			e.id = 'like_img';
 			document.getElementById('listen_banner').appendChild(e);
 			$('#like_img').hide();		
