@@ -326,6 +326,7 @@
 			document.getElementById('listen_banner').appendChild(e);
 			$('#like_img').hide();		
 			$('#like_img').fadeIn(1000, 'linear');
+			$('#banner_song_like_text').css('display', 'block');
 			$('#banner_song_like').html('<fb:like href="' + currentSongData.url + '" layout="box_count" show_faces="false" action="like" font="arial" colorscheme="light" send="false" />');
 			if (typeof FB !== 'undefined') {
 			    FB.XFBML.parse(document.getElementById('banner_song_like'));
