@@ -79,6 +79,7 @@
 		foreach ($playlistdata as $playlist) {
 			$download_tracks_urls = '';
 			$download_tracks = $playlist['tracks']; 
+			error_log('playlist id: ' . $playlist['id']);
 			foreach($download_tracks as $track) {
 				$download_tracks_urls = $download_tracks_urls . $track['download_url'] . ',';
 			}
