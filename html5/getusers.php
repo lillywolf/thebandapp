@@ -10,7 +10,7 @@
 	{
 		// $usersdata = json_decode($soundcloud->get('users?q=new+york&offset=1000'), true);
 		$offset = $_REQUEST['offset'];
-		$usersdata = json_decode($soundcloud->get('users?q=austin&offset='.$offset.'&limit=25'), true);
+		$usersdata = json_decode($soundcloud->get('users?q=orange+county&offset='.$offset.'&limit=25'), true);
 	} 
 	catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) 
 	{
@@ -24,7 +24,7 @@
 	{
 		$users[]['id'] = $userdata['id'];
 		
-		$result = $soundcloud->post('playlists/1547205/shared-to/users', array(
+		$result = $soundcloud->post('playlists/1551423/shared-to/users', array(
 			"users[][id]" => $userdata['id']
 		));
 	}
