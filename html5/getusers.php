@@ -10,7 +10,7 @@
 	{
 		// $usersdata = json_decode($soundcloud->get('users?q=new+york&offset=1000'), true);
 		$offset = $_REQUEST['offset'];
-		$usersdata = json_decode($soundcloud->get('users?q=san+diego&offset='.$offset.'&limit=25'), true);
+		$usersdata = json_decode($soundcloud->get('users?q=manhattan&offset='.$offset.'&limit=25'), true);
 	} 
 	catch (Services_Soundcloud_Invalid_Http_Response_Code_Exception $e) 
 	{
