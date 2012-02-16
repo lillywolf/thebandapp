@@ -957,8 +957,8 @@
 			  	});
 
 			  	// Additional initialization code here
-				// FB.Canvas.setSize({ width: 520, height: 1200 });
-				FB.Canvas.setAutoGrow();
+				FB.Canvas.setSize({ width: 520, height: 1200 });
+				// FB.Canvas.setAutoGrow();
 				// FB.Event.subscribe('edge.create', function(response) {
 				// 	if (response.indexOf(fbPageUrl) != -1) {
 				//  		// window.location.reload();
@@ -968,7 +968,7 @@
 				// });	
 			};
 			
-			// loadWall();	
+			loadWall();	
 
 			// Load the SDK Asynchronously
 		 	(function() {
